@@ -57,7 +57,10 @@ export default function SignupScreen() {
     if (!validate(values)) return;
     const success = await register(values);
     if (success) {
-      // AuthGate will redirect to /(tabs) once session is set
+      // Email confirmation is ENABLED on this project.
+      // Supabase does not issue a session until the user verifies their email.
+      // Redirect to the check-email screen so the user knows what to do.
+      router.replace('/(auth)/check-email');
     }
   };
 

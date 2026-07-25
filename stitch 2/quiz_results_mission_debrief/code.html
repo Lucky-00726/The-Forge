@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Debrief | Mission Command</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Geist:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#001f26",
+                        "on-surface": "#e0e3e5",
+                        "on-error": "#690005",
+                        "on-primary-container": "#6d5000",
+                        "on-secondary": "#213145",
+                        "inverse-surface": "#e0e3e5",
+                        "outline-variant": "#504532",
+                        "on-tertiary": "#003640",
+                        "error": "#ffb4ab",
+                        "primary-fixed-dim": "#fbbc00",
+                        "tertiary": "#b4efff",
+                        "surface-variant": "#323537",
+                        "secondary-container": "#3a4a5f",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "secondary": "#b7c8e1",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-container": "#ffbf00",
+                        "tertiary-container": "#04dcff",
+                        "primary-fixed": "#ffdfa0",
+                        "on-primary": "#402d00",
+                        "on-tertiary-container": "#005d6d",
+                        "surface-container-highest": "#323537",
+                        "surface": "#101415",
+                        "on-primary-fixed": "#261a00",
+                        "surface-container-high": "#272a2c",
+                        "on-secondary-container": "#a9bad3",
+                        "on-background": "#e0e3e5",
+                        "outline": "#9c8f78",
+                        "surface-container-lowest": "#0b0f10",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface-variant": "#d4c5ab",
+                        "primary": "#ffe2ab",
+                        "tertiary-fixed": "#aaedff",
+                        "surface-dim": "#101415",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "inverse-on-surface": "#2d3133",
+                        "surface-bright": "#363a3b",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-error-container": "#ffdad6",
+                        "surface-container-low": "#191c1e",
+                        "surface-container": "#1d2022",
+                        "surface-tint": "#fbbc00",
+                        "background": "#101415",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "inverse-primary": "#795900"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "48px",
+                        "max-width": "1200px",
+                        "margin-mobile": "20px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Geist"],
+                        "coordinate-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Geist"],
+                        "headline-md": ["Geist"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "coordinate-sm": ["10px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .tactical-glow {
+            text-shadow: 0 0 15px rgba(255, 191, 0, 0.4);
+        }
+        .circular-progress {
+            background: conic-gradient(#ffbf00 85%, #1e293b 0);
+        }
+        .segmented-progress {
+            background-image: linear-gradient(to right, #ffbf00 80%, transparent 80%);
+            background-size: 12.5% 100%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full h-16 z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant flex items-center justify-between px-margin-mobile">
+<button class="active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary">MISSION DEBRIEF</h1>
+<button class="active:scale-95 duration-150 text-primary">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-max-width mx-auto space-y-12">
+<!-- Score Visualization -->
+<section class="flex flex-col items-center justify-center py-8">
+<div class="relative w-64 h-64 rounded-full flex items-center justify-center">
+<!-- Outer Track -->
+<div class="absolute inset-0 rounded-full border-2 border-outline-variant opacity-20"></div>
+<!-- Progress Ring (SVG for precision) -->
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-outline-variant opacity-10" cx="128" cy="128" fill="transparent" r="120" stroke="currentColor" stroke-width="2"></circle>
+<circle class="drop-shadow-[0_0_8px_rgba(255,191,0,0.5)]" cx="128" cy="128" fill="transparent" r="120" stroke="#ffbf00" stroke-dasharray="753.98" stroke-dashoffset="113.1" stroke-linecap="butt" stroke-width="4"></circle>
+</svg>
+<!-- Central Text -->
+<div class="text-center z-10">
+<span class="font-label-caps text-label-caps text-primary opacity-60 block mb-1">SCORE</span>
+<h2 class="font-display-lg text-display-lg text-primary-container tactical-glow leading-none">85%</h2>
+<span class="font-coordinate-sm text-coordinate-sm text-on-surface-variant tracking-[0.2em] mt-2 block uppercase">Status: Operational</span>
+</div>
+<!-- Technical Corner Marks -->
+<div class="absolute top-0 left-0 w-4 h-4 border-t border-l border-primary/40"></div>
+<div class="absolute top-0 right-0 w-4 h-4 border-t border-r border-primary/40"></div>
+<div class="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-primary/40"></div>
+<div class="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-primary/40"></div>
+</div>
+</section>
+<!-- Performance Summary -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Score Card -->
+<div class="bg-surface-container-low border border-outline-variant p-6 relative overflow-hidden group">
+<div class="absolute top-3 right-4 font-label-caps text-[10px] text-on-surface-variant/30">ID: PERF-01</div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="check_circle">check_circle</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">ACCURACY</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">17/20 CORRECT</h3>
+</div>
+<!-- XP Card -->
+<div class="bg-surface-container-low border border-outline-variant p-6 relative overflow-hidden group">
+<div class="absolute top-3 right-4 font-label-caps text-[10px] text-on-surface-variant/30">ID: PERF-02</div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="military_tech">military_tech</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">XP EARNED</p>
+<h3 class="font-headline-sm text-headline-sm text-primary">+150 XP</h3>
+</div>
+<!-- Streak Card -->
+<div class="bg-surface-container-low border border-outline-variant p-6 relative overflow-hidden group">
+<div class="absolute top-3 right-4 font-label-caps text-[10px] text-on-surface-variant/30">ID: PERF-03</div>
+<span class="material-symbols-outlined text-primary mb-4" data-icon="local_fire_department">local_fire_department</span>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-1">STREAK IMPACT</p>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">08 DAYS <span class="text-label-caps text-[12px] text-primary/60 font-medium">(MAINTAINED)</span></h3>
+</div>
+</section>
+<!-- Rank Progression -->
+<section class="bg-surface-container border border-outline-variant p-8 relative">
+<div class="absolute top-0 right-0 p-3">
+<div class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></div>
+</div>
+<div class="flex justify-between items-end mb-6">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">CURRENT RANK</p>
+<h4 class="font-headline-md text-headline-md text-primary tracking-tight">ELITE VANGUARD</h4>
+</div>
+<div class="text-right">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-2">NEXT OBJECTIVE</p>
+<h4 class="font-headline-sm text-headline-sm text-on-surface opacity-60">COMMANDER</h4>
+</div>
+</div>
+<!-- Segmented Progress Bar -->
+<div class="space-y-4">
+<div class="h-2 w-full bg-surface-variant flex gap-1">
+<div class="h-full flex-1 bg-primary-container"></div>
+<div class="h-full flex-1 bg-primary-container"></div>
+<div class="h-full flex-1 bg-primary-container"></div>
+<div class="h-full flex-1 bg-primary-container"></div>
+<div class="h-full flex-1 bg-primary-container"></div>
+<div class="h-full flex-1 bg-primary-container/40"></div>
+<div class="h-full flex-1 bg-surface-variant"></div>
+<div class="h-full flex-1 bg-surface-variant"></div>
+</div>
+<div class="flex justify-between font-coordinate-sm text-coordinate-sm text-on-surface-variant">
+<span>PROGRESS: 720 / 1000 XP</span>
+<span>280 XP TO RANK UP</span>
+</div>
+</div>
+</section>
+<!-- Aesthetic Background Elements -->
+<div class="fixed inset-0 pointer-events-none z-[-1] opacity-5">
+<div class="absolute top-1/4 left-10 w-px h-64 bg-primary"></div>
+<div class="absolute bottom-1/4 right-10 w-px h-64 bg-primary"></div>
+<div class="absolute top-1/2 left-0 w-full h-px bg-primary/20"></div>
+</div>
+</main>
+<!-- Navigation/Action Shell -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/90 backdrop-blur-md px-margin-mobile py-6 z-50">
+<div class="max-w-max-width mx-auto flex flex-col md:flex-row gap-4">
+<button class="flex-1 h-14 bg-primary-container text-on-primary flex items-center justify-center font-label-caps text-label-caps font-bold transition-all active:scale-95 hover:bg-primary-container/90">
+                CONTINUE TRAINING
+                <span class="material-symbols-outlined ml-2 text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="flex-1 h-14 border border-outline text-on-surface flex items-center justify-center font-label-caps text-label-caps font-medium transition-all active:scale-95 hover:bg-surface-container-high">
+                REVIEW ANSWERS
+                <span class="material-symbols-outlined ml-2 text-[18px]" data-icon="history">history</span>
+</button>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 px-2 pb-safe bg-surface border-t border-outline-variant hidden md:flex">
+<a class="flex flex-col items-center justify-center text-primary font-label-caps text-label-caps" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="grid_view">grid_view</span>
+            DASHBOARD
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="school">school</span>
+            ACADEMY
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics">analytics</span>
+            REPORTS
+        </a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps text-label-caps hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+            PROFILE
+        </a>
+</nav>
+<script>
+        // Micro-interaction for rank segments
+        document.addEventListener('DOMContentLoaded', () => {
+            const segments = document.querySelectorAll('.h-full.flex-1');
+            segments.forEach((seg, index) => {
+                seg.style.opacity = '0';
+                seg.style.transform = 'translateY(4px)';
+                setTimeout(() => {
+                    seg.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+                    seg.style.opacity = '1';
+                    seg.style.transform = 'translateY(0)';
+                }, 400 + (index * 60));
+            });
+        });
+    </script>
+</body></html>

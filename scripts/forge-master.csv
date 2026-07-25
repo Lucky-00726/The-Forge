@@ -1,0 +1,873 @@
+forge_id,content_type,category,title_or_question,difficulty,status
+SD001,Self Description,Self Opinion,What do you think of yourself?,Medium,approved
+SD002,Self Description,Parents Opinion,What do your parents think of you?,Medium,approved
+SD003,Self Description,Friends Opinion,What do your friends think of you?,Medium,approved
+SD004,Self Description,Teachers Opinion,What do your teachers or employer think of you?,Medium,approved
+SD005,Self Description,Life Goals,What kind of person do you want to become in life?,Medium,approved
+SD006,Self Description,Life Goals,What qualities would you like to improve in yourself?,Medium,approved
+SD007,Self Description,Friends Opinion,What is one quality your best friends would like you to change?,Medium,approved
+SD008,Self Description,Parents Opinion,What two things does your mother advise you to improve?,Medium,approved
+SD009,Self Description,Friends Opinion,What suggestions do your close friends give you for self-improvement?,Medium,approved
+SD010,Self Description,Parents Opinion,"If your family could change one quality in you, what would it be?",Medium,approved
+LECT0001,Lecturette,Oil,Global Oil Crisis,High,approved
+LECT0002,Lecturette,Power,Nuclear Energy / Nuclear power,High,approved
+LECT0003,Lecturette,Pakistan,Indo-Pak Peace Process,High,approved
+LECT0004,Lecturette,USA,Indo-US Relations / India –US relationship :future,High,approved
+LECT0005,Lecturette,WMD,Weapons of Mass Destruction,High,approved
+LECT0006,Lecturette,Economy,Indian Economy,High,approved
+LECT0007,Lecturette,Nuclear,Indo-US Nuclear Deal,High,approved
+LECT0008,Lecturette,Pakistan,Indo-Pak Relations,High,approved
+LECT0009,Lecturette,War,Wars with Pakistan,High,approved
+LECT0010,Lecturette,Energy,Energy Crisis,High,approved
+LECT0011,Lecturette,Budget,Defence Budget,High,approved
+LECT0012,Lecturette,Development,India as a Superpower,High,approved
+LECT0013,Lecturette,USA,COMCASA,High,approved
+LECT0014,Lecturette,China,String of Pearls,High,approved
+LECT0015,Lecturette,IOR,Indian Ocean Region,High,approved
+LECT0016,Lecturette,UNSC,UN Security Council,High,approved
+LECT0017,Lecturette,Cybersecurity,Ethical Hacking,High,approved
+LECT0018,Lecturette,Law,Food Security Bill,High,approved
+LECT0019,Lecturette,China,Indo-China Relations,High,approved
+LECT0020,Lecturette,Cleanliness,Swachh Bharat Abhiyan,High,approved
+LECT0021,Lecturette,Digital,Digital India Mission,High,approved
+LECT0022,Lecturette,Economy,Demonetisation,High,approved
+LECT0023,Lecturette,Urbanization,Smart City Project,High,approved
+LECT0024,Lecturette,Transport,Bullet Train,High,approved
+LECT0025,Lecturette,Citizenship,NRC,High,approved
+LECT0026,Lecturette,Borders,India’s neighbors,High,approved
+LECT0027,Lecturette,Security,Terrorism a global threat / Terrorism,High,approved
+LECT0028,Lecturette,Law,Judicial reforms,High,approved
+LECT0029,Lecturette,Law,Police reforms,High,approved
+LECT0030,Lecturette,Economy,Globalization,High,approved
+LECT0031,Lecturette,Borders,Kashmir problem,High,approved
+LECT0032,Lecturette,Nuclear,CTBT and India,High,approved
+LECT0033,Lecturette,Law,Uniform civil code,High,approved
+LECT0034,Lecturette,Science,Cloning,High,approved
+LECT0035,Lecturette,Water,River water disputes,High,approved
+LECT0036,Lecturette,Economy,Inflation,High,approved
+LECT0037,Lecturette,Economy,FDI,High,approved
+LECT0038,Lecturette,Politics,Do we need more states?,High,approved
+LECT0039,Lecturette,Military,AFSPA,High,approved
+LECT0040,Lecturette,Kashmir,Article 370,High,approved
+LECT0041,Lecturette,Security,Naxalism problem,High,approved
+LECT0042,Lecturette,South Asia,SAARC,High,approved
+LECT0043,Lecturette,Religion,Indian Religion,Medium,approved
+LECT0044,Lecturette,Culture,Indian Culture,Medium,approved
+LECT0045,Lecturette,Women,Women in Society / Status of women in India,Medium,approved
+LECT0046,Lecturette,Village,Rural Society,Medium,approved
+LECT0047,Lecturette,Health,Smoking by Women,Medium,approved
+LECT0048,Lecturette,Peace,Communal Harmony,Medium,approved
+LECT0049,Lecturette,Politics,Democracy,Medium,approved
+LECT0050,Lecturette,Media,Importance of TV / Role of media,Medium,approved
+LECT0051,Lecturette,Farming,Agriculture in India,Medium,approved
+LECT0052,Lecturette,Population,Family Planning / Population explosion,Medium,approved
+LECT0053,Lecturette,Environment,Global Warming,Medium,approved
+LECT0054,Lecturette,Education,Sex Education,Medium,approved
+LECT0055,Lecturette,Internet,Social Networking Sites,Medium,approved
+LECT0056,Lecturette,Fashion,Indian Fashion Industry,Medium,approved
+LECT0057,Lecturette,Finance,E-banking,Medium,approved
+LECT0058,Lecturette,Education,Brain Drain,Medium,approved
+LECT0059,Lecturette,Wildlife,Declining Tiger Population in India,Medium,approved
+LECT0060,Lecturette,Women,Women in Corporate India,Medium,approved
+LECT0061,Lecturette,Women,Women in Armed Forces,Medium,approved
+LECT0062,Lecturette,Society,Social Issues of India,Medium,approved
+LECT0063,Lecturette,Crime,Crime Against Women,Medium,approved
+LECT0064,Lecturette,Economy,Unemployment / Unemployment in India,Medium,approved
+LECT0065,Lecturette,Health,Primary Healthcare in India,Medium,approved
+LECT0066,Lecturette,Movies,Cinema Today,Medium,approved
+LECT0067,Lecturette,Bollywood,Indian Film Industry,Medium,approved
+LECT0068,Lecturette,TV,Reality Shows,Medium,approved
+LECT0069,Lecturette,Education,Privatisation of Education,Medium,approved
+LECT0070,Lecturette,Education,Literacy Rate in India,Medium,approved
+LECT0071,Lecturette,Health,Child Mortality,Medium,approved
+LECT0072,Lecturette,Women,Declining Sex Ratio,Medium,approved
+LECT0073,Lecturette,Health,Drug Abuse,Medium,approved
+LECT0074,Lecturette,Politics,Religion in Politics,Medium,approved
+LECT0075,Lecturette,Crime,Criminalisation of Politics,Medium,approved
+LECT0076,Lecturette,Women,Women Empowerment,Medium,approved
+LECT0077,Lecturette,Journalism,Indian Media,Medium,approved
+LECT0078,Lecturette,ISRO,Indian Space Programme / Space research in India,Medium,approved
+LECT0079,Lecturette,Defense,Indian Missile Programme / Missile development in India,Medium,approved
+LECT0080,Lecturette,Corruption,Corruption in modern India,Medium,approved
+LECT0081,Lecturette,Environment,Pollution,Medium,approved
+LECT0082,Lecturette,Water,Water shortage,Medium,approved
+LECT0083,Lecturette,Energy,Non-conventional energy,Medium,approved
+LECT0084,Lecturette,Safety,Disaster management,Medium,approved
+LECT0085,Lecturette,Women,Female infanticide,Medium,approved
+LECT0086,Lecturette,Education,Educating a girl child,Medium,approved
+LECT0087,Lecturette,Health,AIDS,Medium,approved
+LECT0088,Lecturette,Children,Child labor,Medium,approved
+LECT0089,Lecturette,Economy,Poverty,Medium,approved
+LECT0090,Lecturette,Politics,Reservation / Reservation for women,Medium,approved
+LECT0091,Lecturette,Education,Ragging,Medium,approved
+LECT0092,Lecturette,Family,Single parenting in India,Medium,approved
+LECT0093,Lecturette,Health,Medical tourism,Medium,approved
+LECT0094,Lecturette,Economy,Tourism in India,Medium,approved
+LECT0095,Lecturette,Media,Freedom of press,Medium,approved
+LECT0096,Lecturette,Politics,Role of opposition in democracy,Medium,approved
+LECT0097,Lecturette,Law,Human rights,Medium,approved
+LECT0098,Lecturette,LGBTQ,Gay rights,Medium,approved
+LECT0099,Lecturette,Politics,Banana government,Medium,approved
+LECT0100,Lecturette,Defense,Compulsory military training,Medium,approved
+LECT0101,Lecturette,Sports,Use of drugs in sports,Medium,approved
+LECT0102,Lecturette,Law,RTI,Medium,approved
+LECT0103,Lecturette,Education,RTE,Medium,approved
+LECT0104,Lecturette,Education,My School,Low,approved
+LECT0105,Lecturette,Relationships,Friends,Low,approved
+LECT0106,Lecturette,Family,Best Child,Low,approved
+LECT0107,Lecturette,Memories,Childhood Days,Low,approved
+LECT0108,Lecturette,Internet,E-mail,Low,approved
+LECT0109,Lecturette,Entertainment,Cinema,Low,approved
+LECT0110,Lecturette,Tech,Mobile Phone,Low,approved
+LECT0111,Lecturette,Gaming,Computer Games,Low,approved
+LECT0112,Lecturette,Sports,Cricket in India,Low,approved
+LECT0113,Lecturette,Health,Yoga,Low,approved
+LECT0114,Lecturette,Role Model,My Idol / My role model,Low,approved
+LECT0115,Lecturette,Inspiration,Personality I Like the Most,Low,approved
+LECT0116,Lecturette,Family,Role of Parents,Low,approved
+LECT0117,Lecturette,Family,Joint Family System,Low,approved
+LECT0118,Lecturette,Proverb,A friend in need is a friend indeed,Low,approved
+LECT0119,Lecturette,Family,My Father,Low,approved
+LECT0120,Lecturette,Personal,My hobby,Low,approved
+LECT0121,Lecturette,Sports,Value of sports and games,Low,approved
+LECT0122,Lecturette,Society,Generation gap,Low,approved
+GD0001,Group Discussion,Social Issues,In past few decades it is seen that people from Indian villages are migrating to cities very fast. According to you what is the reason behind this exodus?,Medium,approved
+GD0002,Group Discussion,Social Issues,The corruption in public life is increased in India in past few years; this problem is growing day by day. According to you what is driving factor for the corruption in our day today life need or greed?,Medium,approved
+GD0003,Group Discussion,Economy,"India has several states and some of them have progressed very fast, but at the same time some states have shown slow pace in development. According to you what is the basic reason for this disparity?",Medium,approved
+GD0004,Group Discussion,Social Issues,Sudden increase in divorce cases. What is the basic reason behind this?,Low,approved
+GD0005,Group Discussion,Economy,Causes of this growth in unemployment?,Medium,approved
+OIR0001,OIR,Analogy,"Drama is related to scene, in the same way as book is related to...",Low,approved
+OIR0002,OIR,Analogy,Waves is related to air in the same way as ripples is related to...,Low,approved
+OIR0003,OIR,Analogy,"Shirt is related to button, in the same way as shoes is related to...",Medium,approved
+OIR0004,OIR,Analogy,Cloth : Mill :: Newspaper:?,Low,approved
+OIR0005,OIR,Analogy,GREAT : 25 :: Number : ?,High,approved
+OIR0006,OIR,Analogy,Country : President :: State : ?,Low,approved
+OIR0007,OIR,Analogy,Flow : River :: Stagnant : ?,Medium,approved
+OIR0008,OIR,Analogy,PASS : QBTT :: FAIL : ?,Medium,approved
+OIR0009,OIR,Analogy,Dog is to canine as wolf is to ___________,Medium,approved
+OIR0010,OIR,Analogy,Sadness is to happiness as defeat is to ___________,Low,approved
+OIR0011,OIR,Analogy,"Paper is made from timber, as ___________ is made from hide",Low,approved
+OIR0012,OIR,Analogy,A Thermometer is related to Temperature as a Speedometer is to ___________,Low,approved
+OIR0013,OIR,Analogy,Bird is to fly as man is to ________,Low,approved
+OIR0014,OIR,Analogy,Milk is to White as Sky is to ___________,Low,approved
+OIR0015,OIR,Analogy,Wife is to Husband as Mare is to ___________,Low,approved
+OIR0016,OIR,Analogy,"Rich is to Wealthy, as Mars is to ___________",Low,approved
+OIR0017,OIR,Series,"48, 24, 72, 36, 108, ?",Medium,approved
+OIR0018,OIR,Series,"ELFA, GLHA, ILJA, ……, MLNA",Medium,approved
+OIR0019,OIR,Series,"P256, N196, L144, J100, ?",High,approved
+OIR0020,OIR,Series,"Find out the wrong number in the given series: 258, 130, 66, 34, 18, 8, 6",High,approved
+OIR0021,OIR,Series,"6, 11, 21, 36, 56, ?",Medium,approved
+OIR0022,OIR,Series,"1, ?, 27, 64, 125",Low,approved
+OIR0023,OIR,Series,"10, 22, 8, 24, 6, ?",Medium,approved
+OIR0024,OIR,Series,"Find the missing, 3,7,11,15,_,_",Low,approved
+OIR0025,OIR,Series,Supply the missing numbers: 2 6 12 20 30 ? 56,Medium,approved
+OIR0026,OIR,Coding-Decoding,In a certain code BASIC is written as DDULE. How is LEADER written in that code?,Medium,approved
+OIR0027,OIR,Coding-Decoding,In a certain code PEN is written as NZO and BARK as CTSL. How can we write PRANK in that coding system?,High,approved
+OIR0028,OIR,Coding-Decoding,"If ROYAL is coded as 20-17-01-03-14, how will you code BOIL?",Medium,approved
+OIR0029,OIR,Coding-Decoding,"If in a certain code, BAT = 23 and BALL = 27, then how will you code CAT?",Medium,approved
+OIR0030,OIR,Coding-Decoding,"If 'Room' is called as 'Book', 'Book' is called as 'Bag', 'Bag' is called as 'Mat'. Then, what is useful to carry books?",Low,approved
+OIR0031,OIR,Coding-Decoding,"In a certain code '467' means 'red colour chalk'; '685' means 'green colour flower' and '367' means 'white colour chalk', then what is the code for 'white'?",Medium,approved
+OIR0032,OIR,Coding-Decoding,"If in a code language, PAINT is written as 74128 and EXCEL is written as 93596, then how will ACCEPT be written in that language?",Medium,approved
+OIR0033,OIR,Coding-Decoding,"If HKTG means Fire, what does YCVGT mean?",High,approved
+OIR0034,OIR,Coding-Decoding,"If 'ZYXW' is coded as 'ABCD', then 'STUV' will be coded as",Low,approved
+OIR0035,OIR,Coding-Decoding,"In a language A is coded as 1, B is coded as 2, then FACE is coded as",Low,approved
+OIR0036,OIR,Coding-Decoding,"If 'Hyderabad' is coded as 'Ixedszcze', then 'Chennai' is coded as",High,approved
+OIR0037,OIR,Blood Relations,"A is the brother of B. B is the brother of C. D is the father of A. Based on these three statements, which of the following statements cannot be definitely true? (a) B is the brother of A (b) B is the son of D (c) A is the brother of C (d) C is the brother of A",Medium,approved
+OIR0038,OIR,Blood Relations,"Pointing to Parul, Ram said, She is daughter of the only child of my father. How is Ram's wife related to that girl?",Medium,approved
+OIR0039,OIR,Blood Relations,My mother's sister's husband's only son's sister is related to me as,Medium,approved
+OIR0040,OIR,Blood Relations,A lady introduces a man as the son of the brother of her mother. How is the man related to the woman?,Low,approved
+OIR0041,OIR,Blood Relations,"Arjun told Rachit, 'Yesterday I defeated the only brother of the daughter of my grandmother.' Whom did Arjun defeat?",High,approved
+OIR0042,OIR,Blood Relations,X and Y are children of Z. Z is the father of X but Y is not the son of Z. What is Y to Z?,Medium,approved
+OIR0043,OIR,Blood Relations,"If a party consisted of a man and his wife, their two sons and their wives and four children of each son, how many persons were there in all in the party?",High,approved
+OIR0044,OIR,Direction Sense,"Bani leaves her house and walks 5 m towards North, turns right and walks 10 m, then turns right and walks 5 m, then turns left and walks 15 m. In which direction is she now?",Medium,approved
+OIR0045,OIR,Direction Sense,"From her house, Seema went 15 km to the North. Then she turned West and covered 10 km. Then she turned South and covered 5 km. Finally turning to the East, she covered 10 km. In which direction is she from her house?",Medium,approved
+OIR0046,OIR,Direction Sense,A clock is so placed that at 12 : 00 noon its minute hand points towards North-East. In which direction does its hour hand point at 1:30 pm?,High,approved
+OIR0047,OIR,Direction Sense,"Vijay started walking towards South. After walking 15 m, he turned to the left and walked 15 m. He again turned to his left and walked 15 m. How far is he from his original position and in which direction?",Medium,approved
+OIR0048,OIR,Direction Sense,"If you start from point A and walk 4 miles towards the east, then turn left and walk 3 miles towards the north, turn left again and walk 2 miles, which choice mentions the direction in which you are going?",Medium,approved
+OIR0049,OIR,Classification,Choose the one which is different from others. (a) BYCX (b) FUHS (c) KPMN (d) IQEU,High,approved
+OIR0050,OIR,Classification,"Three out of the following four pairs of numbers have the same relationship. Find the odd one out. (a) 4, 63 (b) 1, 0 (c) 2, 15 (d) 5, 124",Medium,approved
+OIR0051,OIR,Classification,Which one of the following is the odd one out? (a) Babar (b) Shershah (c) Humayun (d) Akbar,Medium,approved
+OIR0052,OIR,Classification,Select the one which is different from the other four responses. (a) Flute (b) Guitar (c) Sitar (d) Violin,Low,approved
+OIR0053,OIR,Classification,"Find the odd word in each of the following lines: Needle, Tackle, Nail, Knife, Pin",Medium,approved
+OIR0054,OIR,Classification,"Find the odd word: Circle, Square, Triangle, Hexagon, Pentagon",Low,approved
+OIR0055,OIR,Non Mirror Images,Choose the alternative which most closely resembles the mirror image of the given combination: TRIUMPHS,Low,approved
+OIR0056,OIR,Non Mirror Images,Choose the alternative which most closely resembles the mirror image of the given combination: 73AP4OD8,Medium,approved
+OIR0057,OIR,Non Mirror Images,Choose the alternative which shows the correct water image of the word given: FROG,Low,approved
+OIR0058,OIR,Non Figure Series,"In a series of figures where a main geometry rotates 90 degrees anti-clockwise in each step and its shaded portions shift to the connecting lines, what constitutes the next figure logically?",High,approved
+OIR0059,OIR,Non Figure Series,"In a series of hexagons where two inner designs move one step clockwise and two other designs move one step anti-clockwise alternately, what constitutes the next sequence?",High,approved
+OIR0060,OIR,Non Pattern Recognition,A cube whose two adjacent faces are coloured is cut into 64 identical small cubes. How many of these small cubes are not coloured at all?,High,approved
+OIR0061,OIR,Non Pattern Recognition,"Two positions of a dice are shown (showing faces 5,6,4 and 2,1,5). What will be the number at the bottom, if 5 is at the top?",Medium,approved
+OIR0062,OIR,Non Pattern Recognition,A figure X is given followed by four figures. The candidate has to select the figure in which the problem figure X is perfectly embedded. How is this solved?,Medium,approved
+OIR0063,OIR,Non Pattern Recognition,A figure is given which has a definite geometric pattern but nearly a quarter of that pattern is left blank. The candidate must complete it. What is the objective?,Medium,approved
+TAT0001,TAT,Theme Concept,TAT Theme Idea - Factory or Workshop,Medium,approved
+TAT0002,TAT,Theme Concept,TAT Theme Idea - Office Meeting/Phone Calls,Medium,approved
+TAT0003,TAT,Theme Concept,TAT Theme Idea - Fight/Running/Weapon,Medium,approved
+TAT0004,TAT,Theme Concept,TAT Theme Idea - Defence Forces,Medium,approved
+TAT0005,TAT,Theme Concept,TAT Theme Idea - Vehicle/Car/Bike,Medium,approved
+TAT0006,TAT,Labor/Roadwork,TAT Picture Theme - Working on Road,Medium,approved
+TAT0007,TAT,Loneliness/Critical Condition,TAT Picture Theme - Boy sitting alone,Medium,approved
+TAT0008,TAT,Sports/Family,Sample Story - Chess Player,Medium,approved
+TAT0009,TAT,Emergency/Courage,Sample Story - Drowning Rescue,Medium,approved
+TAT0010,TAT,Childhood Inspiration,Sample Story - Picture 1 (Story 1),Medium,approved
+TAT0011,TAT,Startup/Engineering,Sample Story - Picture 1 (Story 2),Medium,approved
+TAT0012,TAT,Athletics,Sample Story - Picture 2 (Story 1),Medium,approved
+TAT0013,TAT,Student Exchange,Sample Story - Picture 2 (Story 2),Medium,approved
+TAT0014,TAT,Education/Village,Sample Story - Picture 3 (Story 1),Medium,approved
+TAT0015,TAT,Crop Insurance,Sample Story - Picture 3 (Story 2),Medium,approved
+TAT0016,TAT,Digital Education,Sample Story - Picture 4 (Story 1),Medium,approved
+TAT0017,TAT,Smart Agriculture,Sample Story - Picture 4 (Story 2),Medium,approved
+TAT0018,TAT,Medical Emergency,Sample Story - Picture 5 (Story 1),Medium,approved
+TAT0019,TAT,Civil Engineering,Sample Story - Picture 5 (Story 2),Medium,approved
+TAT0020,TAT,Fire Rescue,Sample Story - Picture 6 (Story 1),Medium,approved
+TAT0021,TAT,Gas Cylinder Sabotage,Sample Story - Picture 6 (Story 2),Medium,approved
+TAT0022,TAT,Law Student/Soccer,Sample Story - Picture 7 (Story 1),Medium,approved
+TAT0023,TAT,Convocation/Environment,Sample Story - Picture 7 (Story 2),Medium,approved
+TAT0024,TAT,Accident Rescue,Sample Story - Picture 8 (Story 1),Medium,approved
+TAT0025,TAT,Ancient Weaponry,Sample Story - Picture 9 (Story 1),Medium,approved
+TAT0026,TAT,Archaeology,Sample Story - Picture 9 (Story 2),Medium,approved
+WAT0001,WAT,Sense of Responsibility,CAREFUL,Medium,approved
+WAT0002,WAT,Cooperation,AGREE,Easy,approved
+WAT0003,WAT,Liveliness,BEAUTIFUL,Easy,approved
+WAT0004,WAT,Determination,CANNOT,Hard,approved
+WAT0005,WAT,Reasoning Ability,CONFUSE,Hard,approved
+WAT0006,WAT,Social Adaptability,BAD,Hard,approved
+WAT0007,WAT,Ability to Influence the Group,CROWD,Medium,approved
+WAT0008,WAT,Organising Ability,COMPLETE,Easy,approved
+WAT0009,WAT,Power of Expression,INSTRUCTION,Medium,approved
+WAT0010,WAT,Sense of Responsibility,CHEAT,Hard,approved
+WAT0011,WAT,Liveliness,ENCOURAGEMENT,Medium,approved
+WAT0012,WAT,Courage,CRY,Hard,approved
+WAT0013,WAT,Effective Intelligence,QUALITY,Medium,approved
+WAT0014,WAT,Social Adaptability,COMPANY,Easy,approved
+WAT0015,WAT,Sense of Responsibility,HONOUR,Medium,approved
+WAT0016,WAT,Determination,DEFEAT,Hard,approved
+WAT0017,WAT,Reasoning Ability,REASON,Medium,approved
+WAT0018,WAT,Power of Expression,CONVERSATION,Easy,approved
+WAT0019,WAT,Courage,OPPOSITION,Hard,approved
+WAT0020,WAT,Liveliness,DISTURB,Hard,approved
+WAT0021,WAT,Speed of Decision,SPEED,Medium,approved
+WAT0022,WAT,Cooperation,COOPERATION,Easy,approved
+WAT0023,WAT,Sense of Responsibility,PARENTS,Easy,approved
+WAT0024,WAT,Determination,DREAM,Medium,approved
+WAT0025,WAT,Self-Confidence,SURE,Easy,approved
+WAT0026,WAT,Social Adaptability,FRIENDSHIP,Easy,approved
+WAT0027,WAT,Cooperation,SYMPATHY,Medium,approved
+WAT0028,WAT,Courage,FEARFUL,Hard,approved
+WAT0029,WAT,Effective Intelligence,ADVERTISEMENT,Medium,approved
+WAT0030,WAT,Cooperation,GIVE,Easy,approved
+WAT0031,WAT,Cooperation,TEAM,Easy,approved
+WAT0032,WAT,Determination,HEIGHT,Medium,approved
+WAT0033,WAT,Organising Ability,BUSY,Medium,approved
+WAT0034,WAT,Cooperation,HELP,Easy,approved
+WAT0035,WAT,Self-Confidence,ASSERT,Medium,approved
+WAT0036,WAT,Initiative,HELPLESS,Hard,approved
+WAT0037,WAT,Ability to Influence the Group,ENFORCE,Medium,approved
+WAT0038,WAT,Sense of Responsibility,TRUTH,Medium,approved
+WAT0039,WAT,Cooperation,CONTRIBUTE,Medium,approved
+WAT0040,WAT,Determination,HIGH,Easy,approved
+WAT0041,WAT,Liveliness,FILMS,Easy,approved
+WAT0042,WAT,Social Adaptability,UNTOUCHABILITY,Hard,approved
+WAT0043,WAT,Sense of Responsibility,EXPLOITATION,Hard,approved
+WAT0044,WAT,Effective Intelligence,HINT,Medium,approved
+WAT0045,WAT,Determination,LIMIT,Medium,approved
+WAT0046,WAT,Social Adaptability,ALOOF,Hard,approved
+WAT0047,WAT,Liveliness,BLESSING,Easy,approved
+WAT0048,WAT,Liveliness,HOLIDAY,Easy,approved
+WAT0049,WAT,Speed of Decision,MOVEMENT,Medium,approved
+WAT0050,WAT,Sense of Responsibility,BLUFF,Hard,approved
+WAT0051,WAT,Organising Ability,EMPLOY,Medium,approved
+WAT0052,WAT,Sense of Responsibility,INJURED,Hard,approved
+WAT0053,WAT,Social Adaptability,PRECIOUS,Easy,approved
+WAT0054,WAT,Initiative,BRING,Easy,approved
+WAT0055,WAT,Ability to Influence the Group,INSTRUCTOR,Medium,approved
+WAT0056,WAT,Liveliness,LIFE,Easy,approved
+WAT0057,WAT,Reasoning Ability,REAL,Medium,approved
+WAT0058,WAT,Social Adaptability,CLASS,Easy,approved
+WAT0059,WAT,Determination,RANK,Medium,approved
+WAT0060,WAT,Social Adaptability,LONELY,Hard,approved
+WAT0061,WAT,Speed of Decision,CHOICE,Medium,approved
+WAT0062,WAT,Social Adaptability,CO-EDUCATION,Medium,approved
+WAT0063,WAT,Self-Confidence,CHAMPION,Easy,approved
+WAT0064,WAT,Reasoning Ability,DETERIORATE,Hard,approved
+WAT0065,WAT,Effective Intelligence,CURE,Medium,approved
+WAT0066,WAT,Cooperation,COOPERATE,Easy,approved
+WAT0067,WAT,Effective Intelligence,CLEVER,Medium,approved
+WAT0068,WAT,Sense of Responsibility,DISEASE,Hard,approved
+WAT0069,WAT,Determination,DEMAND,Medium,approved
+WAT0070,WAT,Social Adaptability,FRIEND,Easy,approved
+WAT0071,WAT,Ability to Influence the Group,COMPEL,Hard,approved
+WAT0072,WAT,Sense of Responsibility,DOCTOR,Easy,approved
+WAT0073,WAT,Organising Ability,FOREST,Medium,approved
+WAT0074,WAT,Liveliness,HOME,Easy,approved
+WAT0075,WAT,Determination,EARN,Medium,approved
+WAT0076,WAT,Sense of Responsibility,LIE,Hard,approved
+WAT0077,WAT,Social Adaptability,PARTIALITY,Hard,approved
+WAT0078,WAT,Stamina,EXERCISE,Easy,approved
+WAT0079,WAT,Sense of Responsibility,PATRIOTISM,Medium,approved
+WAT0080,WAT,Liveliness,LIVE,Easy,approved
+WAT0081,WAT,Self-Confidence,PRIDE,Medium,approved
+WAT0082,WAT,Determination,PROGRESS,Easy,approved
+WAT0083,WAT,Courage,OPPOSE,Hard,approved
+WAT0084,WAT,Social Adaptability,RESPECT,Medium,approved
+WAT0085,WAT,Initiative,FIRE,Hard,approved
+WAT0086,WAT,Organising Ability,BANK,Easy,approved
+WAT0087,WAT,Social Adaptability,RUDE,Hard,approved
+WAT0088,WAT,Reasoning Ability,FUTURE,Medium,approved
+WAT0089,WAT,Effective Intelligence,BOOK,Easy,approved
+WAT0090,WAT,Sense of Responsibility,SINCERITY,Medium,approved
+WAT0091,WAT,Cooperation,ALLOW,Medium,approved
+WAT0092,WAT,Determination,GET,Easy,approved
+WAT0093,WAT,Reasoning Ability,DARJEELING,Medium,approved
+WAT0094,WAT,Social Adaptability,TEASE,Hard,approved
+WAT0095,WAT,Cooperation,CONSOLE,Medium,approved
+WAT0096,WAT,Determination,HARD WORK,Medium,approved
+WAT0097,WAT,Effective Intelligence,GRADUATE,Easy,approved
+WAT0098,WAT,Sense of Responsibility,TRAITOR,Hard,approved
+WAT0099,WAT,Social Adaptability,ELDERS,Easy,approved
+WAT0100,WAT,Stamina,HIKING,Easy,approved
+WAT0101,WAT,Effective Intelligence,IMAGINATION,Medium,approved
+WAT0102,WAT,Cooperation,UNION,Medium,approved
+WAT0103,WAT,Sense of Responsibility,NURSE,Medium,approved
+WAT0104,WAT,Determination,IMPROVEMENT,Easy,approved
+WAT0105,WAT,Cooperation,UNITY,Easy,approved
+WAT0106,WAT,Sense of Responsibility,LIEUTENANT,Medium,approved
+WAT0107,WAT,Organising Ability,LATE,Hard,approved
+WAT0108,WAT,Social Adaptability,LISTEN,Medium,approved
+WAT0109,WAT,Social Adaptability,VULGAR,Hard,approved
+WAT0110,WAT,Liveliness,SATISFY,Medium,approved
+WAT0111,WAT,Sense of Responsibility,RULE,Medium,approved
+WAT0112,WAT,Social Adaptability,WOMAN,Easy,approved
+WAT0113,WAT,Ability to Influence the Group,PRESIDENT,Medium,approved
+WAT0114,WAT,Self-Confidence,NERVOUS,Hard,approved
+WAT0115,WAT,Courage,BRAVERY,Medium,approved
+WAT0116,WAT,Speed of Decision,DECIDE,Medium,approved
+WAT0117,WAT,Reasoning Ability,DIFFERENCE,Medium,approved
+WAT0118,WAT,Effective Intelligence,LESSON,Easy,approved
+WAT0119,WAT,Reasoning Ability,MEANING,Medium,approved
+WAT0120,WAT,Effective Intelligence,PRACTICAL,Medium,approved
+WAT0121,WAT,Sense of Responsibility,REPORT,Medium,approved
+WAT0122,WAT,Effective Intelligence,NOVEL,Medium,approved
+WAT0123,WAT,Organising Ability,PURCHASE,Easy,approved
+WAT0124,WAT,Social Adaptability,FRIENDLY,Easy,approved
+WAT0125,WAT,Cooperation,INTERFERENCE,Hard,approved
+WAT0126,WAT,Liveliness,PLAY,Easy,approved
+WAT0127,WAT,Social Adaptability,ROMANCE,Medium,approved
+WAT0128,WAT,Self-Confidence,SHOW,Easy,approved
+WAT0129,WAT,Effective Intelligence,SMART,Medium,approved
+WAT0130,WAT,Sense of Responsibility,SON,Easy,approved
+WAT0131,WAT,Cooperation,ASSIST,Medium,approved
+WAT0132,WAT,Social Adaptability,BEHAVIOUR,Medium,approved
+WAT0133,WAT,Reasoning Ability,EXCEPT,Hard,approved
+WAT0134,WAT,Sense of Responsibility,EXCUSE,Hard,approved
+WAT0135,WAT,Social Adaptability,ADMIRE,Medium,approved
+WAT0136,WAT,Ability to Influence the Group,FOLLOWER,Medium,approved
+WAT0137,WAT,Sense of Responsibility,IMPARTIAL,Medium,approved
+WAT0138,WAT,Sense of Responsibility,MOTHER,Easy,approved
+WAT0139,WAT,Sense of Responsibility,PATRIOT,Medium,approved
+WAT0140,WAT,Sense of Responsibility,PRINCIPAL,Medium,approved
+WAT0141,WAT,Sense of Responsibility,PUNISH,Hard,approved
+WAT0142,WAT,Cooperation,SUPPORT,Medium,approved
+WAT0143,WAT,Determination,ABOVE,Easy,approved
+WAT0144,WAT,Ability to Influence the Group,MAJORITY,Medium,approved
+WAT0145,WAT,Cooperation,CONTRIBUTION,Medium,approved
+WAT0146,WAT,Speed of Decision,DISMISS,Hard,approved
+WAT0147,WAT,Liveliness,ACTIVE,Easy,approved
+WAT0148,WAT,Courage,BLOOD,Medium,approved
+WAT0149,WAT,Determination,BREAK,Hard,approved
+WAT0150,WAT,Reasoning Ability,CURSE,Hard,approved
+WAT0151,WAT,Determination,DESIRE,Medium,approved
+WAT0152,WAT,Stamina,GAME,Easy,approved
+WAT0153,WAT,Courage,HIJACKING,Hard,approved
+WAT0154,WAT,Determination,IMPROVE,Medium,approved
+WAT0155,WAT,Effective Intelligence,NECESSITY,Medium,approved
+WAT0156,WAT,Self-Confidence,NOTHING,Hard,approved
+WAT0157,WAT,Liveliness,PLEASURE,Easy,approved
+WAT0158,WAT,Sense of Responsibility,ARMY,Easy,approved
+WAT0159,WAT,Effective Intelligence,EDUCATED,Medium,approved
+WAT0160,WAT,Reasoning Ability,PROBLEM,Hard,approved
+WAT0161,WAT,Effective Intelligence,READ,Easy,approved
+WAT0162,WAT,Effective Intelligence,REMEMBER,Medium,approved
+WAT0163,WAT,Sense of Responsibility,RIGHT,Easy,approved
+WAT0164,WAT,Determination,SCORE,Medium,approved
+WAT0165,WAT,Organising Ability,TASK,Medium,approved
+WAT0166,WAT,Effective Intelligence,UNIVERSITY,Medium,approved
+WAT0167,WAT,Courage,MACHINE GUN,Medium,approved
+WAT0168,WAT,Social Adaptability,MODEL,Medium,approved
+WAT0169,WAT,Social Adaptability,CHANGE,Medium,approved
+WAT0170,WAT,Reasoning Ability,DOUBT,Hard,approved
+WAT0171,WAT,Courage,HIDE,Hard,approved
+WAT0172,WAT,Power of Expression,LETTER,Easy,approved
+WAT0173,WAT,Social Adaptability,MODERN,Medium,approved
+WAT0174,WAT,Effective Intelligence,RICH,Medium,approved
+WAT0175,WAT,Reasoning Ability,ROGUE,Hard,approved
+WAT0176,WAT,Sense of Responsibility,THIEF,Hard,approved
+WAT0177,WAT,Organising Ability,TIDY,Easy,approved
+WAT0178,WAT,Sense of Responsibility,DUTY,Easy,approved
+WAT0179,WAT,Ability to Influence the Group,COMMAND,Medium,approved
+WAT0180,WAT,Ability to Influence the Group,CONVINCE,Medium,approved
+WAT0181,WAT,Liveliness,FUNNY,Easy,approved
+WAT0182,WAT,Sense of Responsibility,HEADMASTER,Medium,approved
+WAT0183,WAT,Social Adaptability,PRAISE,Medium,approved
+WAT0184,WAT,Initiative,PREVENT,Medium,approved
+WAT0185,WAT,Effective Intelligence,SCHOLARSHIP,Medium,approved
+WAT0186,WAT,Cooperation,SELFLESS,Medium,approved
+WAT0187,WAT,Sense of Responsibility,WELFARE,Medium,approved
+WAT0188,WAT,Cooperation,BATCH,Easy,approved
+WAT0189,WAT,Initiative,ACTION,Medium,approved
+WAT0190,WAT,Self-Confidence,CONFIDENCE,Medium,approved
+WAT0191,WAT,Speed of Decision,DASH,Easy,approved
+WAT0192,WAT,Courage,DIE,Hard,approved
+WAT0193,WAT,Reasoning Ability,EXPECT,Medium,approved
+WAT0194,WAT,Determination,LITTLE,Easy,approved
+WAT0195,WAT,Determination,LOSS,Hard,approved
+WAT0196,WAT,Speed of Decision,MOVE,Easy,approved
+WAT0197,WAT,Sense of Responsibility,MUST,Medium,approved
+WAT0198,WAT,Liveliness,NOISE,Hard,approved
+WAT0199,WAT,Organising Ability,OPERATION,Medium,approved
+WAT0200,WAT,Determination,OVERCOME,Medium,approved
+WAT0201,WAT,Determination,AMBITION,Medium,approved
+WAT0202,WAT,Social Adaptability,BOARDER,Easy,approved
+WAT0203,WAT,Sense of Responsibility,FAVOUR,Hard,approved
+WAT0204,WAT,Courage,ATTACK,Hard,approved
+WAT0205,WAT,Social Adaptability,ANGER,Hard,approved
+WAT0206,WAT,Liveliness,CHILDHOOD,Easy,approved
+WAT0207,WAT,Cooperation,HELPFUL,Medium,approved
+WAT0208,WAT,Courage,COURAGE,Medium,approved
+WAT0209,WAT,Reasoning Ability,BLUNDER,Hard,approved
+WAT0210,WAT,Courage,HERO,Medium,approved
+WAT0211,WAT,Social Adaptability,DISLIKE,Hard,approved
+WAT0212,WAT,Sense of Responsibility,OBEDIENCE,Medium,approved
+WAT0213,WAT,Determination,DOWN,Hard,approved
+WAT0214,WAT,Sense of Responsibility,DISOBEY,Hard,approved
+WAT0215,WAT,Ability to Influence the Group,POWER,Medium,approved
+WAT0216,WAT,Determination,EFFORT,Medium,approved
+WAT0217,WAT,Effective Intelligence,FIND,Easy,approved
+WAT0218,WAT,Reasoning Ability,DISPUTE,Hard,approved
+WAT0219,WAT,Courage,FEAR,Hard,approved
+WAT0220,WAT,Initiative,MEND,Medium,approved
+WAT0221,WAT,Social Adaptability,FEELINGS,Medium,approved
+WAT0222,WAT,Liveliness,GOOD,Easy,approved
+WAT0223,WAT,Sense of Responsibility,UNIFORM,Medium,approved
+WAT0224,WAT,Courage,FIGHTING,Hard,approved
+WAT0225,WAT,Effective Intelligence,PICTURE,Easy,approved
+WAT0226,WAT,Liveliness,NAUGHTY,Easy,approved
+WAT0227,WAT,Social Adaptability,BABY,Easy,approved
+WAT0228,WAT,Determination,GOAL,Medium,approved
+WAT0229,WAT,Reasoning Ability,PUZZLE,Medium,approved
+WAT0230,WAT,Liveliness,CHARMING,Easy,approved
+WAT0231,WAT,Effective Intelligence,QUALIFICATION,Medium,approved
+WAT0232,WAT,Ability to Influence the Group,EXAMPLE,Medium,approved
+WAT0233,WAT,Social Adaptability,IRRITATE,Hard,approved
+WAT0234,WAT,Sense of Responsibility,STUDY,Easy,approved
+WAT0235,WAT,Social Adaptability,ELECTION,Medium,approved
+WAT0236,WAT,Determination,BETTER,Easy,approved
+WAT0237,WAT,Social Adaptability,UNSOCIAL,Hard,approved
+WAT0238,WAT,Ability to Influence the Group,GOVERN,Medium,approved
+WAT0239,WAT,Social Adaptability,LOVE,Easy,approved
+WAT0240,WAT,Initiative,MAKE,Easy,approved
+WAT0241,WAT,Sense of Responsibility,DRINK,Hard,approved
+WAT0242,WAT,Sense of Responsibility,GOVERNOR,Medium,approved
+WAT0243,WAT,Self-Confidence,LUCK,Hard,approved
+WAT0244,WAT,Reasoning Ability,CONSIDER,Medium,approved
+WAT0245,WAT,Initiative,CREATE,Medium,approved
+WAT0246,WAT,Liveliness,ROSE,Easy,approved
+WAT0247,WAT,Effective Intelligence,BRAIN,Medium,approved
+WAT0248,WAT,Self-Confidence,BRIGHT,Easy,approved
+WAT0249,WAT,Effective Intelligence,AWARE,Medium,approved
+WAT0250,WAT,Organising Ability,ARRANGE,Medium,approved
+WAT0251,WAT,Sense of Responsibility,ACADEMY,Easy,approved
+WAT0252,WAT,Effective Intelligence,ASTRONOMY,Medium,approved
+WAT0253,WAT,Reasoning Ability,ASSUMPTION,Hard,approved
+WAT0254,WAT,Self-Confidence,ABILITY,Medium,approved
+WAT0255,WAT,Reasoning Ability,ANALYSIS,Medium,approved
+WAT0256,WAT,Speed of Decision,ANSWER,Easy,approved
+WAT0257,WAT,Organising Ability,PLACEMENT,Medium,approved
+WAT0258,WAT,Effective Intelligence,JUPITER,Easy,approved
+WAT0259,WAT,Social Adaptability,AFFECTION,Medium,approved
+WAT0260,WAT,Determination,DEDICATE,Medium,approved
+WAT0261,WAT,Social Adaptability,ATTACHMENT,Medium,approved
+WAT0262,WAT,Cooperation,AMICABLE,Medium,approved
+WAT0263,WAT,Sense of Responsibility,DONOR,Medium,approved
+WAT0264,WAT,Liveliness,SATISFACTION,Medium,approved
+WAT0265,WAT,Initiative,ADOPT,Medium,approved
+WAT0266,WAT,Cooperation,ACCOMPANY,Medium,approved
+WAT0267,WAT,Self-Confidence,FAITH,Medium,approved
+WAT0268,WAT,Social Adaptability,ARROGANT,Hard,approved
+WAT0269,WAT,Cooperation,FELLOW,Easy,approved
+WAT0270,WAT,Liveliness,HAPPY,Easy,approved
+WAT0271,WAT,Ability to Influence the Group,LEADER,Medium,approved
+WAT0272,WAT,Liveliness,LIVELY,Easy,approved
+WAT0273,WAT,Ability to Influence the Group,PERSUADE,Medium,approved
+WAT0274,WAT,Liveliness,SMILE,Easy,approved
+WAT0275,WAT,Sense of Responsibility,SUSPEND,Hard,approved
+WAT0276,WAT,Courage,CHALLENGE,Medium,approved
+WAT0277,WAT,Speed of Decision,DECISION,Medium,approved
+WAT0278,WAT,Ability to Influence the Group,IMPRESS,Medium,approved
+WAT0279,WAT,Initiative,INITIATIVE,Medium,approved
+WAT0280,WAT,Sense of Responsibility,CONFESS,Hard,approved
+WAT0281,WAT,Liveliness,CHEERFUL,Easy,approved
+WAT0282,WAT,Courage,DANGER,Hard,approved
+WAT0283,WAT,Determination,DETERMINE,Medium,approved
+WAT0284,WAT,Stamina,PHYSICAL,Medium,approved
+WAT0285,WAT,Effective Intelligence,ARTILLERY,Medium,approved
+WAT0286,WAT,Practical Work Sense,AXE,Medium,approved
+WAT0287,WAT,Courage,BRAVE,Medium,approved
+WAT0288,WAT,Sense of Responsibility,KILL,Hard,approved
+WAT0289,WAT,Courage,BOLD,Medium,approved
+WAT0290,WAT,Initiative,JUMP,Easy,approved
+WAT0291,WAT,Courage,BATTLE,Hard,approved
+WAT0292,WAT,Effective Intelligence,INFANTRY,Medium,approved
+WAT0293,WAT,Courage,BOMBER,Hard,approved
+WAT0294,WAT,Determination,OBSTACLE,Medium,approved
+WAT0295,WAT,Sense of Responsibility,DEFENCE,Medium,approved
+WAT0296,WAT,Sense of Responsibility,RESPONSIBILITY,Medium,approved
+WAT0297,WAT,Effective Intelligence,RESOURCEFUL,Medium,approved
+WAT0298,WAT,Stamina,STAMINA,Medium,approved
+WAT0299,WAT,Social Adaptability,DEMOCRACY,Medium,approved
+WAT0300,WAT,Social Adaptability,SECULARISM,Hard,approved
+SRT0001,SRT,Decision Making,supposing you are doing that and you're sending these messages on your WhatsApp group and you find there is no network in your phone what will you do,Medium,approved
+SRT0002,SRT,Emergency,you start looking for that pamphlet you thought it was there in that bag of yours you find somebody's taking the bag,Medium,approved
+SRT0003,SRT,Decision Making,by the time all this is happening it's about 11:30 in the night you go to the medicine shop it is closed,Medium,approved
+SRT0004,SRT,Family,your mother is inside your house and telling your mother and your mother has called you what will you do,Low,approved
+SRT0005,SRT,Ethics,"Your friend needs urgent money from you for his father’s operation and you found a purse full of money along with the ID of owner, you will:",Medium,approved
+SRT0006,SRT,Leadership,"Your captain falls ill and the team is left with no leader, you will:",Medium,approved
+SRT0007,SRT,Family,"You want to marry a girl/boy but your parents are not ready, you will:",High,approved
+SRT0008,SRT,Emergency,"You fall ill before your exams, you will:",Low,approved
+SRT0009,SRT,Decision Making,"You have to attend the marriage of a friend’s sister in another city, just one day before when you have to leave your other good friend arrives and tells he/she has to stay at your home and has some work in your city. You will:",High,approved
+SRT0010,SRT,Emergency,In a moving train you see a thief snatch away a women’s purse and jump out of the train. You will:,High,approved
+SRT0011,SRT,Leadership,While going on trekking in midway you come to know that the person responsible for bringing the food packets has forgot to bring. You being the leader of the group will:,Medium,approved
+SRT0012,SRT,Social Responsibility,While going for exam you see an injured person lying on the road. You will:,High,approved
+SRT0013,SRT,Decision Making,You are very successful and have many jealous people who you suspect are planning against you. You will:,Medium,approved
+SRT0014,SRT,Emergency,"He and his friend are standing on a bridge over a river. His friend who does not know swimming, suddenly falls down.",High,approved
+SRT0015,SRT,Decision Making,He and his brother have gone to a forest; they lose their way and it is becoming dark.,Medium,approved
+SRT0016,SRT,Social Responsibility,"While going to attend an important meeting, he saw a ghastly accident between an auto rickshaw and a tonga.",High,approved
+SRT0017,SRT,Ethics,"His father has fixed his marriage with a rich girl, but he is in love with his classmate. He has never disobeyed his father. His girlfriend on the other hand, says that if he does not marry her, she will commit suicide.",High,approved
+SRT0018,SRT,Time Pressure,His exams are starting next week and he is not fully prepared. His father’s fast friend suddenly comes to the house and there is no one else to look after him.,Medium,approved
+SRT0019,SRT,Emergency,"His parents have gone to their relatives, leaving him behind with his younger brother. After midnight, his younger brother develops very high fever and there is no medicine in the house. It is raining very heavily.",High,approved
+SRT0020,SRT,Social Responsibility,"He was studying late in the night and at around 2 am, he sees a man’s shadow entering his neighbour’s house through the ventilator. His exam is starting the next day.",High,approved
+SRT0021,SRT,Social Responsibility,Two groups are quarrelling over a religious problem. And he belongs to the minority group.,Medium,approved
+SRT0022,SRT,Disaster Management,A fire broke out in the village due to a short circuit at night. He is the only electrician in the village.,High,approved
+SRT0023,SRT,Decision Making,"While studying, he is taking tuitions side by side. But his parents and friends are advising him to leave the tuitions as he is not getting sufficient time to study for examinations. His financial condition is quite weak.",Medium,approved
+SRT0024,SRT,Emergency,"While going on a boat in the river Ganga, he falls down in the fast currents. He does not know how to swim.",High,approved
+SRT0025,SRT,Emergency,"He is in the bathroom and has latched the door and is about to take a bath. Suddenly, a black cobra comes through the drain and lies in front of him.",High,approved
+SRT0026,SRT,Team Conflict,He finds that his girlfriend is moving with his rival.,Medium,approved
+SRT0027,SRT,Decision Making,"While going for his exam, he finds a person who has just fallen down from a moving bus.",High,approved
+SRT0028,SRT,Family,He returns late at night from NCC camp and his stepmother does not open the door of the house.,Medium,approved
+SRT0029,SRT,Disaster Management,There is a flood in his village and many houses have fallen down. His house is about to collapse and it is late at night.,High,approved
+SRT0030,SRT,Emergency,"Some persons are climbing a mountain, but one of them loses his grip on the rope and falls down.",High,approved
+SRT0031,SRT,Disaster Management,"He has gone to the coastal area with a group of friends for sightseeing. Suddenly, a storm starts approaching. The tide is rising.",High,approved
+SRT0032,SRT,Ethics,He is working in an organisation and one of his close friends in the same office is being harassed by his boss.,Medium,approved
+SRT0033,SRT,Decision Making,His final degree exams are starting tomorrow and he also has a job call tomorrow. He is in great need of a job.,Medium,approved
+SRT0034,SRT,Disaster Management,"He has arranged a party on his lawn and suddenly, it starts raining very heavily. He has a large number of guests, who have already arrived.",Medium,approved
+SRT0035,SRT,Decision Making,He has arranged a party to please his boss on his promotion. The party is half way when someone close to him conveys some bad news.,Medium,approved
+SRT0036,SRT,Family,"At a party hosted by him on his promotion, his boss gets annoyed due to the sarcastic remarks of his elder brother and he leaves the party without having a meal.",Medium,approved
+SRT0037,SRT,Social Responsibility,"While going to college, he finds that a cyclist has been knocked down by a fast-moving car, but he could not note down the number of the car.",Medium,approved
+SRT0038,SRT,Ethics,"At his friend’s marriage, his friend and his father got annoyed due to non-receipt of dowry. They both went away even after a lot of requests were made by all...",High,approved
+SRT0039,SRT,Emergency,"He was taking his father for treatment in a wheelchair. While coming out of the house, he slipped on a banana peel and fractured his hip joint. It is raining heavily and no conveyance is available nearby.",High,approved
+SRT0040,SRT,Social Responsibility,"In the cinema hall, he is sitting in the last row and watching the movie. Some bad elements are teasing a girl in the front row.",Medium,approved
+SRT0041,SRT,Emergency,He is travelling in a taxi to catch a train. The taxi moving ahead of him throws out a person and drives away.,High,approved
+SRT0042,SRT,Time Pressure,He has to go with his friend to play a hockey match in the city. His friend does not turn up and both tyres of his scooter are flat.,Medium,approved
+SRT0043,SRT,Ethics,"He finds ten people quarrelling over a purse fallen from a bus. The police have reached the spot. On seeing the police, the others run away and he is found with the purse by the police. They take him to the police station.",High,approved
+SRT0044,SRT,Time Pressure,"While going to attend the SSB, he loses all his belongings including his ticket and SSB papers in the train, when he went to the toilet. The destination is just 5 km away.",High,approved
+SRT0045,SRT,Emergency,"While returning from a late show, he finds that two boys armed with a knife are molesting a girl and she is crying. The road is quite lonely.",High,approved
+SRT0046,SRT,Ethics,"He has to deposit his exam fee after two days, but his friend demanded money today, as he needed it urgently. He is very poor.",Medium,approved
+SRT0047,SRT,Emergency,"While climbing a mountain, he finds that one of his teammates has sprained his ankle and cannot move.",Medium,approved
+SRT0048,SRT,Decision Making,"While going on a picnic on a cycle, his cycle gets punctured in a jungle and no help is readily available. All other cycles are already overloaded.",Medium,approved
+SRT0049,SRT,Social Responsibility,"His friend is extremely poor, but good in studies. He can’t pay his fees. His own financial condition is also not very sound, but he wants to help his friend.",Medium,approved
+SRT0050,SRT,Family,"His marriage has been fixed, but just a week prior to the marriage, the girl meets with an accident and loses one eye.",High,approved
+SRT0051,SRT,Time Pressure,"He is to catch a train, but the coolie has disappeared with the baggage. The train is about to leave.",High,approved
+SRT0052,SRT,Decision Making,"He lends some money to his friend. Now, he needs this money badly, but the friend is not in a position to pay.",Medium,approved
+SRT0053,SRT,Leadership,"He is the leader of the hiking party, but due to some reasons, two persons of the party want to return halfway through the hike.",Medium,approved
+SRT0054,SRT,Family,"His mother is seriously ill, but his boss has refused to give him leave.",High,approved
+SRT0055,SRT,Family,"His parents have asked him to return early in the evening, but his friends want to celebrate a late evening party.",Low,approved
+SRT0056,SRT,Military Context,"His brother is leaving for USA after one week, but he has to report for duty in an army unit deployed on the border area.",Medium,approved
+SRT0057,SRT,Emergency,The river is in spate and the bridge over the river has been washed away. It is getting dark. He has to reach home with medicine for his aged mother who has a heart problem.,High,approved
+SRT0058,SRT,Leadership,"He is the manager of a factory, facing serious labour problems. His sister’s marriage is after one week and he cannot leave the station.",High,approved
+SRT0059,SRT,Leadership,"Two officers, under whom he is working, are not on good terms and hence, he is getting contradictory instructions.",Medium,approved
+SRT0060,SRT,Ethics,"He is returning from a movie. On the way, he is stopped by the police and during the search of his scooter, two packets of charas are found.",High,approved
+SRT0061,SRT,Emergency,"At midnight, two young persons enter his house and hold him at gunpoint. They need shelter for the night. Their clothes are blood-stained and they appear to have been involved in a murder.",High,approved
+SRT0062,SRT,Decision Making,He went to Shimla on a pleasure trip. There he finds that all his items have been stolen.,Medium,approved
+SRT0063,SRT,Emergency,The dacoits have sent a warning to the village headman to hand over 2 lakh or face consequences. The villagers cannot arrange even half of it. He happens to be the village headman’s son.,High,approved
+SRT0064,SRT,Emergency,"While travelling in a bus at night, miscreants stop the bus. They start looting it and two persons start molesting two young girls. The miscreants are fully armed.",High,approved
+SRT0065,SRT,Leadership,"He is contesting the college elections. But all the girls are with his opponent, who is utilising them to snatch his votes.",Medium,approved
+SRT0066,SRT,Emergency,"At midnight, he hears a female voice close to his house. Apparently, she is in a terrified state.",High,approved
+SRT0067,SRT,Leadership,The college students are about to call a strike and they want him to join them.,Medium,approved
+SRT0068,SRT,Team Conflict,His best friend confronts him in front of everyone and accuses him of instigating his girlfriend against him.,Medium,approved
+SRT0069,SRT,Decision Making,He has gone on a cycling expedition with six persons but two cycles have got punctured on a deserted/isolated patch.,Medium,approved
+SRT0070,SRT,Decision Making,"His call for the SSB has come for the 10th of this month but on the same day, he has an interview with an MNC. His best friend is also getting married the same day.",Medium,approved
+SRT0071,SRT,Social Responsibility,"In the SSB, he finds that no one is talking to him. Today is the first day.",Low,approved
+SRT0072,SRT,Emergency,He has been kidnapped and taken to a jungle. The kidnappers have asked him to sign a note for his father to send 10 lakh as ransom.,High,approved
+SRT0073,SRT,Team Conflict,Two of his best friends are quarrelling with each other.,Low,approved
+SRT0074,SRT,Emergency,"In the train, two dacoits are looting everybody. They demanded his belongings also.",High,approved
+SRT0075,SRT,Military Context,"In NCC camp on guard duty, he finds two strangers approaching the camp at night.",Medium,approved
+SRT0076,SRT,Leadership,"He, as in-charge of the picnic, has gone halfway with the picnic party and finds that food packets and the music system have been left behind.",Medium,approved
+SRT0077,SRT,Decision Making,He is staying in a rented accommodation with six other students. The landlady is quite rude to him only and has issued an ultimatum to him to vacate her accommodation.,Medium,approved
+SRT0078,SRT,Emergency,"In the circus show, two lions go out of control and jump on the crowd.",High,approved
+SRT0079,SRT,Ethics,"At an exhibition, a fake company is attracting crowds by false propaganda. He knows the reality.",Medium,approved
+SRT0080,SRT,Family,His father has decided to change his will in the name of his younger brother.,Medium,approved
+SRT0081,SRT,Ethics,"He and his girlfriend want to see a new movie, but the show is housefull. Tickets are available in black. His girlfriend insists on seeing the movie.",Low,approved
+SRT0082,SRT,Time Pressure,There is a dispute between two of his friends and they want him as the mediator. He has to go out for some urgent work of his father.,Medium,approved
+SRT0083,SRT,Emergency,His neighbour’s son has fallen into the river flowing nearby. He is not on talking terms with him. No adults are available to save the child.,High,approved
+SRT0084,SRT,Time Pressure,"His mother has to go to a famous temple located in a lonely area, and he has to go for an exam. There is no one in the house and no other conveyance is available on the lonely road.",High,approved
+SRT0085,SRT,Decision Making,He has to go to attend the SSB after two days at Bengaluru from Delhi but there is a railway strike.,Medium,approved
+SRT0086,SRT,Emergency,"He has gone for a picnic with boys and girls in two buses. After the picnic was over at 3 pm, he found that all four tyres of one of the buses were punctured and the other bus driver was missing.",Medium,approved
+SRT0087,SRT,Ethics,"At the railway station, he finds a beggar shivering with cold. He is going to meet his relative and is wearing only pants and a pullover.",Medium,approved
+SRT0088,SRT,Leadership,"He wants to organise a cricket match at his college, but his opponent has approached the authorities for a hockey match.",Medium,approved
+SRT0089,SRT,Emergency,"At the college gate, he finds an unclaimed bag. The bag contains explosives, but before he can take any action, people see him with the bag. They are suspecting him and hence want to take him to the police station.",High,approved
+SRT0090,SRT,Emergency,He is driving down with his family members from a hill station and the brakes of the vehicle fail.,High,approved
+SRT0091,SRT,Emergency,"His sister has gone to meet her friend in Nagaland. The friend came to receive her at the bus stop. The friend picked up his sister’s suitcase and went ahead. His sister was enjoying the beauty of the place. In the meanwhile, she saw 50 Nagas approach her. They were barely 20 yards away.",High,approved
+SRT0092,SRT,Leadership,"While delivering a lecture, he finds the audience is not showing any interest.",Medium,approved
+SRT0093,SRT,Decision Making,"He cannot find any job due to massive unemployment. But he is still keen on finding a job and working. His father asks him to join his business, which he has refused many times earlier.",Medium,approved
+SRT0094,SRT,Ethics,"In a drought-affected area, the relief is coming but not reaching the affected persons. He is a social worker.",High,approved
+SRT0095,SRT,Emergency,"He is walking on the street and suddenly finds that his sister’s chain has been snatched and his purse is stolen. Before he could decide on any course of action, one lady has been stabbed and her car has collided with an auto rickshaw. Two people are injured seriously.",High,approved
+SRT0096,SRT,Emergency,"His team is to play a match after five minutes, but the players do not seem to be in good shape. During the interval he comes to know that most of the players were given toxic material in sweets just before the start of the match by his opponent.",High,approved
+SRT0097,SRT,Emergency,He is going in a boat alone. He finds a person struggling and is about to drown. He is not a very good swimmer.,High,approved
+SRT0098,SRT,Disaster Management,A fire breaks out in the neighbourhood. He sees enough people are already fighting the fire.,Medium,approved
+SRT0099,SRT,Team Conflict,"If, in a group, his opinion differs from that of other members, he...",Low,approved
+SRT0100,SRT,Ethics,"The vice chancellor is to visit his college to preside over a function. He was asked to make arrangements for it. But now, the charge is being given to another person.",Medium,approved
+SRT0101,SRT,Military Context,"During an army attachment camp, his batch of volunteers declared a strike because of the rude behaviour of a Junior Commissioned Officer and so he...",High,approved
+SRT0102,SRT,Leadership,"He was a member of the cricket team and once, the captain did not turn up for the match.",Medium,approved
+SRT0103,SRT,Leadership,"His captain was injured before a crucial match, he was asked to lead the match.",Medium,approved
+SRT0104,SRT,Decision Making,He was on his way to home and suddenly it started raining heavily.,Low,approved
+SRT0105,SRT,Family,His brother wants to get admission in a medical college but his marks falls short by 1% for admission.,Medium,approved
+SRT0106,SRT,Emergency,He has to go to a city with cash for work but the way is dangerous because of dacoits.,High,approved
+SRT0107,SRT,Emergency,He was travelling by a train & suddenly a person snatches purse from lady & jumps out of train.,High,approved
+SRT0108,SRT,Decision Making,"He is going to sign a contract, suddenly he got news that one of his friend who had helped him once, met an accident and is in ICU.",High,approved
+SRT0109,SRT,Decision Making,He had boarded a wrong train and came to know only when he was asked to pay money to TT.,Medium,approved
+SRT0110,SRT,Team Conflict,He saw his girlfriend walking with another person on his way.,Low,approved
+SRT0111,SRT,Ethics,He was driving the bike without helmet and the traffic police caught him.,Low,approved
+SRT0112,SRT,Emergency,He was in charge of wireless board in a sailing ship which lost its communication with the coast.,High,approved
+SRT0113,SRT,Team Conflict,He went for the picnic with his friends and on the way he had hot arguments with them.,Medium,approved
+SRT0114,SRT,Ethics,"There is a person who sells smuggled goods. He too, like many others, have purchased a wristwatch from him. But it doesn't work.",Medium,approved
+SRT0115,SRT,Decision Making,He urgently needed money.,Low,approved
+SRT0116,SRT,Time Pressure,He is getting late in reaching meeting.,Low,approved
+SRT0117,SRT,Team Conflict,He find his hostel roommate not very friendly with him.,Low,approved
+SRT0118,SRT,Family,His mom is seriously ill and his boss doesn't grant leave.,High,approved
+SRT0119,SRT,Ethics,His friend was copying from book in examination hall.,Medium,approved
+SRT0120,SRT,Emergency,"During a trekking trip, he was left alone in the jungle.",High,approved
+SRT0121,SRT,Decision Making,"He was weak in studies, and knew that he could not do well in his education.",Low,approved
+SRT0122,SRT,Emergency,He was playing outdoor and his brother got seriously injured and it started to rain heavily.,High,approved
+SRT0123,SRT,Disaster Management,He had exams the next day & the road to his school was flooded with continuous rain for last two days.,Medium,approved
+SRT0124,SRT,Emergency,He was walking on a dark street with his girlfriend then suddenly 10 armed people came & started harassing his girlfriend. The next police station was 10 km away.,High,approved
+SRT0125,SRT,Team Conflict,His friend was always quarrelling with him and the papers were near.,Low,approved
+SRT0126,SRT,Time Pressure,"His boss gives a piece of work and orders him to follow his instructions to complete the work, but the work is difficult to finish within time.",Medium,approved
+SRT0127,SRT,Emergency,"He saw a snake moving near to the bed while his younger brother was sleeping, when he enters his room.",High,approved
+SRT0128,SRT,Military Context,He received an urgent order from his commander. But he feel that order passed on to him is wrong.,High,approved
+SRT0129,SRT,Emergency,He is driving a car on highway at full speed suddenly brakes fail.,High,approved
+SRT0130,SRT,Team Conflict,His joke was well meant but still his friend became angry.,Low,approved
+SRT0131,SRT,Team Conflict,In free period he wanted to study but his friends were continuously disturbing him.,Low,approved
+SRT0132,SRT,Team Conflict,In a fit of anger his friend hit him.,Medium,approved
+SRT0133,SRT,Emergency,While hunting he and his brother lost way in dark (night) in jungle and he has no light.,High,approved
+SRT0134,SRT,Leadership,He is serving under two senior officers who always give conflicting orders.,Medium,approved
+SRT0135,SRT,Leadership,Generally people don't listen to his argument.,Medium,approved
+SRT0136,SRT,Time Pressure,He went to library for a very urgent book and found that all its copies were already issued to others.,Low,approved
+SRT0137,SRT,Decision Making,He was not getting enough salary for his job.,Low,approved
+SRT0138,SRT,Emergency,The sea was very rough and it was night. Ship duty officer fell in sea while taking a round.,High,approved
+SRT0139,SRT,Emergency,The tractor dashed against a fast moving truck and the driver were thrown off into ditches. He was just away from it.,High,approved
+SRT0140,SRT,Ethics,As monitor of his class he had to put up the names of those who had not done their homework. His friend was also a culprit.,Medium,approved
+SRT0141,SRT,Family,His father needed treatment and he was short of money.,Medium,approved
+SRT0142,SRT,Family,He returns late in night from NCC camp. His step mother did not allowed him to enter the house.,Medium,approved
+SRT0143,SRT,Emergency,On opening the door of his bathroom in his room he finds a big snake hanging from the ceiling.,High,approved
+SRT0144,SRT,Emergency,All his family members are ill and his father is out of town. There is no money in the home.,High,approved
+SRT0145,SRT,Family,He was forced by his father to join the Railways but he was really not of his interest.,Medium,approved
+SRT0146,SRT,Team Conflict,They decide to give a treat to their retiring professor. He wants to give a dinner party whilies his friends want just a tea-party.,Low,approved
+SRT0147,SRT,Leadership,The leader of his trekking team decides to take a longer route when time is running out.,Medium,approved
+SRT0148,SRT,Emergency,"They are climbing a steep wall with help of ropes & some of them reach the top, when the rope gives away.",High,approved
+SRT0149,SRT,Team Conflict,His friends' are having heated arguments over a point.,Low,approved
+SRT0150,SRT,Family,He is in final year BA and his father lost the job and his family facing money problems.,High,approved
+SRT0151,SRT,Social Responsibility,He is going to market with his sister and some boys start doing mischief with his sister.,Medium,approved
+SRT0152,SRT,Emergency,He are walking down the road one fine afternoon and a man steals a lady's hand bag and in the process stabs the lady.,High,approved
+PI0001,Personal Interview,Self Introduction,Tell me how do you travel from your home to here,Medium,approved
+PI0002,Personal Interview,Self Introduction,Talk to me a little more about your daily routine on a typical working day which could be Monday to Friday or Monday to Saturday and how is that routine different on a Sunday or a holiday,Medium,approved
+PI0003,Personal Interview,Self Introduction,How do you think you performed what is your experience like,Medium,approved
+PI0004,Personal Interview,Self Introduction,Tell me something about yourself?,Medium,approved
+PI0005,Personal Interview,Self Introduction,What is the meaning of your name?,Medium,approved
+PI0006,Personal Interview,Self Introduction,Which is your native place?,Medium,approved
+PI0007,Personal Interview,Self Introduction,Tell me something about your home town.,Medium,approved
+PI0008,Personal Interview,Self Introduction,What are the population/ language/ important features/ tourist places of your place?,Medium,approved
+PI0009,Personal Interview,Self Introduction,What things do you like about your native place?,Medium,approved
+PI0010,Personal Interview,Self Introduction,How would you describe yourself?,Medium,approved
+PI0011,Personal Interview,Self Introduction,"What is the meaning of your name, good and bad qualities of family members, your strengths weaknesses etc.?",Medium,approved
+PI0012,Personal Interview,Self Introduction,Does taking coaching or following a website dedicated to SSB helps?,Medium,approved
+PI0013,Personal Interview,Self Introduction,What do you do to keep yourself fit? If run/jog then calculate the speed.,Medium,approved
+PI0014,Personal Interview,Self Introduction,"Are you in a relationship? If yes then how intimate if no then why, are you homosexual?",Medium,approved
+PI0015,Personal Interview,Self Introduction,What kind of guy/girl would you like to marry?,Medium,approved
+PI0016,Personal Interview,Self Introduction,Suppose if God appears in front of you and asks you to change something from your past what will you wish for?,Medium,approved
+PI0017,Personal Interview,Self Introduction,Let me know something about lakau,Medium,approved
+PI0018,Personal Interview,Self Introduction,How many places you have explored till now in lak now,Medium,approved
+PI0019,Personal Interview,Self Introduction,Tell me your routine of working days and routine of holidays,Medium,approved
+PI0020,Personal Interview,Self Introduction,Compare Varanasi with pragaraj,Medium,approved
+PI0021,Personal Interview,Self Introduction,Please tell me what are some of the things that you would like to do for fun and recreation outside your working place?,Medium,approved
+PI0022,Personal Interview,Family,Tell me something about your parents aric your father your mother you have a younger brother your younger brother what do you like about them what you not like about them if there is one quality in each of them you want to change which is that quality,Medium,approved
+PI0023,Personal Interview,Family,If you have a secret to tell who will you tell father mother,Medium,approved
+PI0024,Personal Interview,Family,Tell me one secret you told your father and not told your mother,Medium,approved
+PI0025,Personal Interview,Family,What is your mother/father’s educational qualification?,Medium,approved
+PI0026,Personal Interview,Family,What is the job of your mother/father?,Medium,approved
+PI0027,Personal Interview,Family,What is the monthly income of your family?,Medium,approved
+PI0028,Personal Interview,Family,How many brothers and sisters do you have? What is their qualification? What are they doing presently?,Medium,approved
+PI0029,Personal Interview,Family,"Now I would be interested to know about your family. Suppose you tell me about your parents i.e. about your father and mother, their occupation, how do you spend time together, your activities at home, about other members of your family like brothers, sisters, and grandparents.",Medium,approved
+PI0030,Personal Interview,Family,Whom do you approach for help when you have problems and you want to confide.,Medium,approved
+PI0031,Personal Interview,Family,Normally what are the activities in which you get personally involved with your family?,Medium,approved
+PI0032,Personal Interview,Family,Who is stricter in your family? An example for the same.,Medium,approved
+PI0033,Personal Interview,Family,How's your bonding with your parents and uh with your sibling,Medium,approved
+PI0034,Personal Interview,Family,Make comparison between you and your sister who personality is better,Medium,approved
+PI0035,Personal Interview,Family,Tell me two good qualities of your sister and two bad qualities that you don't like in her,Medium,approved
+PI0036,Personal Interview,Family,Tell me two qualities of your father that you don't like,Medium,approved
+PI0037,Personal Interview,Family,To whom you love more your mother or father,Medium,approved
+PI0038,Personal Interview,Family,"Now I will be interested to know about your family. You please tell me about your parents, i.e. about your father and mother, their occupation, the other members of your family like brother, sister, grandparents, etc. How do you spend time together, your activities at home, whom do you approach for help when you have problems or when you want to confide someone?",Medium,approved
+PI0039,Personal Interview,Friends,How many friends do you have what kind of friends are there what do you do with your friends tell me three specific activities and moments in those activities that you felt were the most memorable or most interesting and please tell me one naughty thing you've done with your friends,Medium,approved
+PI0040,Personal Interview,Friends,Tell me one quality in you each of your three best friends will change,Medium,approved
+PI0041,Personal Interview,Friends,How do you decide your friends?,Medium,approved
+PI0042,Personal Interview,Friends,How many friends do you have?,Medium,approved
+PI0043,Personal Interview,Friends,How have you helped your friend in their time of need?,Medium,approved
+PI0044,Personal Interview,Friends,"Among your friends, to whom do you share your personal things?",Medium,approved
+PI0045,Personal Interview,Friends,How would your friends describe you?,Medium,approved
+PI0046,Personal Interview,Friends,Similarities and differences between you and your lover.,Medium,approved
+PI0047,Personal Interview,Friends,Tell me how many friends that you made during that uh 10th class till 12th class,Medium,approved
+PI0048,Personal Interview,Friends,Tell me something about your best friend,Medium,approved
+PI0049,Personal Interview,Friends,What best friend gives you two suggestions what say about you,Medium,approved
+PI0050,Personal Interview,Friends,What was so important what you she should come and meet you,Medium,approved
+PI0051,Personal Interview,Friends,"Who are your friends in neighborhood and what social, cultural or other activities you have undertaken in their company?",Medium,approved
+PI0052,Personal Interview,Education,Starting from 8th standard hardik tell me something about the school you went the marks you got the subjects you liked the subjects you did not like in your academic career,Medium,approved
+PI0053,Personal Interview,Education,Name three teachers that you think were the most impressive teachers why do you think these three teachers have impressed you so much tell me one sentence about each of them,Medium,approved
+PI0054,Personal Interview,Education,Name three teachers that have impressed you less and tell me one sentence about each of them also,Medium,approved
+PI0055,Personal Interview,Education,Tell me any one principle in physics chemistry or mathematics you like the best,Medium,approved
+PI0056,Personal Interview,Education,Tell me one concern you told her,Medium,approved
+PI0057,Personal Interview,Education,Which school and college did you attend from primary to graduate level?,Medium,approved
+PI0058,Personal Interview,Education,What is your favourite area of study/subject?,Medium,approved
+PI0059,Personal Interview,Education,Which teacher do you like very much and why?,Medium,approved
+PI0060,Personal Interview,Education,Tell me about your specific achievements during your study.,Medium,approved
+PI0061,Personal Interview,Education,Did you choose your area of study or group of study by yourself or did you do that by compulsion?,Medium,approved
+PI0062,Personal Interview,Education,"How much did you score in your tenth, twelfth, college?",Medium,approved
+PI0063,Personal Interview,Education,What is the reason behind your poor grades?,Medium,approved
+PI0064,Personal Interview,Education,"Tell me about your education starting from middle school level, say 8th standard onwards, and working up to your present level of education.",Medium,approved
+PI0065,Personal Interview,Education,Let me know about your uh education is starting from 9th onwards uh like uh you opted subject science background why you oped science subject,Medium,approved
+PI0066,Personal Interview,Education,How many exams you appeared after class 12th,Medium,approved
+PI0067,Personal Interview,Education,Tell me uh who is your best teacher and tell me your favorite subject also,Medium,approved
+PI0068,Personal Interview,Education,Tell me your best moment and your memorable moment during your school days,Medium,approved
+PI0069,Personal Interview,Education,If you run 2 kilm in 15 minutes how many kilometers per hour are you running,Medium,approved
+PI0070,Personal Interview,Education,"Please tell me about your education starting from middle school level, say class VIII onwards working up to your present level of education. I would be interested in the subject you liked best, those you did not care much about, grades achieved in examinations, efforts put in towards extracurricular/co-curricular activities that were available in your school, the events you took part in, any special achievements in the fields.",Medium,approved
+PI0071,Personal Interview,NCC,Why you haven't joined NCC?,Medium,approved
+PI0072,Personal Interview,Career Goals,What have you been doing the last one year did you take admission somewhere if so where if you did not why not did you appear for JE if you did what was your score if you did not why not,Medium,approved
+PI0073,Personal Interview,Career Goals,Tell me three specific things you doing to prepare for the SSB,Medium,approved
+PI0074,Personal Interview,Career Goals,What is your current occupation?,Medium,approved
+PI0075,Personal Interview,Career Goals,"Presently, what are you doing?",Medium,approved
+PI0076,Personal Interview,Career Goals,Why are you interested in working for this company?,Medium,approved
+PI0077,Personal Interview,Career Goals,What position do you serve in your company?,Medium,approved
+PI0078,Personal Interview,Career Goals,What is the nature of your work?,Medium,approved
+PI0079,Personal Interview,Career Goals,How much is the turnover/sales of your company?,Medium,approved
+PI0080,Personal Interview,Career Goals,What are the future prospects of yours?,Medium,approved
+PI0081,Personal Interview,Career Goals,Why do you want to leave your current job?,Medium,approved
+PI0082,Personal Interview,Career Goals,What are your long range goals?,Medium,approved
+PI0083,Personal Interview,Career Goals,Why aren’t you focusing on earning more money at this stage of your career,Medium,approved
+PI0084,Personal Interview,Career Goals,How have you prepared for SSB?,Medium,approved
+PI0085,Personal Interview,Career Goals,What special preparation you have done this time to ensure success?,Medium,approved
+PI0086,Personal Interview,Career Goals,What are your other career options?,Medium,approved
+PI0087,Personal Interview,Career Goals,How is your higher education plan after 12th class,Medium,approved
+PI0088,Personal Interview,Career Goals,What is your priority J or NDA,Medium,approved
+PI0089,Personal Interview,Career Goals,If you're not selected in this attempt what is the next plan,Medium,approved
+PI0090,Personal Interview,Career Goals,Tell me something you finished your graduation few months back 6 months back what have you been doing the last 6 months what are your plans for the next 6 months 1 year 2 years,Medium,approved
+PI0091,Personal Interview,Career Goals,"Please begin by telling me about your job/previous job, what duties did you perform? What were your likes/dislikes about this job? What were your working conditions and earnings?",Medium,approved
+PI0092,Personal Interview,Strengths,Do you think you're physically fit,Medium,approved
+PI0093,Personal Interview,Strengths,What are your strengths and weaknesses?,Medium,approved
+PI0094,Personal Interview,Strengths,What motivates you to do your best on the job?,Medium,approved
+PI0095,Personal Interview,Strengths,Tell me about your ability to work under pressure.,Medium,approved
+PI0096,Personal Interview,Strengths,Why should we select you?,Medium,approved
+PI0097,Personal Interview,Strengths,What motivates you?,Medium,approved
+PI0098,Personal Interview,Strengths,What have you done specifically yes so that you could get recommended tell me three specific things you've done to improve yourself,Medium,approved
+PI0099,Personal Interview,Strengths,What is it that you can do which will convince me that you're physically fit,Medium,approved
+PI0100,Personal Interview,Strengths,Tell me one place where you have used these qualities that you spoke about,Medium,approved
+PI0101,Personal Interview,Strengths,Please tell me what you feel are the strong points or assets in your personality and what would you like to improve or develop further?,Medium,approved
+PI0102,Personal Interview,Weaknesses,Tell me what you cannot do but you want to do,Medium,approved
+PI0103,Personal Interview,Weaknesses,If there's one quality in you each of them would like to change which is that quality,Medium,approved
+PI0104,Personal Interview,Weaknesses,Tell me two fears of your life things that you offra of,Medium,approved
+PI0105,Personal Interview,Leadership,Tell me a situation when you had to work in a team environment. How was your performance?,Medium,approved
+PI0106,Personal Interview,Leadership,What role do you play while playing?,Medium,approved
+PI0107,Personal Interview,Leadership,What are the duties of a captain?,Medium,approved
+PI0108,Personal Interview,Leadership,What’s the most difficult part of being a captain?,Medium,approved
+PI0109,Personal Interview,Leadership,Do you prefer to work independently or on a team?,Medium,approved
+PI0110,Personal Interview,Leadership,"If you are doing a job, what problems do you face? How you tackle them?",Medium,approved
+PI0111,Personal Interview,Leadership,Tell me any one Brave or courageous thing you've done in the last six months,Medium,approved
+PI0112,Personal Interview,Failure,What if you don’t get recommended?,Medium,approved
+PI0113,Personal Interview,Failure,What is your greatest failure and what did you learn from it?,Medium,approved
+PI0114,Personal Interview,Failure,Why did you fail last time (Repeaters)?,Medium,approved
+PI0115,Personal Interview,Failure,What was the reason that you got rejected in your previous attempt and how did you overcome,Medium,approved
+PI0116,Personal Interview,Failure,How many times were you screened out,Medium,approved
+PI0117,Personal Interview,Failure,Why do you think you got screened out,Medium,approved
+PI0118,Personal Interview,Success,Tell me an example of an important goal you set and how you achieved it.,Medium,approved
+PI0119,Personal Interview,Success,Describe the biggest challenge you have had in your job and how you handled it?,Medium,approved
+PI0120,Personal Interview,Success,What are your two accomplishments at your present job?,Medium,approved
+PI0121,Personal Interview,Responsibility,How much pocket money did you get when you were in college and how did you utilise it?,Medium,approved
+PI0122,Personal Interview,Responsibility,How can you say that you are responsible? Give few incidents from your life to show that you are responsible.,Medium,approved
+PI0123,Personal Interview,Responsibility,"How do you meet monetary requirements, i.e. how much pocket money do you get and how do you spend it.",Medium,approved
+PI0124,Personal Interview,Responsibility,Tell me your participation in other activities in your school how many responsibilities you took over,Medium,approved
+PI0125,Personal Interview,Responsibility,How many years responsibilities you take over at home in his absence,Medium,approved
+PI0126,Personal Interview,Responsibility,What is your average monthly expenditure in the last 12 months and give me a breakdown of last month's expenditure,Medium,approved
+PI0127,Personal Interview,Hobbies,Tell me one string of one names of all the six strings of the guitar,Medium,approved
+PI0128,Personal Interview,Hobbies,Show me with your fingers F cord how will you show it,Medium,approved
+PI0129,Personal Interview,Hobbies,What activities do you do on your holidays?,Medium,approved
+PI0130,Personal Interview,Hobbies,What is your favourite hobby and why?,Medium,approved
+PI0131,Personal Interview,Hobbies,How long do you have this as a hobby?,Medium,approved
+PI0132,Personal Interview,Hobbies,Describe about the things that you have learned from your hobby.,Medium,approved
+PI0133,Personal Interview,Hobbies,Give details of your extra-curricular activities.,Medium,approved
+PI0134,Personal Interview,Hobbies,Why did you not continue this activity?,Medium,approved
+PI0135,Personal Interview,Hobbies,What is your favourite outdoor/indoor game?,Medium,approved
+PI0136,Personal Interview,Hobbies,What level have you played to?,Medium,approved
+PI0137,Personal Interview,Hobbies,"What is the size of the ground, number of players, equipment and terminology of the game?",Medium,approved
+PI0138,Personal Interview,Hobbies,Who/what are your favourite team/players?,Medium,approved
+PI0139,Personal Interview,Hobbies,What is your best memory of the game?,Medium,approved
+PI0140,Personal Interview,Hobbies,What good books have you read lately?,Medium,approved
+PI0141,Personal Interview,Hobbies,What’s the theme of this book?,Medium,approved
+PI0142,Personal Interview,Hobbies,Let me know your hobby is your interest in how many games you participated,Medium,approved
+PI0143,Personal Interview,Hobbies,"Now please tell me, how do you spend your spare time? What are your interests and hobbies, sports and games you have taken part in, both in your daily routine and on a working day and on a holiday?",Medium,approved
+PI0144,Personal Interview,Hobbies,What are your reading habits and TV watching habits?,Medium,approved
+PI0145,Personal Interview,Current Affairs,Why India is not doing well in football?,Medium,approved
+PI0146,Personal Interview,Current Affairs,What do you mean by Global warming?,Medium,approved
+PI0147,Personal Interview,Current Affairs,What is greenhouse effect?,Medium,approved
+PI0148,Personal Interview,Current Affairs,What is Bal Shree Award?,Medium,approved
+PI0149,Personal Interview,Current Affairs,What is Sarva Shiksha Abhiyaan?,Medium,approved
+PI0150,Personal Interview,Current Affairs,What do you think are the problems in school education system in India?,Medium,approved
+PI0151,Personal Interview,Current Affairs,What are the problems of textile industry in India?,Medium,approved
+PI0152,Personal Interview,Current Affairs,View about Indo-Pak relations.,Medium,approved
+PI0153,Personal Interview,Current Affairs,Reasons and views on fall of currency value in India.,Medium,approved
+PI0154,Personal Interview,Current Affairs,"About issues/happenings in Middle East, Afghanistan, West Asia, or any major country in the world",Medium,approved
+PI0155,Personal Interview,Current Affairs,If you were made the Prime Minister of India what will you do regarding Pakistan issue?,Medium,approved
+PI0156,Personal Interview,Current Affairs,Basic geography like neighboring countries of India such as the water bodies surrounding India or the southern-most point of India?,Medium,approved
+PI0157,Personal Interview,Current Affairs,"Recent national, international and sports news.",Medium,approved
+PI0158,Personal Interview,Current Affairs,If I ask you what are five major problems India is facing what will you tell me,Medium,approved
+PI0159,Personal Interview,Defence Awareness,Tell me one practical use of Third Law of Newton in that is you would find being used in the Indian army,Medium,approved
+PI0160,Personal Interview,Defence Awareness,What makes Indian soldier different,Medium,approved
+PI0161,Personal Interview,Defence Awareness,Name any three guns you're a fan of,Medium,approved
+PI0162,Personal Interview,Defence Awareness,What's the difference between a gun and a rifle,Medium,approved
+PI0163,Personal Interview,Defence Awareness,Who makes ak-203,Medium,approved
+PI0164,Personal Interview,Defence Awareness,Who makes m416,Medium,approved
+PI0165,Personal Interview,Defence Awareness,What is Chris vctor,Medium,approved
+PI0166,Personal Interview,Defence Awareness,What are the qualities of an army officer or what are the qualities that are required in a person to join the Armed Forces?,Medium,approved
+PI0167,Personal Interview,Defence Awareness,What are the types of RADARS used by IAF?,Medium,approved
+PI0168,Personal Interview,Defence Awareness,What is the minimum length of antenna required to catch FM signal?,Medium,approved
+PI0169,Personal Interview,Defence Awareness,How many Tejas and Rafael we are going to have?,Medium,approved
+PI0170,Personal Interview,Defence Awareness,Is the deal of Dassault Rafael beneficial to India and why?,Medium,approved
+PI0171,Personal Interview,Defence Awareness,What are FGFA and MRCA? In what category Tejas will come?,Medium,approved
+PI0172,Personal Interview,Defence Awareness,Tell 10 features of TEJAS.,Medium,approved
+PI0173,Personal Interview,Defence Awareness,According to you what improvements are required in the Indian Air Force/Army/Navy at present?,Medium,approved
+PI0174,Personal Interview,Defence Awareness,What are the differences between a cruise and ballistic missile? Name them and their differences?,Medium,approved
+PI0175,Personal Interview,Defence Awareness,"What do you know about Air Force, Army, Navy (new knowledge other than commands, ranks etc.).",Medium,approved
+PI0176,Personal Interview,Defence Awareness,The difference between a fighter and an attack plane.,Medium,approved
+PI0177,Personal Interview,Defence Awareness,About AWACS/AWECS.,Medium,approved
+PI0178,Personal Interview,Defence Awareness,Recent defense deals and up gradations.,Medium,approved
+PI0179,Personal Interview,Defence Awareness,Tell me any one principle of physical physics that can be applied to the naval worship,Medium,approved
+PI0180,Personal Interview,Defence Awareness,What is the difference between a frigate a destroyer and a Corvette,Medium,approved
+PI0181,Personal Interview,Defence Awareness,Name any three types of AO engines,Medium,approved
+PI0182,Personal Interview,Motivation for Armed Forces,Why do you want to join the Army,Medium,approved
+PI0183,Personal Interview,Motivation for Armed Forces,Which part of the army do you want to join,Medium,approved
+PI0184,Personal Interview,Motivation for Armed Forces,Why do you want to join the force?,Medium,approved
+PI0185,Personal Interview,Motivation for Armed Forces,How do you feel about the work environment in the armed force?,Medium,approved
+PI0186,Personal Interview,Motivation for Armed Forces,What will be your contribution to IAF after becoming an officer?,Medium,approved
+PI0187,Personal Interview,Motivation for Armed Forces,If you have done graduation in some discipline then why do you want to leave that field and enter into a field (defense) where most of your knowledge will not be used?,Medium,approved
+PI0188,Personal Interview,Motivation for Armed Forces,Your reason for joining the forces (practical reason).,Medium,approved
+PI0189,Personal Interview,Motivation for Armed Forces,"Considering the recent mishaps in Navy/Army/Air Force, if your parents don’t allow you to join the same how will you convince them?",Medium,approved
+PI0190,Personal Interview,Motivation for Armed Forces,Who suggested you to apply for the Armed Forces India,Medium,approved
+PI0191,Personal Interview,Motivation for Armed Forces,Tell me Regiment of your father and from where you got motivation to join Indian army,Medium,approved
+PI0192,Personal Interview,Motivation for Armed Forces,Why Navy,Medium,approved
+PI0193,Personal Interview,Motivation for Armed Forces,Tell me three things you would get in Navy and not get in your normal life,Medium,approved
+PI0194,Personal Interview,Motivation for Armed Forces,Why do you not think of joining the Air Force as an AG,Medium,approved

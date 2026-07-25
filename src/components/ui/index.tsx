@@ -16,6 +16,15 @@ import {
 } from 'react-native';
 import { Colors, Fonts, FontSizes, Spacing, Radius, LetterSpacing } from '../../constants/tokens';
 
+// Re-export tactical components
+export { CornerMarkers } from './CornerMarkers';
+export { StatusIndicator } from './StatusIndicator';
+export { SegmentedProgressBar } from './SegmentedProgressBar';
+export { TacticalCheckbox } from './TacticalCheckbox';
+export { default as RadarPulse } from './RadarPulse';
+export { default as ActivityChart } from './ActivityChart';
+export { default as TechnicalSpecsPanel } from './TechnicalSpecsPanel';
+
 interface TacticalInputProps extends TextInputProps {
   label:          string;
   error?:         string;
@@ -114,12 +123,19 @@ export function TacticalButton({
           color={variant === 'primary' ? Colors.onPrimary : Colors.primary}
         />
       ) : (
-        <Text
-          style={[styles.buttonLabel, { color: textColor }, labelStyle]}
-          maxFontSizeMultiplier={1}
-        >
-          {label.toUpperCase()}
-        </Text>
+        <View style={styles.buttonContent}>
+          <Text
+            style={[styles.buttonLabel, { color: textColor }, labelStyle]}
+            maxFontSizeMultiplier={1}
+          >
+            {label.toUpperCase()}
+          </Text>
+          {variant === 'primary' && (
+            <Text style={[styles.buttonArrow, { color: textColor }]} maxFontSizeMultiplier={1}>
+              →
+            </Text>
+          )}
+        </View>
       )}
     </TouchableOpacity>
   );
@@ -237,8 +253,17 @@ const styles = StyleSheet.create({
   buttonDisabled: { opacity: 0.45 },
   buttonLabel: {
     fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
+    fontSize:      FontSizes.bodyMd,
     letterSpacing: LetterSpacing.widest,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems:    'center',
+    gap:           Spacing.sm,
+  },
+  buttonArrow: {
+    fontFamily: Fonts.monoMedium,
+    fontSize:   FontSizes.bodyLg,
   },
   errorBanner: {
     backgroundColor: Colors.errorBg,

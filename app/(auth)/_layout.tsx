@@ -1,33 +1,34 @@
 // ─────────────────────────────────────────────────────────────
-// THE FORGE — Root Layout
-// app/_layout.tsx
+// THE FORGE — Authoritative Root Layout
+// app/(auth)/_layout.tsx
 //
-// Responsibilities (in order):
-//   1. Apply URL polyfill (must be first import)
-//   2. Load custom fonts via expo-font
-//   3. Initialize auth session (useAuthInitializer)
-//   4. Gate navigation based on session state
-//   5. Set StatusBar to light theme
+// This is the ONLY layout that:
+//   • Calls useAuthInitializer() — registers auth listeners once
+//   • Manages SplashScreen lifecycle
+//   • Gates navigation via AuthGate
+//   • Handles onboarding redirect on first login
 //
-// FIXED: AuthGate no longer depends on `profile` in its effect.
-// Profile loading is async after session is confirmed; including
-// it caused spurious re-runs and could race with logout.
-// AuthGate only needs: isInitialized + session.
+// app/_layout.tsx is intentionally a thin <Slot /> shell.
 // ─────────────────────────────────────────────────────────────
 import 'react-native-url-polyfill/auto'; // MUST be first import
 
-import React, { useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { View, ActivityIndicator, StyleSheet } from 'react-native';
 import { Slot, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import * as SecureStore from 'expo-secure-store';
 
 import { useAuthInitializer } from '@/hooks/useAuthInitializer';
 import { useAuthStore } from '@/store/auth.store';
 import { Colors } from '@/constants/tokens';
-// Hold splash screen until fonts are loaded
+
+// Hold splash screen until fonts + auth are ready.
+// Called at module scope — fires exactly once per process lifetime.
 SplashScreen.preventAutoHideAsync();
+
+const ONBOARDING_FLAG = 'forge_onboarding_complete';
 
 // ── Auth gate ─────────────────────────────────────────────────
 function AuthGate() {
@@ -37,23 +38,39 @@ function AuthGate() {
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const session       = useAuthStore((s) => s.session);
 
-  // FIX: `profile` removed from this component and from the
-  // dependency array below. Reasons:
-  //
-  // 1. profile can be null for a brief moment after login while
-  //    fetchProfile() is in flight. With profile in deps, the
-  //    effect fired during that window and could redirect to login
-  //    even though a valid session existed.
-  //
-  // 2. During logout, clearAuth() sets both session → null AND
-  //    profile → null atomically. Adding profile to deps caused
-  //    the effect to run twice — once for profile=null, once for
-  //    session=null — which could trigger duplicate router.replace
-  //    calls and leave the navigation stack in a broken state on
-  //    Android.
-  //
-  // AuthGate's job is: "is there a session?" Full stop.
-  // Profile availability is the concern of individual screens.
+  // Onboarding flag — read once from SecureStore after session is known.
+  // Uses a 2-second timeout so a SecureStore hang never blocks navigation.
+  const [onboardingChecked, setOnboardingChecked] = useState(false);
+  const [needsOnboarding,   setNeedsOnboarding]   = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const timer = setTimeout(() => {
+      // Timeout safety: if SecureStore hangs, assume onboarding done
+      // so users are never permanently blocked.
+      if (active && !onboardingChecked) {
+        setNeedsOnboarding(false);
+        setOnboardingChecked(true);
+      }
+    }, 2_000);
+
+    (async () => {
+      try {
+        const done = await SecureStore.getItemAsync(ONBOARDING_FLAG);
+        if (active) setNeedsOnboarding(done !== 'true');
+      } catch {
+        if (active) setNeedsOnboarding(false);
+      } finally {
+        clearTimeout(timer);
+        if (active) setOnboardingChecked(true);
+      }
+    })();
+
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!isInitialized) return;
@@ -61,26 +78,24 @@ function AuthGate() {
     const inAuthGroup = segments[0] === '(auth)';
 
     if (!session) {
-      // No session → force to login from anywhere except auth screens.
-      // This fires immediately when clearAuth() is called because
-      // session is now null and isInitialized is still true.
       if (!inAuthGroup) {
         router.replace('/(auth)/login');
       }
       return;
     }
 
-    // Has a valid session → must not be on an auth screen
-    if (inAuthGroup) {
-      router.replace('/(tabs)');
+    // Logged in but still on an auth screen → route appropriately
+    if (session && inAuthGroup) {
+      if (!onboardingChecked) return; // wait for the flag (max 2s)
+      router.replace(needsOnboarding ? '/onboarding' : '/(tabs)');
     }
 
-    // Has session and is in (tabs) or /mission → correct location,
-    // no redirect needed.
-  }, [isInitialized, session, segments, router]);
+    // Logged in and already past the auth group → leave navigation alone.
+  }, [isInitialized, session, segments, router, onboardingChecked, needsOnboarding]);
 
-  // Show spinner only during initial boot (isInitialized = false).
-  // After logout, isInitialized stays true so we never flash a spinner.
+  // Show spinner only during initial boot (before isInitialized fires).
+  // After that — including after logout — isInitialized stays true,
+  // so users never see a spurious spinner on sign-out.
   if (!isInitialized) {
     return (
       <View style={styles.loader}>
@@ -94,7 +109,9 @@ function AuthGate() {
 
 // ── Root export ───────────────────────────────────────────────
 export default function RootLayout() {
-  
+  const [fontsLoaded, fontError] = useFonts({
+    // Add font loading here if needed, or remove useFonts if not using custom fonts
+  });
 
   // Initialize auth session listener — runs once for app lifetime
   useAuthInitializer();
@@ -108,9 +125,11 @@ export default function RootLayout() {
   // Don't render until fonts are ready
   if (!fontsLoaded && !fontError) return null;
 
+  const BoundStatusBar = StatusBar as any;
+
   return (
     <View style={styles.root} onLayout={onLayoutRootView}>
-      <StatusBar style="light" backgroundColor={Colors.bgBase} />
+      <BoundStatusBar style="light" backgroundColor={Colors.bgBase} />
       <AuthGate />
     </View>
   );

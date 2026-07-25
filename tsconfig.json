@@ -21,5 +21,13 @@
     ".expo/types/**/*.d.ts",
     "expo-env.d.ts",
     ".expo/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "forge-clean",
+    "archive",
+    "stitch 1",
+    "stitch 2",
+    "forge-api-day1"
   ]
 }

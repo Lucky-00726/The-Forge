@@ -23,14 +23,15 @@ export interface DbUser {
 }
 
 export interface DbMission {
-  id:           string;           // e.g. 'COM-001'
-  title:        string;
-  category:     MissionCategory;
-  mission_type: MissionType;
-  week_number:  number;
-  unlock_day:   number;           // 1-7
-  xp_reward:    number;
-  content:      MissionContent;
+  id:                  string;           // e.g. 'COM-001'
+  title:               string;
+  category:            MissionCategory;
+  mission_type:        MissionType;
+  week_number:         number;
+  unlock_day:          number;           // 1-7
+  xp_reward:           number;
+  time_limit_seconds:  number | null;    // NULL = no time limit
+  content:             MissionContent;
 }
 
 export interface DbMissionCompletion {
@@ -40,6 +41,7 @@ export interface DbMissionCompletion {
   completed_date: string;         // YYYY-MM-DD IST
   xp_awarded:     number;
   responses:      Record<string, unknown> | null;
+  is_featured:    boolean;        // TRUE = featured (100% XP), FALSE = training (50% XP)
 }
 
 // ── Domain enums ──────────────────────────────────────────────
@@ -60,12 +62,25 @@ export type MissionCategory =
 export type MissionType =
   | 'Reflect & Write'
   | 'Poll + Reasoning'
-  | 'Daily Challenge';
+  | 'Daily Challenge'
+  | 'Rapid Response';
 
 export type RankName =
   | 'Cadet'
   | 'Officer'
-  | 'Commander';
+  | 'Commander'
+  | 'Colonel'
+  | 'General';
+
+// ── Rank thresholds ───────────────────────────────────────────
+
+export const RANK_THRESHOLDS: Record<RankName, number> = {
+  Cadet: 0,
+  Officer: 800,
+  Commander: 2000,
+  Colonel: 4000,
+  General: 7000,
+};
 
 // ── Mission content payloads ──────────────────────────────────
 // Stored in missions.content JSONB column.
@@ -95,10 +110,18 @@ export interface DailyChallengeContent {
   reflection_prompt:   string;
 }
 
+export interface RapidResponseContent {
+  type:       'Rapid Response';
+  scenario:   string;
+  question:   string;
+  options:    string[];
+}
+
 export type MissionContent =
   | ReflectWriteContent
   | PollReasoningContent
-  | DailyChallengeContent;
+  | DailyChallengeContent
+  | RapidResponseContent;
 
 // ── Mission response shapes ───────────────────────────────────
 // What users submit when completing a mission.
@@ -122,10 +145,17 @@ export interface DailyChallengeResponse {
   reflection:  string;
 }
 
+export interface RapidResponseResponse {
+  type:            'Rapid Response';
+  selected_option: string;
+  time_taken:      number;  // seconds
+}
+
 export type MissionResponse =
   | ReflectWriteResponse
   | PollReasoningResponse
-  | DailyChallengeResponse;
+  | DailyChallengeResponse
+  | RapidResponseResponse;
 
 // ── RPC return shape ──────────────────────────────────────────
 // Matches what complete_mission() Postgres function returns.
@@ -135,6 +165,7 @@ export interface CompleteMissionResult {
   new_total_xp: number;
   new_streak:   number;
   new_rank:     RankName;
+  is_featured:  boolean;          // Echoes back whether this was a featured completion
 }
 
 // ── Auth state ────────────────────────────────────────────────

@@ -1,79 +1,39 @@
 // ─────────────────────────────────────────────────────────────
-// THE FORGE — Root Layout
+// THE FORGE — Root Layout Shell
 // app/_layout.tsx
+//
+// This is intentionally a THIN WRAPPER. All auth logic, session
+// initialization, and AuthGate navigation live exclusively in:
+//   app/(auth)/_layout.tsx
+//
+// Why this separation:
+//   Expo Router renders this file for EVERY route. Placing
+//   useAuthInitializer() here caused it to run a second time
+//   whenever the (auth) group was active (because the (auth)
+//   group layout ALSO called useAuthInitializer). The duplicate
+//   calls registered two onAuthStateChange listeners, caused
+//   concurrent store writes, and could leave the session in an
+//   unpredictable state.
+//
+// This file must NEVER call useAuthInitializer() or render
+// its own AuthGate. Its only jobs are:
+//   1. Provide the root <View> for onLayout-based splash hiding
+//   2. Render <Slot /> (Expo Router's outlet)
+//
+// SplashScreen is managed by app/(auth)/_layout.tsx which is
+// always rendered as a nested layout regardless of route.
 // ─────────────────────────────────────────────────────────────
-import 'react-native-url-polyfill/auto';
-
-import React, { useEffect, useCallback } from 'react';
-import { View, ActivityIndicator, StyleSheet } from 'react-native';
-import { Slot, useRouter, useSegments } from 'expo-router';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import * as SplashScreen from 'expo-splash-screen';
-
-import { useAuthInitializer } from '../src/hooks/useAuthInitializer';
-import { useAuthStore } from '../src/store/auth.store';
 import { Colors } from '../src/constants/tokens';
 
-SplashScreen.preventAutoHideAsync();
-
-function AuthGate() {
-  const router   = useRouter();
-  const segments = useSegments();
-
-  const isInitialized = useAuthStore((s) => s.isInitialized);
-  const session       = useAuthStore((s) => s.session);
-  const profile       = useAuthStore((s) => s.profile);
-
-  useEffect(() => {
-    if (!isInitialized) return;
-
-    const inAuthGroup = segments[0] === '(auth)';
-
-    if (!session) {
-      if (!inAuthGroup) {
-        router.replace('/(auth)/login');
-      }
-      return;
-    }
-
-    if (session && !inAuthGroup) {
-      return;
-    }
-
-    if (session && inAuthGroup) {
-      router.replace('/(tabs)');
-    }
-  }, [isInitialized, session, profile, segments, router]);
-
-  if (!isInitialized) {
-    return (
-      <View style={styles.loader}>
-        <ActivityIndicator size="large" color={Colors.primary} />
-      </View>
-    );
-  }
-
-  return <Slot />;
-}
-
 export default function RootLayout() {
-  const fontsLoaded = true;
-const fontError = null;
-
-  useAuthInitializer();
-
-  const onLayoutRootView = useCallback(async () => {
-    if (fontsLoaded || fontError) {
-      SplashScreen.hide();
-    }
-  }, [fontsLoaded, fontError]);
-
-  if (!fontsLoaded && !fontError) return null;
-
   return (
-    <View style={styles.root} onLayout={onLayoutRootView}>
+    <View style={styles.root}>
       <StatusBar style="light" />
-      <AuthGate />
+      <Slot />
     </View>
   );
 }
@@ -82,11 +42,5 @@ const styles = StyleSheet.create({
   root: {
     flex:            1,
     backgroundColor: Colors.bgBase,
-  },
-  loader: {
-    flex:            1,
-    backgroundColor: Colors.bgBase,
-    alignItems:      'center',
-    justifyContent:  'center',
   },
 });

@@ -63,14 +63,25 @@ export function useAuth() {
   }, []);
 
   const logout = useCallback(async () => {
+    console.log('[LOGOUT TRACE] Step 4: logout() executing');
     setIsLoading(true);
     setError(null);
+    
+    // DEC-016: Clear Zustand state synchronously BEFORE network call
+    // This ensures immediate redirect regardless of network conditions
+    console.log('[LOGOUT TRACE] Step 5: Calling clearAuth()');
+    useAuthStore.getState().clearAuth();
+    console.log('[LOGOUT TRACE] Step 6: clearAuth() completed');
+    
+    console.log('[LOGOUT TRACE] Step 7: Calling authService.signOut()');
     const result = await authService.signOut();
+    console.log('[LOGOUT TRACE] Step 8: authService.signOut() returned:', result);
     setIsLoading(false);
     if (!result.success) {
       setError(result.error);
       return false;
     }
+    console.log('[LOGOUT TRACE] Step 9: logout() about to return true');
     return true;
   }, []);
 

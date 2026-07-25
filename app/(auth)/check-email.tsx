@@ -32,9 +32,8 @@ export default function CheckEmailScreen() {
       </Text>
 
       <Text style={styles.body} maxFontSizeMultiplier={1}>
-        A password recovery link has been dispatched to your registered email
-        address.{'\n\n'}
-        Return once you have secured the link.
+        A verification link has been sent to your email address.{'\n\n'}
+        Open it to activate your account and begin training.
       </Text>
 
       <View style={styles.actions}>

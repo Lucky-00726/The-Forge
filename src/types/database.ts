@@ -1,12 +1,5 @@
 // ─────────────────────────────────────────────────────────────
 // THE FORGE — Supabase Database Types
-//
-// These are hand-authored stubs that mirror the V1 schema.
-// Replace with auto-generated types once schema is live:
-//
-//   npx supabase gen types typescript \
-//     --project-id YOUR_PROJECT_REF \
-//     > src/types/database.ts
 // ─────────────────────────────────────────────────────────────
 
 export type Json =
@@ -31,6 +24,7 @@ export interface Database {
           current_streak:   number;
           last_active_date: string | null;
           created_at:       string;
+          is_admin:         boolean;
         };
         Insert: {
           id:               string;
@@ -41,6 +35,7 @@ export interface Database {
           current_streak?:  number;
           last_active_date?:string | null;
           created_at?:      string;
+          is_admin?:        boolean;
         };
         Update: {
           display_name?:    string;
@@ -49,36 +44,42 @@ export interface Database {
           current_rank?:    string;
           current_streak?:  number;
           last_active_date?:string | null;
+          is_admin?:        boolean;
         };
       };
       missions: {
         Relationships: [];
         Row: {
-          id:           string;
-          title:        string;
-          category:     string;
-          mission_type: string;
-          week_number:  number;
-          unlock_day:   number;
-          xp_reward:    number;
-          content:      Json;
+          id:                 string;
+          title:              string;
+          category:           string;
+          mission_type:       string;
+          week_number:        number;
+          unlock_day:         number;
+          xp_reward:          number;
+          content:            any;
+          time_limit_seconds: number | null;
         };
         Insert: {
-          id:           string;
-          title:        string;
-          category:     string;
-          mission_type: string;
-          week_number:  number;
-          unlock_day:   number;
-          xp_reward:    number;
-          content:      Json;
+          id:                 string;
+          title:              string;
+          category:           string;
+          mission_type:       string;
+          week_number:        number;
+          unlock_day:         number;
+          xp_reward:          number;
+          content:            any;
+          time_limit_seconds?: number | null;
         };
         Update: {
-          title?:       string;
-          category?:    string;
-          mission_type?:string;
-          xp_reward?:   number;
-          content?:     Json;
+          title?:              string;
+          category?:           string;
+          mission_type?:       string;
+          week_number?:        number;
+          unlock_day?:         number;
+          xp_reward?:          number;
+          content?:            any;
+          time_limit_seconds?: number | null;
         };
       };
       mission_completions: {
@@ -89,7 +90,7 @@ export interface Database {
           mission_id:     string;
           completed_date: string;
           xp_awarded:     number;
-          responses:      Json | null;
+          responses:      any;
         };
         Insert: {
           id?:            string;
@@ -97,7 +98,7 @@ export interface Database {
           mission_id:     string;
           completed_date: string;
           xp_awarded:     number;
-          responses?:     Json | null;
+          responses?:     any;
         };
         Update: never;
       };
@@ -117,23 +118,216 @@ export interface Database {
         };
         Update: never;
       };
+      analytics_events: {
+        Relationships: [];
+        Row: {
+          id:         number;
+          user_id:    string;
+          event:      string;
+          metadata:   any;
+          created_at: string;
+        };
+        Insert: {
+          id?:        number;
+          user_id:    string;
+          event:      string;
+          metadata?:  any;
+          created_at?:string;
+        };
+        Update: never;
+      };
+      questions: {
+        Relationships: [];
+        Row: {
+          id:                string;
+          category:          string;
+          subcategory:       string | null;
+          difficulty:        string;
+          question_type:     string;
+          question:          string;
+          prompt:            string | null;
+          answer_data:       any;
+          xp_reward:         number;
+          time_limit:        number | null;
+          tags:              string[];
+          source:            string | null;
+          active:            boolean;
+          status:            string;
+          question_category: string;
+          sequence_order:    number;
+          created_at:        string;
+          updated_at:        string;
+        };
+        Insert: {
+          id:                string;
+          category:          string;
+          subcategory?:      string | null;
+          difficulty:        string;
+          question_type:     string;
+          question:          string;
+          prompt?:           string | null;
+          answer_data?:      any;
+          xp_reward?:        number;
+          time_limit?:       number | null;
+          tags?:             string[];
+          source?:           string | null;
+          active?:           boolean;
+          status?:           string;
+          question_category: string;
+          sequence_order?:   number;
+          created_at?:       string;
+          updated_at?:       string;
+        };
+        Update: {
+          category?:          string;
+          subcategory?:       string | null;
+          difficulty?:        string;
+          question_type?:     string;
+          question?:          string;
+          prompt?:            string | null;
+          answer_data?:       any;
+          xp_reward?:         number;
+          time_limit?:        number | null;
+          tags?:              string[];
+          source?:            string | null;
+          active?:            boolean;
+          status?:            string;
+          question_category?: string;
+          sequence_order?:    number;
+          updated_at?:        string;
+        };
+      };
+      import_staging_questions: {
+        Relationships: [];
+        Row: {
+          id:                string;
+          source_name:       string;
+          category:          string;
+          subcategory:       string | null;
+          difficulty:        string;
+          question_type:     string;
+          question:          string;
+          prompt:            string | null;
+          answer_data:       any;
+          xp_reward:         number;
+          time_limit:        number | null;
+          tags:              string[];
+          source:            string | null;
+          active:            boolean;
+          status:            string;
+          question_category: string;
+          import_status:     string;
+          sequence_order:    number;
+          created_at:        string;
+        };
+        Insert: {
+          id:                string;
+          source_name:       string;
+          category:          string;
+          subcategory?:      string | null;
+          difficulty:        string;
+          question_type:     string;
+          question:          string;
+          prompt?:           string | null;
+          answer_data?:      any;
+          xp_reward?:        number;
+          time_limit?:       number | null;
+          tags?:             string[];
+          source?:           string | null;
+          active?:           boolean;
+          status?:           string;
+          question_category: string;
+          import_status?:     string;
+          sequence_order?:    number;
+          created_at?:       string;
+        };
+        Update: {
+          source_name?:       string;
+          category?:          string;
+          subcategory?:       string | null;
+          difficulty?:        string;
+          question_type?:     string;
+          question?:          string;
+          prompt?:            string | null;
+          answer_data?:       any;
+          xp_reward?:         number;
+          time_limit?:        number | null;
+          tags?:              string[];
+          source?:            string | null;
+          active?:            boolean;
+          status?:            string;
+          question_category?: string;
+          import_status?:     string;
+          sequence_order?:    number;
+        };
+      };
+      user_content_progress: {
+        Relationships: [];
+        Row: {
+          user_id:     string;
+          session_key: string;
+          scope:       string;
+          position:    number;
+          updated_at:  string;
+        };
+        Insert: {
+          user_id:     string;
+          session_key: string;
+          scope:       string;
+          position?:    number;
+          updated_at?:  string;
+        };
+        Update: {
+          position?:    number;
+          updated_at?:  string;
+        };
+      };
+      user_daily_sessions: {
+        Relationships: [];
+        Row: {
+          id:                      string;
+          user_id:                 string;
+          session_date:            string;
+          session_number:          number;
+          question_ids:            string[];
+          started_at:              string;
+          completed_at:            string | null;
+          xp_earned:               number;
+          score:                   number | null;
+          total_questions:         number | null;
+          completion_time_seconds: number | null;
+          difficulty:              string | null;
+          progress:                any;
+        };
+        Insert: {
+          id?:                      string;
+          user_id:                 string;
+          session_date:            string;
+          session_number:          number;
+          question_ids:            string[];
+          started_at?:              string;
+          completed_at?:            string | null;
+          xp_earned?:               number;
+          score?:                   number | null;
+          total_questions?:         number | null;
+          completion_time_seconds?: number | null;
+          difficulty?:              string | null;
+          progress?:                any;
+        };
+        Update: {
+          completed_at?:            string | null;
+          xp_earned?:               number;
+          score?:                   number | null;
+          total_questions?:         number | null;
+          completion_time_seconds?: number | null;
+          difficulty?:              string | null;
+          progress?:                any;
+        };
+      };
     };
     Views: Record<string, never>;
     Functions: {
-      complete_mission: {
-        Args: {
-          p_user_id:    string;
-          p_mission_id: string;
-          p_responses:  Json;
-          p_xp:         number;
-        };
-        Returns: {
-          xp_awarded:   number;
-          new_total_xp: number;
-          new_streak:   number;
-          new_rank:     string;
-        };
-      };
+      [key: string]: any;
     };
   };
 }

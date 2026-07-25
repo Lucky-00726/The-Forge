@@ -153,3 +153,26 @@ export const Colors = {
   export const F = Fonts;
   export const S = Spacing;
   export const R = Radius;
+
+// ── Tactical Design System (Stitch) ──────────────────────────
+export const TacticalColors = {
+  surfaceCard:     '#121A26',
+  borderTactical:  '#1E293B',
+  glassBackground: 'rgba(16, 20, 21, 0.8)',
+} as const;
+
+export const TacticalShadows = {
+  glow: {
+    shadowColor:   Colors.primary,
+    shadowOffset:  { width: 0, height: 0 },
+    shadowOpacity: 0.15,
+    shadowRadius:  15,
+    elevation:     8,
+  },
+} as const;
+
+// ── Corner Marker Dimensions ──────────────────────────────────
+export const CornerMarker = {
+  size:        12,
+  borderWidth: 2,
+} as const;

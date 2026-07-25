@@ -27,6 +27,16 @@ export function tomorrowIST(): string {
 }
 
 /**
+ * Returns yesterday's date as a YYYY-MM-DD string in IST.
+ * Used by streak logic to detect consecutive-day activity.
+ */
+export function yesterdayIST(): string {
+  const now = new Date();
+  const ist = new Date(now.getTime() + IST_OFFSET_MS - 86_400_000);
+  return ist.toISOString().slice(0, 10);
+}
+
+/**
  * Parses a YYYY-MM-DD IST string into a Date object.
  * Treats the string as midnight in IST.
  */

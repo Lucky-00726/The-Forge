@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Command - Success Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#323537",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "surface-container-lowest": "#0b0f10",
+                        "primary-container": "#ffbf00",
+                        "on-error": "#690005",
+                        "inverse-primary": "#795900",
+                        "surface-bright": "#363a3b",
+                        "on-tertiary-container": "#005d6d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "primary-fixed": "#ffdfa0",
+                        "surface-container": "#1d2022",
+                        "on-tertiary-fixed-variant": "#004e5c",
+                        "on-primary-container": "#6d5000",
+                        "on-error-container": "#ffdad6",
+                        "background": "#101415",
+                        "on-primary-fixed-variant": "#5c4300",
+                        "on-background": "#e0e3e5",
+                        "outline-variant": "#504532",
+                        "on-primary-fixed": "#261a00",
+                        "surface-tint": "#fbbc00",
+                        "error": "#ffb4ab",
+                        "on-secondary": "#213145",
+                        "tertiary-fixed-dim": "#00d9fc",
+                        "primary-fixed-dim": "#fbbc00",
+                        "tertiary-fixed": "#aaedff",
+                        "secondary-container": "#3a4a5f",
+                        "on-tertiary-fixed": "#001f26",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-surface": "#e0e3e5",
+                        "surface": "#101415",
+                        "surface-variant": "#323537",
+                        "outline": "#9c8f78",
+                        "on-surface-variant": "#d4c5ab",
+                        "surface-dim": "#101415",
+                        "secondary": "#b7c8e1",
+                        "on-secondary-container": "#a9bad3",
+                        "tertiary": "#b4efff",
+                        "primary": "#ffe2ab",
+                        "inverse-on-surface": "#2d3133",
+                        "surface-container-high": "#272a2c",
+                        "on-primary": "#402d00",
+                        "surface-container-low": "#191c1e",
+                        "inverse-surface": "#e0e3e5",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#d3e4fe",
+                        "tertiary-container": "#04dcff",
+                        "on-tertiary": "#003640"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "max-width": "1200px",
+                        "margin-mobile": "20px",
+                        "margin-desktop": "48px",
+                        "gutter": "16px"
+                    },
+                    "fontFamily": {
+                        "coordinate-sm": ["JetBrains Mono"],
+                        "label-caps": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Geist"],
+                        "display-lg": ["Geist"]
+                    },
+                    "fontSize": {
+                        "coordinate-sm": ["10px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                        "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(100px, auto);
+            gap: 16px;
+        }
+        .corner-marker-tl { border-top: 2px solid #ffbf00; border-left: 2px solid #ffbf00; width: 12px; height: 12px; position: absolute; top: -1px; left: -1px; }
+        .corner-marker-br { border-bottom: 2px solid #ffbf00; border-right: 2px solid #ffbf00; width: 12px; height: 12px; position: absolute; bottom: -1px; right: -1px; }
+        .radar-pulse {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,191,0,0.1) 0%, rgba(16,20,21,0) 70%);
+            border: 1px solid rgba(255,191,0,0.2);
+        }
+        .radar-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, #ffbf00, transparent);
+            transform-origin: left;
+            animation: radar-rotate 4s linear infinite;
+        }
+        @keyframes radar-rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen overflow-x-hidden">
+<!-- Top Navigation Placeholder (Suppressed per rules as this is a success screen, but kept layout context) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="font-label-caps text-label-caps tracking-widest text-primary">MISSION COMMAND</div>
+<div class="flex items-center gap-4">
+<span class="font-coordinate-sm text-coordinate-sm text-on-surface-variant opacity-60">SYNC STATUS: ENCRYPTED</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</div>
+</header>
+<main class="relative pt-24 pb-32 px-margin-mobile max-w-screen-xl mx-auto">
+<!-- Header Section -->
+<section class="flex flex-col items-center text-center mb-12">
+<span class="font-label-caps text-label-caps text-primary-container mb-2 tracking-[0.2em]">OPERATIONAL UPDATE</span>
+<h1 class="font-display-lg text-display-lg font-bold tracking-tight mb-4">MISSION ACCOMPLISHED</h1>
+<div class="flex items-center gap-6 font-coordinate-sm text-coordinate-sm text-on-surface-variant uppercase tracking-widest">
+<span>TIMESTAMP: 04:22:15</span>
+<span class="w-1 h-1 bg-primary rounded-full"></span>
+<span>ID: TACT-SUCCESS-04</span>
+</div>
+</section>
+<!-- Main Content Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Achievement Visual Center -->
+<div class="md:col-span-8 bg-surface-container-low border border-outline-variant/30 p-8 flex flex-col items-center justify-center min-h-[400px] relative">
+<div class="corner-marker-tl"></div>
+<div class="corner-marker-br"></div>
+<div class="radar-pulse flex items-center justify-center mb-8">
+<div class="radar-line"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<img alt="Tactical Emblem" class="w-24 h-24 opacity-80" data-alt="A highly detailed 3D vector emblem of a military tactical shield with an upward arrow. The emblem glows with a soft golden amber light against a dark, tech-focused background. Subtle digital data patterns and grid lines wrap around the central icon, conveying high-performance rank progression in a modern, elite interface style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-n4qjZhXoDWHjTAgTHKXgvl35XhqCE_BspOw7vwF8MMbhvZpYGgTvMUDvXoqT5TMKRXPaSRL3VcTNqcCHujtWQWPTn9nrbRFpAEYZVXKO8wnQzO9iOo8Wwe9D-XSMKM8NizQktqf2FnU7wYeZZIt-RajTU70aJS_wPCY02yNmr0p3iaocArKtrsdyNDg2NWaFXXb5d7FJf3f0Lz5HjcWW21mSFv0cj3X6I6N_L81OYQMvJtouHKTIjIEYvA0SHjBFSpd8Rzeq9Ws"/>
+</div>
+</div>
+<div class="text-center">
+<h2 class="font-headline-sm text-headline-sm text-primary mb-2">ELITE VANGUARD</h2>
+<p class="font-coordinate-sm text-coordinate-sm text-on-surface-variant tracking-[0.3em]">RANK STATUS: ASCENDING</p>
+</div>
+</div>
+<!-- Side Intel Blocks -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- XP Block -->
+<div class="bg-surface-container border border-outline-variant/30 p-6 relative">
+<div class="flex justify-between items-end mb-4">
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">XP GAIN</span>
+<div class="font-headline-md text-headline-md text-primary-container">+250</div>
+</div>
+<div class="text-right">
+<span class="font-coordinate-sm text-coordinate-sm text-on-surface-variant">NEXT: COMMANDER</span>
+</div>
+</div>
+<!-- Segmented Progress Bar -->
+<div class="h-2 w-full bg-surface-container-highest flex gap-1 mb-2">
+<div class="h-full w-full bg-primary-container"></div>
+<div class="h-full w-full bg-primary-container"></div>
+<div class="h-full w-full bg-primary-container"></div>
+<div class="h-full w-full bg-primary-container"></div>
+<div class="h-full w-1/2 bg-primary-container opacity-50"></div>
+<div class="h-full w-full bg-outline-variant/20"></div>
+<div class="h-full w-full bg-outline-variant/20"></div>
+<div class="h-full w-full bg-outline-variant/20"></div>
+</div>
+<div class="flex justify-between font-coordinate-sm text-coordinate-sm text-on-surface-variant/60">
+<span>4,750 / 5,000 XP</span>
+<span>95%</span>
+</div>
+</div>
+<!-- Streak Block -->
+<div class="bg-surface-container border border-outline-variant/30 p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 border border-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<div>
+<span class="font-label-caps text-label-caps text-on-surface-variant">ACTIVE STREAK</span>
+<div class="font-headline-sm text-headline-sm">07 DAYS</div>
+</div>
+</div>
+<div class="flex gap-2 items-end h-8">
+<div class="flex-1 bg-primary/20 h-2"></div>
+<div class="flex-1 bg-primary/40 h-3"></div>
+<div class="flex-1 bg-primary/20 h-2"></div>
+<div class="flex-1 bg-primary/60 h-4"></div>
+<div class="flex-1 bg-primary/30 h-3"></div>
+<div class="flex-1 bg-primary/80 h-6"></div>
+<div class="flex-1 bg-primary-container h-8"></div>
+</div>
+<p class="font-coordinate-sm text-coordinate-sm text-primary mt-3 uppercase">MAINTAINED: OPTIMAL PERFORMANCE</p>
+</div>
+<!-- Technical Specs -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 p-4 font-coordinate-sm text-coordinate-sm text-on-surface-variant leading-relaxed">
+<div class="flex justify-between mb-1 border-b border-outline-variant/10 pb-1">
+<span>DEPLOYMENT:</span>
+<span class="text-on-surface">ALPHA-9</span>
+</div>
+<div class="flex justify-between mb-1 border-b border-outline-variant/10 pb-1">
+<span>DATA SYNC:</span>
+<span class="text-primary">VERIFIED</span>
+</div>
+<div class="flex justify-between">
+<span>LOADOUT:</span>
+<span class="text-on-surface">ELITE-II</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Section -->
+<section class="mt-12 flex flex-col md:flex-row items-center justify-center gap-4">
+<button class="group relative px-12 py-5 bg-primary-container text-black font-label-caps text-label-caps font-bold transition-all hover:scale-105 active:scale-95 w-full md:w-auto">
+<span class="relative z-10 flex items-center justify-center gap-2">
+                    CONTINUE TRAINING
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</span>
+</button>
+<button class="px-12 py-5 border border-outline-variant text-on-surface-variant font-label-caps text-label-caps transition-all hover:bg-surface-variant/30 hover:text-on-surface w-full md:w-auto">
+                REVIEW INTEL
+            </button>
+</section>
+</main>
+<!-- Navigation Bar (Fixed Bottom) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-surface border-t border-outline-variant/30">
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-caps text-label-caps mt-1">DASHBOARD</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary border-t-2 border-primary pt-2 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="target" style="font-variation-settings: 'FILL' 1;">target</span>
+<span class="font-label-caps text-label-caps mt-1">MISSIONS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-caps text-label-caps mt-1">INTEL</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant pt-2 hover:text-on-surface transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps mt-1">PROFILE</span>
+</a>
+</nav>
+<!-- Decorative Screen Elements -->
+<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"></div>
+<div class="absolute top-0 right-0 p-8 flex flex-col items-end opacity-20 font-coordinate-sm text-coordinate-sm hidden md:flex">
+<span>GRID_SYSTEM: ACTIVE</span>
+<span>SECURE_LINK: STABLE</span>
+<span>ENCRYPTION: AES-256</span>
+</div>
+</div>
+</body></html>

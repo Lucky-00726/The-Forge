@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&amp;family=Inter:wght@100..900&amp;family=JetBrains+Mono:wght@100..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface-bright": "#363a3b",
+                  "on-primary-fixed-variant": "#5c4300",
+                  "on-primary": "#402d00",
+                  "inverse-primary": "#795900",
+                  "surface": "#101415",
+                  "surface-container": "#1d2022",
+                  "on-primary-container": "#6d5000",
+                  "background": "#101415",
+                  "tertiary": "#b4efff",
+                  "on-secondary-container": "#a9bad3",
+                  "secondary": "#b7c8e1",
+                  "on-surface": "#e0e3e5",
+                  "on-tertiary-container": "#005d6d",
+                  "primary-fixed": "#ffdfa0",
+                  "on-tertiary": "#003640",
+                  "error-container": "#93000a",
+                  "on-secondary": "#213145",
+                  "tertiary-fixed-dim": "#00d9fc",
+                  "on-tertiary-fixed": "#001f26",
+                  "surface-container-low": "#191c1e",
+                  "secondary-fixed": "#d3e4fe",
+                  "primary": "#ffe2ab",
+                  "on-secondary-fixed-variant": "#38485d",
+                  "on-tertiary-fixed-variant": "#004e5c",
+                  "surface-dim": "#101415",
+                  "on-surface-variant": "#d4c5ab",
+                  "tertiary-fixed": "#aaedff",
+                  "outline": "#9c8f78",
+                  "secondary-container": "#3a4a5f",
+                  "outline-variant": "#504532",
+                  "secondary-fixed-dim": "#b7c8e1",
+                  "surface-variant": "#323537",
+                  "surface-container-lowest": "#0b0f10",
+                  "primary-fixed-dim": "#fbbc00",
+                  "on-secondary-fixed": "#0b1c30",
+                  "on-error-container": "#ffdad6",
+                  "surface-container-high": "#272a2c",
+                  "on-primary-fixed": "#261a00",
+                  "on-error": "#690005",
+                  "inverse-surface": "#e0e3e5",
+                  "tertiary-container": "#04dcff",
+                  "error": "#ffb4ab",
+                  "inverse-on-surface": "#2d3133",
+                  "on-background": "#e0e3e5",
+                  "surface-tint": "#fbbc00",
+                  "primary-container": "#ffbf00",
+                  "surface-container-highest": "#323537"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "max-width": "1200px",
+                  "gutter": "16px",
+                  "unit": "8px",
+                  "margin-mobile": "20px",
+                  "margin-desktop": "48px"
+          },
+          "fontFamily": {
+                  "coordinate-sm": ["JetBrains Mono"],
+                  "headline-md": ["Geist"],
+                  "display-lg": ["Geist"],
+                  "headline-sm": ["Geist"],
+                  "body-lg": ["Inter"],
+                  "label-caps": ["JetBrains Mono"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "coordinate-sm": ["10px", {"lineHeight": "1.0", "fontWeight": "400"}],
+                  "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                  "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-sm": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                  "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                  "label-caps": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #101415;
+      color: #e0e3e5;
+    }
+    .tactical-glow {
+      background: radial-gradient(circle at center, rgba(255, 191, 0, 0.05) 0%, rgba(16, 20, 21, 0) 70%);
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased overflow-hidden">
+<!-- Background Ambience -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute inset-0 tactical-glow"></div>
+<div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant/20 to-transparent"></div>
+<div class="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-outline-variant/20 to-transparent"></div>
+</div>
+<main class="relative z-10 flex flex-col items-center justify-center min-h-screen px-margin-mobile md:px-margin-desktop py-12">
+<!-- Top Identity Branding -->
+<header class="absolute top-12 flex flex-col items-center gap-2">
+<span class="font-label-caps text-label-caps text-primary tracking-[0.2em]">PROTOCOL: FINAL_CONFIRMATION</span>
+<div class="w-12 h-0.5 bg-primary-container"></div>
+</header>
+<!-- Content Canvas -->
+<div class="max-w-[640px] w-full text-center space-y-12">
+<!-- Title Block -->
+<section class="space-y-4">
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tighter uppercase">OFFICER'S PLEDGE</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-[480px] mx-auto">
+          Consistency is the hallmark of leadership. Do you commit to the daily grind?
+        </p>
+</section>
+<!-- Immersive Visual / Quote Module -->
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-150 opacity-50"></div>
+<div class="relative bg-surface-container border border-outline-variant/30 p-10 md:p-16">
+<!-- Quote -->
+<div class="flex flex-col items-center gap-6">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="font-headline-sm text-headline-sm text-on-surface italic leading-relaxed">
+              "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
+            </blockquote>
+<cite class="font-label-caps text-label-caps text-outline not-italic">— FIELD MANUAL 01 // DISCIPLINE</cite>
+</div>
+<!-- UI Detail Markers -->
+<div class="absolute top-0 left-0 w-2 h-2 border-t border-l border-primary"></div>
+<div class="absolute top-0 right-0 w-2 h-2 border-t border-r border-primary"></div>
+<div class="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-primary"></div>
+<div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-primary"></div>
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 font-coordinate-sm text-coordinate-sm text-primary-fixed-dim bg-surface px-2">AUTH_TOKEN: 742-ALPHA</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="flex flex-col items-center gap-8 pt-4">
+<!-- Call to Action -->
+<button class="group relative w-full md:w-80 h-16 bg-primary-container hover:bg-primary transition-colors duration-300 rounded flex items-center justify-center gap-3 overflow-hidden">
+<span class="relative z-10 font-label-caps text-label-caps text-on-primary-fixed font-bold tracking-[0.15em]">I COMMIT</span>
+<span class="relative z-10 material-symbols-outlined text-on-primary-fixed transition-transform group-hover:translate-x-1" style="font-variation-settings: 'FILL' 1;">arrow_forward</span>
+<!-- Scanline effect -->
+<div class="absolute inset-0 bg-white/10 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out"></div>
+</button>
+<!-- Secondary Escape -->
+<button class="font-label-caps text-label-caps text-outline hover:text-on-surface transition-colors duration-200 border-b border-transparent hover:border-outline-variant pb-1">
+          RE-EVALUATE OBJECTIVES
+        </button>
+</div>
+</div>
+<!-- Technical Metadata Footer -->
+<footer class="absolute bottom-12 w-full px-margin-mobile flex justify-between items-end opacity-40">
+<div class="flex flex-col gap-1">
+<span class="font-coordinate-sm text-coordinate-sm">SYSTEM_LATENCY: 12MS</span>
+<span class="font-coordinate-sm text-coordinate-sm">ENCRYPTION: AES-256</span>
+</div>
+<div class="text-right">
+<span class="font-coordinate-sm text-coordinate-sm uppercase">Secure Terminal Access Only</span>
+</div>
+</footer>
+<!-- Aesthetic Hardware Overlay -->
+<div class="fixed inset-0 pointer-events-none border-[12px] border-surface/50 z-50"></div>
+</main>
+<!-- Background Image Integration -->
+<div class="fixed inset-0 -z-10 opacity-20 grayscale mix-blend-overlay">
+<img alt="Tactical Background" class="w-full h-full object-cover" data-alt="A cinematic, low-angle shot of a high-tech tactical operations center interior. The scene is dominated by deep blacks and cool slate grays, with subtle amber light leaking from distant server racks. The aesthetic is extremely minimalist and modern, featuring clean lines and industrial materials. The mood is serious, professional, and high-stakes, perfectly aligning with a dark-ops command interface. Soft focus highlights technical precision and elite craftsmanship." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC18gXaLGNixa3gNmE3krRmcthR43VTChlby6G1GAm-qYDgLmtb-Wd-__-CURHdJUx4Eyan-jz9kSyimK4b7eW9MZdQJtMW9tkBddw_J7vSmehhTU6IZ_KSsdefh0SuXdid13NBEFjNMp6CbrowVeqCgERJlqgV7onmWq8IPE9Qaa97-_ZEFiXuM0yvqrOsSx5mSaxEruc_tPw5fdGq5xWKbKg8eFFFtm_iZDBdV94tIY83IKsFpkTb97BQt-t7QClfp2HP7b1QG9M"/>
+</div>
+</body></html>

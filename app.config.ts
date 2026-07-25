@@ -57,10 +57,8 @@ const config: ExpoConfig = {
   extra: {
     // Accessed via process.env.EXPO_PUBLIC_* at runtime
     // Never put secrets here — only EXPO_PUBLIC_ prefixed vars
-    extra: {
-      eas: {
-        projectId: '0ac045b5-4601-499d-99ed-927a8f09a6f2',
-      },
+    eas: {
+      projectId: '0ac045b5-4601-499d-99ed-927a8f09a6f2',
     },
   },
 };

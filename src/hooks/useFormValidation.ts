@@ -88,5 +88,11 @@ export function forgotPasswordValidator(
 }
 
 export function countWords(text: string): number {
-  return text.trim().split(/\s+/).filter((w) => w.length > 0).length;
+  const trimmed = text.trim();
+  if (trimmed.length === 0) return 0;
+  return trimmed.split(/\s+/).filter((w) => w.length > 0).length;
+}
+
+export function countCharacters(text: string): number {
+  return text.trim().length;
 }

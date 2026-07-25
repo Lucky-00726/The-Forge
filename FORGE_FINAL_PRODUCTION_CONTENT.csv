@@ -1,0 +1,1157 @@
+id,source_file,category,subcategory,question_type,difficulty,question,option_a,option_b,option_c,option_d,correct_answer,explanation,sequence_order
+NLM-222,The_Forge_Questions_221_300_CLEAN.csv,Psychology,WAT,SingleWord,Hard,Word: Responsibility,,,,,Responsible people complete tasks without supervision.,Shows reliability and accountability.,1
+NLM-224,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Commands,SingleWord,Medium,The Eastern Naval Command is headquartered at ________.,,,,,Visakhapatnam,It is India's primary eastern naval headquarters.,2
+NLM-225,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Number Series,MCQ,Hard,"1, 4, 9, 16, 25, ?",30,36,49,64,B,Perfect squares.,1
+NLM-227,The_Forge_Questions_221_300_CLEAN.csv,Interview,Personal Interview,Personal Interview,Hard,You are asked about a major mistake in life.,,,,,B,Honesty and learning attitude matter.,1
+NLM-228,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Coding-Decoding,MCQ,Hard,"If PEACE is coded as QFBDF, then WAR is coded as:",XBS,XCS,YBS,YCS,A,Each letter shifted +1.,2
+NLM-231,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Analogy,MCQ,Medium,Map : Navigation :: Dictionary : ?,Grammar,Vocabulary,Pronunciation,Writing,B,Dictionary helps with words.,3
+NLM-232,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Aircraft,SingleWord,Medium,The Chinook helicopter is mainly used for ________ transport.,,,,,Heavy-lift,Chinook specializes in heavy cargo transport.,3
+NLM-233,The_Forge_Questions_221_300_CLEAN.csv,Psychology,Self Description,SingleWord,Medium,How do your teachers describe you?,,,,,Dependable and willing to learn.,,4
+NLM-235,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Alphabet Series,MCQ,Hard,"B, E, I, N, T, ?",Z,Y,A,U,C,"+3,+4,+5,+6,+7",4
+NLM-237,The_Forge_Questions_221_300_CLEAN.csv,Interview,CIQ,SingleWord,Medium,What would your best friend say is your strongest quality?,,,,,Trustworthiness.,,5
+NLM-241,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Blood Relation,MCQ,Hard,"A woman says, ""My mother's brother's son is standing there.""
+
+That person is her:",Brother,Cousin,Nephew,Uncle,B,,5
+NLM-243,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Missiles,SingleWord,Medium,Nag is an Indian ________ missile.,,,,,Anti-tank,,6
+NLM-245,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Classification,MCQ,Medium,Find odd one.,Courage,Bravery,Valour,Determination,D,,6
+NLM-246,The_Forge_Questions_221_300_CLEAN.csv,Psychology,WAT,SingleWord,Medium,Word: Success,,,,,Success follows preparation and persistence.,,7
+NLM-248,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Ranks,MCQ,Medium,Which rank is junior to Major?,Captain,Colonel,Brigadier,Lieutenant Colonel,A,,7
+NLM-249,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Statement & Conclusion,MCQ,Hard,"Statement:
+The academy introduced advanced simulators.
+
+Conclusions:
+I. Training methods are being upgraded.
+II. Previous training was useless.",Only I,Only II,Both,Neither,A,,8
+NLM-251,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Number Series,MCQ,Hard,"3, 7, 15, 31, 63, ?",127,129,131,133,A,,9
+NLM-254,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Navy,SingleWord,Medium,INS Arihant is a nuclear-powered ________.,,,,,Submarine,,8
+NLM-255,The_Forge_Questions_221_300_CLEAN.csv,OIR Non-Verbal,Embedded Figure,MCQ,Hard,Embedded figure tests primarily measure:,Memory,Observation,Perception,Concentration,B,,10
+NLM-257,The_Forge_Questions_221_300_CLEAN.csv,Interview,CIQ,SingleWord,Medium,What does leadership mean to you?,,,,,Helping a group achieve objectives together.,,9
+NLM-258,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Direction Sense,MCQ,Hard,"A person walks 4 km south, 3 km east. Distance from start?",4 km,5 km,6 km,7 km,B,,11
+NLM-260,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Aircraft,MCQ,Medium,Mi-17 is primarily a:,Fighter,Bomber,Helicopter,UAV,C,,12
+NLM-261,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Analogy,MCQ,Hard,Compass : Direction :: Clock : ?,Distance,Time,Speed,Schedule,B,,13
+NLM-264,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Air Force,SingleWord,Fill in the Blanks,The aerobatic display team of the Indian Air Force is called ________.,,,,,Surya Kiran,,10
+NLM-265,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Coding-Decoding,MCQ,Hard,"If BOOK = CPPL, then ARMY = ?",,,,,A,,14
+NLM-267,The_Forge_Questions_221_300_CLEAN.csv,Interview,Personal Interview,MCQ,,What should you do if you don't know an answer?,,,,,Admit honestly and attempt logical reasoning.,,15
+NLM-268,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Ranking,MCQ,,"7th from top and 15th from bottom.
+
+Total?",,,,,A,,16
+NLM-269,The_Forge_Questions_221_300_CLEAN.csv,Psychology,Self Description,MCQ,,How would your parents describe you?,,,,,Responsible and dependable.,,17
+NLM-270,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Awards,SingleWord,,PVC stands for ________.,,,,,Param Vir Chakra,,11
+NLM-275,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Missile,SingleWord,,Prithvi belongs to which category?,,,,,Surface-to-Surface Missile,,12
+NLM-278,The_Forge_Questions_221_300_CLEAN.csv,Interview,CIQ,MCQ,,What inspires you most?,,,,,Meaningful responsibility.,,18
+NLM-279,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Number Series,MCQ,,"10, 20, 40, 80, ?",,,,,C,,19
+NLM-280,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Aircraft,SingleWord,,LCA stands for?,,,,,Light Combat Aircraft,,13
+NLM-282,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Blood Relation,MCQ,,Father's sister is:,,,,,Aunt,,20
+NLM-285,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Navy,SingleWord,,INS stands for?,,,,,Indian Naval Ship,,14
+NLM-287,The_Forge_Questions_221_300_CLEAN.csv,Interview,Officer Response,MCQ,,Criticism should be:,,,,,Accepted positively and analyzed.,,21
+NLM-288,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Analogy,MCQ,,Teacher : School :: Officer : ?,,,,,A,,22
+NLM-290,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Army,SingleWord,,The regiment is primarily a ________ formation.,,,,,Military,,15
+NLM-293,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Direction Sense,MCQ,,"Face North, turn right, then right.
+
+Direction?",,,,,South,,23
+NLM-294,The_Forge_Questions_221_300_CLEAN.csv,Psychology,Self Description,MCQ,,What is your greatest strength?,,,,,Consistency in effort.,,24
+NLM-295,The_Forge_Questions_221_300_CLEAN.csv,Military GK,Defence,SingleWord,,First line of national defence is the ________.,,,,,Armed Forces,,16
+NLM-297,The_Forge_Questions_221_300_CLEAN.csv,OIR Verbal,Classification,MCQ,,"Find odd one.
+
+Jet, Helicopter, Tank, Glider",,,,,Tank,,25
+NLM-298,The_Forge_Questions_221_300_CLEAN.csv,Interview,PIQ,MCQ,,What extracurricular activity taught you leadership?,,,,,Any activity involving team coordination and responsibility.,,26
+NLM-300,The_Forge_Questions_221_300_CLEAN.csv,OLQ,Overall Officer Potential,Personal Interview,Hard,"Which quality best integrates leadership, responsibility, courage and initiative?",,,,,C,OLQs collectively determine officer potential and suitability for leadership roles.,2
+OBJ-001,Forge_Objective_Content_Cleaned.csv,Indian Constitution,,MCQ,Easy,Who is the Supreme Commander of the Indian Armed Forces?,The President of India.,The Prime Minister of India.,The Chief of Defence Staff.,The Defence Minister of India.,A,,27
+OBJ-002,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,What is the motto of the Indian Army?,Shatrujeet (Vanquisher of Enemies).,Service before self.,"Nation First, Always First.",Touch the sky with glory.,B,,28
+OBJ-003,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,When is Army Day celebrated in India?,15th August.,26th January.,15th January.,1st December.,C,,29
+OBJ-004,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the highest honorary rank in the Indian Army?,Major General,General,Lieutenant General,Field Marshal.,D,,30
+OBJ-005,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the highest honorary rank in the Indian Navy?,Admiral of the Fleet.,Admiral,Vice Admiral,Rear Admiral,A,,31
+OBJ-006,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the highest honorary rank in the Indian Air Force?,Air Chief Marshal,Marshal of the Air Force.,Air Marshal,Air Vice Marshal,B,,32
+OBJ-007,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,What is the highest commissioned rank in the Indian Army?,Lieutenant General,Field Marshal,General.,Major General,C,,33
+OBJ-008,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,What is the highest commissioned rank in the Indian Navy?,Rear Admiral,Admiral of the Fleet,Vice Admiral,Admiral.,D,,34
+OBJ-009,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,What is the highest commissioned rank in the Indian Air Force?,Air Chief Marshal.,Marshal of the Air Force,Air Marshal,Air Vice Marshal,A,,35
+OBJ-010,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Naval equivalent of an Army Lieutenant?,Admiral of the Fleet,Sub-Lieutenant.,Admiral,Vice Admiral,B,,36
+OBJ-011,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Air Force equivalent of an Army Lieutenant?,Air Chief Marshal,Marshal of the Air Force,Flying Officer.,Air Marshal,C,,37
+OBJ-012,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Air Force equivalent of a Naval Lieutenant?,Air Marshal,Marshal of the Air Force,Air Chief Marshal,Flight Lieutenant.,D,,38
+OBJ-013,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Naval equivalent of an Air Force Squadron Leader?,Lieutenant Commander.,Admiral of the Fleet,Admiral,Vice Admiral,A,,39
+OBJ-014,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Army equivalent of a Naval Commander?,Field Marshal,Lieutenant Colonel.,General,Lieutenant General,B,,40
+OBJ-015,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Naval equivalent of an Air Force Group Captain?,Admiral,Admiral of the Fleet,Captain.,Vice Admiral,C,,41
+OBJ-016,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Air Force equivalent of an Army Brigadier?,Air Marshal,Marshal of the Air Force,Air Chief Marshal,Air Commodore.,D,,42
+OBJ-017,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Army equivalent of a Naval Commodore?,Brigadier.,Field Marshal,General,Lieutenant General,A,,43
+OBJ-018,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Naval equivalent of an Army Major General?,Admiral of the Fleet,Rear Admiral.,Admiral,Vice Admiral,B,,44
+OBJ-019,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Air Force equivalent of a Naval Rear Admiral?,Air Chief Marshal,Marshal of the Air Force,Air Vice Marshal.,Air Marshal,C,,45
+OBJ-020,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Naval equivalent of an Army Lieutenant General?,Rear Admiral,Admiral of the Fleet,Admiral,Vice Admiral.,D,,46
+OBJ-021,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Air Force equivalent of an Army Lieutenant General?,Air Marshal.,Marshal of the Air Force,Air Chief Marshal,Air Vice Marshal,A,,47
+OBJ-022,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the highest Junior Commissioned Officer rank in the Indian Army?,Subedar or Risaldar,Subedar Major or Risaldar Major.,Naib Subedar or Naib Risaldar,Honorary Captain,B,,48
+OBJ-023,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the middle Junior Commissioned Officer rank in the Indian Army?,Naib Subedar or Naib Risaldar,Subedar Major or Risaldar Major,Subedar or Risaldar.,Honorary Captain,C,,49
+OBJ-024,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the lowest Junior Commissioned Officer rank in the Indian Army?,Honorary Captain,Subedar Major or Risaldar Major,Subedar or Risaldar,Naib Subedar or Naib Risaldar.,D,,50
+OBJ-025,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,How many operational commands are there in the Indian Army?,Six operational commands.,Five operational commands.,Seven operational commands.,Four operational commands.,A,,51
+OBJ-026,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Central Command of the Indian Army headquartered?,"Udhampur, Jammu and Kashmir","Lucknow, Uttar Pradesh.",Chandimandir,"Pune, Maharashtra",B,,52
+OBJ-027,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Eastern Command of the Indian Army headquartered?,Chandimandir,"Udhampur, Jammu and Kashmir","Kolkata, West Bengal.","Pune, Maharashtra",C,,53
+OBJ-028,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Northern Command of the Indian Army headquartered?,"Kolkata, West Bengal",Chandimandir,"Pune, Maharashtra","Udhampur, Jammu and Kashmir.",D,,54
+OBJ-029,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Southern Command of the Indian Army headquartered?,"Pune, Maharashtra.","Udhampur, Jammu and Kashmir",Chandimandir,"Kolkata, West Bengal",A,,55
+OBJ-030,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the South Western Command of the Indian Army headquartered?,"Udhampur, Jammu and Kashmir","Jaipur, Rajasthan.",Chandimandir,"Pune, Maharashtra",B,,56
+OBJ-031,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Western Command of the Indian Army headquartered?,"Pune, Maharashtra","Udhampur, Jammu and Kashmir",Chandimandir.,"Kolkata, West Bengal",C,,57
+OBJ-032,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the motto of the Indian Navy?,Touch the sky with glory (Nabha Sparsham Deeptam).,"Nation First, Always First.",Service before self.,Shano Varuna (May the Lord of the Oceans be auspicious unto us).,D,,58
+OBJ-033,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,How many operational commands does the Indian Navy operate?,Three operational commands.,Four operational commands.,Two operational commands.,Five operational commands.,A,,59
+OBJ-034,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,Where is the Western Naval Command headquartered?,"Visakhapatnam, Andhra Pradesh","Mumbai, Maharashtra.","Kochi, Kerala",Port Blair,B,,60
+OBJ-035,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,Where is the Eastern Naval Command headquartered?,"Kochi, Kerala","Mumbai, Maharashtra","Visakhapatnam, Andhra Pradesh.",Port Blair,C,,61
+OBJ-036,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,Where is the Southern Naval Command headquartered?,Port Blair,"Mumbai, Maharashtra","Visakhapatnam, Andhra Pradesh","Kochi, Kerala.",D,,62
+OBJ-037,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Which is the joint command of the Indian Armed Forces?,The Andaman and Nicobar Command.,The Strategic Forces Command.,The Southern Naval Command.,The Central Air Command.,A,,63
+OBJ-038,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Andaman and Nicobar Command headquartered?,"Mumbai, Maharashtra",Port Blair.,"Visakhapatnam, Andhra Pradesh","Kochi, Kerala",B,,64
+OBJ-039,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Hard,Who heads the Andaman and Nicobar Command?,The Chief of Army Staff.,The Chief of Naval Staff.,The Chief of Integrated Service Command (CISC).,The Vice Chief of Defence Staff.,C,,65
+OBJ-040,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Easy,What does INS stand for in the Indian Navy?,Indian Naval Squadron.,Indian Navy Ship.,Indian National Ship.,Indian Naval Ship.,D,,66
+OBJ-041,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,When was the Indian Air Force established?,8 October 1932.,1 April 1933.,26 October 1932.,1 January 1947.,A,,67
+OBJ-042,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the motto of the Indian Air Force?,Shatrujeet (Vanquisher of Enemies).,Touch the sky with glory (Nabha Sparsham Deeptam).,Service before self.,Shano Varuna.,B,,68
+OBJ-043,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Central Air Command headquartered?,"Shillong, Meghalaya",New Delhi,"Allahabad, Uttar Pradesh.","Thiruvananthapuram, Kerala",C,,69
+OBJ-044,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Eastern Air Command headquartered?,"Thiruvananthapuram, Kerala",New Delhi,"Allahabad, Uttar Pradesh","Shillong, Meghalaya.",D,,70
+OBJ-045,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Southern Air Command headquartered?,"Thiruvananthapuram, Kerala.",New Delhi,"Shillong, Meghalaya","Allahabad, Uttar Pradesh",A,,71
+OBJ-046,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the South Western Air Command headquartered?,New Delhi,"Gandhinagar, Gujarat.","Shillong, Meghalaya","Allahabad, Uttar Pradesh",B,,72
+OBJ-047,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Western Air Command headquartered?,"Allahabad, Uttar Pradesh","Shillong, Meghalaya",New Delhi.,"Thiruvananthapuram, Kerala",C,,73
+OBJ-048,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Training Command of the IAF headquartered?,"Allahabad, Uttar Pradesh",New Delhi,"Shillong, Meghalaya",Bengaluru.,D,,74
+OBJ-049,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,Where is the Maintenance Command of the IAF headquartered?,Nagpur.,New Delhi,"Shillong, Meghalaya","Allahabad, Uttar Pradesh",A,,75
+OBJ-050,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,Where is the Indian Military Academy located?,"Khadakwasla, Pune","Dehradun, Uttarakhand.","Ezhimala, Kerala","Dundigal, Hyderabad",B,,76
+OBJ-051,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,Where is the Officers Training Academy for Short Service Commission located?,"Dehradun, Uttarakhand","Khadakwasla, Pune","Chennai, Tamil Nadu.","Ezhimala, Kerala",C,,77
+OBJ-052,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Hard,Where is the Officers Training Academy for TES and SCO courses located?,"Ezhimala, Kerala","Khadakwasla, Pune","Dehradun, Uttarakhand","Gaya, Bihar.",D,,78
+OBJ-053,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,Where is the National Defence Academy located?,"Khadakwasla, Pune.","Dehradun, Uttarakhand","Ezhimala, Kerala","Dundigal, Hyderabad",A,,79
+OBJ-054,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,Where is the Indian Naval Academy located?,"Khadakwasla, Pune","Ezhimala, Kerala.","Dehradun, Uttarakhand","Dundigal, Hyderabad",B,,80
+OBJ-055,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,Where is the Air Force Academy located?,"Dehradun, Uttarakhand","Khadakwasla, Pune","Dundigal, Hyderabad.","Ezhimala, Kerala",C,,81
+OBJ-056,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the primary role of the Corps of Signals?,Conducting reconnaissance and surveillance using UAVs.,Providing forward air control and close air support to ground troops.,Managing logistics and supply chain for frontline units.,"Handling communications, information technology, electronic warfare, and cyber operations.",D,,82
+OBJ-057,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Hard,Which branch of the Indian Army is known as the Cyber Warriors?,The Corps of Signals.,The Corps of Engineers.,The Army Aviation Corps.,The Corps of Military Police.,A,,83
+OBJ-058,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the primary role of the Army Aviation Corps?,Transporting troops and supplies across difficult terrain.,Providing attack helicopters as the manoeuvre arm against enemy mechanised columns.,Handling encrypted communications between field units.,Conducting airborne assault and paratrooper operations.,B,,84
+OBJ-059,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the primary responsibility of the Army Medical Corps?,Providing logistics support for artillery units.,Constructing and maintaining forward defensive fortifications.,"Managing operations casualties, health, and hygiene of the field force.",Training officer cadets in battlefield tactics.,C,,85
+OBJ-060,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the primary role of the Corps of Military Police?,Managing supply depots for forward units.,Providing artillery fire support to infantry units.,Conducting electronic surveillance of enemy communications.,Regulating the movement of combat forces and ensuring military discipline.,D,,86
+OBJ-061,Forge_Objective_Content_Cleaned.csv,Defence Awareness,,MCQ,Easy,What is the highest peacetime gallantry award in India?,Ashok Chakra.,Param Vir Chakra,Maha Vir Chakra,Kirti Chakra,A,,87
+OBJ-062,Forge_Objective_Content_Cleaned.csv,Defence Awareness,,MCQ,Easy,What is the highest wartime gallantry award in India?,Ashok Chakra,Param Vir Chakra.,Maha Vir Chakra,Kirti Chakra,B,,88
+OBJ-063,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Medium,Who was the first recipient of the Param Vir Chakra?,Company Havildar Major Piru Singh.,Naik Jadunath Singh.,Major Somnath Sharma.,Second Lieutenant Rama Raghoba Rane.,C,,89
+OBJ-064,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Hard,What was Operation Meghdoot?,A 1988 operation to protect the Maldivian government.,A 1971 operation to liberate East Pakistan.,A 1999 operation to evict infiltrators from Kargil.,A 1984 Indian Armed Forces operation to capture the Siachen Glacier.,D,,90
+OBJ-065,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Hard,What was Operation Cactus?,A 1988 Indian military operation to thwart a mercenary invasion in the Maldives.,A 1984 operation to capture the Siachen Glacier.,A 1971 naval strike on Karachi harbour.,A 2006 evacuation of Indian citizens from Lebanon.,A,,91
+OBJ-066,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Hard,What was Operation Pawan?,A 1988 mission to counter a coup attempt in the Maldives.,A 1987 operation by the Indian Peace Keeping Force in Sri Lanka.,A 1999 air campaign during the Kargil conflict.,A 1984 mission to secure the Siachen Glacier.,B,,92
+OBJ-067,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Hard,What was Operation Safed Sagar?,The 1965 IAF campaign in the Indo-Pakistani War.,The 1971 IAF campaign in the Indo-Pakistani War.,The 1999 Indian Air Force strike operation during the Kargil conflict.,The IAF's 1962 operations in the Sino-Indian War.,C,,93
+OBJ-068,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Medium,What was Operation Vijay?,The codename for the 1971 Indo-Pak War.,The codename for Operation Meghdoot.,The codename for the 1965 Indo-Pak War.,The codename for the 1999 Kargil War.,D,,94
+OBJ-069,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Hard,What was Operation Sukoon?,A 2006 Indian Navy operation to evacuate citizens from war-torn Lebanon.,A 1988 operation to evacuate nationals from the Maldives.,A 1999 operation to rescue stranded climbers in Kargil.,A 1984 humanitarian mission in Sri Lanka.,A,,95
+OBJ-070,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,What is the Arjun MBT Mk1?,A Soviet-origin main battle tank used by the Indian Army.,The primary main battle tank of the Indian Army.,A joint India-Russia infantry fighting vehicle.,An indigenously developed self-propelled howitzer.,B,,96
+OBJ-071,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the origin of the T-90 Bhishma tank?,Soviet Union.,Indigenously designed and built in India.,It is a joint venture between India and Russia.,A joint venture between India and France.,C,,97
+OBJ-072,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the origin of the T-72M1 Ajeya tank?,United Kingdom.,India.,A joint venture between India and Russia.,Soviet Union.,D,,98
+OBJ-073,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the origin of the T-55 battle tank?,Soviet Union.,India.,A joint venture between India and Russia.,United States.,A,,99
+OBJ-074,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the origin of the BMP-2 Sarath?,India.,Soviet Union.,A joint venture between India and Israel.,United Kingdom.,B,,100
+OBJ-075,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the BRDM-2?,A US-origin armoured personnel carrier.,An indigenously developed light tank of Indian origin.,An amphibious armoured reconnaissance vehicle of Soviet origin.,A French-origin reconnaissance vehicle.,C,,101
+OBJ-076,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the FH77/B Howitzer commonly known as?,Dhanush.,Pinaka.,Smerch.,Bofors.,D,,102
+OBJ-077,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is Smerch?,A multiple rocket launcher system of Russian origin used by India.,An Israeli-origin loitering munition used by India.,An indigenously developed multi-barrel rocket launcher.,A French-origin self-propelled howitzer.,A,,103
+OBJ-078,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Easy,Which two countries collaborated to create the BrahMos missile?,India and Israel.,India and Russia.,India and France.,India and the United States.,B,,104
+OBJ-079,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,What type of missile is BrahMos?,A short-range ballistic missile.,A subsonic anti-ship cruise missile.,A supersonic ramjet cruise missile.,An intercontinental ballistic missile.,C,,105
+OBJ-080,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the range of the Agni-I ballistic missile?,"5,000 to 8,000 kilometers.",150 to 250 kilometers.,"2,000 to 3,500 kilometers.",700 to 800 kilometers.,D,,106
+OBJ-081,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the range of the Agni-II ballistic missile?,"2,000 to 3,500 kilometers.",700 to 800 kilometers.,"3,500 to 5,000 kilometers.","5,000 to 8,000 kilometers.",A,,107
+OBJ-082,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the range of the Agni-III ballistic missile?,"2,000 to 3,500 kilometers.","3,500 to 5,000 kilometers.","5,000 to 8,000 kilometers.",700 to 800 kilometers.,B,,108
+OBJ-083,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What type of missile is Akash?,A submarine-launched ballistic missile.,An anti-tank guided missile developed by India.,A surface-to-air missile developed by India.,A supersonic cruise missile jointly developed with Russia.,C,,109
+OBJ-084,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What type of missile is Trishul?,An anti-tank guided missile.,A medium-range surface-to-air missile.,A submarine-launched cruise missile.,A short-range surface-to-air missile developed by India.,D,,110
+OBJ-085,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the Prithvi Air Defence (PAD)?,An anti-ballistic missile system for outside the atmosphere interception.,An endo-atmospheric interceptor missile system.,A short-range surface-to-air missile.,A submarine-launched ballistic missile.,A,,111
+OBJ-086,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the Advanced Air Defence (AAD)?,An exo-atmospheric interceptor missile for outside the atmosphere.,An anti-ballistic missile system for endo-atmospheric interception.,A short-range tactical ballistic missile.,A man-portable air-defence system.,B,,112
+OBJ-087,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,What is the Tejas?,An unmanned combat aerial vehicle.,A twin-engine heavy multirole fighter jet.,An indigenously developed multi-role light combat aircraft.,A turboprop advanced jet trainer.,C,,113
+OBJ-088,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,Which is the primary air superiority fighter of the Indian Air Force?,SEPECAT Jaguar.,HAL Tejas.,Dassault Mirage 2000.,Sukhoi Su-30MKI.,D,,114
+OBJ-089,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the Dassault Mirage 2000 known as in the IAF?,Vajra.,Garuda.,Bahadur.,Shamsher.,A,,115
+OBJ-090,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the SEPECAT Jaguar known as in the IAF?,Vajra.,Shamsher.,Garuda.,Bahadur.,B,,116
+OBJ-091,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the BAE Hawk Mk 132 used for?,It serves as India's primary air superiority fighter.,It serves as a heavy-lift transport aircraft.,It serves as an advanced jet trainer in the Indian Air Force.,It serves as an airborne early warning platform.,C,,117
+OBJ-092,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the Ilyushin Il-76?,An aerial refuelling tanker aircraft.,A dedicated maritime patrol aircraft.,A medium-range tactical transport aircraft.,A heavy military transport aircraft used by the Indian Air Force.,D,,118
+OBJ-093,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,Name a heavy-lift helicopter operated by the Indian Air Force.,The Mil Mi-26.,The Mil Mi-17.,The HAL Dhruv.,The Mil Mi-35.,A,,119
+OBJ-094,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,Name an attack helicopter operated by the Indian Air Force.,The Mil Mi-26.,The Mil Mi-35.,The HAL Chetak.,The Boeing Chinook.,B,,120
+OBJ-095,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,Name two Unmanned Aerial Vehicles (UAVs) used by the IAF for reconnaissance.,IAI Harop and Harpy.,DRDO Rustom and Nishant.,IAI Searcher II and IAI Heron.,Predator and Global Hawk.,C,,121
+OBJ-096,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the IAI Harpy used for by the Indian Air Force?,It is a trainer UAV used to train operators.,It is a reconnaissance UAV used for battlefield surveillance.,It is a heavy-lift transport UAV.,It is an Unmanned Combat Aerial Vehicle designed to attack radar systems.,D,,122
+OBJ-097,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the DRDO Lakshya?,A pilotless target aircraft used as a towed aerial sub-target for live fire training.,An armed combat UAV used for precision strikes.,A long-endurance surveillance drone.,A heavy-lift cargo UAV.,A,,123
+OBJ-098,Forge_Objective_Content_Cleaned.csv,Defence Awareness,,MCQ,Easy,Name the aircraft carrier currently active in the Indian Navy.,INS Viraat and INS Vikrant.,INS Vikramaditya and INS Vikrant,INS Vikrant and INS Chakra.,INS Vikramaditya and INS Viraat.,B,,124
+OBJ-099,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Medium,From which country did India purchase the INS Vikramaditya?,United Kingdom.,France.,Russia.,United States.,C,,125
+OBJ-100,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is INS Chakra?,A conventional submarine built with German collaboration.,An indigenously built ballistic missile submarine.,A diesel-electric submarine purchased from France.,A nuclear-powered attack submarine leased from Russia.,D,,126
+OBJ-101,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is INS Arihant?,An indigenously built nuclear-powered ballistic missile submarine.,A nuclear-powered attack submarine leased from Russia.,A diesel-electric submarine built with French collaboration.,A conventional submarine of Soviet origin.,A,,127
+OBJ-102,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is MARCOS?,The Marine Commando Force of the Indian Navy.,"The Marine Commando Force, a special operations unit of the Indian Navy.",The Special Frontier Force under the Cabinet Secretariat.,The Parachute Regiment's special forces wing.,B,,128
+OBJ-103,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Garud Commando Force?,The special operations unit of the Indian Navy.,The special operations unit of the Indian Army.,The special operations unit of the Indian Air Force.,The special operations wing of the Border Security Force.,C,,129
+OBJ-104,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the Sagarika missile?,A supersonic anti-ship cruise missile.,A land-based intercontinental ballistic missile.,A short-range surface-to-air missile.,An oceanic submarine-launched ballistic missile (SLBM).,D,,130
+OBJ-105,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the Klub SS-N-27?,A foreign-made cruise missile system used by the Indian Navy.,A Russian-origin cruise missile system used by the Indian Navy.,An indigenously developed anti-ship missile.,A French-origin torpedo system.,A,,131
+OBJ-106,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is the Nirbhay?,An indigenously developed subsonic cruise missile.,An indigenously developed sub-sonic cruise missile system of India.,A supersonic cruise missile jointly developed with Russia.,A submarine-launched ballistic missile.,B,,132
+OBJ-107,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What is Sangraha in the context of the Indian Navy?,A satellite communication network for the Indian Navy.,A joint electronic warfare programme of DRDO and the Indian Navy.,A joint electronic warfare programme of the DRDO and the Indian Navy.,A coastal radar surveillance chain.,C,,133
+OBJ-108,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,What does NEWN stand for in the Indian Navy?,Network for Early Warning and Navigation.,National Emergency Warning Network.,Naval Electronic Warfare Node.,Navy Enterprise Wide Network.,D,,134
+OBJ-109,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Hard,Where is the Naval Institute of Computer Applications located?,Mumbai.,Kochi.,Visakhapatnam.,Kolkata.,A,,135
+OBJ-110,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Hard,What is COMCASA?,A pact enabling secure communications compatibility between India and the US.,A communications compatibility pact between India and the US for secure military hardware.,A logistics-sharing agreement between India and the US.,A civil nuclear cooperation agreement between India and the US.,B,,136
+OBJ-111,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Hard,What is LEMOA?,The communications security pact between India and the US.,The Logistics Exchange Memorandum of Agreement between India and the US.,The Logistics Exchange Memorandum of Agreement signed between India and the US in 2016.,The foundational defence framework agreement between India and the US.,C,,137
+OBJ-112,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Hard,What is the 123 Agreement?,The Communications Compatibility and Security Agreement.,The US-India Civil Nuclear Agreement.,The Logistics Exchange Memorandum of Agreement.,The US-India Civil Nuclear Agreement signed to facilitate civilian nuclear trade.,D,,138
+OBJ-113,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Medium,What is the NSG?,"The Nuclear Suppliers Group, a multinational export-control cartel for nuclear technologies.",The Nuclear Suppliers Group.,The International Atomic Energy Agency.,The Missile Technology Control Regime.,A,,139
+OBJ-114,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Medium,What is the IAEA?,The International Atomic Energy Agency.,"The International Atomic Energy Agency, which assists member states with safe nuclear technologies.",The Nuclear Suppliers Group.,The Comprehensive Test Ban Treaty Organization.,B,,140
+OBJ-115,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Easy,What was the Rafale Deal?,An agreement to purchase Su-30MKI fighters from Russia.,An agreement to purchase 36 Dassault Rafale fighter aircraft from France.,An agreement between India and France for the purchase of 36 Dassault Rafale fighter aircraft.,An agreement to jointly develop a fighter jet with the US.,C,,141
+OBJ-116,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,Who is known as the Missile Man of India?,Dr. Raja Ramanna.,Dr. Vikram Sarabhai.,Dr. Homi Bhabha.,Dr. APJ Abdul Kalam.,D,,142
+OBJ-117,Forge_Objective_Content_Cleaned.csv,Indian Armed Forces,,MCQ,Medium,What is the Territorial Army?,A reserve force of volunteers who receive brief military training for emergency mobilization.,A reserve force of volunteers for emergency mobilisation.,The regular standing infantry reserve of the Indian Army.,A paramilitary force under the Ministry of Home Affairs.,A,,143
+OBJ-118,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,What is DRDO?,Defence Research and Development Organisation.,"Defence Research and Development Organisation, responsible for developing military technology in India.",Directorate of Research and Defence Operations.,Defence Research and Deployment Organisation.,B,,144
+OBJ-119,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,What is the motto of the National Cadet Corps (NCC)?,"Nation First, Always First.",Service before self.,Unity and Discipline.,Shatrujeet.,C,,145
+OBJ-120,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,When is NCC Day celebrated?,26th January.,The fourth Sunday of November.,The first Sunday of December.,The fourth Sunday of November every year.,D,,146
+OBJ-121,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,What is Aadhaar?,A 12-digit unique identity number issued to Indian residents by UIDAI.,A 12-digit unique identity number issued by UIDAI.,A 10-digit tax identification number issued by the Income Tax Department.,A biometric ration card number issued by state governments.,A,,147
+OBJ-122,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,When was the Unique Identification Authority of India (UIDAI) established?,August 2015.,January 2009.,March 2011.,November 2006.,B,,148
+OBJ-123,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the primary objective of Swachh Bharat Abhiyan?,To provide clean drinking water to rural households.,To clean India's infrastructure and eradicate open defecation.,To clean India's infrastructure and completely eradicate open defecation.,To promote renewable energy adoption nationwide.,C,,149
+OBJ-124,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the NRC?,National Registry of Compliance.,National Register of Citizens.,National Resident Card.,"National Register of Citizens, maintained to identify illegal immigrants in India.",D,,150
+OBJ-125,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the UDAN scheme?,A Regional Connectivity Scheme aimed at making air travel affordable for common citizens.,A Regional Connectivity Scheme for affordable air travel.,A scheme to modernise national highways.,A rural electrification scheme.,A,,151
+OBJ-126,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Easy,What does the acronym UDAN stand for?,Udaan Bharat Abhiyan.,Ude Desh ka Aam Naagrik.,Unnat Disha Aam Naagrik.,Uday Desh Aam Nirman.,B,,152
+OBJ-127,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is Mission Indradhanush?,A nutrition scheme targeting maternal health.,A health initiative to boost routine immunisation coverage.,A health initiative to step up routine immunisation for vaccine-preventable diseases in children.,A sanitation drive to reduce waterborne diseases.,C,,153
+OBJ-128,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the Goods and Services Tax Network (GSTN)?,A tribunal for resolving GST disputes.,A non-profit body that built the IT backbone for GST.,A regulatory authority overseeing GST rates.,A non-profit organisation formed to create the IT network for GST.,D,,154
+OBJ-129,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Hard,Which company developed the software for the Goods and Services Tax Network (GSTN)?,Infosys Technologies.,Tata Consultancy Services.,Wipro Technologies.,HCL Technologies.,A,,155
+OBJ-130,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the objective of the Pravasi Kaushal Vikas Yojana?,To provide skill training to Indian youth for overseas employment.,To provide skill training to Indian youth seeking overseas employment.,To provide pensions to retired overseas Indian workers.,To regulate recruitment agencies for foreign jobs.,B,,156
+OBJ-131,Forge_Objective_Content_Cleaned.csv,Indian Constitution,,MCQ,Hard,On what date did the Supreme Court of India declare the practice of instant triple talaq unconstitutional?,24 August 2017.,6 September 2018.,22 August 2017.,9 November 2019.,C,,157
+OBJ-132,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Hard,What does BMMA stand for?,Bharatiya Mahila Adhikar Andolan.,Bharatiya Mahila Mukti Andolan.,Bharatiya Muslim Manavata Andolan.,Bharatiya Muslim Mahila Andolan.,D,,158
+OBJ-133,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Medium,Which emerging economies largely lead the G20 block?,"India, China, and Brazil.","India, Japan, and Brazil.","China, Russia, and South Africa.","India, Russia, and Japan.",A,,159
+OBJ-134,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Hard,Name four member countries of the Shanghai Cooperation Organisation (SCO).,"China, Pakistan, Russia, and Iran.","China, Russia, Kazakhstan, and Uzbekistan.","Russia, Kazakhstan, Turkey, and Iran.","India, China, Russia, and Pakistan.",B,,160
+OBJ-135,Forge_Objective_Content_Cleaned.csv,International Relations,,MCQ,Hard,What does ITER stand for?,Indian Thermal Energy Research Reactor.,International Treaty on Emission Reduction.,International Thermonuclear Experimental Reactor.,International Test and Evaluation Range.,C,,161
+OBJ-136,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is the difference between a gun and a rifle?,"A gun always has a smoothbore barrel, unlike a rifle.",A gun and a rifle are identical terms for the same weapon.,A rifle is any firearm larger than a pistol.,A gun is a general term for projectile weapons; a rifle has spiral grooves inside its barrel.,D,,162
+OBJ-137,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Hard,Which country originally developed the Kriss Vector submachine gun?,Switzerland.,United States.,Israel.,Germany.,A,,163
+OBJ-138,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Easy,How many engines does the Dassault Rafale fighter have?,One engine.,Two engines.,Three engines.,Four engines.,B,,164
+OBJ-139,Forge_Objective_Content_Cleaned.csv,General Awareness,,MCQ,Medium,What is the principle of buoyancy?,The downward force exerted by gravity on a floating object.,The upward force exerted by a fluid opposing the weight of an immersed object.,The upward force exerted by a fluid that opposes the weight of an immersed object.,The frictional force resisting motion through a fluid.,C,,165
+OBJ-140,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is a frigate?,A slow supply vessel used for logistics support.,A fast warship for protecting other vessels from submarines and aircraft.,A heavily armoured warship built for coastal bombardment.,"A fast, maneuverable naval warship used to protect other vessels from submarines and aircraft.",D,,166
+OBJ-141,Forge_Objective_Content_Cleaned.csv,Defence Technology,,MCQ,Medium,What is a corvette?,"A small, highly maneuverable, and lightly armed warship, typically smaller than a frigate.","A small, lightly armed warship smaller than a frigate.",A large capital warship bigger than a destroyer.,An unarmed naval support vessel.,A,,167
+OBJ-142,Forge_Objective_Content_Cleaned.csv,Indian Constitution,,MCQ,Easy,What does the Right to Education Act ensure?,It makes education a fundamental right for children.,It makes education a fundamental right for children in India.,It mandates free higher education for all citizens.,It establishes a national curriculum board.,B,,168
+OBJ-143,Forge_Objective_Content_Cleaned.csv,Military Awareness,,MCQ,Medium,What was the primary cause of the 1999 Kargil conflict?,A border skirmish over river-water sharing.,Infiltration by Pakistani soldiers and militants across the LoC.,Infiltration by Pakistani soldiers and militants into the Indian side of the Line of Control.,A coup attempt by Pakistani military commanders.,C,,169
+SD001,Forge_Master_Content.csv,Self Opinion,Self Description,Self Description,Medium,What do you think of yourself?,,,,,,,1
+SD002,Forge_Master_Content.csv,Parents Opinion,Self Description,Self Description,Medium,What do your parents think of you?,,,,,,,2
+SD003,Forge_Master_Content.csv,Friends Opinion,Self Description,Self Description,Medium,What do your friends think of you?,,,,,,,3
+SD004,Forge_Master_Content.csv,Teachers Opinion,Self Description,Self Description,Medium,What do your teachers or employer think of you?,,,,,,,4
+SD005,Forge_Master_Content.csv,Life Goals,Self Description,Self Description,Medium,What kind of person do you want to become in life?,,,,,,,5
+SD006,Forge_Master_Content.csv,Life Goals,Self Description,Self Description,Medium,What qualities would you like to improve in yourself?,,,,,,,6
+SD007,Forge_Master_Content.csv,Friends Opinion,Self Description,Self Description,Medium,What is one quality your best friends would like you to change?,,,,,,,7
+SD008,Forge_Master_Content.csv,Parents Opinion,Self Description,Self Description,Medium,What two things does your mother advise you to improve?,,,,,,,8
+SD009,Forge_Master_Content.csv,Friends Opinion,Self Description,Self Description,Medium,What suggestions do your close friends give you for self-improvement?,,,,,,,9
+SD010,Forge_Master_Content.csv,Parents Opinion,Self Description,Self Description,Medium,"If your family could change one quality in you, what would it be?",,,,,,,10
+LECT0001,Forge_Master_Content.csv,Oil,Lecturette,Lecturette,High,Global Oil Crisis,,,,,,,1
+LECT0002,Forge_Master_Content.csv,Power,Lecturette,Lecturette,High,Nuclear Energy / Nuclear power,,,,,,,2
+LECT0003,Forge_Master_Content.csv,Pakistan,Lecturette,Lecturette,High,Indo-Pak Peace Process,,,,,,,3
+LECT0004,Forge_Master_Content.csv,USA,Lecturette,Lecturette,High,Indo-US Relations / India's relationship :future,,,,,,,4
+LECT0005,Forge_Master_Content.csv,WMD,Lecturette,Lecturette,High,Weapons of Mass Destruction,,,,,,,5
+LECT0006,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,High,Indian Economy,,,,,,,6
+LECT0007,Forge_Master_Content.csv,Nuclear,Lecturette,Lecturette,High,Indo-US Nuclear Deal,,,,,,,7
+LECT0008,Forge_Master_Content.csv,Pakistan,Lecturette,Lecturette,High,Indo-Pak Relations,,,,,,,8
+LECT0009,Forge_Master_Content.csv,War,Lecturette,Lecturette,High,Wars with Pakistan,,,,,,,9
+LECT0010,Forge_Master_Content.csv,Energy,Lecturette,Lecturette,High,Energy Crisis,,,,,,,10
+LECT0011,Forge_Master_Content.csv,Budget,Lecturette,Lecturette,High,Defence Budget,,,,,,,11
+LECT0012,Forge_Master_Content.csv,Development,Lecturette,Lecturette,High,India as a Superpower,,,,,,,12
+LECT0013,Forge_Master_Content.csv,USA,Lecturette,Lecturette,High,COMCASA,,,,,,,13
+LECT0014,Forge_Master_Content.csv,China,Lecturette,Lecturette,High,String of Pearls,,,,,,,14
+LECT0015,Forge_Master_Content.csv,IOR,Lecturette,Lecturette,High,Indian Ocean Region,,,,,,,15
+LECT0016,Forge_Master_Content.csv,UNSC,Lecturette,Lecturette,High,UN Security Council,,,,,,,16
+LECT0017,Forge_Master_Content.csv,Cybersecurity,Lecturette,Lecturette,High,Ethical Hacking,,,,,,,17
+LECT0018,Forge_Master_Content.csv,Law,Lecturette,Lecturette,High,Food Security Bill,,,,,,,18
+LECT0019,Forge_Master_Content.csv,China,Lecturette,Lecturette,High,Indo-China Relations,,,,,,,19
+LECT0020,Forge_Master_Content.csv,Cleanliness,Lecturette,Lecturette,High,Swachh Bharat Abhiyan,,,,,,,20
+LECT0021,Forge_Master_Content.csv,Digital,Lecturette,Lecturette,High,Digital India Mission,,,,,,,21
+LECT0022,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,High,Demonetisation,,,,,,,22
+LECT0023,Forge_Master_Content.csv,Urbanization,Lecturette,Lecturette,High,Smart City Project,,,,,,,23
+LECT0024,Forge_Master_Content.csv,Transport,Lecturette,Lecturette,High,Bullet Train,,,,,,,24
+LECT0025,Forge_Master_Content.csv,Citizenship,Lecturette,Lecturette,High,NRC,,,,,,,25
+LECT0026,Forge_Master_Content.csv,Borders,Lecturette,Lecturette,High,India's neighbors,,,,,,,26
+LECT0027,Forge_Master_Content.csv,Security,Lecturette,Lecturette,High,Terrorism a global threat / Terrorism,,,,,,,27
+LECT0028,Forge_Master_Content.csv,Law,Lecturette,Lecturette,High,Judicial reforms,,,,,,,28
+LECT0029,Forge_Master_Content.csv,Law,Lecturette,Lecturette,High,Police reforms,,,,,,,29
+LECT0030,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,High,Globalization,,,,,,,30
+LECT0031,Forge_Master_Content.csv,Borders,Lecturette,Lecturette,High,Kashmir problem,,,,,,,31
+LECT0032,Forge_Master_Content.csv,Nuclear,Lecturette,Lecturette,High,CTBT and India,,,,,,,32
+LECT0033,Forge_Master_Content.csv,Law,Lecturette,Lecturette,High,Uniform civil code,,,,,,,33
+LECT0034,Forge_Master_Content.csv,Science,Lecturette,Lecturette,High,Cloning,,,,,,,34
+LECT0035,Forge_Master_Content.csv,Water,Lecturette,Lecturette,High,River water disputes,,,,,,,35
+LECT0036,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,High,Inflation,,,,,,,36
+LECT0037,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,High,FDI,,,,,,,37
+LECT0038,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,High,Do we need more states?,,,,,,,38
+LECT0039,Forge_Master_Content.csv,Military,Lecturette,Lecturette,High,AFSPA,,,,,,,39
+LECT0040,Forge_Master_Content.csv,Kashmir,Lecturette,Lecturette,High,Article 370,,,,,,,40
+LECT0041,Forge_Master_Content.csv,Security,Lecturette,Lecturette,High,Naxalism problem,,,,,,,41
+LECT0042,Forge_Master_Content.csv,South Asia,Lecturette,Lecturette,High,SAARC,,,,,,,42
+LECT0043,Forge_Master_Content.csv,Religion,Lecturette,Lecturette,Medium,Indian Religion,,,,,,,43
+LECT0044,Forge_Master_Content.csv,Culture,Lecturette,Lecturette,Medium,Indian Culture,,,,,,,44
+LECT0045,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Women in Society / Status of women in India,,,,,,,45
+LECT0046,Forge_Master_Content.csv,Village,Lecturette,Lecturette,Medium,Rural Society,,,,,,,46
+LECT0047,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,Smoking by Women,,,,,,,47
+LECT0048,Forge_Master_Content.csv,Peace,Lecturette,Lecturette,Medium,Communal Harmony,,,,,,,48
+LECT0049,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,Medium,Democracy,,,,,,,49
+LECT0050,Forge_Master_Content.csv,Media,Lecturette,Lecturette,Medium,Importance of TV / Role of media,,,,,,,50
+LECT0051,Forge_Master_Content.csv,Farming,Lecturette,Lecturette,Medium,Agriculture in India,,,,,,,51
+LECT0052,Forge_Master_Content.csv,Population,Lecturette,Lecturette,Medium,Family Planning / Population explosion,,,,,,,52
+LECT0053,Forge_Master_Content.csv,Environment,Lecturette,Lecturette,Medium,Global Warming,,,,,,,53
+LECT0054,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Sex Education,,,,,,,54
+LECT0055,Forge_Master_Content.csv,Internet,Lecturette,Lecturette,Medium,Social Networking Sites,,,,,,,55
+LECT0056,Forge_Master_Content.csv,Fashion,Lecturette,Lecturette,Medium,Indian Fashion Industry,,,,,,,56
+LECT0057,Forge_Master_Content.csv,Finance,Lecturette,Lecturette,Medium,E-banking,,,,,,,57
+LECT0058,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Brain Drain,,,,,,,58
+LECT0059,Forge_Master_Content.csv,Wildlife,Lecturette,Lecturette,Medium,Declining Tiger Population in India,,,,,,,59
+LECT0060,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Women in Corporate India,,,,,,,60
+LECT0061,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Women in Armed Forces,,,,,,,61
+LECT0062,Forge_Master_Content.csv,Society,Lecturette,Lecturette,Medium,Social Issues of India,,,,,,,62
+LECT0063,Forge_Master_Content.csv,Crime,Lecturette,Lecturette,Medium,Crime Against Women,,,,,,,63
+LECT0064,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,Medium,Unemployment / Unemployment in India,,,,,,,64
+LECT0065,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,Primary Healthcare in India,,,,,,,65
+LECT0066,Forge_Master_Content.csv,Movies,Lecturette,Lecturette,Medium,Cinema Today,,,,,,,66
+LECT0067,Forge_Master_Content.csv,Bollywood,Lecturette,Lecturette,Medium,Indian Film Industry,,,,,,,67
+LECT0068,Forge_Master_Content.csv,TV,Lecturette,Lecturette,Medium,Reality Shows,,,,,,,68
+LECT0069,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Privatisation of Education,,,,,,,69
+LECT0070,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Literacy Rate in India,,,,,,,70
+LECT0071,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,Child Mortality,,,,,,,71
+LECT0072,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Declining Sex Ratio,,,,,,,72
+LECT0073,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,Drug Abuse,,,,,,,73
+LECT0074,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,Medium,Religion in Politics,,,,,,,74
+LECT0075,Forge_Master_Content.csv,Crime,Lecturette,Lecturette,Medium,Criminalisation of Politics,,,,,,,75
+LECT0076,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Women Empowerment,,,,,,,76
+LECT0077,Forge_Master_Content.csv,Journalism,Lecturette,Lecturette,Medium,Indian Media,,,,,,,77
+LECT0078,Forge_Master_Content.csv,ISRO,Lecturette,Lecturette,Medium,Indian Space Programme / Space research in India,,,,,,,78
+LECT0079,Forge_Master_Content.csv,Defense,Lecturette,Lecturette,Medium,Indian Missile Programme / Missile development in India,,,,,,,79
+LECT0080,Forge_Master_Content.csv,Corruption,Lecturette,Lecturette,Medium,Corruption in modern India,,,,,,,80
+LECT0081,Forge_Master_Content.csv,Environment,Lecturette,Lecturette,Medium,Pollution,,,,,,,81
+LECT0082,Forge_Master_Content.csv,Water,Lecturette,Lecturette,Medium,Water shortage,,,,,,,82
+LECT0083,Forge_Master_Content.csv,Energy,Lecturette,Lecturette,Medium,Non-conventional energy,,,,,,,83
+LECT0084,Forge_Master_Content.csv,Safety,Lecturette,Lecturette,Medium,Disaster management,,,,,,,84
+LECT0085,Forge_Master_Content.csv,Women,Lecturette,Lecturette,Medium,Female infanticide,,,,,,,85
+LECT0086,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Educating a girl child,,,,,,,86
+LECT0087,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,AIDS,,,,,,,87
+LECT0088,Forge_Master_Content.csv,Children,Lecturette,Lecturette,Medium,Child labor,,,,,,,88
+LECT0089,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,Medium,Poverty,,,,,,,89
+LECT0090,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,Medium,Reservation / Reservation for women,,,,,,,90
+LECT0091,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,Ragging,,,,,,,91
+LECT0092,Forge_Master_Content.csv,Family,Lecturette,Lecturette,Medium,Single parenting in India,,,,,,,92
+LECT0093,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Medium,Medical tourism,,,,,,,93
+LECT0094,Forge_Master_Content.csv,Economy,Lecturette,Lecturette,Medium,Tourism in India,,,,,,,94
+LECT0095,Forge_Master_Content.csv,Media,Lecturette,Lecturette,Medium,Freedom of press,,,,,,,95
+LECT0096,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,Medium,Role of opposition in democracy,,,,,,,96
+LECT0097,Forge_Master_Content.csv,Law,Lecturette,Lecturette,Medium,Human rights,,,,,,,97
+LECT0098,Forge_Master_Content.csv,LGBTQ,Lecturette,Lecturette,Medium,Gay rights,,,,,,,98
+LECT0099,Forge_Master_Content.csv,Politics,Lecturette,Lecturette,Medium,Banana government,,,,,,,99
+LECT0100,Forge_Master_Content.csv,Defense,Lecturette,Lecturette,Medium,Compulsory military training,,,,,,,100
+LECT0101,Forge_Master_Content.csv,Sports,Lecturette,Lecturette,Medium,Use of drugs in sports,,,,,,,101
+LECT0102,Forge_Master_Content.csv,Law,Lecturette,Lecturette,Medium,RTI,,,,,,,102
+LECT0103,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Medium,RTE,,,,,,,103
+LECT0104,Forge_Master_Content.csv,Education,Lecturette,Lecturette,Low,My School,,,,,,,104
+LECT0105,Forge_Master_Content.csv,Relationships,Lecturette,Lecturette,Low,Friends,,,,,,,105
+LECT0106,Forge_Master_Content.csv,Family,Lecturette,Lecturette,Low,Best Child,,,,,,,106
+LECT0107,Forge_Master_Content.csv,Memories,Lecturette,Lecturette,Low,Childhood Days,,,,,,,107
+LECT0108,Forge_Master_Content.csv,Internet,Lecturette,Lecturette,Low,E-mail,,,,,,,108
+LECT0109,Forge_Master_Content.csv,Entertainment,Lecturette,Lecturette,Low,Cinema,,,,,,,109
+LECT0110,Forge_Master_Content.csv,Tech,Lecturette,Lecturette,Low,Mobile Phone,,,,,,,110
+LECT0111,Forge_Master_Content.csv,Gaming,Lecturette,Lecturette,Low,Computer Games,,,,,,,111
+LECT0112,Forge_Master_Content.csv,Sports,Lecturette,Lecturette,Low,Cricket in India,,,,,,,112
+LECT0113,Forge_Master_Content.csv,Health,Lecturette,Lecturette,Low,Yoga,,,,,,,113
+LECT0114,Forge_Master_Content.csv,Role Model,Lecturette,Lecturette,Low,My Idol / My role model,,,,,,,114
+LECT0115,Forge_Master_Content.csv,Inspiration,Lecturette,Lecturette,Low,Personality I Like the Most,,,,,,,115
+LECT0116,Forge_Master_Content.csv,Family,Lecturette,Lecturette,Low,Role of Parents,,,,,,,116
+LECT0117,Forge_Master_Content.csv,Family,Lecturette,Lecturette,Low,Joint Family System,,,,,,,117
+LECT0118,Forge_Master_Content.csv,Proverb,Lecturette,Lecturette,Low,A friend in need is a friend indeed,,,,,,,118
+LECT0119,Forge_Master_Content.csv,Family,Lecturette,Lecturette,Low,My Father,,,,,,,119
+LECT0120,Forge_Master_Content.csv,Personal,Lecturette,Lecturette,Low,My hobby,,,,,,,120
+LECT0121,Forge_Master_Content.csv,Sports,Lecturette,Lecturette,Low,Value of sports and games,,,,,,,121
+LECT0122,Forge_Master_Content.csv,Society,Lecturette,Lecturette,Low,Generation gap,,,,,,,122
+GD0001,Forge_Master_Content.csv,Social Issues,Group Discussion,Group Discussion,Medium,In past few decades it is seen that people from Indian villages are migrating to cities very fast. According to you what is the reason behind this exodus?,,,,,,,1
+GD0002,Forge_Master_Content.csv,Social Issues,Group Discussion,Group Discussion,Medium,The corruption in public life is increased in India in past few years; this problem is growing day by day. According to you what is driving factor for the corruption in our day today life need or greed?,,,,,,,2
+GD0003,Forge_Master_Content.csv,Economy,Group Discussion,Group Discussion,Medium,"India has several states and some of them have progressed very fast, but at the same time some states have shown slow pace in development. According to you what is the basic reason for this disparity?",,,,,,,3
+GD0004,Forge_Master_Content.csv,Social Issues,Group Discussion,Group Discussion,Low,Sudden increase in divorce cases. What is the basic reason behind this?,,,,,,,4
+GD0005,Forge_Master_Content.csv,Economy,Group Discussion,Group Discussion,Medium,Causes of this growth in unemployment?,,,,,,,5
+OIR0001,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,"Drama is related to scene, in the same way as book is related to...",,,,,,,1
+OIR0002,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Waves is related to air in the same way as ripples is related to...,,,,,,,2
+OIR0003,Forge_Master_Content.csv,Analogy,OIR,OIR,Medium,"Shirt is related to button, in the same way as shoes is related to...",,,,,,,3
+OIR0004,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Cloth : Mill :: Newspaper:?,,,,,,,4
+OIR0005,Forge_Master_Content.csv,Analogy,OIR,OIR,High,GREAT : 25 :: Number : ?,,,,,,,5
+OIR0006,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Country : President :: State : ?,,,,,,,6
+OIR0007,Forge_Master_Content.csv,Analogy,OIR,OIR,Medium,Flow : River :: Stagnant : ?,,,,,,,7
+OIR0008,Forge_Master_Content.csv,Analogy,OIR,OIR,Medium,PASS : QBTT :: FAIL : ?,,,,,,,8
+OIR0009,Forge_Master_Content.csv,Analogy,OIR,OIR,Medium,Dog is to canine as wolf is to ___________,,,,,,,9
+OIR0010,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Sadness is to happiness as defeat is to ___________,,,,,,,10
+OIR0011,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,"Paper is made from timber, as ___________ is made from hide",,,,,,,11
+OIR0012,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,A Thermometer is related to Temperature as a Speedometer is to ___________,,,,,,,12
+OIR0013,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Bird is to fly as man is to ________,,,,,,,13
+OIR0014,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Milk is to White as Sky is to ___________,,,,,,,14
+OIR0015,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,Wife is to Husband as Mare is to ___________,,,,,,,15
+OIR0016,Forge_Master_Content.csv,Analogy,OIR,OIR,Low,"Rich is to Wealthy, as Mars is to ___________",,,,,,,16
+OIR0017,Forge_Master_Content.csv,Series,OIR,OIR,Medium,"48, 24, 72, 36, 108, ?",,,,,,,17
+OIR0019,Forge_Master_Content.csv,Series,OIR,OIR,High,"P256, N196, L144, J100, ?",,,,,,,18
+OIR0020,Forge_Master_Content.csv,Series,OIR,OIR,High,"Find out the wrong number in the given series: 258, 130, 66, 34, 18, 8, 6",,,,,,,19
+OIR0021,Forge_Master_Content.csv,Series,OIR,OIR,Medium,"6, 11, 21, 36, 56, ?",,,,,,,20
+OIR0022,Forge_Master_Content.csv,Series,OIR,OIR,Low,"1, ?, 27, 64, 125",,,,,,,21
+OIR0023,Forge_Master_Content.csv,Series,OIR,OIR,Medium,"10, 22, 8, 24, 6, ?",,,,,,,22
+OIR0024,Forge_Master_Content.csv,Series,OIR,OIR,Low,"Find the missing, 3,7,11,15,_,_",,,,,,,23
+OIR0025,Forge_Master_Content.csv,Series,OIR,OIR,Medium,Supply the missing numbers: 2 6 12 20 30 ? 56,,,,,,,24
+OIR0026,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Medium,In a certain code BASIC is written as DDULE. How is LEADER written in that code?,,,,,,,25
+OIR0027,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,High,In a certain code PEN is written as NZO and BARK as CTSL. How can we write PRANK in that coding system?,,,,,,,26
+OIR0028,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Medium,"If ROYAL is coded as 20-17-01-03-14, how will you code BOIL?",,,,,,,27
+OIR0029,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Medium,"If in a certain code, BAT = 23 and BALL = 27, then how will you code CAT?",,,,,,,28
+OIR0030,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Low,"If 'Room' is called as 'Book', 'Book' is called as 'Bag', 'Bag' is called as 'Mat'. Then, what is useful to carry books?",,,,,,,29
+OIR0031,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Medium,"In a certain code '467' means 'red colour chalk'; '685' means 'green colour flower' and '367' means 'white colour chalk', then what is the code for 'white'?",,,,,,,30
+OIR0032,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Medium,"If in a code language, PAINT is written as 74128 and EXCEL is written as 93596, then how will ACCEPT be written in that language?",,,,,,,31
+OIR0033,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,High,"If HKTG means Fire, what does YCVGT mean?",,,,,,,32
+OIR0034,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Low,"If 'ZYXW' is coded as 'ABCD', then 'STUV' will be coded as",,,,,,,33
+OIR0035,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,Low,"In a language A is coded as 1, B is coded as 2, then FACE is coded as",,,,,,,34
+OIR0036,Forge_Master_Content.csv,Coding-Decoding,OIR,OIR,High,"If 'Hyderabad' is coded as 'Ixedszcze', then 'Chennai' is coded as",,,,,,,35
+OIR0037,Forge_Master_Content.csv,Blood Relations,OIR,OIR,Medium,"A is the brother of B. B is the brother of C. D is the father of A. Based on these three statements, which of the following statements cannot be definitely true? (a) B is the brother of A (b) B is the son of D (c) A is the brother of C (d) C is the brother of A",,,,,,,36
+OIR0038,Forge_Master_Content.csv,Blood Relations,OIR,OIR,Medium,"Pointing to Parul, Ram said, She is daughter of the only child of my father. How is Ram's wife related to that girl?",,,,,,,37
+OIR0039,Forge_Master_Content.csv,Blood Relations,OIR,OIR,Medium,My mother's sister's husband's only son's sister is related to me as,,,,,,,38
+OIR0040,Forge_Master_Content.csv,Blood Relations,OIR,OIR,Low,A lady introduces a man as the son of the brother of her mother. How is the man related to the woman?,,,,,,,39
+OIR0041,Forge_Master_Content.csv,Blood Relations,OIR,OIR,High,"Arjun told Rachit, 'Yesterday I defeated the only brother of the daughter of my grandmother.' Whom did Arjun defeat?",,,,,,,40
+OIR0042,Forge_Master_Content.csv,Blood Relations,OIR,OIR,Medium,X and Y are children of Z. Z is the father of X but Y is not the son of Z. What is Y to Z?,,,,,,,41
+OIR0043,Forge_Master_Content.csv,Blood Relations,OIR,OIR,High,"If a party consisted of a man and his wife, their two sons and their wives and four children of each son, how many persons were there in all in the party?",,,,,,,42
+OIR0044,Forge_Master_Content.csv,Direction Sense,OIR,OIR,Medium,"Bani leaves her house and walks 5 m towards North, turns right and walks 10 m, then turns right and walks 5 m, then turns left and walks 15 m. In which direction is she now?",,,,,,,43
+OIR0045,Forge_Master_Content.csv,Direction Sense,OIR,OIR,Medium,"From her house, Seema went 15 km to the North. Then she turned West and covered 10 km. Then she turned South and covered 5 km. Finally turning to the East, she covered 10 km. In which direction is she from her house?",,,,,,,44
+OIR0046,Forge_Master_Content.csv,Direction Sense,OIR,OIR,High,A clock is so placed that at 12 : 00 noon its minute hand points towards North-East. In which direction does its hour hand point at 1:30 pm?,,,,,,,45
+OIR0047,Forge_Master_Content.csv,Direction Sense,OIR,OIR,Medium,"Vijay started walking towards South. After walking 15 m, he turned to the left and walked 15 m. He again turned to his left and walked 15 m. How far is he from his original position and in which direction?",,,,,,,46
+OIR0048,Forge_Master_Content.csv,Direction Sense,OIR,OIR,Medium,"If you start from point A and walk 4 miles towards the east, then turn left and walk 3 miles towards the north, turn left again and walk 2 miles, which choice mentions the direction in which you are going?",,,,,,,47
+OIR0049,Forge_Master_Content.csv,Classification,OIR,OIR,High,Choose the one which is different from others. (a) BYCX (b) FUHS (c) KPMN (d) IQEU,,,,,,,48
+OIR0050,Forge_Master_Content.csv,Classification,OIR,OIR,Medium,"Three out of the following four pairs of numbers have the same relationship. Find the odd one out. (a) 4, 63 (b) 1, 0 (c) 2, 15 (d) 5, 124",,,,,,,49
+OIR0051,Forge_Master_Content.csv,Classification,OIR,OIR,Medium,Which one of the following is the odd one out? (a) Babar (b) Shershah (c) Humayun (d) Akbar,,,,,,,50
+OIR0052,Forge_Master_Content.csv,Classification,OIR,OIR,Low,Select the one which is different from the other four responses. (a) Flute (b) Guitar (c) Sitar (d) Violin,,,,,,,51
+OIR0053,Forge_Master_Content.csv,Classification,OIR,OIR,Medium,"Find the odd word in each of the following lines: Needle, Tackle, Nail, Knife, Pin",,,,,,,52
+OIR0054,Forge_Master_Content.csv,Classification,OIR,OIR,Low,"Find the odd word: Circle, Square, Triangle, Hexagon, Pentagon",,,,,,,53
+OIR0055,Forge_Master_Content.csv,Non Mirror Images,OIR,OIR,Low,Choose the alternative which most closely resembles the mirror image of the given combination: TRIUMPHS,,,,,,,54
+OIR0056,Forge_Master_Content.csv,Non Mirror Images,OIR,OIR,Medium,Choose the alternative which most closely resembles the mirror image of the given combination: 73AP4OD8,,,,,,,55
+OIR0057,Forge_Master_Content.csv,Non Mirror Images,OIR,OIR,Low,Choose the alternative which shows the correct water image of the word given: FROG,,,,,,,56
+OIR0058,Forge_Master_Content.csv,Non Figure Series,OIR,OIR,High,"In a series of figures where a main geometry rotates 90 degrees anti-clockwise in each step and its shaded portions shift to the connecting lines, what constitutes the next figure logically?",,,,,,,57
+OIR0059,Forge_Master_Content.csv,Non Figure Series,OIR,OIR,High,"In a series of hexagons where two inner designs move one step clockwise and two other designs move one step anti-clockwise alternately, what constitutes the next sequence?",,,,,,,58
+OIR0060,Forge_Master_Content.csv,Non Pattern Recognition,OIR,OIR,High,A cube whose two adjacent faces are coloured is cut into 64 identical small cubes. How many of these small cubes are not coloured at all?,,,,,,,59
+OIR0061,Forge_Master_Content.csv,Non Pattern Recognition,OIR,OIR,Medium,"Two positions of a dice are shown (showing faces 5,6,4 and 2,1,5). What will be the number at the bottom, if 5 is at the top?",,,,,,,60
+OIR0062,Forge_Master_Content.csv,Non Pattern Recognition,OIR,OIR,Medium,A figure X is given followed by four figures. The candidate has to select the figure in which the problem figure X is perfectly embedded. How is this solved?,,,,,,,61
+OIR0063,Forge_Master_Content.csv,Non Pattern Recognition,OIR,OIR,Medium,A figure is given which has a definite geometric pattern but nearly a quarter of that pattern is left blank. The candidate must complete it. What is the objective?,,,,,,,62
+WAT0001,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,CAREFUL,,,,,,,1
+WAT0002,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,AGREE,,,,,,,2
+WAT0003,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,BEAUTIFUL,,,,,,,3
+WAT0004,Forge_Master_Content.csv,Determination,WAT,WAT,Hard,CANNOT,,,,,,,4
+WAT0005,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,CONFUSE,,,,,,,5
+WAT0006,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,BAD,,,,,,,6
+WAT0007,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,CROWD,,,,,,,7
+WAT0008,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Easy,COMPLETE,,,,,,,8
+WAT0009,Forge_Master_Content.csv,Power of Expression,WAT,WAT,Medium,INSTRUCTION,,,,,,,9
+WAT0010,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,CHEAT,,,,,,,10
+WAT0011,Forge_Master_Content.csv,Liveliness,WAT,WAT,Medium,ENCOURAGEMENT,,,,,,,11
+WAT0012,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,CRY,,,,,,,12
+WAT0013,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,QUALITY,,,,,,,13
+WAT0014,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,COMPANY,,,,,,,14
+WAT0015,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,HONOUR,,,,,,,15
+WAT0016,Forge_Master_Content.csv,Determination,WAT,WAT,Hard,DEFEAT,,,,,,,16
+WAT0017,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,REASON,,,,,,,17
+WAT0018,Forge_Master_Content.csv,Power of Expression,WAT,WAT,Easy,CONVERSATION,,,,,,,18
+WAT0019,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,OPPOSITION,,,,,,,19
+WAT0020,Forge_Master_Content.csv,Liveliness,WAT,WAT,Hard,DISTURB,,,,,,,20
+WAT0021,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Medium,SPEED,,,,,,,21
+WAT0022,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,COOPERATION,,,,,,,22
+WAT0023,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,PARENTS,,,,,,,23
+WAT0024,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,DREAM,,,,,,,24
+WAT0025,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Easy,SURE,,,,,,,25
+WAT0026,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,FRIENDSHIP,,,,,,,26
+WAT0027,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,SYMPATHY,,,,,,,27
+WAT0028,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,FEARFUL,,,,,,,28
+WAT0029,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,ADVERTISEMENT,,,,,,,29
+WAT0030,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,GIVE,,,,,,,30
+WAT0031,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,TEAM,,,,,,,31
+WAT0032,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,HEIGHT,,,,,,,32
+WAT0033,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,BUSY,,,,,,,33
+WAT0034,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,HELP,,,,,,,34
+WAT0035,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Medium,ASSERT,,,,,,,35
+WAT0036,Forge_Master_Content.csv,Initiative,WAT,WAT,Hard,HELPLESS,,,,,,,36
+WAT0037,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,ENFORCE,,,,,,,37
+WAT0038,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,TRUTH,,,,,,,38
+WAT0039,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,CONTRIBUTE,,,,,,,39
+WAT0040,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,HIGH,,,,,,,40
+WAT0041,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,FILMS,,,,,,,41
+WAT0042,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,UNTOUCHABILITY,,,,,,,42
+WAT0043,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,EXPLOITATION,,,,,,,43
+WAT0044,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,HINT,,,,,,,44
+WAT0045,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,LIMIT,,,,,,,45
+WAT0046,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,ALOOF,,,,,,,46
+WAT0047,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,BLESSING,,,,,,,47
+WAT0048,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,HOLIDAY,,,,,,,48
+WAT0049,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Medium,MOVEMENT,,,,,,,49
+WAT0050,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,BLUFF,,,,,,,50
+WAT0051,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,EMPLOY,,,,,,,51
+WAT0052,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,INJURED,,,,,,,52
+WAT0053,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,PRECIOUS,,,,,,,53
+WAT0054,Forge_Master_Content.csv,Initiative,WAT,WAT,Easy,BRING,,,,,,,54
+WAT0055,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,INSTRUCTOR,,,,,,,55
+WAT0056,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,LIFE,,,,,,,56
+WAT0057,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,REAL,,,,,,,57
+WAT0058,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,CLASS,,,,,,,58
+WAT0059,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,RANK,,,,,,,59
+WAT0060,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,LONELY,,,,,,,60
+WAT0061,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Medium,CHOICE,,,,,,,61
+WAT0062,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,CO-EDUCATION,,,,,,,62
+WAT0063,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Easy,CHAMPION,,,,,,,63
+WAT0064,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,DETERIORATE,,,,,,,64
+WAT0065,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,CURE,,,,,,,65
+WAT0066,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,COOPERATE,,,,,,,66
+WAT0067,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,CLEVER,,,,,,,67
+WAT0068,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,DISEASE,,,,,,,68
+WAT0069,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,DEMAND,,,,,,,69
+WAT0070,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,FRIEND,,,,,,,70
+WAT0071,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Hard,COMPEL,,,,,,,71
+WAT0072,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,DOCTOR,,,,,,,72
+WAT0073,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,FOREST,,,,,,,73
+WAT0074,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,HOME,,,,,,,74
+WAT0075,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,EARN,,,,,,,75
+WAT0076,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,LIE,,,,,,,76
+WAT0077,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,PARTIALITY,,,,,,,77
+WAT0078,Forge_Master_Content.csv,Stamina,WAT,WAT,Easy,EXERCISE,,,,,,,78
+WAT0079,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,PATRIOTISM,,,,,,,79
+WAT0080,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,LIVE,,,,,,,80
+WAT0081,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Medium,PRIDE,,,,,,,81
+WAT0082,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,PROGRESS,,,,,,,82
+WAT0083,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,OPPOSE,,,,,,,83
+WAT0084,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,RESPECT,,,,,,,84
+WAT0085,Forge_Master_Content.csv,Initiative,WAT,WAT,Hard,FIRE,,,,,,,85
+WAT0086,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Easy,BANK,,,,,,,86
+WAT0087,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,RUDE,,,,,,,87
+WAT0088,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,FUTURE,,,,,,,88
+WAT0089,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,BOOK,,,,,,,89
+WAT0090,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,SINCERITY,,,,,,,90
+WAT0091,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,ALLOW,,,,,,,91
+WAT0092,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,GET,,,,,,,92
+WAT0093,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,DARJEELING,,,,,,,93
+WAT0094,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,TEASE,,,,,,,94
+WAT0095,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,CONSOLE,,,,,,,95
+WAT0096,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,HARD WORK,,,,,,,96
+WAT0097,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,GRADUATE,,,,,,,97
+WAT0098,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,TRAITOR,,,,,,,98
+WAT0099,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,ELDERS,,,,,,,99
+WAT0100,Forge_Master_Content.csv,Stamina,WAT,WAT,Easy,HIKING,,,,,,,100
+WAT0101,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,IMAGINATION,,,,,,,101
+WAT0102,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,UNION,,,,,,,102
+WAT0103,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,NURSE,,,,,,,103
+WAT0104,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,IMPROVEMENT,,,,,,,104
+WAT0105,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,UNITY,,,,,,,105
+WAT0106,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,LIEUTENANT,,,,,,,106
+WAT0107,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Hard,LATE,,,,,,,107
+WAT0108,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,LISTEN,,,,,,,108
+WAT0109,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,VULGAR,,,,,,,109
+WAT0110,Forge_Master_Content.csv,Liveliness,WAT,WAT,Medium,SATISFY,,,,,,,110
+WAT0111,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,RULE,,,,,,,111
+WAT0112,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,WOMAN,,,,,,,112
+WAT0113,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,PRESIDENT,,,,,,,113
+WAT0114,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Hard,NERVOUS,,,,,,,114
+WAT0115,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,BRAVERY,,,,,,,115
+WAT0116,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Medium,DECIDE,,,,,,,116
+WAT0117,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,DIFFERENCE,,,,,,,117
+WAT0118,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,LESSON,,,,,,,118
+WAT0119,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,MEANING,,,,,,,119
+WAT0120,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,PRACTICAL,,,,,,,120
+WAT0121,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,REPORT,,,,,,,121
+WAT0122,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,NOVEL,,,,,,,122
+WAT0123,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Easy,PURCHASE,,,,,,,123
+WAT0124,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,FRIENDLY,,,,,,,124
+WAT0125,Forge_Master_Content.csv,Cooperation,WAT,WAT,Hard,INTERFERENCE,,,,,,,125
+WAT0126,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,PLAY,,,,,,,126
+WAT0127,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,ROMANCE,,,,,,,127
+WAT0128,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Easy,SHOW,,,,,,,128
+WAT0129,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,SMART,,,,,,,129
+WAT0130,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,SON,,,,,,,130
+WAT0131,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,ASSIST,,,,,,,131
+WAT0132,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,BEHAVIOUR,,,,,,,132
+WAT0133,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,EXCEPT,,,,,,,133
+WAT0134,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,EXCUSE,,,,,,,134
+WAT0135,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,ADMIRE,,,,,,,135
+WAT0136,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,FOLLOWER,,,,,,,136
+WAT0137,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,IMPARTIAL,,,,,,,137
+WAT0138,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,MOTHER,,,,,,,138
+WAT0139,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,PATRIOT,,,,,,,139
+WAT0140,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,PRINCIPAL,,,,,,,140
+WAT0141,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,PUNISH,,,,,,,141
+WAT0142,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,SUPPORT,,,,,,,142
+WAT0143,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,ABOVE,,,,,,,143
+WAT0144,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,MAJORITY,,,,,,,144
+WAT0145,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,CONTRIBUTION,,,,,,,145
+WAT0146,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Hard,DISMISS,,,,,,,146
+WAT0147,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,ACTIVE,,,,,,,147
+WAT0148,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,BLOOD,,,,,,,148
+WAT0149,Forge_Master_Content.csv,Determination,WAT,WAT,Hard,BREAK,,,,,,,149
+WAT0150,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,CURSE,,,,,,,150
+WAT0151,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,DESIRE,,,,,,,151
+WAT0152,Forge_Master_Content.csv,Stamina,WAT,WAT,Easy,GAME,,,,,,,152
+WAT0153,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,HIJACKING,,,,,,,153
+WAT0154,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,IMPROVE,,,,,,,154
+WAT0155,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,NECESSITY,,,,,,,155
+WAT0156,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Hard,NOTHING,,,,,,,156
+WAT0157,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,PLEASURE,,,,,,,157
+WAT0158,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,ARMY,,,,,,,158
+WAT0159,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,EDUCATED,,,,,,,159
+WAT0160,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,PROBLEM,,,,,,,160
+WAT0161,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,READ,,,,,,,161
+WAT0162,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,REMEMBER,,,,,,,162
+WAT0163,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,RIGHT,,,,,,,163
+WAT0164,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,SCORE,,,,,,,164
+WAT0165,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,TASK,,,,,,,165
+WAT0166,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,UNIVERSITY,,,,,,,166
+WAT0167,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,MACHINE GUN,,,,,,,167
+WAT0168,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,MODEL,,,,,,,168
+WAT0169,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,CHANGE,,,,,,,169
+WAT0170,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,DOUBT,,,,,,,170
+WAT0171,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,HIDE,,,,,,,171
+WAT0172,Forge_Master_Content.csv,Power of Expression,WAT,WAT,Easy,LETTER,,,,,,,172
+WAT0173,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,MODERN,,,,,,,173
+WAT0174,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,RICH,,,,,,,174
+WAT0175,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,ROGUE,,,,,,,175
+WAT0176,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,THIEF,,,,,,,176
+WAT0177,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Easy,TIDY,,,,,,,177
+WAT0178,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,DUTY,,,,,,,178
+WAT0179,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,COMMAND,,,,,,,179
+WAT0180,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,CONVINCE,,,,,,,180
+WAT0181,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,FUNNY,,,,,,,181
+WAT0182,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,HEADMASTER,,,,,,,182
+WAT0183,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,PRAISE,,,,,,,183
+WAT0184,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,PREVENT,,,,,,,184
+WAT0185,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,SCHOLARSHIP,,,,,,,185
+WAT0186,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,SELFLESS,,,,,,,186
+WAT0187,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,WELFARE,,,,,,,187
+WAT0188,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,BATCH,,,,,,,188
+WAT0189,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,ACTION,,,,,,,189
+WAT0190,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Medium,CONFIDENCE,,,,,,,190
+WAT0191,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Easy,DASH,,,,,,,191
+WAT0192,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,DIE,,,,,,,192
+WAT0193,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,EXPECT,,,,,,,193
+WAT0194,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,LITTLE,,,,,,,194
+WAT0195,Forge_Master_Content.csv,Determination,WAT,WAT,Hard,LOSS,,,,,,,195
+WAT0196,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Easy,MOVE,,,,,,,196
+WAT0197,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,MUST,,,,,,,197
+WAT0198,Forge_Master_Content.csv,Liveliness,WAT,WAT,Hard,NOISE,,,,,,,198
+WAT0199,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,OPERATION,,,,,,,199
+WAT0200,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,OVERCOME,,,,,,,200
+WAT0201,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,AMBITION,,,,,,,201
+WAT0202,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,BOARDER,,,,,,,202
+WAT0203,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,FAVOUR,,,,,,,203
+WAT0204,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,ATTACK,,,,,,,204
+WAT0205,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,ANGER,,,,,,,205
+WAT0206,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,CHILDHOOD,,,,,,,206
+WAT0207,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,HELPFUL,,,,,,,207
+WAT0208,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,COURAGE,,,,,,,208
+WAT0209,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,BLUNDER,,,,,,,209
+WAT0210,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,HERO,,,,,,,210
+WAT0211,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,DISLIKE,,,,,,,211
+WAT0212,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,OBEDIENCE,,,,,,,212
+WAT0213,Forge_Master_Content.csv,Determination,WAT,WAT,Hard,DOWN,,,,,,,213
+WAT0214,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,DISOBEY,,,,,,,214
+WAT0215,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,POWER,,,,,,,215
+WAT0216,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,EFFORT,,,,,,,216
+WAT0217,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,FIND,,,,,,,217
+WAT0218,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,DISPUTE,,,,,,,218
+WAT0219,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,FEAR,,,,,,,219
+WAT0220,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,MEND,,,,,,,220
+WAT0221,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,FEELINGS,,,,,,,221
+WAT0222,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,GOOD,,,,,,,222
+WAT0223,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,UNIFORM,,,,,,,223
+WAT0224,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,FIGHTING,,,,,,,224
+WAT0225,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,PICTURE,,,,,,,225
+WAT0226,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,NAUGHTY,,,,,,,226
+WAT0227,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,BABY,,,,,,,227
+WAT0228,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,GOAL,,,,,,,228
+WAT0229,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,PUZZLE,,,,,,,229
+WAT0230,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,CHARMING,,,,,,,230
+WAT0231,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,QUALIFICATION,,,,,,,231
+WAT0232,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,EXAMPLE,,,,,,,232
+WAT0233,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,IRRITATE,,,,,,,233
+WAT0234,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,STUDY,,,,,,,234
+WAT0235,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,ELECTION,,,,,,,235
+WAT0236,Forge_Master_Content.csv,Determination,WAT,WAT,Easy,BETTER,,,,,,,236
+WAT0237,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,UNSOCIAL,,,,,,,237
+WAT0238,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,GOVERN,,,,,,,238
+WAT0239,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Easy,LOVE,,,,,,,239
+WAT0240,Forge_Master_Content.csv,Initiative,WAT,WAT,Easy,MAKE,,,,,,,240
+WAT0241,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,DRINK,,,,,,,241
+WAT0242,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,GOVERNOR,,,,,,,242
+WAT0243,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Hard,LUCK,,,,,,,243
+WAT0244,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,CONSIDER,,,,,,,244
+WAT0245,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,CREATE,,,,,,,245
+WAT0246,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,ROSE,,,,,,,246
+WAT0247,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,BRAIN,,,,,,,247
+WAT0248,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Easy,BRIGHT,,,,,,,248
+WAT0249,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,AWARE,,,,,,,249
+WAT0250,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,ARRANGE,,,,,,,250
+WAT0251,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Easy,ACADEMY,,,,,,,251
+WAT0252,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,ASTRONOMY,,,,,,,252
+WAT0253,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Hard,ASSUMPTION,,,,,,,253
+WAT0254,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Medium,ABILITY,,,,,,,254
+WAT0255,Forge_Master_Content.csv,Reasoning Ability,WAT,WAT,Medium,ANALYSIS,,,,,,,255
+WAT0256,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Easy,ANSWER,,,,,,,256
+WAT0257,Forge_Master_Content.csv,Organising Ability,WAT,WAT,Medium,PLACEMENT,,,,,,,257
+WAT0258,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Easy,JUPITER,,,,,,,258
+WAT0259,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,AFFECTION,,,,,,,259
+WAT0260,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,DEDICATE,,,,,,,260
+WAT0261,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,ATTACHMENT,,,,,,,261
+WAT0262,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,AMICABLE,,,,,,,262
+WAT0263,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,DONOR,,,,,,,263
+WAT0264,Forge_Master_Content.csv,Liveliness,WAT,WAT,Medium,SATISFACTION,,,,,,,264
+WAT0265,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,ADOPT,,,,,,,265
+WAT0266,Forge_Master_Content.csv,Cooperation,WAT,WAT,Medium,ACCOMPANY,,,,,,,266
+WAT0267,Forge_Master_Content.csv,Self-Confidence,WAT,WAT,Medium,FAITH,,,,,,,267
+WAT0268,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,ARROGANT,,,,,,,268
+WAT0269,Forge_Master_Content.csv,Cooperation,WAT,WAT,Easy,FELLOW,,,,,,,269
+WAT0270,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,HAPPY,,,,,,,270
+WAT0271,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,LEADER,,,,,,,271
+WAT0272,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,LIVELY,,,,,,,272
+WAT0273,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,PERSUADE,,,,,,,273
+WAT0274,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,SMILE,,,,,,,274
+WAT0275,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,SUSPEND,,,,,,,275
+WAT0276,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,CHALLENGE,,,,,,,276
+WAT0277,Forge_Master_Content.csv,Speed of Decision,WAT,WAT,Medium,DECISION,,,,,,,277
+WAT0278,Forge_Master_Content.csv,Ability to Influence the Group,WAT,WAT,Medium,IMPRESS,,,,,,,278
+WAT0279,Forge_Master_Content.csv,Initiative,WAT,WAT,Medium,INITIATIVE,,,,,,,279
+WAT0280,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,CONFESS,,,,,,,280
+WAT0281,Forge_Master_Content.csv,Liveliness,WAT,WAT,Easy,CHEERFUL,,,,,,,281
+WAT0282,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,DANGER,,,,,,,282
+WAT0283,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,DETERMINE,,,,,,,283
+WAT0284,Forge_Master_Content.csv,Stamina,WAT,WAT,Medium,PHYSICAL,,,,,,,284
+WAT0285,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,ARTILLERY,,,,,,,285
+WAT0286,Forge_Master_Content.csv,Practical Work Sense,WAT,WAT,Medium,AXE,,,,,,,286
+WAT0287,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,BRAVE,,,,,,,287
+WAT0288,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Hard,KILL,,,,,,,288
+WAT0289,Forge_Master_Content.csv,Courage,WAT,WAT,Medium,BOLD,,,,,,,289
+WAT0290,Forge_Master_Content.csv,Initiative,WAT,WAT,Easy,JUMP,,,,,,,290
+WAT0291,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,BATTLE,,,,,,,291
+WAT0292,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,INFANTRY,,,,,,,292
+WAT0293,Forge_Master_Content.csv,Courage,WAT,WAT,Hard,BOMBER,,,,,,,293
+WAT0294,Forge_Master_Content.csv,Determination,WAT,WAT,Medium,OBSTACLE,,,,,,,294
+WAT0295,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,DEFENCE,,,,,,,295
+WAT0296,Forge_Master_Content.csv,Sense of Responsibility,WAT,WAT,Medium,RESPONSIBILITY,,,,,,,296
+WAT0297,Forge_Master_Content.csv,Effective Intelligence,WAT,WAT,Medium,RESOURCEFUL,,,,,,,297
+WAT0298,Forge_Master_Content.csv,Stamina,WAT,WAT,Medium,STAMINA,,,,,,,298
+WAT0299,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Medium,DEMOCRACY,,,,,,,299
+WAT0300,Forge_Master_Content.csv,Social Adaptability,WAT,WAT,Hard,SECULARISM,,,,,,,300
+SRT0001,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,supposing you are doing that and you're sending these messages on your WhatsApp group and you find there is no network in your phone what will you do,,,,,,,1
+SRT0002,Forge_Master_Content.csv,Emergency,SRT,SRT,Medium,you start looking for that pamphlet you thought it was there in that bag of yours you find somebody's taking the bag,,,,,,,2
+SRT0003,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,by the time all this is happening it's about 11:30 in the night you go to the medicine shop it is closed,,,,,,,3
+SRT0004,Forge_Master_Content.csv,Family,SRT,SRT,Low,your mother is inside your house and telling your mother and your mother has called you what will you do,,,,,,,4
+SRT0005,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"Your friend needs urgent money from you for his father's operation and you found a purse full of money along with the ID of owner, you will:",,,,,,,5
+SRT0006,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"Your captain falls ill and the team is left with no leader, you will:",,,,,,,6
+SRT0007,Forge_Master_Content.csv,Family,SRT,SRT,High,"You want to marry a girl/boy but your parents are not ready, you will:",,,,,,,7
+SRT0008,Forge_Master_Content.csv,Emergency,SRT,SRT,Low,"You fall ill before your exams, you will:",,,,,,,8
+SRT0009,Forge_Master_Content.csv,Decision Making,SRT,SRT,High,"You have to attend the marriage of a friend's sister in another city, just one day before when you have to leave your other good friend arrives and tells he/she has to stay at your home and has some work in your city. You will:",,,,,,,9
+SRT0010,Forge_Master_Content.csv,Emergency,SRT,SRT,High,In a moving train you see a thief snatch away a women's purse and jump out of the train. You will:,,,,,,,10
+SRT0011,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,While going on trekking in midway you come to know that the person responsible for bringing the food packets has forgot to bring. You being the leader of the group will:,,,,,,,11
+SRT0012,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,High,While going for exam you see an injured person lying on the road. You will:,,,,,,,12
+SRT0013,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,You are very successful and have many jealous people who you suspect are planning against you. You will:,,,,,,,13
+SRT0014,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"He and his friend are standing on a bridge over a river. His friend who does not know swimming, suddenly falls down.",,,,,,,14
+SRT0015,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He and his brother have gone to a forest; they lose their way and it is becoming dark.,,,,,,,15
+SRT0016,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,High,"While going to attend an important meeting, he saw a ghastly accident between an auto rickshaw and a tonga.",,,,,,,16
+SRT0017,Forge_Master_Content.csv,Ethics,SRT,SRT,High,"His father has fixed his marriage with a rich girl, but he is in love with his classmate. He has never disobeyed his father. His girlfriend on the other hand, says that if he does not marry her, she will commit suicide.",,,,,,,17
+SRT0018,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Medium,His exams are starting next week and he is not fully prepared. His father's fast friend suddenly comes to the house and there is no one else to look after him.,,,,,,,18
+SRT0019,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"His parents have gone to their relatives, leaving him behind with his younger brother. After midnight, his younger brother develops very high fever and there is no medicine in the house. It is raining very heavily.",,,,,,,19
+SRT0020,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,High,"He was studying late in the night and at around 2 am, he sees a man's shadow entering his neighbour's house through the ventilator. His exam is starting the next day.",,,,,,,20
+SRT0021,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Medium,Two groups are quarrelling over a religious problem. And he belongs to the minority group.,,,,,,,21
+SRT0022,Forge_Master_Content.csv,Disaster Management,SRT,SRT,High,A fire broke out in the village due to a short circuit at night. He is the only electrician in the village.,,,,,,,22
+SRT0023,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,"While studying, he is taking tuitions side by side. But his parents and friends are advising him to leave the tuitions as he is not getting sufficient time to study for examinations. His financial condition is quite weak.",,,,,,,23
+SRT0024,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"While going on a boat in the river Ganga, he falls down in the fast currents. He does not know how to swim.",,,,,,,24
+SRT0025,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"He is in the bathroom and has latched the door and is about to take a bath. Suddenly, a black cobra comes through the drain and lies in front of him.",,,,,,,25
+SRT0026,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Medium,He finds that his girlfriend is moving with his rival.,,,,,,,26
+SRT0027,Forge_Master_Content.csv,Decision Making,SRT,SRT,High,"While going for his exam, he finds a person who has just fallen down from a moving bus.",,,,,,,27
+SRT0028,Forge_Master_Content.csv,Family,SRT,SRT,Medium,He returns late at night from NCC camp and his stepmother does not open the door of the house.,,,,,,,28
+SRT0029,Forge_Master_Content.csv,Disaster Management,SRT,SRT,High,There is a flood in his village and many houses have fallen down. His house is about to collapse and it is late at night.,,,,,,,29
+SRT0030,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"Some persons are climbing a mountain, but one of them loses his grip on the rope and falls down.",,,,,,,30
+SRT0031,Forge_Master_Content.csv,Disaster Management,SRT,SRT,High,"He has gone to the coastal area with a group of friends for sightseeing. Suddenly, a storm starts approaching. The tide is rising.",,,,,,,31
+SRT0032,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,He is working in an organisation and one of his close friends in the same office is being harassed by his boss.,,,,,,,32
+SRT0033,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,His final degree exams are starting tomorrow and he also has a job call tomorrow. He is in great need of a job.,,,,,,,33
+SRT0034,Forge_Master_Content.csv,Disaster Management,SRT,SRT,Medium,"He has arranged a party on his lawn and suddenly, it starts raining very heavily. He has a large number of guests, who have already arrived.",,,,,,,34
+SRT0035,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He has arranged a party to please his boss on his promotion. The party is half way when someone close to him conveys some bad news.,,,,,,,35
+SRT0036,Forge_Master_Content.csv,Family,SRT,SRT,Medium,"At a party hosted by him on his promotion, his boss gets annoyed due to the sarcastic remarks of his elder brother and he leaves the party without having a meal.",,,,,,,36
+SRT0037,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Medium,"While going to college, he finds that a cyclist has been knocked down by a fast-moving car, but he could not note down the number of the car.",,,,,,,37
+SRT0038,Forge_Master_Content.csv,Ethics,SRT,SRT,High,"At his friend's marriage, his friend and his father got annoyed due to non-receipt of dowry. They both went away even after a lot of requests were made by all...",,,,,,,38
+SRT0039,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"He was taking his father for treatment in a wheelchair. While coming out of the house, he slipped on a banana peel and fractured his hip joint. It is raining heavily and no conveyance is available nearby.",,,,,,,39
+SRT0040,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Medium,"In the cinema hall, he is sitting in the last row and watching the movie. Some bad elements are teasing a girl in the front row.",,,,,,,40
+SRT0041,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He is travelling in a taxi to catch a train. The taxi moving ahead of him throws out a person and drives away.,,,,,,,41
+SRT0042,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Medium,He has to go with his friend to play a hockey match in the city. His friend does not turn up and both tyres of his scooter are flat.,,,,,,,42
+SRT0043,Forge_Master_Content.csv,Ethics,SRT,SRT,High,"He finds ten people quarrelling over a purse fallen from a bus. The police have reached the spot. On seeing the police, the others run away and he is found with the purse by the police. They take him to the police station.",,,,,,,43
+SRT0044,Forge_Master_Content.csv,Time Pressure,SRT,SRT,High,"While going to attend the SSB, he loses all his belongings including his ticket and SSB papers in the train, when he went to the toilet. The destination is just 5 km away.",,,,,,,44
+SRT0045,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"While returning from a late show, he finds that two boys armed with a knife are molesting a girl and she is crying. The road is quite lonely.",,,,,,,45
+SRT0046,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"He has to deposit his exam fee after two days, but his friend demanded money today, as he needed it urgently. He is very poor.",,,,,,,46
+SRT0047,Forge_Master_Content.csv,Emergency,SRT,SRT,Medium,"While climbing a mountain, he finds that one of his teammates has sprained his ankle and cannot move.",,,,,,,47
+SRT0048,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,"While going on a picnic on a cycle, his cycle gets punctured in a jungle and no help is readily available. All other cycles are already overloaded.",,,,,,,48
+SRT0049,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Medium,"His friend is extremely poor, but good in studies. He can't pay his fees. His own financial condition is also not very sound, but he wants to help his friend.",,,,,,,49
+SRT0050,Forge_Master_Content.csv,Family,SRT,SRT,High,"His marriage has been fixed, but just a week prior to the marriage, the girl meets with an accident and loses one eye.",,,,,,,50
+SRT0051,Forge_Master_Content.csv,Time Pressure,SRT,SRT,High,"He is to catch a train, but the coolie has disappeared with the baggage. The train is about to leave.",,,,,,,51
+SRT0052,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,"He lends some money to his friend. Now, he needs this money badly, but the friend is not in a position to pay.",,,,,,,52
+SRT0053,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"He is the leader of the hiking party, but due to some reasons, two persons of the party want to return halfway through the hike.",,,,,,,53
+SRT0054,Forge_Master_Content.csv,Family,SRT,SRT,High,"His mother is seriously ill, but his boss has refused to give him leave.",,,,,,,54
+SRT0055,Forge_Master_Content.csv,Family,SRT,SRT,Low,"His parents have asked him to return early in the evening, but his friends want to celebrate a late evening party.",,,,,,,55
+SRT0056,Forge_Master_Content.csv,Military Context,SRT,SRT,Medium,"His brother is leaving for USA after one week, but he has to report for duty in an army unit deployed on the border area.",,,,,,,56
+SRT0057,Forge_Master_Content.csv,Emergency,SRT,SRT,High,The river is in spate and the bridge over the river has been washed away. It is getting dark. He has to reach home with medicine for his aged mother who has a heart problem.,,,,,,,57
+SRT0058,Forge_Master_Content.csv,Leadership,SRT,SRT,High,"He is the manager of a factory, facing serious labour problems. His sister's marriage is after one week and he cannot leave the station.",,,,,,,58
+SRT0059,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"Two officers, under whom he is working, are not on good terms and hence, he is getting contradictory instructions.",,,,,,,59
+SRT0060,Forge_Master_Content.csv,Ethics,SRT,SRT,High,"He is returning from a movie. On the way, he is stopped by the police and during the search of his scooter, two packets of charas are found.",,,,,,,60
+SRT0061,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"At midnight, two young persons enter his house and hold him at gunpoint. They need shelter for the night. Their clothes are blood-stained and they appear to have been involved in a murder.",,,,,,,61
+SRT0062,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He went to Shimla on a pleasure trip. There he finds that all his items have been stolen.,,,,,,,62
+SRT0063,Forge_Master_Content.csv,Emergency,SRT,SRT,High,The dacoits have sent a warning to the village headman to hand over 2 lakh or face consequences. The villagers cannot arrange even half of it. He happens to be the village headman's son.,,,,,,,63
+SRT0064,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"While travelling in a bus at night, miscreants stop the bus. They start looting it and two persons start molesting two young girls. The miscreants are fully armed.",,,,,,,64
+SRT0065,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"He is contesting the college elections. But all the girls are with his opponent, who is utilising them to snatch his votes.",,,,,,,65
+SRT0066,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"At midnight, he hears a female voice close to his house. Apparently, she is in a terrified state.",,,,,,,66
+SRT0067,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,The college students are about to call a strike and they want him to join them.,,,,,,,67
+SRT0068,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Medium,His best friend confronts him in front of everyone and accuses him of instigating his girlfriend against him.,,,,,,,68
+SRT0069,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He has gone on a cycling expedition with six persons but two cycles have got punctured on a deserted/isolated patch.,,,,,,,69
+SRT0070,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,"His call for the SSB has come for the 10th of this month but on the same day, he has an interview with an MNC. His best friend is also getting married the same day.",,,,,,,70
+SRT0071,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Low,"In the SSB, he finds that no one is talking to him. Today is the first day.",,,,,,,71
+SRT0072,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He has been kidnapped and taken to a jungle. The kidnappers have asked him to sign a note for his father to send 10 lakh as ransom.,,,,,,,72
+SRT0073,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,Two of his best friends are quarrelling with each other.,,,,,,,73
+SRT0074,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"In the train, two dacoits are looting everybody. They demanded his belongings also.",,,,,,,74
+SRT0075,Forge_Master_Content.csv,Military Context,SRT,SRT,Medium,"In NCC camp on guard duty, he finds two strangers approaching the camp at night.",,,,,,,75
+SRT0076,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"He, as in-charge of the picnic, has gone halfway with the picnic party and finds that food packets and the music system have been left behind.",,,,,,,76
+SRT0077,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He is staying in a rented accommodation with six other students. The landlady is quite rude to him only and has issued an ultimatum to him to vacate her accommodation.,,,,,,,77
+SRT0078,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"In the circus show, two lions go out of control and jump on the crowd.",,,,,,,78
+SRT0079,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"At an exhibition, a fake company is attracting crowds by false propaganda. He knows the reality.",,,,,,,79
+SRT0080,Forge_Master_Content.csv,Family,SRT,SRT,Medium,His father has decided to change his will in the name of his younger brother.,,,,,,,80
+SRT0081,Forge_Master_Content.csv,Ethics,SRT,SRT,Low,"He and his girlfriend want to see a new movie, but the show is housefull. Tickets are available in black. His girlfriend insists on seeing the movie.",,,,,,,81
+SRT0082,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Medium,There is a dispute between two of his friends and they want him as the mediator. He has to go out for some urgent work of his father.,,,,,,,82
+SRT0083,Forge_Master_Content.csv,Emergency,SRT,SRT,High,His neighbour's son has fallen into the river flowing nearby. He is not on talking terms with him. No adults are available to save the child.,,,,,,,83
+SRT0084,Forge_Master_Content.csv,Time Pressure,SRT,SRT,High,"His mother has to go to a famous temple located in a lonely area, and he has to go for an exam. There is no one in the house and no other conveyance is available on the lonely road.",,,,,,,84
+SRT0085,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He has to go to attend the SSB after two days at Bengaluru from Delhi but there is a railway strike.,,,,,,,85
+SRT0086,Forge_Master_Content.csv,Emergency,SRT,SRT,Medium,"He has gone for a picnic with boys and girls in two buses. After the picnic was over at 3 pm, he found that all four tyres of one of the buses were punctured and the other bus driver was missing.",,,,,,,86
+SRT0087,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"At the railway station, he finds a beggar shivering with cold. He is going to meet his relative and is wearing only pants and a pullover.",,,,,,,87
+SRT0088,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"He wants to organise a cricket match at his college, but his opponent has approached the authorities for a hockey match.",,,,,,,88
+SRT0089,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"At the college gate, he finds an unclaimed bag. The bag contains explosives, but before he can take any action, people see him with the bag. They are suspecting him and hence want to take him to the police station.",,,,,,,89
+SRT0090,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He is driving down with his family members from a hill station and the brakes of the vehicle fail.,,,,,,,90
+SRT0091,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"His sister has gone to meet her friend in Nagaland. The friend came to receive her at the bus stop. The friend picked up his sister's suitcase and went ahead. His sister was enjoying the beauty of the place. In the meanwhile, she saw 50 Nagas approach her. They were barely 20 yards away.",,,,,,,91
+SRT0092,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"While delivering a lecture, he finds the audience is not showing any interest.",,,,,,,92
+SRT0093,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,"He cannot find any job due to massive unemployment. But he is still keen on finding a job and working. His father asks him to join his business, which he has refused many times earlier.",,,,,,,93
+SRT0094,Forge_Master_Content.csv,Ethics,SRT,SRT,High,"In a drought-affected area, the relief is coming but not reaching the affected persons. He is a social worker.",,,,,,,94
+SRT0095,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"He is walking on the street and suddenly finds that his sister's chain has been snatched and his purse is stolen. Before he could decide on any course of action, one lady has been stabbed and her car has collided with an auto rickshaw. Two people are injured seriously.",,,,,,,95
+SRT0096,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"His team is to play a match after five minutes, but the players do not seem to be in good shape. During the interval he comes to know that most of the players were given toxic material in sweets just before the start of the match by his opponent.",,,,,,,96
+SRT0097,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He is going in a boat alone. He finds a person struggling and is about to drown. He is not a very good swimmer.,,,,,,,97
+SRT0098,Forge_Master_Content.csv,Disaster Management,SRT,SRT,Medium,A fire breaks out in the neighbourhood. He sees enough people are already fighting the fire.,,,,,,,98
+SRT0099,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,"If, in a group, his opinion differs from that of other members, he...",,,,,,,99
+SRT0100,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"The vice chancellor is to visit his college to preside over a function. He was asked to make arrangements for it. But now, the charge is being given to another person.",,,,,,,100
+SRT0101,Forge_Master_Content.csv,Military Context,SRT,SRT,High,"During an army attachment camp, his batch of volunteers declared a strike because of the rude behaviour of a Junior Commissioned Officer and so he...",,,,,,,101
+SRT0102,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"He was a member of the cricket team and once, the captain did not turn up for the match.",,,,,,,102
+SRT0103,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,"His captain was injured before a crucial match, he was asked to lead the match.",,,,,,,103
+SRT0104,Forge_Master_Content.csv,Decision Making,SRT,SRT,Low,He was on his way to home and suddenly it started raining heavily.,,,,,,,104
+SRT0105,Forge_Master_Content.csv,Family,SRT,SRT,Medium,His brother wants to get admission in a medical college but his marks falls short by 1% for admission.,,,,,,,105
+SRT0106,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He has to go to a city with cash for work but the way is dangerous because of dacoits.,,,,,,,106
+SRT0107,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He was travelling by a train & suddenly a person snatches purse from lady & jumps out of train.,,,,,,,107
+SRT0108,Forge_Master_Content.csv,Decision Making,SRT,SRT,High,"He is going to sign a contract, suddenly he got news that one of his friend who had helped him once, met an accident and is in ICU.",,,,,,,108
+SRT0109,Forge_Master_Content.csv,Decision Making,SRT,SRT,Medium,He had boarded a wrong train and came to know only when he was asked to pay money to TT.,,,,,,,109
+SRT0110,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,He saw his girlfriend walking with another person on his way.,,,,,,,110
+SRT0111,Forge_Master_Content.csv,Ethics,SRT,SRT,Low,He was driving the bike without helmet and the traffic police caught him.,,,,,,,111
+SRT0112,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He was in charge of wireless board in a sailing ship which lost its communication with the coast.,,,,,,,112
+SRT0113,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Medium,He went for the picnic with his friends and on the way he had hot arguments with them.,,,,,,,113
+SRT0114,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,"There is a person who sells smuggled goods. He too, like many others, have purchased a wristwatch from him. But it doesn't work.",,,,,,,114
+SRT0115,Forge_Master_Content.csv,Decision Making,SRT,SRT,Low,He urgently needed money.,,,,,,,115
+SRT0116,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Low,He is getting late in reaching meeting.,,,,,,,116
+SRT0117,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,He find his hostel roommate not very friendly with him.,,,,,,,117
+SRT0118,Forge_Master_Content.csv,Family,SRT,SRT,High,His mom is seriously ill and his boss doesn't grant leave.,,,,,,,118
+SRT0119,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,His friend was copying from book in examination hall.,,,,,,,119
+SRT0120,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"During a trekking trip, he was left alone in the jungle.",,,,,,,120
+SRT0121,Forge_Master_Content.csv,Decision Making,SRT,SRT,Low,"He was weak in studies, and knew that he could not do well in his education.",,,,,,,121
+SRT0122,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He was playing outdoor and his brother got seriously injured and it started to rain heavily.,,,,,,,122
+SRT0123,Forge_Master_Content.csv,Disaster Management,SRT,SRT,Medium,He had exams the next day & the road to his school was flooded with continuous rain for last two days.,,,,,,,123
+SRT0124,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He was walking on a dark street with his girlfriend then suddenly 10 armed people came & started harassing his girlfriend. The next police station was 10 km away.,,,,,,,124
+SRT0125,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,His friend was always quarrelling with him and the papers were near.,,,,,,,125
+SRT0126,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Medium,"His boss gives a piece of work and orders him to follow his instructions to complete the work, but the work is difficult to finish within time.",,,,,,,126
+SRT0127,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"He saw a snake moving near to the bed while his younger brother was sleeping, when he enters his room.",,,,,,,127
+SRT0128,Forge_Master_Content.csv,Military Context,SRT,SRT,High,He received an urgent order from his commander. But he feel that order passed on to him is wrong.,,,,,,,128
+SRT0129,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He is driving a car on highway at full speed suddenly brakes fail.,,,,,,,129
+SRT0130,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,His joke was well meant but still his friend became angry.,,,,,,,130
+SRT0131,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,In free period he wanted to study but his friends were continuously disturbing him.,,,,,,,131
+SRT0132,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Medium,In a fit of anger his friend hit him.,,,,,,,132
+SRT0133,Forge_Master_Content.csv,Emergency,SRT,SRT,High,While hunting he and his brother lost way in dark (night) in jungle and he has no light.,,,,,,,133
+SRT0134,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,He is serving under two senior officers who always give conflicting orders.,,,,,,,134
+SRT0135,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,Generally people don't listen to his argument.,,,,,,,135
+SRT0136,Forge_Master_Content.csv,Time Pressure,SRT,SRT,Low,He went to library for a very urgent book and found that all its copies were already issued to others.,,,,,,,136
+SRT0137,Forge_Master_Content.csv,Decision Making,SRT,SRT,Low,He was not getting enough salary for his job.,,,,,,,137
+SRT0138,Forge_Master_Content.csv,Emergency,SRT,SRT,High,The sea was very rough and it was night. Ship duty officer fell in sea while taking a round.,,,,,,,138
+SRT0139,Forge_Master_Content.csv,Emergency,SRT,SRT,High,The tractor dashed against a fast moving truck and the driver were thrown off into ditches. He was just away from it.,,,,,,,139
+SRT0140,Forge_Master_Content.csv,Ethics,SRT,SRT,Medium,As monitor of his class he had to put up the names of those who had not done their homework. His friend was also a culprit.,,,,,,,140
+SRT0141,Forge_Master_Content.csv,Family,SRT,SRT,Medium,His father needed treatment and he was short of money.,,,,,,,141
+SRT0142,Forge_Master_Content.csv,Family,SRT,SRT,Medium,He returns late in night from NCC camp. His step mother did not allowed him to enter the house.,,,,,,,142
+SRT0143,Forge_Master_Content.csv,Emergency,SRT,SRT,High,On opening the door of his bathroom in his room he finds a big snake hanging from the ceiling.,,,,,,,143
+SRT0144,Forge_Master_Content.csv,Emergency,SRT,SRT,High,All his family members are ill and his father is out of town. There is no money in the home.,,,,,,,144
+SRT0145,Forge_Master_Content.csv,Family,SRT,SRT,Medium,He was forced by his father to join the Railways but he was really not of his interest.,,,,,,,145
+SRT0146,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,They decide to give a treat to their retiring professor. He wants to give a dinner party whilies his friends want just a tea-party.,,,,,,,146
+SRT0147,Forge_Master_Content.csv,Leadership,SRT,SRT,Medium,The leader of his trekking team decides to take a longer route when time is running out.,,,,,,,147
+SRT0148,Forge_Master_Content.csv,Emergency,SRT,SRT,High,"They are climbing a steep wall with help of ropes & some of them reach the top, when the rope gives away.",,,,,,,148
+SRT0149,Forge_Master_Content.csv,Team Conflict,SRT,SRT,Low,His friends' are having heated arguments over a point.,,,,,,,149
+SRT0150,Forge_Master_Content.csv,Family,SRT,SRT,High,He is in final year BA and his father lost the job and his family facing money problems.,,,,,,,150
+SRT0151,Forge_Master_Content.csv,Social Responsibility,SRT,SRT,Medium,He is going to market with his sister and some boys start doing mischief with his sister.,,,,,,,151
+SRT0152,Forge_Master_Content.csv,Emergency,SRT,SRT,High,He are walking down the road one fine afternoon and a man steals a lady's hand bag and in the process stabs the lady.,,,,,,,152
+PI0001,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Tell me how do you travel from your home to here,,,,,,,3
+PI0002,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Talk to me a little more about your daily routine on a typical working day which could be Monday to Friday or Monday to Saturday and how is that routine different on a Sunday or a holiday,,,,,,,4
+PI0003,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,How do you think you performed what is your experience like,,,,,,,5
+PI0004,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Tell me something about yourself?,,,,,,,6
+PI0005,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,What is the meaning of your name?,,,,,,,7
+PI0006,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Which is your native place?,,,,,,,8
+PI0007,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Tell me something about your home town.,,,,,,,9
+PI0008,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,What are the population/ language/ important features/ tourist places of your place?,,,,,,,10
+PI0009,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,What things do you like about your native place?,,,,,,,11
+PI0010,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,How would you describe yourself?,,,,,,,12
+PI0011,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,"What is the meaning of your name, good and bad qualities of family members, your strengths weaknesses etc.?",,,,,,,13
+PI0012,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Does taking coaching or following a website dedicated to SSB helps?,,,,,,,14
+PI0013,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,What do you do to keep yourself fit? If run/jog then calculate the speed.,,,,,,,15
+PI0014,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,"Are you in a relationship? If yes then how intimate if no then why, are you homosexual?",,,,,,,16
+PI0015,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,What kind of guy/girl would you like to marry?,,,,,,,17
+PI0016,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Suppose if God appears in front of you and asks you to change something from your past what will you wish for?,,,,,,,18
+PI0017,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Let me know something about lakau,,,,,,,19
+PI0018,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,How many places you have explored till now in lak now,,,,,,,20
+PI0019,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Tell me your routine of working days and routine of holidays,,,,,,,21
+PI0020,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Compare Varanasi with pragaraj,,,,,,,22
+PI0021,Forge_Master_Content.csv,Self Introduction,Personal Interview,Personal Interview,Medium,Please tell me what are some of the things that you would like to do for fun and recreation outside your working place?,,,,,,,23
+PI0022,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Tell me something about your parents aric your father your mother you have a younger brother your younger brother what do you like about them what you not like about them if there is one quality in each of them you want to change which is that quality,,,,,,,24
+PI0023,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,If you have a secret to tell who will you tell father mother,,,,,,,25
+PI0024,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Tell me one secret you told your father and not told your mother,,,,,,,26
+PI0025,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,What is your mother/father's educational qualification?,,,,,,,27
+PI0026,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,What is the job of your mother/father?,,,,,,,28
+PI0027,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,What is the monthly income of your family?,,,,,,,29
+PI0028,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,How many brothers and sisters do you have? What is their qualification? What are they doing presently?,,,,,,,30
+PI0029,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,"Now I would be interested to know about your family. Suppose you tell me about your parents i.e. about your father and mother, their occupation, how do you spend time together, your activities at home, about other members of your family like brothers, sisters, and grandparents.",,,,,,,31
+PI0030,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Whom do you approach for help when you have problems and you want to confide.,,,,,,,32
+PI0031,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Normally what are the activities in which you get personally involved with your family?,,,,,,,33
+PI0032,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Who is stricter in your family? An example for the same.,,,,,,,34
+PI0033,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,How's your bonding with your parents and uh with your sibling,,,,,,,35
+PI0034,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Make comparison between you and your sister who personality is better,,,,,,,36
+PI0035,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Tell me two good qualities of your sister and two bad qualities that you don't like in her,,,,,,,37
+PI0036,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,Tell me two qualities of your father that you don't like,,,,,,,38
+PI0037,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,To whom you love more your mother or father,,,,,,,39
+PI0038,Forge_Master_Content.csv,Family,Personal Interview,Personal Interview,Medium,"Now I will be interested to know about your family. You please tell me about your parents, i.e. about your father and mother, their occupation, the other members of your family like brother, sister, grandparents, etc. How do you spend time together, your activities at home, whom do you approach for help when you have problems or when you want to confide someone?",,,,,,,40
+PI0039,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,How many friends do you have what kind of friends are there what do you do with your friends tell me three specific activities and moments in those activities that you felt were the most memorable or most interesting and please tell me one naughty thing you've done with your friends,,,,,,,41
+PI0040,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,Tell me one quality in you each of your three best friends will change,,,,,,,42
+PI0041,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,How do you decide your friends?,,,,,,,43
+PI0042,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,How many friends do you have?,,,,,,,44
+PI0043,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,How have you helped your friend in their time of need?,,,,,,,45
+PI0044,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,"Among your friends, to whom do you share your personal things?",,,,,,,46
+PI0045,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,How would your friends describe you?,,,,,,,47
+PI0046,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,Similarities and differences between you and your lover.,,,,,,,48
+PI0047,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,Tell me how many friends that you made during that uh 10th class till 12th class,,,,,,,49
+PI0048,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,Tell me something about your best friend,,,,,,,50
+PI0049,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,What best friend gives you two suggestions what say about you,,,,,,,51
+PI0050,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,What was so important what you she should come and meet you,,,,,,,52
+PI0051,Forge_Master_Content.csv,Friends,Personal Interview,Personal Interview,Medium,"Who are your friends in neighborhood and what social, cultural or other activities you have undertaken in their company?",,,,,,,53
+PI0052,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Starting from 8th standard hardik tell me something about the school you went the marks you got the subjects you liked the subjects you did not like in your academic career,,,,,,,54
+PI0053,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Name three teachers that you think were the most impressive teachers why do you think these three teachers have impressed you so much tell me one sentence about each of them,,,,,,,55
+PI0054,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Name three teachers that have impressed you less and tell me one sentence about each of them also,,,,,,,56
+PI0055,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Tell me any one principle in physics chemistry or mathematics you like the best,,,,,,,57
+PI0056,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Tell me one concern you told her,,,,,,,58
+PI0057,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Which school and college did you attend from primary to graduate level?,,,,,,,59
+PI0058,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,What is your favourite area of study/subject?,,,,,,,60
+PI0059,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Which teacher do you like very much and why?,,,,,,,61
+PI0060,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Tell me about your specific achievements during your study.,,,,,,,62
+PI0061,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Did you choose your area of study or group of study by yourself or did you do that by compulsion?,,,,,,,63
+PI0062,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,"How much did you score in your tenth, twelfth, college?",,,,,,,64
+PI0063,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,What is the reason behind your poor grades?,,,,,,,65
+PI0064,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,"Tell me about your education starting from middle school level, say 8th standard onwards, and working up to your present level of education.",,,,,,,66
+PI0065,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Let me know about your uh education is starting from 9th onwards uh like uh you opted subject science background why you oped science subject,,,,,,,67
+PI0066,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,How many exams you appeared after class 12th,,,,,,,68
+PI0067,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Tell me uh who is your best teacher and tell me your favorite subject also,,,,,,,69
+PI0068,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,Tell me your best moment and your memorable moment during your school days,,,,,,,70
+PI0069,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,If you run 2 kilm in 15 minutes how many kilometers per hour are you running,,,,,,,71
+PI0070,Forge_Master_Content.csv,Education,Personal Interview,Personal Interview,Medium,"Please tell me about your education starting from middle school level, say class VIII onwards working up to your present level of education. I would be interested in the subject you liked best, those you did not care much about, grades achieved in examinations, efforts put in towards extracurricular/co-curricular activities that were available in your school, the events you took part in, any special achievements in the fields.",,,,,,,72
+PI0071,Forge_Master_Content.csv,NCC,Personal Interview,Personal Interview,Medium,Why you haven't joined NCC?,,,,,,,73
+PI0072,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What have you been doing the last one year did you take admission somewhere if so where if you did not why not did you appear for JE if you did what was your score if you did not why not,,,,,,,74
+PI0073,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,Tell me three specific things you doing to prepare for the SSB,,,,,,,75
+PI0074,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What is your current occupation?,,,,,,,76
+PI0075,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,"Presently, what are you doing?",,,,,,,77
+PI0076,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,Why are you interested in working for this company?,,,,,,,78
+PI0077,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What position do you serve in your company?,,,,,,,79
+PI0078,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What is the nature of your work?,,,,,,,80
+PI0079,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,How much is the turnover/sales of your company?,,,,,,,81
+PI0080,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What are the future prospects of yours?,,,,,,,82
+PI0081,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,Why do you want to leave your current job?,,,,,,,83
+PI0082,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What are your long range goals?,,,,,,,84
+PI0083,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,Why aren't you focusing on earning more money at this stage of your career,,,,,,,85
+PI0084,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,How have you prepared for SSB?,,,,,,,86
+PI0085,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What special preparation you have done this time to ensure success?,,,,,,,87
+PI0086,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What are your other career options?,,,,,,,88
+PI0087,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,How is your higher education plan after 12th class,,,,,,,89
+PI0088,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,What is your priority J or NDA,,,,,,,90
+PI0089,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,If you're not selected in this attempt what is the next plan,,,,,,,91
+PI0090,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,Tell me something you finished your graduation few months back 6 months back what have you been doing the last 6 months what are your plans for the next 6 months 1 year 2 years,,,,,,,92
+PI0091,Forge_Master_Content.csv,Career Goals,Personal Interview,Personal Interview,Medium,"Please begin by telling me about your job/previous job, what duties did you perform? What were your likes/dislikes about this job? What were your working conditions and earnings?",,,,,,,93
+PI0092,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,Do you think you're physically fit,,,,,,,94
+PI0093,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,What are your strengths and weaknesses?,,,,,,,95
+PI0094,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,What motivates you to do your best on the job?,,,,,,,96
+PI0095,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,Tell me about your ability to work under pressure.,,,,,,,97
+PI0096,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,Why should we select you?,,,,,,,98
+PI0097,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,What motivates you?,,,,,,,99
+PI0098,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,What have you done specifically yes so that you could get recommended tell me three specific things you've done to improve yourself,,,,,,,100
+PI0099,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,What is it that you can do which will convince me that you're physically fit,,,,,,,101
+PI0100,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,Tell me one place where you have used these qualities that you spoke about,,,,,,,102
+PI0101,Forge_Master_Content.csv,Strengths,Personal Interview,Personal Interview,Medium,Please tell me what you feel are the strong points or assets in your personality and what would you like to improve or develop further?,,,,,,,103
+PI0102,Forge_Master_Content.csv,Weaknesses,Personal Interview,Personal Interview,Medium,Tell me what you cannot do but you want to do,,,,,,,104
+PI0103,Forge_Master_Content.csv,Weaknesses,Personal Interview,Personal Interview,Medium,If there's one quality in you each of them would like to change which is that quality,,,,,,,105
+PI0104,Forge_Master_Content.csv,Weaknesses,Personal Interview,Personal Interview,Medium,Tell me two fears of your life things that you offra of,,,,,,,106
+PI0105,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,Tell me a situation when you had to work in a team environment. How was your performance?,,,,,,,107
+PI0106,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,What role do you play while playing?,,,,,,,108
+PI0107,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,What are the duties of a captain?,,,,,,,109
+PI0108,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,What's the most difficult part of being a captain?,,,,,,,110
+PI0109,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,Do you prefer to work independently or on a team?,,,,,,,111
+PI0110,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,"If you are doing a job, what problems do you face? How you tackle them?",,,,,,,112
+PI0111,Forge_Master_Content.csv,Leadership,Personal Interview,Personal Interview,Medium,Tell me any one Brave or courageous thing you've done in the last six months,,,,,,,113
+PI0112,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,What if you don't get recommended?,,,,,,,114
+PI0113,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,What is your greatest failure and what did you learn from it?,,,,,,,115
+PI0114,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,Why did you fail last time (Repeaters)?,,,,,,,116
+PI0115,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,What was the reason that you got rejected in your previous attempt and how did you overcome,,,,,,,117
+PI0116,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,How many times were you screened out,,,,,,,118
+PI0117,Forge_Master_Content.csv,Failure,Personal Interview,Personal Interview,Medium,Why do you think you got screened out,,,,,,,119
+PI0118,Forge_Master_Content.csv,Success,Personal Interview,Personal Interview,Medium,Tell me an example of an important goal you set and how you achieved it.,,,,,,,120
+PI0119,Forge_Master_Content.csv,Success,Personal Interview,Personal Interview,Medium,Describe the biggest challenge you have had in your job and how you handled it?,,,,,,,121
+PI0120,Forge_Master_Content.csv,Success,Personal Interview,Personal Interview,Medium,What are your two accomplishments at your present job?,,,,,,,122
+PI0121,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,How much pocket money did you get when you were in college and how did you utilise it?,,,,,,,123
+PI0122,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,How can you say that you are responsible? Give few incidents from your life to show that you are responsible.,,,,,,,124
+PI0123,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,"How do you meet monetary requirements, i.e. how much pocket money do you get and how do you spend it.",,,,,,,125
+PI0124,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,Tell me your participation in other activities in your school how many responsibilities you took over,,,,,,,126
+PI0125,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,How many years responsibilities you take over at home in his absence,,,,,,,127
+PI0126,Forge_Master_Content.csv,Responsibility,Personal Interview,Personal Interview,Medium,What is your average monthly expenditure in the last 12 months and give me a breakdown of last month's expenditure,,,,,,,128
+PI0127,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Tell me one string of one names of all the six strings of the guitar,,,,,,,129
+PI0128,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Show me with your fingers F cord how will you show it,,,,,,,130
+PI0129,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What activities do you do on your holidays?,,,,,,,131
+PI0130,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What is your favourite hobby and why?,,,,,,,132
+PI0131,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,How long do you have this as a hobby?,,,,,,,133
+PI0132,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Describe about the things that you have learned from your hobby.,,,,,,,134
+PI0133,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Give details of your extra-curricular activities.,,,,,,,135
+PI0134,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Why did you not continue this activity?,,,,,,,136
+PI0135,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What is your favourite outdoor/indoor game?,,,,,,,137
+PI0136,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What level have you played to?,,,,,,,138
+PI0137,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,"What is the size of the ground, number of players, equipment and terminology of the game?",,,,,,,139
+PI0138,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Who/what are your favourite team/players?,,,,,,,140
+PI0139,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What is your best memory of the game?,,,,,,,141
+PI0140,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What good books have you read lately?,,,,,,,142
+PI0141,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What's the theme of this book?,,,,,,,143
+PI0142,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,Let me know your hobby is your interest in how many games you participated,,,,,,,144
+PI0143,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,"Now please tell me, how do you spend your spare time? What are your interests and hobbies, sports and games you have taken part in, both in your daily routine and on a working day and on a holiday?",,,,,,,145
+PI0144,Forge_Master_Content.csv,Hobbies,Personal Interview,Personal Interview,Medium,What are your reading habits and TV watching habits?,,,,,,,146
+PI0145,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,Why India is not doing well in football?,,,,,,,147
+PI0146,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What do you mean by Global warming?,,,,,,,148
+PI0147,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What is greenhouse effect?,,,,,,,149
+PI0148,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What is Bal Shree Award?,,,,,,,150
+PI0149,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What is Sarva Shiksha Abhiyaan?,,,,,,,151
+PI0150,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What do you think are the problems in school education system in India?,,,,,,,152
+PI0151,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,What are the problems of textile industry in India?,,,,,,,153
+PI0152,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,View about Indo-Pak relations.,,,,,,,154
+PI0153,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,Reasons and views on fall of currency value in India.,,,,,,,155
+PI0154,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,"About issues/happenings in Middle East, Afghanistan, West Asia, or any major country in the world",,,,,,,156
+PI0155,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,If you were made the Prime Minister of India what will you do regarding Pakistan issue?,,,,,,,157
+PI0156,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,Basic geography like neighboring countries of India such as the water bodies surrounding India or the southern-most point of India?,,,,,,,158
+PI0157,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,"Recent national, international and sports news.",,,,,,,159
+PI0158,Forge_Master_Content.csv,Current Affairs,Personal Interview,Personal Interview,Medium,If I ask you what are five major problems India is facing what will you tell me,,,,,,,160
+PI0159,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Tell me one practical use of Third Law of Newton in that is you would find being used in the Indian army,,,,,,,161
+PI0160,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What makes Indian soldier different,,,,,,,162
+PI0161,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Name any three guns you're a fan of,,,,,,,163
+PI0162,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What's the difference between a gun and a rifle,,,,,,,164
+PI0163,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Who makes ak-203,,,,,,,165
+PI0164,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Who makes m416,,,,,,,166
+PI0165,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What is Chris vctor,,,,,,,167
+PI0166,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What are the qualities of an army officer or what are the qualities that are required in a person to join the Armed Forces?,,,,,,,168
+PI0167,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What are the types of RADARS used by IAF?,,,,,,,169
+PI0168,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What is the minimum length of antenna required to catch FM signal?,,,,,,,170
+PI0169,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,How many Tejas and Rafael we are going to have?,,,,,,,171
+PI0170,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Is the deal of Dassault Rafael beneficial to India and why?,,,,,,,172
+PI0171,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What are FGFA and MRCA? In what category Tejas will come?,,,,,,,173
+PI0172,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Tell 10 features of TEJAS.,,,,,,,174
+PI0173,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,According to you what improvements are required in the Indian Air Force/Army/Navy at present?,,,,,,,175
+PI0174,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What are the differences between a cruise and ballistic missile? Name them and their differences?,,,,,,,176
+PI0175,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,"What do you know about Air Force, Army, Navy (new knowledge other than commands, ranks etc.).",,,,,,,177
+PI0176,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,The difference between a fighter and an attack plane.,,,,,,,178
+PI0177,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,About AWACS/AWECS.,,,,,,,179
+PI0178,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Recent defense deals and up gradations.,,,,,,,180
+PI0179,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Tell me any one principle of physical physics that can be applied to the naval worship,,,,,,,181
+PI0180,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,What is the difference between a frigate a destroyer and a Corvette,,,,,,,182
+PI0181,Forge_Master_Content.csv,Defence Awareness,Personal Interview,Personal Interview,Medium,Name any three types of AO engines,,,,,,,183
+PI0182,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Why do you want to join the Army,,,,,,,184
+PI0183,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Which part of the army do you want to join,,,,,,,185
+PI0184,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Why do you want to join the force?,,,,,,,186
+PI0185,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,How do you feel about the work environment in the armed force?,,,,,,,187
+PI0186,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,What will be your contribution to IAF after becoming an officer?,,,,,,,188
+PI0187,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,If you have done graduation in some discipline then why do you want to leave that field and enter into a field (defense) where most of your knowledge will not be used?,,,,,,,189
+PI0188,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Your reason for joining the forces (practical reason).,,,,,,,190
+PI0189,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,"Considering the recent mishaps in Navy/Army/Air Force, if your parents don't allow you to join the same how will you convince them?",,,,,,,191
+PI0190,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Who suggested you to apply for the Armed Forces India,,,,,,,192
+PI0191,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Tell me Regiment of your father and from where you got motivation to join Indian army,,,,,,,193
+PI0192,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Why Navy,,,,,,,194
+PI0193,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Tell me three things you would get in Navy and not get in your normal life,,,,,,,195
+PI0194,Forge_Master_Content.csv,Motivation for Armed Forces,Personal Interview,Personal Interview,Medium,Why do you not think of joining the Air Force as an AG,,,,,,,196
+S2-SW-001,Forge_Session2_Generated.csv,Indian Armed Forces,Ranks,SingleWord,Easy,The Indian Army's highest active operational rank is ________.,,,,,General,General is the senior-most active operational rank; Field Marshal is a ceremonial five-star rank.,17
+S2-SW-002,Forge_Session2_Generated.csv,Indian Armed Forces,Navy,SingleWord,Medium,The Western Naval Command is headquartered at ________.,,,,,Mumbai,Mumbai hosts India's primary western naval headquarters.,18
+S2-SW-003,Forge_Session2_Generated.csv,Indian Armed Forces,Air Force,SingleWord,Medium,The IAF's helicopter aerobatic display team is called ________.,,,,,Sarang,Sarang performs helicopter aerobatic displays using the indigenous Dhruv helicopter.,19
+S2-SW-004,Forge_Session2_Generated.csv,Military History,Wars,SingleWord,Easy,The 1999 conflict fought in the icy heights of Jammu and Kashmir is known as the ________ War.,,,,,Kargil,Fought between May and July 1999 after infiltration across the LoC.,20
+S2-SW-005,Forge_Session2_Generated.csv,Military History,Operations,SingleWord,Medium,India's 1984 operation to secure the Siachen Glacier was codenamed ________.,,,,,Meghdoot,"Meghdoot means 'cloud messenger', named after a classical Sanskrit poem.",21
+S2-SW-006,Forge_Session2_Generated.csv,Defence Awareness,Gallantry Awards,SingleWord,Easy,India's highest peacetime gallantry award is the ________ Chakra.,,,,,Ashok,Awarded for the most conspicuous bravery away from direct combat with an enemy.,22
+S2-SW-007,Forge_Session2_Generated.csv,Defence Awareness,Organisations,SingleWord,Medium,India's primary defence research body is abbreviated as ________.,,,,,DRDO,Stands for Defence Research and Development Organisation.,23
+S2-SW-008,Forge_Session2_Generated.csv,Geography,Physical Geography,SingleWord,Easy,The southernmost tip of mainland India is called ________.,,,,,Kanyakumari,"Located where the Arabian Sea, Bay of Bengal, and Indian Ocean meet.",24
+S2-SW-009,Forge_Session2_Generated.csv,Geography,Mountains,SingleWord,Medium,The mountain range forming India's northern border is the ________.,,,,,Himalayas,"The world's highest mountain range, spanning several northern states.",25
+S2-SW-010,Forge_Session2_Generated.csv,General Knowledge,National Symbols,SingleWord,Easy,India's national emblem is derived from the Lion Capital at ________.,,,,,Sarnath,Erected by Emperor Ashoka in the 3rd century BCE.,26
+S2-SW-011,Forge_Session2_Generated.csv,Psychology,WAT,SingleWord,Medium,The quality of training people to obey rules or a code of behavior is called ________.,,,,,Discipline,"Discipline is a fundamental trait that ensures order, structure, and operational efficiency.",27
+S2-SW-012,Forge_Session2_Generated.csv,Psychology,WAT,SingleWord,Medium,"The ability to confront fear, pain, danger, or uncertainty is called ________.",,,,,Courage,Courage is essential for military leadership and decision-making under pressure.,28
+S2-SW-013,Forge_Session2_Generated.csv,Officer Like Qualities,OLQ Terms,SingleWord,Medium,The quality of taking action without being told is called ________.,,,,,Initiative,A core OLQ assessed throughout the SSB process.,29
+S2-SW-014,Forge_Session2_Generated.csv,Officer Like Qualities,OLQ Terms,SingleWord,Medium,The ability to adjust to new people and environments is called social ________.,,,,,Adaptability,One of the fifteen Officer Like Qualities assessed at SSB.,30
+S2-SW-015,Forge_Session2_Generated.csv,Logical Thinking,Series,SingleWord,Medium,"In the series 2, 4, 8, 16, ?, the next number is ________.",,,,,32,Each term doubles the previous one.,31
+S2-SW-016,Forge_Session2_Generated.csv,Logical Thinking,Analogy,SingleWord,Easy,Pen is to Write as Knife is to ________.,,,,,Cut,"A knife's primary function is cutting, paralleling a pen's function of writing.",32
+S2-SW-017,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,SingleWord,Easy,15% of 200 is ________.,,,,,30,15/100 multiplied by 200 equals 30.,33
+S2-SW-018,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,SingleWord,Medium,The square root of 144 is ________.,,,,,12,12 multiplied by itself equals 144.,34
+S2-SW-019,Forge_Session2_Generated.csv,Observation,Detail Recall,SingleWord,Medium,The colour that results from mixing blue and yellow is ________.,,,,,Green,A basic principle of colour mixing in the visible spectrum.,35
+S2-SW-020,Forge_Session2_Generated.csv,General Knowledge,Defence Equipment,SingleWord,Medium,BrahMos is classified as a supersonic ________ missile.,,,,,Cruise,BrahMos travels at nearly three times the speed of sound.,36
+S2-SW-021,Forge_Session2_Generated.csv,Current Affairs,Government Schemes,SingleWord,Medium,The scheme for regional air connectivity in India is called ________.,,,,,UDAN,Stands for 'Ude Desh ka Aam Naagrik'.,37
+S2-NUM-001,Forge_Session2_Generated.csv,Indian Armed Forces,Structure,Numeric,Medium,How many commands in total does the Indian Army have?,,,,,7,The Indian Army has six operational commands and one training command (ARTRAC).,1
+S2-NUM-002,Forge_Session2_Generated.csv,Indian Armed Forces,Structure,Numeric,Medium,How many operational commands does the Indian Navy have?,,,,,3,"The Navy has three commands: Western, Eastern, and Southern Naval Commands.",2
+S2-NUM-003,Forge_Session2_Generated.csv,Indian Armed Forces,Structure,Numeric,Medium,How many operational and functional commands does the Indian Air Force have in total?,,,,,7,Five operational commands plus two functional commands (Training and Maintenance).,3
+S2-NUM-004,Forge_Session2_Generated.csv,Defence Awareness,National Days,Numeric,Easy,On which date in January is Indian Army Day celebrated?,,,,,15,Army Day marks Field Marshal K.M. Cariappa becoming the first Indian Commander-in-Chief in 1949.,4
+S2-NUM-005,Forge_Session2_Generated.csv,Defence Awareness,National Days,Numeric,Easy,On which date in December is Indian Navy Day celebrated?,,,,,4,Navy Day marks Operation Trident's strike on Karachi harbour during the 1971 war.,5
+S2-NUM-006,Forge_Session2_Generated.csv,Defence Awareness,National Days,Numeric,Easy,On which date in October is Indian Air Force Day celebrated?,,,,,8,IAF Day marks the founding of the Indian Air Force in 1932.,6
+S2-NUM-007,Forge_Session2_Generated.csv,Military History,Wars,Numeric,Medium,In what year did the Kargil War take place?,,,,,1999,The Kargil War was fought between May and July 1999.,7
+S2-NUM-008,Forge_Session2_Generated.csv,Military History,Wars,Numeric,Medium,In what year did India and Pakistan fight the war that led to the creation of Bangladesh?,,,,,1971,The war lasted just 13 days on the eastern front before Dhaka fell.,8
+S2-NUM-009,Forge_Session2_Generated.csv,Military History,Wars,Numeric,Medium,In what year was Operation Meghdoot launched to secure the Siachen Glacier?,,,,,1984,India occupied key passes on the glacier ahead of a suspected rival move.,9
+S2-NUM-010,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,Numeric,Easy,What is 25% of 400?,,,,,100,25/100 multiplied by 400 equals 100.,10
+S2-NUM-011,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,Numeric,Easy,What is the sum of the first five natural numbers?,,,,,15,1+2+3+4+5 equals 15.,11
+S2-NUM-012,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,Numeric,Medium,What is 17 multiplied by 6?,,,,,102,A direct multiplication calculation.,12
+S2-NUM-013,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,Numeric,Medium,What is the square of 13?,,,,,169,13 multiplied by itself equals 169.,13
+S2-NUM-014,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,Numeric,Hard,"What is 144 divided by 12, then multiplied by 5?",,,,,60,"144/12 equals 12, and 12 multiplied by 5 equals 60.",14
+S2-NUM-015,Forge_Session2_Generated.csv,Basic Mathematics,Percentages,Numeric,Medium,A shirt priced at 800 rupees is sold at a 25% discount. What is the discount amount in rupees?,,,,,200,25% of 800 is 200.,15
+S2-NUM-016,Forge_Session2_Generated.csv,Logical Thinking,Series,Numeric,Medium,"In the series 3, 6, 12, 24, ?, what is the next number?",,,,,48,Each term doubles the previous term.,16
+S2-NUM-017,Forge_Session2_Generated.csv,Logical Thinking,Series,Numeric,Medium,"In the series 1, 4, 9, 16, 25, ?, what is the next number?",,,,,36,"This is a series of perfect squares: 1,4,9,16,25,36.",17
+S2-NUM-018,Forge_Session2_Generated.csv,Logical Thinking,Series,Numeric,Hard,"In the series 2, 6, 12, 20, 30, ?, what is the next number?",,,,,42,"The differences between terms increase by 2 each time: 4,6,8,10,12.",18
+S2-NUM-019,Forge_Session2_Generated.csv,Logical Thinking,Puzzles,Numeric,Hard,"A boy has 3 times as many sisters as brothers. If he has 2 brothers, how many sisters does he have?",,,,,6,"With 2 brothers, 3 times that number gives 6 sisters.",19
+S2-NUM-020,Forge_Session2_Generated.csv,Observation,Counting,Numeric,Easy,How many sides does a hexagon have?,,,,,6,A hexagon is a polygon with six sides.,20
+S2-NUM-021,Forge_Session2_Generated.csv,Observation,Counting,Numeric,Easy,How many players are there on a standard football team on the field at one time?,,,,,11,Each football team fields eleven players during a match.,21
+S2-NUM-022,Forge_Session2_Generated.csv,Observation,Counting,Numeric,Medium,How many time zones does mainland India officially use?,,,,,1,"India uses a single time zone, IST, despite its wide east-west span.",22
+S2-NUM-023,Forge_Session2_Generated.csv,Geography,States,Numeric,Medium,How many states does India currently have?,,,,,28,India has 28 states and 8 union territories as per current administrative divisions.,23
+S2-NUM-024,Forge_Session2_Generated.csv,Geography,Borders,Numeric,Medium,With how many countries does India share a land border?,,,,,7,"India shares land borders with Pakistan, China, Nepal, Bhutan, Bangladesh, Myanmar, and Afghanistan.",24
+S2-NUM-025,Forge_Session2_Generated.csv,Geography,Physical Geography,Numeric,Hard,Approximately how many kilometers long is India's coastline?,,,,,7517,"India's coastline spans approximately 7,517 kilometers including island territories.",25
+S2-NUM-026,Forge_Session2_Generated.csv,General Knowledge,Constitution,Numeric,Medium,How many fundamental rights are guaranteed by the Indian Constitution?,,,,,6,"The Constitution originally guaranteed seven; the Right to Property was later removed, leaving six.",26
+S2-NUM-027,Forge_Session2_Generated.csv,General Knowledge,National Symbols,Numeric,Easy,How many spokes does the Ashoka Chakra on the Indian flag have?,,,,,24,"The wheel has 24 spokes, symbolising the eternal wheel of law.",27
+S2-NUM-028,Forge_Session2_Generated.csv,Psychology,OLQ Assessment,Numeric,Medium,How many Officer Like Qualities are typically assessed during the SSB process?,,,,,15,SSB assessors evaluate fifteen distinct qualities across the multi-day process.,28
+S2-NUM-029,Forge_Session2_Generated.csv,Officer Like Qualities,SSB Process,Numeric,Medium,Over how many days does a typical SSB selection process usually run?,,,,,5,"The standard SSB process typically spans five days, including screening, testing, and interviews.",29
+S2-NUM-030,Forge_Session2_Generated.csv,Defence Awareness,Gallantry Awards,Numeric,Hard,Approximately how many Param Vir Chakras have been awarded since India's independence?,,,,,21,India's highest gallantry award has been conferred around 21 times since 1947.,30
+S2-TF-001,Forge_Session2_Generated.csv,Indian Armed Forces,Ranks,TrueFalse,Easy,Field Marshal is the highest rank in the Indian Army.,,,,,TRUE,"It is a five-star rank, conferred only twice in Indian history.",1
+S2-TF-002,Forge_Session2_Generated.csv,Indian Armed Forces,Navy,TrueFalse,Medium,INS Vikrant is India's first indigenously built aircraft carrier.,,,,,TRUE,"Commissioned in 2022, it was built at Cochin Shipyard Limited.",2
+S2-TF-003,Forge_Session2_Generated.csv,Indian Armed Forces,Air Force,TrueFalse,Medium,"The Tejas fighter jet is manufactured by DRDO alone, with no involvement from HAL.",,,,,FALSE,"HAL manufactures the Tejas, though DRDO and other agencies were involved in its design.",3
+S2-TF-004,Forge_Session2_Generated.csv,Indian Armed Forces,Structure,TrueFalse,Medium,The Indian Army has five operational commands.,,,,,FALSE,"The Indian Army has six operational commands and one training command, making seven in total.",4
+S2-TF-005,Forge_Session2_Generated.csv,Indian Armed Forces,Structure,TrueFalse,Easy,The Indian Coast Guard is part of the Indian Navy.,,,,,FALSE,The Coast Guard is a distinct organisation operating under the Ministry of Defence.,5
+S2-TF-006,Forge_Session2_Generated.csv,Military History,Wars,TrueFalse,Medium,The 1965 Indo-Pak War began after Pakistan launched Operation Gibraltar.,,,,,TRUE,"Operation Gibraltar aimed to infiltrate forces into Kashmir, triggering the war.",6
+S2-TF-007,Forge_Session2_Generated.csv,Military History,Wars,TrueFalse,Medium,The 1971 war lasted for more than two months on the eastern front.,,,,,FALSE,The eastern front campaign concluded in just 13 days.,7
+S2-TF-008,Forge_Session2_Generated.csv,Military History,Operations,TrueFalse,Medium,Operation Cactus in 1988 involved Indian forces intervening in Sri Lanka.,,,,,FALSE,Operation Cactus involved intervention in the Maldives to foil a coup attempt.,8
+S2-TF-009,Forge_Session2_Generated.csv,Military History,Awards,TrueFalse,Medium,Captain Vikram Batra was awarded the Param Vir Chakra posthumously for his actions during the Kargil War.,,,,,TRUE,He led the recapture of key peaks including Point 5140 before being killed in action.,9
+S2-TF-010,Forge_Session2_Generated.csv,Defence Awareness,Organisations,TrueFalse,Medium,DRDO stands for Defence Research and Development Organisation.,,,,,TRUE,DRDO is India's primary body for indigenous defence technology development.,10
+S2-TF-011,Forge_Session2_Generated.csv,Defence Awareness,Gallantry Awards,TrueFalse,Medium,The Ashok Chakra is India's highest wartime gallantry award.,,,,,FALSE,The Ashok Chakra is the highest peacetime award; the Param Vir Chakra is the highest wartime award.,11
+S2-TF-012,Forge_Session2_Generated.csv,Defence Awareness,Missiles,TrueFalse,Medium,BrahMos is a subsonic cruise missile.,,,,,FALSE,"BrahMos is a supersonic cruise missile, travelling nearly three times the speed of sound.",12
+S2-TF-013,Forge_Session2_Generated.csv,Defence Awareness,Missiles,TrueFalse,Medium,Agni-V is classified as an intercontinental ballistic missile.,,,,,TRUE,"Agni-V has a range exceeding 5,000 km.",13
+S2-TF-014,Forge_Session2_Generated.csv,Geography,States,TrueFalse,Easy,India shares a land border with Sri Lanka.,,,,,FALSE,India does not share a land border with Sri Lanka; it is separated by the Palk Strait.,14
+S2-TF-015,Forge_Session2_Generated.csv,Geography,Borders,TrueFalse,Medium,India shares a land border with Afghanistan.,,,,,TRUE,India shares a small land border with Afghanistan in the Pakistan-occupied Kashmir region.,15
+S2-TF-016,Forge_Session2_Generated.csv,Geography,Mountains,TrueFalse,Easy,Mount Everest is located within India's territory.,,,,,FALSE,Mount Everest is located on the border of Nepal and China (Tibet).,16
+S2-TF-017,Forge_Session2_Generated.csv,Geography,Rivers,TrueFalse,Medium,The Brahmaputra river flows through Assam.,,,,,TRUE,The Brahmaputra is a major river flowing through the state of Assam.,17
+S2-TF-018,Forge_Session2_Generated.csv,General Knowledge,Constitution,TrueFalse,Medium,The Indian Constitution was adopted on 26 January 1950.,,,,,FALSE,It was adopted by the Constituent Assembly on 26 November 1949 and came into effect on 26 January 1950.,18
+S2-TF-019,Forge_Session2_Generated.csv,General Knowledge,National Symbols,TrueFalse,Easy,The national emblem of India is derived from the Lion Capital of Ashoka at Sarnath.,,,,,TRUE,"The emblem was adopted in 1950, based on the ancient sculpture.",19
+S2-TF-020,Forge_Session2_Generated.csv,Psychology,OLQ Assessment,TrueFalse,Medium,The SSB process assesses candidates using only a written examination.,,,,,FALSE,"SSB uses psychological tests, group tasks, and interviews rather than written exams alone.",20
+S2-TF-021,Forge_Session2_Generated.csv,Officer Like Qualities,OLQ Terms,TrueFalse,Medium,Initiative refers to the willingness to take action without being explicitly told.,,,,,TRUE,Initiative is a core Officer Like Quality assessed throughout the SSB process.,21
+S2-TF-022,Forge_Session2_Generated.csv,Officer Like Qualities,OLQ Terms,TrueFalse,Medium,Social adaptability refers to physical fitness levels of a candidate.,,,,,FALSE,"Social adaptability refers to the ability to adjust to new people and environments, not physical fitness.",22
+S2-TF-023,Forge_Session2_Generated.csv,Logical Thinking,Reasoning,TrueFalse,Medium,"In the series 5, 10, 20, 40, the next number would be 60.",,,,,FALSE,"The series doubles each time, so the next number would be 80.",23
+S2-TF-024,Forge_Session2_Generated.csv,Logical Thinking,Reasoning,TrueFalse,Easy,All squares are rectangles.,,,,,TRUE,A square meets all the properties required to be classified as a rectangle.,24
+S2-TF-025,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,TrueFalse,Easy,The square root of 81 is 9.,,,,,TRUE,9 multiplied by itself equals 81.,25
+S2-TF-026,Forge_Session2_Generated.csv,Basic Mathematics,Arithmetic,TrueFalse,Medium,50% of 150 is greater than 25% of 400.,,,,,FALSE,"50% of 150 is 75, while 25% of 400 is 100, so it is not greater.",26
+S2-TF-027,Forge_Session2_Generated.csv,Observation,General Awareness,TrueFalse,Easy,A hexagon has six sides.,,,,,TRUE,A hexagon is defined as a six-sided polygon.,27
+S2-TF-028,Forge_Session2_Generated.csv,Current Affairs,Government Schemes,TrueFalse,Medium,UDAN is a scheme aimed at improving regional air connectivity in India.,,,,,TRUE,UDAN stands for 'Ude Desh ka Aam Naagrik' and promotes affordable regional air travel.,28
+S2-TF-029,Forge_Session2_Generated.csv,Current Affairs,Space,TrueFalse,Medium,India's Mangalyaan mission successfully placed a spacecraft in Mars orbit on its first attempt.,,,,,TRUE,"India became the first country to reach Mars orbit successfully on its first attempt, in 2014.",29
+S2-TF-030,Forge_Session2_Generated.csv,Indian Armed Forces,Academies,TrueFalse,Medium,"The National Defence Academy trains cadets from the Army, Navy, and Air Force together.",,,,,TRUE,NDA provides joint tri-service training before cadets move to service-specific academies.,30
+S2-RR-001,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Easy,"Name the tri-service academy where Army, Navy, and Air Force cadets train together.",,,,,National Defence Academy,NDA trains cadets from all three services jointly before further specialised training.,1
+S2-RR-002,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Easy,Name India's first indigenously built aircraft carrier.,,,,,INS Vikrant,"Commissioned in 2022, built at Cochin Shipyard Limited.",2
+S2-RR-003,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Easy,Name the body that conducts psychological and interview-based officer selection.,,,,,SSB,Services Selection Board conducts the multi-day officer selection process.,3
+S2-RR-004,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Medium,Name the Indian Navy's special forces marine commando unit.,,,,,MARCOS,Specialises in amphibious and maritime special operations.,4
+S2-RR-005,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Medium,Name the Indian Air Force's aerobatic display team flying Hawk jets.,,,,,Surya Kiran,Performs precision formation flying displays at air shows.,5
+S2-RR-006,Forge_Session2_Generated.csv,Defence Awareness,Quick Recall,RapidResponse,Easy,Name India's highest wartime gallantry award.,,,,,Param Vir Chakra,India's highest military honour for valour in the presence of the enemy.,6
+S2-RR-007,Forge_Session2_Generated.csv,Defence Awareness,Quick Recall,RapidResponse,Medium,Name India's primary indigenous supersonic cruise missile.,,,,,BrahMos,"A joint India-Russia development, among the fastest cruise missiles in the world.",7
+S2-RR-008,Forge_Session2_Generated.csv,Defence Awareness,Quick Recall,RapidResponse,Medium,Name the operation that secured the Siachen Glacier for India in 1984.,,,,,Operation Meghdoot,India occupied key passes ahead of a suspected rival move.,8
+S2-RR-009,Forge_Session2_Generated.csv,Military History,Quick Recall,RapidResponse,Easy,Name the war fought between India and Pakistan in 1999.,,,,,Kargil War,Fought in the high-altitude Kargil sector of Jammu and Kashmir.,9
+S2-RR-010,Forge_Session2_Generated.csv,Military History,Quick Recall,RapidResponse,Medium,Name the war that led to the creation of Bangladesh.,,,,,1971 War,India's decisive victory led to the liberation of East Pakistan.,10
+S2-RR-011,Forge_Session2_Generated.csv,Military History,Quick Recall,RapidResponse,Medium,Name the first recipient of the Param Vir Chakra.,,,,,Major Somnath Sharma,Honoured posthumously for his defence of Badgam in 1947.,11
+S2-RR-012,Forge_Session2_Generated.csv,Geography,Quick Recall,RapidResponse,Easy,Name the ocean that lies to the south of India.,,,,,Indian Ocean,The Indian Ocean forms the southern maritime boundary of the Indian subcontinent.,12
+S2-RR-013,Forge_Session2_Generated.csv,Geography,Quick Recall,RapidResponse,Easy,Name the desert located in the northwestern part of India.,,,,,Thar,"The Thar Desert, also known as the Great Indian Desert, forms a natural border in the northwest.",13
+S2-RR-014,Forge_Session2_Generated.csv,Geography,Quick Recall,RapidResponse,Medium,Name the river on which Guwahati is situated.,,,,,Brahmaputra,A major river flowing through Assam.,14
+S2-RR-015,Forge_Session2_Generated.csv,General Knowledge,Quick Recall,RapidResponse,Easy,Name India's national animal.,,,,,Tiger,The Bengal tiger is India's national animal.,15
+S2-RR-016,Forge_Session2_Generated.csv,General Knowledge,Quick Recall,RapidResponse,Easy,Name India's national bird.,,,,,Peacock,The Indian peafowl is designated as the national bird.,16
+S2-RR-017,Forge_Session2_Generated.csv,General Knowledge,Quick Recall,RapidResponse,Medium,Name the city where India's Constitution was drafted.,,,,,New Delhi,The Constituent Assembly met in New Delhi to draft the Constitution.,17
+S2-RR-018,Forge_Session2_Generated.csv,Psychology,Quick Recall,RapidResponse,Medium,Name the psychological test where candidates write stories based on pictures.,,,,,TAT,"Thematic Apperception Test, part of SSB psychological assessment.",18
+S2-RR-019,Forge_Session2_Generated.csv,Psychology,Quick Recall,RapidResponse,Medium,Name the test where candidates respond with the first word that comes to mind.,,,,,WAT,"Word Association Test, part of SSB psychological assessment.",19
+S2-RR-020,Forge_Session2_Generated.csv,Officer Like Qualities,Quick Recall,RapidResponse,Medium,Name the OLQ that refers to the capability to withstand physical and mental strain.,,,,,Stamina,Stamina is the physical and mental capacity to endure prolonged exertion and pressure.,20
+S2-RR-021,Forge_Session2_Generated.csv,Officer Like Qualities,Quick Recall,RapidResponse,Medium,Name the OLQ that refers to working effectively as part of a group.,,,,,Cooperation,Reflects a candidate's ability to contribute positively within a team.,21
+S2-RR-022,Forge_Session2_Generated.csv,Logical Thinking,Quick Recall,RapidResponse,Easy,Complete the analogy: Bird is to Fly as Fish is to ________.,,,,,Swim,A direct parallel of natural movement associated with each animal.,22
+S2-RR-023,Forge_Session2_Generated.csv,Logical Thinking,Quick Recall,RapidResponse,Medium,"What comes next: 1, 1, 2, 3, 5, 8, ?",,,,,13,"This is the Fibonacci sequence, where each term is the sum of the two before it.",23
+S2-RR-024,Forge_Session2_Generated.csv,Basic Mathematics,Quick Recall,RapidResponse,Easy,What is 9 times 8?,,,,,72,A direct multiplication fact.,24
+S2-RR-025,Forge_Session2_Generated.csv,Basic Mathematics,Quick Recall,RapidResponse,Easy,What is 100 minus 37?,,,,,63,A direct subtraction calculation.,25
+S2-RR-026,Forge_Session2_Generated.csv,Observation,Quick Recall,RapidResponse,Easy,Name the shape with three sides.,,,,,Triangle,A polygon defined by exactly three sides and three angles.,26
+S2-RR-027,Forge_Session2_Generated.csv,Observation,Quick Recall,RapidResponse,Easy,Name the secondary colour formed by mixing red and yellow.,,,,,Orange,Orange is a secondary colour formed by mixing primary colours red and yellow.,27
+S2-RR-028,Forge_Session2_Generated.csv,Current Affairs,Quick Recall,RapidResponse,Medium,Name India's mission that placed a spacecraft in Mars orbit in 2014.,,,,,Mangalyaan,India became the first country to reach Mars orbit on its first attempt.,28
+S2-RR-029,Forge_Session2_Generated.csv,Current Affairs,Quick Recall,RapidResponse,Medium,Name India's first satellite launched into space in 1975.,,,,,Aryabhata,"Aryabhata was India's first indigenous satellite, launched on 19 April 1975.",29
+S2-RR-030,Forge_Session2_Generated.csv,Indian Armed Forces,Quick Recall,RapidResponse,Medium,Name the missile system jointly developed by India and Israel for medium-range air defence.,,,,,Barak-8,Provides extended air defence range for naval ships and land forces.,30

@@ -22,7 +22,14 @@ function TabIcon({
       <Text style={[styles.glyph, { color }]} maxFontSizeMultiplier={1}>
         {glyph}
       </Text>
-      <Text style={[styles.iconLabel, { color }]} maxFontSizeMultiplier={1}>
+      <Text
+        style={[styles.iconLabel, { color }]}
+        maxFontSizeMultiplier={1}
+        numberOfLines={1}
+        adjustsFontSizeToFit
+        minimumFontScale={0.8}
+        ellipsizeMode="clip"
+      >
         {label}
       </Text>
     </View>
@@ -46,6 +53,15 @@ export default function TabLayout() {
           title: 'Home',
           tabBarIcon: ({ focused }) => (
             <TabIcon glyph="⌂" label="HOME" focused={focused} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="missions"
+        options={{
+          title: 'Training',
+          tabBarIcon: ({ focused }) => (
+            <TabIcon glyph="◉" label="TRAINING" focused={focused} />
           ),
         }}
       />
@@ -78,6 +94,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap:            3,
     paddingTop:     2,
+    // Give the label room so it never clips. 76dp fits within a single tab
+    // slot even on a 320dp-wide device (≈106dp per tab across 3 tabs).
+    width:          76,
   },
   glyph: {
     fontSize:   18,
@@ -85,7 +104,9 @@ const styles = StyleSheet.create({
   },
   iconLabel: {
     fontFamily:    Fonts.mono,
-    fontSize:      7,
-    letterSpacing: 0.8,
+    fontSize:      9,
+    letterSpacing: 0.4,
+    textAlign:     'center',
+    width:         '100%',
   },
 });

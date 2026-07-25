@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Command - Tactical Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Geist:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #101415;
+            color: #e0e3e5;
+            -webkit-font-smoothing: antialiased;
+        }
+        .tactical-glow {
+            box-shadow: 0 0 15px rgba(255, 191, 0, 0.15);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "on-secondary-fixed": "#0b1c30",
+                "inverse-primary": "#795900",
+                "surface-variant": "#323537",
+                "surface-container-low": "#191c1e",
+                "on-secondary-fixed-variant": "#38485d",
+                "tertiary": "#b4efff",
+                "on-tertiary-fixed": "#001f26",
+                "surface-container-highest": "#323537",
+                "primary-fixed-dim": "#fbbc00",
+                "outline-variant": "#504532",
+                "on-error": "#690005",
+                "on-surface-variant": "#d4c5ab",
+                "surface-container": "#1d2022",
+                "inverse-surface": "#e0e3e5",
+                "on-surface": "#e0e3e5",
+                "on-primary-fixed-variant": "#5c4300",
+                "surface-tint": "#fbbc00",
+                "on-error-container": "#ffdad6",
+                "secondary-container": "#3a4a5f",
+                "primary-fixed": "#ffdfa0",
+                "on-primary": "#402d00",
+                "outline": "#9c8f78",
+                "on-secondary": "#213145",
+                "tertiary-fixed": "#aaedff",
+                "surface-container-lowest": "#0b0f10",
+                "on-tertiary-container": "#005d6d",
+                "on-primary-fixed": "#261a00",
+                "error": "#ffb4ab",
+                "error-container": "#93000a",
+                "secondary-fixed": "#d3e4fe",
+                "background": "#101415",
+                "surface-dim": "#101415",
+                "primary-container": "#ffbf00",
+                "tertiary-container": "#04dcff",
+                "on-background": "#e0e3e5",
+                "secondary-fixed-dim": "#b7c8e1",
+                "on-primary-container": "#6d5000",
+                "surface-container-high": "#272a2c",
+                "primary": "#ffe2ab",
+                "on-secondary-container": "#a9bad3",
+                "surface": "#101415",
+                "on-tertiary": "#003640",
+                "on-tertiary-fixed-variant": "#004e5c",
+                "inverse-on-surface": "#2d3133",
+                "secondary": "#b7c8e1",
+                "tertiary-fixed-dim": "#00d9fc",
+                "surface-bright": "#363a3b"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "margin-mobile": "20px",
+                "margin-desktop": "48px",
+                "gutter": "16px",
+                "unit": "8px",
+                "max-width": "1200px"
+              },
+              "fontFamily": {
+                "label-caps": ["JetBrains Mono"],
+                "headline-md": ["Geist"],
+                "coordinate-sm": ["JetBrains Mono"],
+                "body-lg": ["Inter"],
+                "headline-sm": ["Geist"],
+                "display-lg": ["Geist"],
+                "body-md": ["Inter"]
+              },
+              "fontSize": {
+                "label-caps": ["12px", { "lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500" }],
+                "headline-md": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                "coordinate-sm": ["10px", { "lineHeight": "1.0", "fontWeight": "400" }],
+                "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                "headline-sm": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                "display-lg": ["48px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden border border-outline-variant/50">
+<img alt="Officer Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjF1_kguJJfky4wA46z0a01aukcpnVVRAesvDLRxqmPROZC2jPmdGHlHelqAb5psATMB2rqBbbYRok-2FVix-leNfg7emoRorXK0ohzqfNZ7NylluRUekriLjFWdefQCcq3XKajmjEHGFKnwLFO4Hw-ZhFZAkGvEeCXD7ikZjwk_wAXZmqGDKT5OMNd9UEoGbds7vozl997UXGGnJbn4gpS27UtcV8rjTGf3Z8quVyDBhiTiS0qPSr3tlbBeNmMoo4R3pK3t9dTSk"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-caps text-[10px] tracking-widest text-primary-fixed-dim uppercase">ELITE VANGUARD</span>
+<div class="flex items-center gap-2 mt-1">
+<div class="w-32 h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 84.5%;"></div>
+</div>
+<span class="font-coordinate-sm text-coordinate-sm text-on-surface-variant">8,450 / 10,000</span>
+</div>
+</div>
+</div>
+<div class="font-label-caps text-label-caps tracking-widest text-primary dark:text-primary-fixed-dim">
+            MISSION COMMAND
+        </div>
+</header>
+<main class="mt-24 px-margin-mobile max-w-max-width mx-auto flex flex-col gap-8">
+<!-- Streak Section -->
+<section class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<h2 class="font-label-caps text-label-caps text-primary-fixed-dim uppercase">Active Engagement</h2>
+</div>
+<div class="bg-surface-container rounded-lg p-6 border border-outline-variant/30 tactical-glow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-5">
+<img alt="Shield Logo" class="w-24 h-24" src="https://lh3.googleusercontent.com/aida/ADBb0ugTe5t8Nj_R2wjvCmeEQgg21P1FEGSrrFdAJM15U31QSHxUpbgnIqnftmG0SK7tt9tIi-HM4wQ1qdx6psZM_M4hvgiWOQlkuRZ_KGT9fNX0p_an6yPMPCuq5GR3hdNBKDaQ970CDdTuaykPTcEhxz-KGMhL5uuHibctmu0IossNlUrDbaq3ihDYLv98EUXER_BJ0-LtvT_Cbcl8dGRcy1DWrBec3tkpOYkki1FkywmFpiEwDZFUwgPL4cM"/>
+</div>
+<div class="relative z-10 flex flex-col">
+<span class="font-display-lg text-display-lg text-primary-container leading-none">07 DAY STREAK</span>
+<span class="font-body-md text-on-surface-variant mt-2 uppercase tracking-wide">Operational Consistency: Optimal</span>
+</div>
+</div>
+</section>
+<!-- Hero Element: Today's Mission -->
+<section class="flex flex-col gap-4">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-sm text-headline-sm font-bold uppercase tracking-tight">Today's Mission</h2>
+<span class="font-label-caps text-[10px] text-on-surface-variant border border-outline-variant/30 px-2 py-0.5 rounded">ID: TACT-04</span>
+</div>
+<div class="bg-surface-container rounded-lg border border-outline-variant/30 overflow-hidden shadow-2xl">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover grayscale opacity-60" data-alt="A cinematic, high-contrast photograph of a tactical command center at night. Cool blue and deep charcoal tones dominate the atmosphere, with glowing amber screens displaying complex digital interfaces and data streams. The lighting is low-key and professional, emphasizing a mood of focused high-stakes operations. Subtle technical overlays suggest a futuristic, disciplined military environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNx_pDI7sXnjft6JkpfXXEgigT4C8QYeygZzKNFP6ay7tpFNONb6TePRF-uDZTfqDePa7CkDeQ8PH-qYjBFTHdofzzVWD2i45gfzVMNIuD9KqFLvMLipTLWi9PCkObyYhNXsx6JdyLxP9tfavDx8VWXpwDsnHtoAKz9b53CrtjQVK0dCwZ6ux5DNYEASC8vG22FnubaeTe3jy28ztEgvCe_hZ3Lzp4E6buu3EcXdZ35rn81daucAMniQoacuwvEJI6zB5GAK8-YUA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container via-transparent to-transparent"></div>
+<div class="absolute bottom-4 left-6">
+<span class="bg-primary-container text-on-primary-container text-[10px] font-bold px-2 py-0.5 rounded flex items-center gap-1 w-fit mb-2">
+<span class="w-1 h-1 bg-on-primary-container rounded-full"></span> PRIORITY: ALPHA
+                        </span>
+<h3 class="font-headline-md text-headline-md">Command Communication Drill</h3>
+</div>
+</div>
+<div class="p-6 pt-2 flex flex-col gap-6">
+<p class="font-body-md text-on-surface-variant italic">
+                        "Mastering the art of precise directives." — Enhance operational clarity and reduce information noise during high-stress scenarios.
+                    </p>
+<button class="w-full bg-primary-container text-on-primary-container font-label-caps py-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-[0.98] hover:bg-primary-fixed-dim">
+                        COMMENCE MISSION
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Quick Access: Tactical Intel -->
+<section class="flex flex-col gap-4">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-widest">Tactical Intel</h2>
+<div class="grid grid-cols-2 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-5 flex flex-col gap-4 hover:border-primary-container/50 transition-colors">
+<div class="w-10 h-10 rounded border border-outline-variant/30 flex items-center justify-center bg-surface-variant/30">
+<span class="material-symbols-outlined text-primary-fixed-dim">newspaper</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-caps text-label-caps leading-tight">CURRENT AFFAIRS BRIEF</h4>
+<span class="text-[10px] text-on-surface-variant mt-1 uppercase font-coordinate-sm">Updated 2h ago</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-lg p-5 flex flex-col gap-4 hover:border-primary-container/50 transition-colors">
+<div class="w-10 h-10 rounded border border-outline-variant/30 flex items-center justify-center bg-surface-variant/30">
+<span class="material-symbols-outlined text-primary-fixed-dim">psychology</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-label-caps text-label-caps leading-tight">LEADERSHIP QUIZ</h4>
+<span class="text-[10px] text-on-surface-variant mt-1 uppercase font-coordinate-sm">Rank Evaluation</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-surface dark:bg-surface border-t border-outline-variant/30">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim border-t-2 border-primary pt-2 active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+<span class="font-label-caps text-[10px] mt-1">DASHBOARD</span>
+</a>
+<!-- Missions -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">target</span>
+<span class="font-label-caps text-[10px] mt-1">MISSIONS</span>
+</a>
+<!-- Intel -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">description</span>
+<span class="font-label-caps text-[10px] mt-1">INTEL</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant pt-2 hover:text-on-surface transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-[10px] mt-1">PROFILE</span>
+</a>
+</nav>
+</body></html>

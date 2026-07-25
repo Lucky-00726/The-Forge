@@ -39,6 +39,15 @@ const INITIAL_STATE: AuthStoreState = {
   isInitialized: false,
 };
 
+// DEC-015: Separate state for post-logout to prevent loading spinner
+const LOGGED_OUT_STATE: AuthStoreState = {
+  session:       null,
+  user:          null,
+  profile:       null,
+  isLoading:     false,
+  isInitialized: true,
+};
+
 export const useAuthStore = create<AuthStore>((set) => ({
   ...INITIAL_STATE,
 
@@ -55,12 +64,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
         : state.profile,
     })),
 
-  clearAuth: () =>
-    set({
-      ...INITIAL_STATE,
-      isLoading:     false,
-      isInitialized: true,
-    }),
+  clearAuth: () => {
+    console.log('[LOGOUT TRACE] clearAuth: Setting LOGGED_OUT_STATE');
+    set(LOGGED_OUT_STATE);
+    console.log('[LOGOUT TRACE] clearAuth: State updated to:', LOGGED_OUT_STATE);
+  },
 }));
 
 export const selectSession       = (s: AuthStore) => s.session;

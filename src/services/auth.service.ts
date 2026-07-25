@@ -6,6 +6,7 @@
 // ─────────────────────────────────────────────────────────────
 import { supabase } from './supabase';
 import type { AsyncResult, DbUser, SignupForm } from '../types';
+import { todayIST, yesterdayIST } from '../utils/date';
 
 // ── Error normalisation ───────────────────────────────────────
 function normalizeError(error: unknown): string {
@@ -84,15 +85,19 @@ export async function signIn(
 // this internally — signOut() removes the token from the
 // configured storage adapter regardless of server response.
 export async function signOut(): Promise<AsyncResult<void>> {
+  console.log('[LOGOUT TRACE] authService.signOut: Calling supabase.auth.signOut()');
   const { error } = await supabase.auth.signOut();
+  console.log('[LOGOUT TRACE] authService.signOut: supabase.auth.signOut() completed, error:', error);
 
   // A 403 from Supabase on signOut means the session was already
   // invalid server-side. This is not an error from the user's
   // perspective — the local token cleanup still happened.
   if (error && !error.message.includes('403')) {
+    console.log('[LOGOUT TRACE] authService.signOut: Returning error:', error.message);
     return { success: false, error: normalizeError(error) };
   }
 
+  console.log('[LOGOUT TRACE] authService.signOut: Returning success');
   return { success: true, data: undefined };
 }
 
@@ -133,4 +138,96 @@ export async function fetchProfile(
 export async function getSession() {
   const { data: { session } } = await supabase.auth.getSession();
   return session;
+}
+
+// ── Award XP (for Day 0 validation) ───────────────────────────
+// TEMPORARY FUNCTION FOR DAY 0 PROTOTYPE
+// Replace with proper training completion flow in V2
+export async function awardXP(
+  userId: string,
+  xpAmount: number,
+): Promise<AsyncResult<void>> {
+  // Fetch current profile
+  const { data: profile, error: fetchError } = await supabase
+    .from('users')
+    .select('total_xp')
+    .eq('id', userId)
+    .single();
+
+  if (fetchError || !profile) {
+    return {
+      success: false,
+      error: fetchError?.message ?? 'Could not fetch profile.',
+    };
+  }
+
+  // Calculate new total
+  const newTotalXP = profile.total_xp + xpAmount;
+
+  // Update profile
+  const { error: updateError } = await supabase
+    .from('users')
+    .update({ total_xp: newTotalXP })
+    .eq('id', userId);
+
+  if (updateError) {
+    return { success: false, error: normalizeError(updateError) };
+  }
+
+  return { success: true, data: undefined };
+}
+
+// ── Update daily streak ───────────────────────────────────────
+// Marks the user as active "today" (IST) and updates current_streak.
+// Idempotent per day: calling it multiple times on the same IST day
+// does NOT increment the streak again. Mirrors the streak rule used by
+// the mission complete_mission() RPC so both systems behave identically:
+//   - last_active == today      → unchanged (already counted today)
+//   - last_active == yesterday  → +1 (consecutive day)
+//   - last_active == null       → 1 (first ever activity)
+//   - older / gap > 1 day       → reset to 1
+export async function updateStreak(
+  userId: string,
+): Promise<AsyncResult<{ current_streak: number; last_active_date: string; changed: boolean }>> {
+  const today = todayIST();
+
+  const { data: profile, error: fetchError } = await supabase
+    .from('users')
+    .select('current_streak, last_active_date')
+    .eq('id', userId)
+    .single();
+
+  if (fetchError || !profile) {
+    return {
+      success: false,
+      error: fetchError?.message ?? 'Could not fetch profile.',
+    };
+  }
+
+  // Already marked active today → no change (prevents multi-increment per day)
+  if (profile.last_active_date === today) {
+    return {
+      success: true,
+      data: { current_streak: profile.current_streak, last_active_date: today, changed: false },
+    };
+  }
+
+  const newStreak =
+    profile.last_active_date === yesterdayIST()
+      ? profile.current_streak + 1 // consecutive day
+      : 1; // first activity ever, or a gap longer than one day → reset
+
+  const { error: updateError } = await supabase
+    .from('users')
+    .update({ current_streak: newStreak, last_active_date: today })
+    .eq('id', userId);
+
+  if (updateError) {
+    return { success: false, error: normalizeError(updateError) };
+  }
+
+  return {
+    success: true,
+    data: { current_streak: newStreak, last_active_date: today, changed: true },
+  };
 }

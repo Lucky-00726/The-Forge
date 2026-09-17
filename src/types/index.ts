@@ -20,6 +20,8 @@ export interface DbUser {
   current_streak:   number;
   last_active_date: string | null; // YYYY-MM-DD IST
   created_at:       string;        // ISO timestamp
+  current_training_day?: number;
+  training_program_completed?: boolean;
 }
 
 export interface DbMission {

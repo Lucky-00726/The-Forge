@@ -300,6 +300,18 @@ function parseStagingRecord(record, idx) {
     throw new Error(`Row ${idx + 2} is missing a stable content_id or id.`);
   }
 
+  const rawDay = (record.day || '').toString().trim();
+  let dayVal = null;
+  if (rawDay !== '') {
+    if (!/^\d+$/.test(rawDay)) {
+      throw new Error(`Row ${idx + 2} (${rawId}) has invalid day format: "${rawDay}". Must be integer 1-30 or blank.`);
+    }
+    dayVal = parseInt(rawDay, 10);
+    if (dayVal < 1 || dayVal > 30) {
+      throw new Error(`Row ${idx + 2} (${rawId}) has out-of-bounds day value: ${dayVal}. Must be between 1 and 30.`);
+    }
+  }
+
   const seq = parseInt(record.sequence_order, 10);
 
   // Requirement 7: Skip editor-only columns (notes, reviewed_by, etc.)
@@ -329,7 +341,8 @@ function parseStagingRecord(record, idx) {
 
     // Session and Module database fields
     session: sessionVal,
-    module: moduleVal
+    module: moduleVal,
+    day: dayVal
   };
 }
 
@@ -337,12 +350,6 @@ async function importData() {
   console.log('\n==================================================');
   console.log('STEP 2: Seeding Question Tables from Google Sheets');
   console.log('==================================================');
-
-  // Wiping staging and active tables
-  console.log('Wiping public.questions and import_staging_questions tables...');
-  await supabase.from('questions').delete().neq('id', 'WIPE_ALL_TRICK');
-  await supabase.from('import_staging_questions').delete().neq('id', 'WIPE_ALL_TRICK');
-  console.log('   ✅ Tables cleaned');
 
   let csvData;
   const localIdx = process.argv.indexOf('--local');
@@ -391,21 +398,102 @@ async function importData() {
           question: row.question || '',
           session: row.session || '',
           question_type: row.question_type || '',
+          error: err.message
         });
       }
     }
   });
 
   if (missingIdRows.length > 0) {
-    console.error(`\n❌ ERROR: ${missingIdRows.length} rows have missing IDs!`);
+    console.error(`\n❌ ERROR: ${missingIdRows.length} rows have validation or ID errors!`);
     console.error(`Stable identifiers (content_id or id) are required. Random ID generation is disabled.`);
     console.error(`Affected rows:`);
     missingIdRows.forEach((item) => {
-      console.error(`  - Row ${item.rowNum} [Session: ${item.session}, Type: ${item.question_type}]: "${item.question.substring(0, 80)}..."`);
+      console.error(`  - Row ${item.rowNum} [Session: ${item.session}, Type: ${item.question_type}]: error="${item.error || 'Missing stable ID'}"`);
     });
-    console.error(`\nImport aborted. Please update the Google Sheet so all questions have stable IDs.\n`);
+    console.error(`\nImport aborted. Please update the Google Sheet so all questions are valid.\n`);
     process.exit(1);
   }
+
+  // Group and validate staging records for 30-day curriculum structure
+  const countsByDaySession = {};
+  const typeCountsByDaySession = {};
+
+  stagingRecords.forEach(rec => {
+    if (rec.active && rec.day !== null) {
+      const day = rec.day;
+      const sess = rec.session;
+      const type = rec.question_type;
+
+      if (!countsByDaySession[day]) {
+        countsByDaySession[day] = { Session1: 0, Session2: 0, Session3: 0 };
+        typeCountsByDaySession[day] = {
+          Session1: {},
+          Session2: {},
+          Session3: {}
+        };
+      }
+
+      countsByDaySession[day][sess] = (countsByDaySession[day][sess] || 0) + 1;
+      typeCountsByDaySession[day][sess][type] = (typeCountsByDaySession[day][sess][type] || 0) + 1;
+    }
+  });
+
+  const validationErrors = [];
+
+  for (let day = 1; day <= 30; day++) {
+    const counts = countsByDaySession[day] || { Session1: 0, Session2: 0, Session3: 0 };
+    const types = typeCountsByDaySession[day] || { Session1: {}, Session2: {}, Session3: {} };
+
+    // Session 1 Validation (exactly 12 questions)
+    if (counts.Session1 !== 12) {
+      validationErrors.push(`Day ${day}: Session 1 has ${counts.Session1} active questions (expected exactly 12).`);
+    }
+
+    // Session 2 Validation (exactly 12 questions with 3/3/2/2/2 distribution)
+    if (counts.Session2 !== 12) {
+      validationErrors.push(`Day ${day}: Session 2 has ${counts.Session2} active questions (expected exactly 12).`);
+    } else {
+      const mcq = types.Session2.MCQ || 0;
+      const sw = types.Session2.SingleWord || 0;
+      const tf = types.Session2.TrueFalse || 0;
+      const rr = types.Session2.RapidResponse || 0;
+      const num = types.Session2.Numeric || 0;
+
+      if (mcq !== 3 || sw !== 3 || tf !== 2 || rr !== 2 || num !== 2) {
+        validationErrors.push(`Day ${day}: Session 2 question type distribution is invalid. Found MCQ: ${mcq}, SingleWord: ${sw}, TrueFalse: ${tf}, RapidResponse: ${rr}, Numeric: ${num} (expected exactly 3 MCQ, 3 SingleWord, 2 TrueFalse, 2 RapidResponse, 2 Numeric).`);
+      }
+    }
+
+    // Session 3 Validation (exactly 10 questions with 4/3/3 distribution)
+    if (counts.Session3 !== 10) {
+      validationErrors.push(`Day ${day}: Session 3 has ${counts.Session3} active questions (expected exactly 10).`);
+    } else {
+      const srt = types.Session3.SRT || 0;
+      const wat = types.Session3.WAT || 0;
+      const interview = types.Session3.Interview || 0;
+
+      if (srt !== 4 || wat !== 3 || interview !== 3) {
+        validationErrors.push(`Day ${day}: Session 3 question type distribution is invalid. Found SRT: ${srt}, WAT: ${wat}, Interview: ${interview} (expected exactly 4 SRT, 3 WAT, 3 Interview).`);
+      }
+    }
+  }
+
+  if (validationErrors.length > 0) {
+    console.error(`\n❌ CURRICULUM VALIDATION FAILED! Import aborted before deleting database tables.`);
+    console.error(`Found ${validationErrors.length} errors:`);
+    validationErrors.forEach(err => console.error(`  - ${err}`));
+    console.error(`\nYour production database question bank has NOT been modified.\n`);
+    process.exit(1);
+  }
+
+  console.log('🎉 Curriculum validation passed! All 30 days have correct question counts and distributions.');
+
+  // Only wipe staging and active tables AFTER curriculum validation passes
+  console.log('Wiping public.questions and import_staging_questions tables...');
+  await supabase.from('questions').delete().neq('id', 'WIPE_ALL_TRICK');
+  await supabase.from('import_staging_questions').delete().neq('id', 'WIPE_ALL_TRICK');
+  console.log('   ✅ Tables cleaned');
 
   console.log(`Total records prepared for staging: ${stagingRecords.length}`);
 

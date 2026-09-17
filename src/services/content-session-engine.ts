@@ -99,126 +99,151 @@ async function fetchQuestionPoolForSession(sessionKey: string): Promise<Question
   return (data ?? []).map(normalizeQuestionRow);
 }
 
-async function buildSession1Questions(userId: string): Promise<Question[]> {
-  const pool = await fetchQuestionPoolForSession('Session1');
-  if (pool.length === 0) return [];
+async function fetchQuestionsByDayAndSession(day: number, sessionKey: string): Promise<Question[]> {
+  const { data, error } = await supabase
+    .from('questions')
+    .select('*')
+    .eq('day', day)
+    .eq('session', sessionKey)
+    .eq('active', true)
+    .eq('status', 'approved')
+    .order('sequence_order', { ascending: true })
+    .order('id', { ascending: true });
 
-  const grouped = new Map<string, Question[]>();
-  for (const question of pool) {
-    const key = (question.category ?? 'General Knowledge').trim() || 'General Knowledge';
-    const existing = grouped.get(key) ?? [];
-    existing.push(question);
-    grouped.set(key, existing);
+  if (error) {
+    console.error(`[Content Engine] Failed to fetch day ${day} ${sessionKey} questions:`, error.message);
+    throw new Error(`Failed to load curriculum questions: ${error.message}`);
   }
 
-  const categories = shuffleArray(Array.from(grouped.keys()));
-  const selected: Question[] = [];
-
-  for (const category of categories) {
-    const items = grouped.get(category) ?? [];
-    if (items.length === 0) continue;
-
-    items.sort((a, b) => {
-      const diff = (a.sequence_order ?? 0) - (b.sequence_order ?? 0);
-      if (diff !== 0) return diff;
-      return a.id.localeCompare(b.id);
-    });
-
-    const position = await readProgress(userId, 'session1', category);
-    const index = position % items.length;
-    selected.push(items[index]);
-    await writeProgress(userId, 'session1', category, position + 1);
-  }
-
-  return selected;
+  return (data ?? []).map(normalizeQuestionRow);
 }
 
-async function buildSession2Questions(userId: string): Promise<Question[]> {
-  const pool = await fetchQuestionPoolForSession('Session2');
-  if (pool.length === 0) return [];
-
-  const mcqs = pool.filter(q => q.module === 'MCQ');
-  const singleWords = pool.filter(q => q.module === 'SingleWord');
-  const trueFalses = pool.filter(q => q.module === 'TrueFalse');
-  const rapids = pool.filter(q => q.module === 'RapidResponse');
-  const numerics = pool.filter(q => q.module === 'Numeric');
-
-  const selected: Question[] = [];
-
-  const selectForModule = async (modulePool: Question[], moduleKey: string, count: number) => {
-    if (modulePool.length === 0) return;
-    const position = await readProgress(userId, 'session2', moduleKey);
-    for (let offset = 0; offset < count; offset++) {
-      const index = (position + offset) % modulePool.length;
-      selected.push(modulePool[index]);
-    }
-    await writeProgress(userId, 'session2', moduleKey, position + count);
-  };
-
-  await selectForModule(mcqs, 'MCQ', 3);
-  await selectForModule(singleWords, 'SingleWord', 3);
-  await selectForModule(trueFalses, 'TrueFalse', 2);
-  await selectForModule(rapids, 'RapidResponse', 2);
-  await selectForModule(numerics, 'Numeric', 2);
-
-  return shuffleArray(selected);
+function shuffleArrayFY<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
 }
 
-async function buildSession3Questions(userId: string): Promise<Question[]> {
-  const pool = await fetchQuestionPoolForSession('Session3');
-  if (pool.length === 0) return [];
+export function shuffleSession2Constrained(questions: Question[]): Question[] {
+  const groups: Record<string, Question[]> = {};
+  questions.forEach(q => {
+    const type = q.question_type || 'MCQ';
+    if (!groups[type]) groups[type] = [];
+    groups[type].push(q);
+  });
 
-  const srts = pool.filter(q => q.module === 'SRT');
-  const wats = pool.filter(q => q.module === 'WAT');
-  const interviews = pool.filter(q => q.module === 'Interview' || q.module === 'PersonalInterview' || q.module === 'Lecturette' || q.module === 'GroupDiscussion' || q.module === 'SelfDescription');
-
-  const selected: Question[] = [];
-
-  if (srts.length > 0) {
-    const position = await readProgress(userId, 'session3', 'SRT');
-    for (let offset = 0; offset < 4; offset++) {
-      const index = (position + offset) % srts.length;
-      selected.push(srts[index]);
-    }
-    await writeProgress(userId, 'session3', 'SRT', position + 4);
+  // Randomize items within each type group using Fisher-Yates
+  for (const type in groups) {
+    groups[type] = shuffleArrayFY(groups[type]);
   }
 
-  if (wats.length > 0) {
-    const position = await readProgress(userId, 'session3', 'WAT');
-    for (let offset = 0; offset < 3; offset++) {
-      const index = (position + offset) % wats.length;
-      selected.push(wats[index]);
+  const result: Question[] = [];
+
+  function backtrack(lastType: string | null): boolean {
+    if (result.length === 12) {
+      return true;
     }
-    await writeProgress(userId, 'session3', 'WAT', position + 3);
+
+    // Get candidate types that have remaining elements and don't match the last type
+    let candidates = Object.keys(groups).filter(t => groups[t].length > 0 && t !== lastType);
+    
+    // Pre-shuffle candidates to randomize order when counts are equal
+    candidates = shuffleArrayFY(candidates);
+    
+    // Sort candidates: try the type with the most remaining elements first (safety heuristic)
+    candidates.sort((a, b) => groups[b].length - groups[a].length);
+
+    for (const type of candidates) {
+      const q = groups[type].pop()!;
+      result.push(q);
+
+      if (backtrack(type)) {
+        return true;
+      }
+
+      // Backtrack
+      result.pop();
+      groups[type].push(q);
+    }
+
+    return false;
   }
 
-  if (interviews.length > 0) {
-    const position = await readProgress(userId, 'session3', 'Interview');
-    for (let offset = 0; offset < 3; offset++) {
-      const index = (position + offset) % interviews.length;
-      selected.push(interviews[index]);
-    }
-    await writeProgress(userId, 'session3', 'Interview', position + 3);
+  const success = backtrack(null);
+  if (!success) {
+    throw new Error('Constrained shuffle: Failed to find an arrangement without consecutive types.');
   }
 
-  return selected;
+  return result;
 }
 
-export async function buildDailySessionQuestions(userId: string, sessionNumber: 1 | 2 | 3): Promise<Question[]> {
+async function buildSession1Questions(userId: string, trainingDay: number): Promise<Question[]> {
+  const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session1');
+
+  if (questions.length !== 12) {
+    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 1 contains ${questions.length} active questions (expected exactly 12).`);
+  }
+
+  return questions;
+}
+
+async function buildSession2Questions(userId: string, trainingDay: number): Promise<Question[]> {
+  const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session2');
+
+  if (questions.length !== 12) {
+    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 2 contains ${questions.length} active questions (expected exactly 12).`);
+  }
+
+  // Validate expected type distribution: 3 MCQ, 3 SingleWord, 2 TrueFalse, 2 RapidResponse, 2 Numeric
+  const counts: Record<string, number> = { MCQ: 0, SingleWord: 0, TrueFalse: 0, RapidResponse: 0, Numeric: 0 };
+  questions.forEach(q => {
+    const t = q.question_type || 'MCQ';
+    counts[t] = (counts[t] || 0) + 1;
+  });
+
+  if (counts.MCQ !== 3 || counts.SingleWord !== 3 || counts.TrueFalse !== 2 || counts.RapidResponse !== 2 || counts.Numeric !== 2) {
+    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 2 question distribution is invalid. Found MCQ: ${counts.MCQ}, SingleWord: ${counts.SingleWord}, TrueFalse: ${counts.TrueFalse}, RapidResponse: ${counts.RapidResponse}, Numeric: ${counts.Numeric} (expected exactly 3 MCQ, 3 SingleWord, 2 TrueFalse, 2 RapidResponse, 2 Numeric).`);
+  }
+
+  return shuffleSession2Constrained(questions);
+}
+
+async function buildSession3Questions(userId: string, trainingDay: number): Promise<Question[]> {
+  const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session3');
+
+  if (questions.length !== 10) {
+    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 3 contains ${questions.length} active questions (expected exactly 10).`);
+  }
+
+  const srts = questions.filter(q => q.module === 'SRT');
+  const wats = questions.filter(q => q.module === 'WAT');
+  const interviews = questions.filter(q => q.module === 'Interview' || q.module === 'PersonalInterview' || q.module === 'Lecturette' || q.module === 'GroupDiscussion' || q.module === 'SelfDescription');
+
+  if (srts.length !== 4 || wats.length !== 3 || interviews.length !== 3) {
+    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 3 question distribution is invalid. Found SRT: ${srts.length}, WAT: ${wats.length}, Interview: ${interviews.length} (expected exactly 4 SRT, 3 WAT, 3 Interview).`);
+  }
+
+  // Return preserving intended SRT -> WAT -> Interview order
+  return [...srts, ...wats, ...interviews];
+}
+
+export async function buildDailySessionQuestions(userId: string, sessionNumber: 1 | 2 | 3, trainingDay: number): Promise<Question[]> {
   switch (sessionNumber) {
     case 1:
-      return buildSession1Questions(userId);
+      return buildSession1Questions(userId, trainingDay);
     case 2:
-      return buildSession2Questions(userId);
+      return buildSession2Questions(userId, trainingDay);
     case 3:
-      return buildSession3Questions(userId);
+      return buildSession3Questions(userId, trainingDay);
     default:
       return [];
   }
 }
 
-export async function buildPreviewSessionQuestions(sessionNumber: 1 | 2 | 3): Promise<Question[]> {
+export async function buildPreviewSessionQuestions(sessionNumber: 1 | 2 | 3, trainingDay: number = 1): Promise<Question[]> {
   const previewUser = 'preview';
-  const questions = await buildDailySessionQuestions(previewUser, sessionNumber);
-  return questions;
+  return buildDailySessionQuestions(previewUser, sessionNumber, trainingDay);
 }

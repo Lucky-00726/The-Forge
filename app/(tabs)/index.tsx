@@ -229,7 +229,7 @@ export default function HomeScreen() {
           <Text style={styles.day0Icon}>{sessionStatus?.session1.completed ? '✓' : '🎯'}</Text>
           <View style={styles.day0HeaderText}>
             <Text style={styles.day0Title} maxFontSizeMultiplier={1}>
-              DAY 1 • SESSION 1
+              DAY {profile?.current_training_day ?? 1} • SESSION 1
             </Text>
             <Text style={styles.day0Subtitle} maxFontSizeMultiplier={1}>
               {sessionStatus?.session1.completed
@@ -263,7 +263,7 @@ export default function HomeScreen() {
               <Text style={styles.sessionIcon}>{s2Done ? '✓' : s1Done ? '⚡' : '🔒'}</Text>
               <View style={styles.sessionHeaderText}>
                 <Text style={[styles.sessionTitle, !s1Done && { color: Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                  SESSION 2 • MULTIPLE CHOICE
+                  DAY {profile?.current_training_day ?? 1} • SESSION 2
                 </Text>
                 <Text style={styles.sessionSubtitle} maxFontSizeMultiplier={1}>
                   {s2Done
@@ -306,7 +306,7 @@ export default function HomeScreen() {
               <Text style={styles.sessionIcon}>{s3Done ? '✓' : s2Done ? '📝' : '🔒'}</Text>
               <View style={styles.sessionHeaderText}>
                 <Text style={[styles.sessionTitle, { color: s2Done ? Colors.leadership : Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                  SESSION 3 • SUBJECTIVE
+                  DAY {profile?.current_training_day ?? 1} • SESSION 3
                 </Text>
                 <Text style={styles.sessionSubtitle} maxFontSizeMultiplier={1}>
                   {s3Done

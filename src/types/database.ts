@@ -25,6 +25,8 @@ export interface Database {
           last_active_date: string | null;
           created_at:       string;
           is_admin:         boolean;
+          current_training_day: number;
+          training_program_completed: boolean;
         };
         Insert: {
           id:               string;
@@ -36,6 +38,8 @@ export interface Database {
           last_active_date?:string | null;
           created_at?:      string;
           is_admin?:        boolean;
+          current_training_day?: number;
+          training_program_completed?: boolean;
         };
         Update: {
           display_name?:    string;
@@ -45,6 +49,8 @@ export interface Database {
           current_streak?:  number;
           last_active_date?:string | null;
           is_admin?:        boolean;
+          current_training_day?: number;
+          training_program_completed?: boolean;
         };
       };
       missions: {
@@ -157,6 +163,9 @@ export interface Database {
           sequence_order:    number;
           created_at:        string;
           updated_at:        string;
+          day:               number | null;
+          session:           string;
+          module:            string;
         };
         Insert: {
           id:                string;
@@ -177,6 +186,9 @@ export interface Database {
           sequence_order?:   number;
           created_at?:       string;
           updated_at?:       string;
+          day?:              number | null;
+          session?:          string;
+          module?:           string;
         };
         Update: {
           category?:          string;
@@ -195,6 +207,9 @@ export interface Database {
           question_category?: string;
           sequence_order?:    number;
           updated_at?:        string;
+          day?:               number | null;
+          session?:          string;
+          module?:           string;
         };
       };
       import_staging_questions: {
@@ -219,6 +234,9 @@ export interface Database {
           import_status:     string;
           sequence_order:    number;
           created_at:        string;
+          day:               number | null;
+          session:           string;
+          module:            string;
         };
         Insert: {
           id:                string;
@@ -240,6 +258,9 @@ export interface Database {
           import_status?:     string;
           sequence_order?:    number;
           created_at?:       string;
+          day?:              number | null;
+          session?:          string;
+          module?:           string;
         };
         Update: {
           source_name?:       string;
@@ -259,6 +280,9 @@ export interface Database {
           question_category?: string;
           import_status?:     string;
           sequence_order?:    number;
+          day?:               number | null;
+          session?:          string;
+          module?:           string;
         };
       };
       user_content_progress: {
@@ -298,6 +322,7 @@ export interface Database {
           completion_time_seconds: number | null;
           difficulty:              string | null;
           progress:                any;
+          training_day:            number | null;
         };
         Insert: {
           id?:                      string;
@@ -313,6 +338,7 @@ export interface Database {
           completion_time_seconds?: number | null;
           difficulty?:              string | null;
           progress?:                any;
+          training_day?:            number | null;
         };
         Update: {
           completed_at?:            string | null;
@@ -322,6 +348,7 @@ export interface Database {
           completion_time_seconds?: number | null;
           difficulty?:              string | null;
           progress?:                any;
+          training_day?:            number | null;
         };
       };
     };

@@ -57,6 +57,7 @@ export interface BaseQuestion {
   word_limit?: number | null;
   time_limit_seconds?: number | null;
   xp?: number | null;
+  day?: number | null;
 }
 
 // ─────────────────────────────────────────────────────────────

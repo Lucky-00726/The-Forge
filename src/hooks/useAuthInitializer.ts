@@ -63,33 +63,50 @@ export function useAuthInitializer(): void {
 
     // ── Cold-start / process-restart session restoration ──────
     async function initialize() {
+      console.log('[STARTUP][AuthInit] Starting initialize()');
       try {
+        console.log('[STARTUP][AuthInit] Getting session...');
         const sessionResult = await withTimeout(
           supabase.auth.getSession(),
           INIT_TIMEOUT_MS,
         );
 
-        if (!mountedRef.current) return;
+        if (!mountedRef.current) {
+          console.log('[STARTUP][AuthInit] Component unmounted during getSession');
+          return;
+        }
 
+        console.log('[STARTUP][AuthInit] Session query completed. Success:', !!sessionResult);
         const session = sessionResult?.data?.session ?? null;
+        console.log('[STARTUP][AuthInit] Session present:', !!session);
 
         if (session?.user) {
+          console.log('[STARTUP][AuthInit] User logged in:', session.user.id);
           setSession(session);
           setUser(session.user);
 
+          console.log('[STARTUP][AuthInit] Fetching user profile...');
           const profileResult = await withTimeout(
             fetchProfile(session.user.id),
             INIT_TIMEOUT_MS,
           );
 
-          if (mountedRef.current && profileResult?.success) {
-            setProfile(profileResult.data);
+          if (mountedRef.current) {
+            if (profileResult?.success) {
+              console.log('[STARTUP][AuthInit] Profile loaded successfully');
+              setProfile(profileResult.data);
+            } else {
+              console.error('[STARTUP][AuthInit] Profile fetch failed/timed out');
+            }
           }
+        } else {
+          console.log('[STARTUP][AuthInit] No active session found');
         }
-      } catch (err) {
-        console.error('[AuthInit] init error:', err);
+      } catch (err: any) {
+        console.error('[AuthInit] init error:', err.message);
       } finally {
         if (mountedRef.current) {
+          console.log('[STARTUP][AuthInit] Invoking setIsInitialized(true)');
           setIsLoading(false);
           setIsInitialized(true);
           const finalStore = useAuthStore.getState();
@@ -97,12 +114,16 @@ export function useAuthInitializer(): void {
           // Profile null safety net — if fetchProfile timed out on first try,
           // retry without a timeout now that isInitialized is set.
           if (finalStore.profile === null && finalStore.user?.id) {
+            console.log('[STARTUP][AuthInit] Retrying profile fetch in background');
             fetchProfile(finalStore.user.id).then((retryResult) => {
               if (retryResult.success && mountedRef.current) {
+                console.log('[STARTUP][AuthInit] Background profile fetch succeeded');
                 setProfile(retryResult.data);
               }
             });
           }
+        } else {
+          console.log('[STARTUP][AuthInit] Component unmounted during finally block');
         }
       }
     }

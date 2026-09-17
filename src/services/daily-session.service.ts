@@ -76,11 +76,18 @@ export interface TodayStatus {
 // Returns: ordered question ID array, or null on error
 // ─────────────────────────────────────────────────────────────
 export async function getOrAssignSession(
-  userId:    string,
-  sessionNum: SessionNumber,
-  fetchFn:   () => Promise<string[]>,
+  userId:      string,
+  sessionNum:  SessionNumber,
+  trainingDay: number,
+  fetchFn:     () => Promise<string[]>,
 ): Promise<string[] | null> {
   const date = todayIST();
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+  console.log(`[DEBUG][DailySession] S${sessionNum} getOrAssignSession start`);
+  console.log(`[DEBUG][DailySession] Current date (IST): ${date}`);
+  console.log(`[DEBUG][DailySession] Current timezone: ${timezone}`);
+  console.log(`[DEBUG][DailySession] Today's key: user:${userId} | day:${trainingDay} | session:${sessionNum}`);
 
   try {
     // ── Check for existing assignment ─────────────────────────
@@ -88,7 +95,7 @@ export async function getOrAssignSession(
       .from('user_daily_sessions')
       .select('question_ids')
       .eq('user_id',        userId)
-      .eq('session_date',   date)
+      .eq('training_day',   trainingDay)
       .eq('session_number', sessionNum)
       .maybeSingle();
 
@@ -99,9 +106,12 @@ export async function getOrAssignSession(
     }
 
     if (existing) {
-      console.log(`[DailySession] S${sessionNum}: restored ${existing.question_ids.length} pinned questions`);
+      console.log(`[DEBUG][DailySession] S${sessionNum} generation SKIPPED (restored existing session from DB day: ${trainingDay})`);
+      console.log(`[DEBUG][DailySession] Pinned question IDs:`, JSON.stringify(existing.question_ids));
       return existing.question_ids;
     }
+
+    console.log(`[DEBUG][DailySession] S${sessionNum} generation RUNNING - generating new questions`);
 
     // ── No assignment yet — generate and store ─────────────────
     const questionIds = await fetchFn();
@@ -111,13 +121,15 @@ export async function getOrAssignSession(
       return null;
     }
 
-    // INSERT ... ON CONFLICT DO NOTHING is race-safe.
-    // If another request beat us, we'll read their row below.
+    console.log(`[DEBUG][DailySession] S${sessionNum} generated question IDs:`, JSON.stringify(questionIds));
+
+    // Persist unique assignment mapped to user, training day, and session number
     const { error: insertErr } = await supabase
       .from('user_daily_sessions')
       .insert({
         user_id:        userId,
-        session_date:   date,
+        training_day:   trainingDay,
+        session_date:   date, // Calendar track date kept for analytics/streaks
         session_number: sessionNum,
         question_ids:   questionIds,
       });
@@ -133,7 +145,7 @@ export async function getOrAssignSession(
       .from('user_daily_sessions')
       .select('question_ids')
       .eq('user_id',        userId)
-      .eq('session_date',   date)
+      .eq('training_day',   trainingDay)
       .eq('session_number', sessionNum)
       .single();
 
@@ -143,7 +155,7 @@ export async function getOrAssignSession(
       return questionIds;
     }
 
-    console.log(`[DailySession] S${sessionNum}: assigned ${confirmed.question_ids.length} questions`);
+    console.log(`[DEBUG][DailySession] S${sessionNum} assigned & confirmed:`, JSON.stringify(confirmed.question_ids));
     return confirmed.question_ids;
 
   } catch (err) {
@@ -155,14 +167,7 @@ export async function getOrAssignSession(
 
 
 // ── getTodayStatus ────────────────────────────────────────────
-// Returns completion state for all 3 sessions for today (IST).
-// Used by the dashboard to:
-//   • Show "Completed" / "Locked" / "Available" labels
-//   • Enable/disable session buttons
-//   • Display score and XP on completed session cards
-//
-// Safe default: if the table is unreachable, all sessions appear
-// available and uncompeted (fail open — user can still train).
+// Returns completion state for all 3 sessions for active training day.
 // ─────────────────────────────────────────────────────────────
 export async function getTodayStatus(userId: string): Promise<TodayStatus> {
   const date = todayIST();
@@ -180,11 +185,26 @@ export async function getTodayStatus(userId: string): Promise<TodayStatus> {
   };
 
   try {
+    // 1. Retrieve the user's active progression day
+    const { data: userProfile, error: profileErr } = await supabase
+      .from('users')
+      .select('current_training_day')
+      .eq('id', userId)
+      .single();
+
+    if (profileErr || !userProfile) {
+      console.error('[DailySession] getTodayStatus profile lookup failed:', profileErr?.message);
+      return defaultResult;
+    }
+
+    const trainingDay = userProfile.current_training_day;
+
+    // 2. Fetch daily sessions matching this active progression day
     const { data, error } = await supabase
       .from('user_daily_sessions')
       .select('*')
       .eq('user_id',      userId)
-      .eq('session_date', date) as any;
+      .eq('training_day', trainingDay) as any;
 
     if (error) {
       console.error('[DailySession] getTodayStatus error:', error.message);
@@ -214,18 +234,7 @@ export async function getTodayStatus(userId: string): Promise<TodayStatus> {
 
 
 // ── markSessionCompleted ──────────────────────────────────────
-// Records session completion with review data.
-// Called once after award_progression() succeeds.
-// Idempotent: if called twice, the second call is a no-op
-// (completed_at is already set — the unique row already has data).
-//
-// Parameters:
-//   sessionNum              — 1, 2, or 3
-//   xpEarned                — total XP awarded this session
-//   score                   — correct answer count (null for S3)
-//   totalQuestions          — total questions in session
-//   completionTimeSeconds   — wall-clock seconds from start to finish
-//   difficulty              — summary difficulty label ('Mixed', 'Easy', 'Hard')
+// Calls the secure, atomic database RPC to save progress and advance day.
 // ─────────────────────────────────────────────────────────────
 export async function markSessionCompleted(
   userId:                 string,
@@ -235,38 +244,56 @@ export async function markSessionCompleted(
   totalQuestions:         number,
   completionTimeSeconds:  number,
   difficulty:             string,
-): Promise<void> {
-  const date = todayIST();
-
+): Promise<{ success: boolean; status: string; dayAdvanced: boolean; newTrainingDay: number } | null> {
   try {
-    const { error } = await supabase
-      .from('user_daily_sessions')
-      .update({
-        completed_at:            new Date().toISOString(),
-        xp_earned:               xpEarned,
-        score,
-        total_questions:         totalQuestions,
-        completion_time_seconds: completionTimeSeconds,
-        difficulty,
-      })
-      .eq('user_id',        userId)
-      .eq('session_date',   date)
-      .eq('session_number', sessionNum)
-      .is('completed_at',   null);   // idempotency guard: only update if not yet completed
+    const { data: userProfile } = await supabase
+      .from('users')
+      .select('current_training_day')
+      .eq('id', userId)
+      .single();
+
+    const expectedDay = userProfile?.current_training_day ?? 1;
+
+    console.log(`[DailySession] RPC complete_daily_session for Day ${expectedDay}, S${sessionNum}`);
+
+    const { data, error } = await supabase.rpc('complete_daily_session', {
+      p_expected_day:            expectedDay,
+      p_session_number:          sessionNum,
+      p_xp_earned:               xpEarned,
+      p_score:                   score,
+      p_total_questions:         totalQuestions,
+      p_completion_time_seconds: completionTimeSeconds,
+      p_difficulty:              difficulty
+    });
 
     if (error) {
-      console.error(`[DailySession] markCompleted error (S${sessionNum}):`, error.message);
-    } else {
-      console.log(`[DailySession] S${sessionNum} marked complete: score=${score}/${totalQuestions} xp=${xpEarned}`);
+      console.error('[DailySession] RPC complete_daily_session error:', error.message);
+      return null;
     }
+
+    const result = data && data[0];
+    if (!result) {
+      console.error('[DailySession] RPC complete_daily_session returned empty data');
+      return null;
+    }
+
+    console.log('[DailySession] RPC complete_daily_session result:', result);
+
+    return {
+      success:         result.completed_session,
+      status:          result.status,
+      dayAdvanced:     result.day_advanced,
+      newTrainingDay:  result.new_training_day
+    };
   } catch (err) {
-    console.error('[DailySession] markCompleted unexpected error:', err);
+    console.error('[DailySession] RPC complete_daily_session unexpected error:', err);
+    return null;
   }
 }
 
 
 // ── isSessionCompleted ────────────────────────────────────────
-// Quick check: has the user already completed this session today?
+// Quick check: has the user already completed this session for active day?
 // Used by completion screens to guard against double XP awards.
 // Safe default: returns false on error (fail open).
 // ─────────────────────────────────────────────────────────────
@@ -274,14 +301,20 @@ export async function isSessionCompleted(
   userId:    string,
   sessionNum: SessionNumber,
 ): Promise<boolean> {
-  const date = todayIST();
-
   try {
+    const { data: userProfile } = await supabase
+      .from('users')
+      .select('current_training_day')
+      .eq('id', userId)
+      .single();
+
+    const trainingDay = userProfile?.current_training_day ?? 1;
+
     const { data, error } = await supabase
       .from('user_daily_sessions')
       .select('completed_at')
       .eq('user_id',        userId)
-      .eq('session_date',   date)
+      .eq('training_day',   trainingDay)
       .eq('session_number', sessionNum)
       .maybeSingle();
 
@@ -309,13 +342,20 @@ export async function devForceRegenerateSession(
     return false;
   }
 
-  const date = todayIST();
   try {
+    const { data: userProfile } = await supabase
+      .from('users')
+      .select('current_training_day')
+      .eq('id', userId)
+      .single();
+
+    const trainingDay = userProfile?.current_training_day ?? 1;
+
     const { error } = await supabase
       .from('user_daily_sessions')
       .delete()
       .eq('user_id',        userId)
-      .eq('session_date',   date)
+      .eq('training_day',   trainingDay)
       .eq('session_number', sessionNum);
 
     if (error) {
@@ -323,7 +363,7 @@ export async function devForceRegenerateSession(
       return false;
     }
 
-    console.log(`[DailySession] [DEV] Successfully deleted today's cached session ${sessionNum}`);
+    console.log(`[DailySession] [DEV] Successfully deleted cached session ${sessionNum} for Day ${trainingDay}`);
     return true;
   } catch (err) {
     console.error(`[DailySession] [DEV] devForceRegenerateSession unexpected error:`, err);

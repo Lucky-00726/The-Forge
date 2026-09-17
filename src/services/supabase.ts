@@ -58,10 +58,14 @@ function anonKeyProjectRef(key: string): string {
   }
 }
 
-console.log('[DIAG][Supabase] EXPO_PUBLIC_SUPABASE_URL:', SUPABASE_URL || 'EMPTY — env var not set');
-console.log('[DIAG][Supabase] ANON_KEY project ref:', anonKeyProjectRef(SUPABASE_ANON_KEY));
-console.log('[DIAG][Supabase] Expected project ref: xpfpvfnxvoxjosnvowub');
-console.log('[DIAG][Supabase] URL matches expected:', SUPABASE_URL.includes('xpfpvfnxvoxjosnvowub'));
+console.log('[STARTUP][Supabase] EXPO_PUBLIC_SUPABASE_URL:', SUPABASE_URL || 'EMPTY — env var not set');
+console.log('[STARTUP][Supabase] ANON_KEY project ref:', anonKeyProjectRef(SUPABASE_ANON_KEY));
+console.log('[STARTUP][Supabase] Expected project ref: xpfpvfnxvoxjosnvowub');
+console.log('[STARTUP][Supabase] URL matches expected:', SUPABASE_URL.includes('xpfpvfnxvoxjosnvowub'));
+
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  console.error('[STARTUP][Supabase][CRITICAL] SUPABASE_URL or SUPABASE_ANON_KEY is empty! Supabase createClient will throw an error and crash the app!');
+}
 
 if (__DEV__) {
   if (!SUPABASE_URL)      console.warn('[Supabase] EXPO_PUBLIC_SUPABASE_URL is not set');
@@ -69,17 +73,27 @@ if (__DEV__) {
 }
 
 // ── Client ────────────────────────────────────────────────────
-export const supabase = createClient<Database>(
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY,
-  {
-    auth: {
-      storage:            SecureStoreAdapter,
-      autoRefreshToken:   true,
-      persistSession:     true,
-      detectSessionInUrl: false,
+console.log('[STARTUP][Supabase] Creating Supabase client...');
+let supabaseClient;
+try {
+  supabaseClient = createClient<Database>(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
+    {
+      auth: {
+        storage:            SecureStoreAdapter,
+        autoRefreshToken:   true,
+        persistSession:     true,
+        detectSessionInUrl: false,
+      },
     },
-  },
-);
+  );
+  console.log('[STARTUP][Supabase] Supabase client created successfully!');
+} catch (e: any) {
+  console.error('[STARTUP][Supabase][FATAL] Supabase createClient crashed:', e.message);
+  throw e;
+}
+
+export const supabase = supabaseClient;
 
 export default supabase;

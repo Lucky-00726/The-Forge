@@ -65,7 +65,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 // per-user data — this mirrors what index.tsx already hardcoded
 // (question counts, format) before the redesign.
 const SESSION_STACK = [
-  { num: 1 as const, title: 'Knowledge & Awareness',          exercises: '12 exercises', style: 'MCQ',                   route: '/day0-prototype' as const },
+  { num: 1 as const, title: 'Knowledge & Awareness',          exercises: '12 exercises', style: 'MCQ',                   route: '/session1' as const },
   { num: 2 as const, title: 'Defence & General Awareness',    exercises: '12 exercises', style: 'MCQ',                   route: '/session2' as const },
   { num: 3 as const, title: 'Psychology & Response',          exercises: '10 exercises', style: 'SRT · WAT · Interview', route: '/session3' as const },
 ];

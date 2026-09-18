@@ -8,15 +8,21 @@ import {
   Text,
   TextInput,
   StyleSheet,
+  Pressable,
 } from 'react-native';
-import { TacticalButton, CornerMarkers, TacticalCheckbox } from '../ui';
+import { MaterialIcons } from '@expo/vector-icons';
+import {
+  MilledSurface,
+  SegmentedProgress,
+  RecessedTrack,
+  ForgeButton,
+  LabelCaps,
+  Body,
+  Mono,
+} from '../forge';
 import {
   Colors,
-  Fonts,
-  FontSizes,
   Spacing,
-  Radius,
-  LetterSpacing,
 } from '../../constants/tokens';
 import type { DailyChallengeContent, DailyChallengeResponse } from '../../types';
 
@@ -70,127 +76,77 @@ export default function DailyChallenge({
 
   return (
     <View style={styles.container}>
-      {/* Field Operation Header with Timer */}
-      <View style={styles.operationCard}>
-        <CornerMarkers color={Colors.primary} size={12} />
-        
-        <View style={styles.operationHeader}>
-          <Text style={styles.operationLabel} maxFontSizeMultiplier={1}>
-            FIELD OPERATION
-          </Text>
-          <View style={styles.timerBox}>
-            <Text style={styles.timerLabel} maxFontSizeMultiplier={1}>
-              DURATION
-            </Text>
-            <Text style={styles.timerValue} maxFontSizeMultiplier={1}>
-              {timeRemaining}
-            </Text>
-          </View>
-        </View>
+      {/* Step Header */}
+      <SegmentedProgress current={completed ? 2 : 1} total={2} />
 
-        <Text style={styles.briefingText} maxFontSizeMultiplier={1}>
+      {/* Briefing Card */}
+      <MilledSurface style={styles.briefingCard}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>CHALLENGE</LabelCaps>
+        <Body maxFontSizeMultiplier={1}>
           {content.briefing}
-        </Text>
-      </View>
+        </Body>
+      </MilledSurface>
 
-      {/* Mission Parameters */}
-      <View style={styles.parametersCard}>
-        <Text style={styles.parametersLabel} maxFontSizeMultiplier={1}>
-          MISSION PARAMETERS
-        </Text>
+      {/* Task Details */}
+      <MilledSurface style={styles.taskCard}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TASK</LabelCaps>
+        <Body maxFontSizeMultiplier={1}>
+          {content.task}
+        </Body>
+      </MilledSurface>
 
-        <View style={styles.objectiveSection}>
-          <Text style={styles.objectiveLabel} maxFontSizeMultiplier={1}>
-            PRIMARY OBJECTIVE:
-          </Text>
-          <Text style={styles.objectiveText} maxFontSizeMultiplier={1}>
-            {content.task}
-          </Text>
-        </View>
-
-        <View style={styles.criteriaSection}>
-          <Text style={styles.criteriaLabel} maxFontSizeMultiplier={1}>
-            COMPLETION CRITERIA:
-          </Text>
-          <Text style={styles.criteriaItem} maxFontSizeMultiplier={1}>
-            • Execute task in real world
-          </Text>
-          <Text style={styles.criteriaItem} maxFontSizeMultiplier={1}>
-            • Observe outcomes
-          </Text>
-          <Text style={styles.criteriaItem} maxFontSizeMultiplier={1}>
-            • Report findings
-          </Text>
-        </View>
-      </View>
-
-      {/* Mission Status with Tactical Checkbox */}
-      <View style={styles.statusCard}>
-        <Text style={styles.statusLabel} maxFontSizeMultiplier={1}>
-          MISSION STATUS
-        </Text>
-
-        <TacticalCheckbox
-          checked={completed}
-          onToggle={() => setCompleted(!completed)}
-          label="MISSION EXECUTED"
-          uncheckedLabel="MISSION INCOMPLETE"
-          disabled={isSubmitting}
-        />
-
-        <Text style={styles.statusHint} maxFontSizeMultiplier={1}>
-          Tap to confirm completion
-        </Text>
-      </View>
-
-      {/* Field Report (Progressive Disclosure) */}
-      {completed && (
-        <View style={styles.reportCard}>
-          <Text style={styles.reportHeader} maxFontSizeMultiplier={1}>
-            FIELD REPORT
-          </Text>
-          <Text style={styles.reportPrompt} maxFontSizeMultiplier={1}>
-            DOCUMENT YOUR OBSERVATIONS:
-          </Text>
-
-          <TextInput
-            value={reflection}
-            onChangeText={setReflection}
-            placeholder="Describe what you learned or noticed…"
-            placeholderTextColor={Colors.textTertiary}
-            multiline
-            numberOfLines={5}
-            style={styles.reportInput}
-            textAlignVertical="top"
-            maxFontSizeMultiplier={1}
-            editable={!isSubmitting}
-          />
-
-          <View style={styles.reportStatus}>
-            <Text style={styles.reportStatusText} maxFontSizeMultiplier={1}>
-              REPORT STATUS: {reflection.trim() ? 'DOCUMENTED' : 'OPTIONAL'}
-            </Text>
+      {/* Completion Toggle */}
+      <Pressable
+        onPress={() => !isSubmitting && setCompleted(!completed)}
+        disabled={isSubmitting}
+        style={({ pressed }) => [
+          styles.completionButton,
+          completed && styles.completionButtonActive,
+          pressed && styles.completionButtonPressed,
+        ]}
+      >
+        <MilledSurface style={styles.completionCard}>
+          <View style={styles.completionRow}>
+            <MaterialIcons
+              name={completed ? 'check-circle' : 'radio-button-unchecked'}
+              size={24}
+              color={completed ? Colors.success : Colors.textSecondary}
+            />
+            <LabelCaps tone={completed ? 'success' : 'secondary'} maxFontSizeMultiplier={1}>
+              {completed ? 'COMPLETED' : 'MARK AS COMPLETE'}
+            </LabelCaps>
           </View>
+        </MilledSurface>
+      </Pressable>
+
+      {/* Reflection (Progressive Disclosure) */}
+      {completed && (
+        <View style={styles.reflectionSection}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>REFLECTION (OPTIONAL)</LabelCaps>
+
+          <RecessedTrack style={styles.inputWrap}>
+            <TextInput
+              value={reflection}
+              onChangeText={setReflection}
+              placeholder="What did you learn or observe…"
+              placeholderTextColor={Colors.textTertiary}
+              multiline
+              numberOfLines={5}
+              style={styles.reflectionInput}
+              textAlignVertical="top"
+              maxFontSizeMultiplier={1}
+              editable={!isSubmitting}
+            />
+          </RecessedTrack>
         </View>
       )}
 
       {/* Submit */}
-      <TacticalButton
-        label={completed ? 'SUBMIT FIELD REPORT →' : 'COMPLETE MISSION FIRST'}
+      <ForgeButton
+        label={isSubmitting ? 'Submitting…' : 'Submit Challenge'}
         onPress={handleSubmit}
-        loading={isSubmitting}
-        disabled={!canSubmit}
+        disabled={!canSubmit || isSubmitting}
       />
-
-      {/* Protocol Note */}
-      {completed && (
-        <View style={styles.noteBox}>
-          <Text style={styles.noteText} maxFontSizeMultiplier={1}>
-            Your field report is private. Only you will see it. It helps you track
-            growth over time.
-          </Text>
-        </View>
-      )}
     </View>
   );
 }
@@ -199,175 +155,36 @@ const styles = StyleSheet.create({
   container: {
     gap: Spacing.lg,
   },
-
-  // Field Operation Card
-  operationCard: {
-    position:        'relative',
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.primary + '33',
-    padding:         Spacing.lg,
-  },
-  operationHeader: {
-    flexDirection:  'row',
-    justifyContent: 'space-between',
-    alignItems:     'flex-start',
-    marginBottom:   Spacing.md,
-  },
-  operationLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  timerBox: {
-    alignItems: 'flex-end',
-  },
-  timerLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-    marginBottom:  2,
-  },
-  timerValue: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  briefingText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodyLg,
-    color:      Colors.textPrimary,
-    lineHeight: 26,
-  },
-
-  // Mission Parameters Card
-  parametersCard: {
-    backgroundColor: Colors.bgLow,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.lg,
-    gap:             Spacing.md,
-  },
-  parametersLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-
-  // Objective Section
-  objectiveSection: {
-    gap: Spacing.xs,
-  },
-  objectiveLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  objectiveText: {
-    fontFamily:  Fonts.body,
-    fontSize:    FontSizes.bodyMd,
-    color:       Colors.textPrimary,
-    lineHeight:  24,
-    paddingLeft: Spacing.sm,
-  },
-
-  // Criteria Section
-  criteriaSection: {
-    gap: Spacing.xs,
-  },
-  criteriaLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  criteriaItem: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
-  },
-
-  // Status Card
-  statusCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.md,
-    borderWidth:     2,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.lg,
-    gap:             Spacing.md,
-  },
-  statusLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  statusHint: {
-    fontFamily:  Fonts.body,
-    fontSize:    FontSizes.micro,
-    color:       Colors.textTertiary,
-    lineHeight:  16,
-    textAlign:   'center',
-  },
-
-  // Field Report Card
-  reportCard: {
+  briefingCard: {
+    padding: Spacing.lg,
     gap: Spacing.md,
   },
-  reportHeader: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
+  taskCard: {
+    padding: Spacing.lg,
+    gap: Spacing.md,
   },
-  reportPrompt: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-    marginTop:     -Spacing.xs,
+  completionButton: {},
+  completionButtonActive: {},
+  completionButtonPressed: {
+    opacity: 0.8,
   },
-  reportInput: {
-    backgroundColor: Colors.bgLow,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.md,
-    fontFamily:      Fonts.mono,
-    fontSize:        FontSizes.bodyMd,
-    color:           Colors.textPrimary,
-    minHeight:       120,
-    lineHeight:      24,
+  completionCard: {
+    padding: Spacing.lg,
   },
-  reportStatus: {
-    alignItems: 'flex-end',
+  completionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.md,
   },
-  reportStatusText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: 0.5,
+  reflectionSection: {
+    gap: Spacing.md,
   },
-
-  // Note Box
-  noteBox: {
-    borderLeftWidth: 2,
-    borderLeftColor: Colors.outlineVar,
-    paddingLeft:     Spacing.md,
-    marginTop:       -Spacing.xs,
+  inputWrap: {
+    padding: Spacing.md,
   },
-  noteText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.micro,
-    color:      Colors.textTertiary,
-    lineHeight: 16,
+  reflectionInput: {
+    minHeight: 120,
+    lineHeight: 24,
+    color: Colors.textPrimary,
   },
 });

@@ -9,16 +9,19 @@ import {
   TextInput,
   StyleSheet,
 } from 'react-native';
-import { TacticalButton, CornerMarkers, StatusIndicator, SegmentedProgressBar } from '../ui';
+import {
+  MilledSurface,
+  SegmentedProgress,
+  RecessedTrack,
+  ForgeButton,
+  LabelCaps,
+  Body,
+  Mono,
+} from '../forge';
 import { countCharacters } from '../../hooks/useFormValidation';
 import {
   Colors,
-  Fonts,
-  FontSizes,
   Spacing,
-  Radius,
-  LetterSpacing,
-  TacticalColors,
 } from '../../constants/tokens';
 import type { ReflectWriteContent, ReflectWriteResponse } from '../../types';
 
@@ -56,93 +59,59 @@ export default function ReflectWrite({
 
   return (
     <View style={styles.container}>
-      {/* Context (optional) */}
-      {content.context && (
-        <View style={styles.contextBox}>
-          <CornerMarkers position="tl" />
-          <Text style={styles.contextLabel} maxFontSizeMultiplier={1}>
-            SITUATIONAL CONTEXT
-          </Text>
-          <Text style={styles.contextText} maxFontSizeMultiplier={1}>
-            {content.context}
-          </Text>
-        </View>
-      )}
+      {/* Step Header */}
+      <SegmentedProgress current={1} total={1} />
 
-      {/* Evaluation Briefing */}
-      <View style={styles.briefingBox}>
-        <CornerMarkers position="all" />
-        <Text style={styles.briefingLabel} maxFontSizeMultiplier={1}>
-          ⚠ EVALUATION BRIEFING
-        </Text>
-        <Text style={styles.briefingText} maxFontSizeMultiplier={1}>
+      {/* Prompt Card */}
+      <MilledSurface style={styles.card}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>PROMPT</LabelCaps>
+
+        {content.context && (
+          <>
+            <LabelCaps tone="tertiary" maxFontSizeMultiplier={1}>CONTEXT</LabelCaps>
+            <Body tone="secondary" maxFontSizeMultiplier={1}>
+              {content.context}
+            </Body>
+          </>
+        )}
+
+        <Body maxFontSizeMultiplier={1}>
           {content.prompt}
-        </Text>
-      </View>
+        </Body>
+      </MilledSurface>
 
-      {/* Officer Response Section */}
-      <View style={styles.responseSection}>
-        <Text style={styles.responseHeader} maxFontSizeMultiplier={1}>
-          OFFICER RESPONSE REQUIRED
-        </Text>
-        
-        <TextInput
-          value={text}
-          onChangeText={setText}
-          placeholder="Begin tactical response..."
-          placeholderTextColor={Colors.textTertiary + '80'}
-          multiline
-          numberOfLines={8}
-          style={styles.responseInput}
-          textAlignVertical="top"
-          maxFontSizeMultiplier={1}
-          editable={!isSubmitting}
-        />
+      {/* Response Input */}
+      <View style={styles.inputSection}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>YOUR RESPONSE</LabelCaps>
 
-        {/* Character Count Analysis */}
-        <View style={styles.analysisSection}>
-          <View style={styles.wordCountRow}>
-            <Text style={styles.wordCountLabel} maxFontSizeMultiplier={1}>
-              CHARACTER COUNT:
-            </Text>
-            <Text style={[
-              styles.wordCountValue,
-              canSubmit && { color: Colors.success },
-            ]} maxFontSizeMultiplier={1}>
-              {charCount} / 20
-            </Text>
-          </View>
-
-          <SegmentedProgressBar
-            segments={5}
-            progress={progress}
-            height={6}
-            activeColor={canSubmit ? Colors.success : Colors.primary}
+        <RecessedTrack style={styles.inputWrap}>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            placeholder="Enter your response…"
+            placeholderTextColor={Colors.textTertiary}
+            multiline
+            numberOfLines={8}
+            style={styles.responseInput}
+            textAlignVertical="top"
+            maxFontSizeMultiplier={1}
+            editable={!isSubmitting}
           />
+        </RecessedTrack>
 
-          <StatusIndicator
-            status={getStatus()}
-            label="RESPONSE STATUS"
-          />
+        <View style={styles.charCountRow}>
+          <Mono tone={canSubmit ? 'success' : 'secondary'} maxFontSizeMultiplier={1}>
+            {charCount} / 20 characters
+          </Mono>
         </View>
       </View>
 
       {/* Submit */}
-      <TacticalButton
-        label={isSubmitting ? 'Submitting Evaluation' : 'Submit For Evaluation'}
+      <ForgeButton
+        label={isSubmitting ? 'Submitting…' : 'Submit Response'}
         onPress={handleSubmit}
-        loading={isSubmitting}
-        disabled={!canSubmit}
+        disabled={!canSubmit || isSubmitting}
       />
-
-      {/* Validation hint */}
-      {!canSubmit && charCount > 0 && (
-        <View style={styles.validationHint}>
-          <Text style={styles.validationText} maxFontSizeMultiplier={1}>
-            Minimum {20 - charCount} more characters required for submission.
-          </Text>
-        </View>
-      )}
     </View>
   );
 }
@@ -151,116 +120,22 @@ const styles = StyleSheet.create({
   container: {
     gap: Spacing.lg,
   },
-  
-  // ── Context Box ───────────────────────────────────────────────
-  contextBox: {
-    backgroundColor: Colors.bgLow,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar + '80',
-    padding:         Spacing.md,
-    position:        'relative',
+  card: {
+    padding: Spacing.lg,
+    gap: Spacing.md,
   },
-  contextLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom:  Spacing.xs,
+  inputSection: {
+    gap: Spacing.md,
   },
-  contextText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
-  },
-  
-  // ── Evaluation Briefing ───────────────────────────────────────
-  briefingBox: {
-    backgroundColor: TacticalColors.surfaceCard,
-    borderRadius:    Radius.md,
-    borderWidth:     2,
-    borderColor:     Colors.primary + '55',
-    padding:         Spacing.lg,
-    position:        'relative',
-  },
-  briefingLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.label,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom:  Spacing.sm,
-  },
-  briefingText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodyLg,
-    color:      Colors.textPrimary,
-    lineHeight: 28,
-    fontStyle:  'italic',
-  },
-  
-  // ── Response Section ──────────────────────────────────────────
-  responseSection: {
-    gap: Spacing.sm,
-  },
-  responseHeader: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textPrimary,
-    letterSpacing: LetterSpacing.widest,
-    marginBottom:  Spacing.xs,
+  inputWrap: {
+    padding: Spacing.md,
   },
   responseInput: {
-    backgroundColor: Colors.bgLowest,
-    borderRadius:    Radius.md,
-    borderWidth:     2,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.md,
-    fontFamily:      Fonts.mono,
-    fontSize:        FontSizes.bodyMd,
-    color:           Colors.textPrimary,
-    minHeight:       200,
-    lineHeight:      24,
+    minHeight: 200,
+    lineHeight: 24,
+    color: Colors.textPrimary,
   },
-  
-  // ── Analysis Section ──────────────────────────────────────────
-  analysisSection: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.md,
-    gap:             Spacing.sm,
-  },
-  wordCountRow: {
-    flexDirection:  'row',
-    justifyContent: 'space-between',
-    alignItems:     'center',
-  },
-  wordCountLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  wordCountValue: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.textPrimary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  
-  // ── Validation Hint ───────────────────────────────────────────
-  validationHint: {
-    borderLeftWidth: 2,
-    borderLeftColor: Colors.primary,
-    paddingLeft:     Spacing.md,
-    marginTop:       -Spacing.xs,
-  },
-  validationText: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.micro,
-    color:      Colors.textTertiary,
-    lineHeight: 16,
+  charCountRow: {
+    alignItems: 'flex-end',
   },
 });

@@ -12,14 +12,25 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useMissionEngine } from '../../src/hooks/useMissionEngine';
-import { ScreenMeta, TacticalButton, CornerMarkers } from '../../src/components/ui';
 import ReflectWrite from '../../src/components/mission-types/ReflectWrite';
 import PollReasoning from '../../src/components/mission-types/PollReasoning';
 import DailyChallenge from '../../src/components/mission-types/DailyChallenge';
 import RapidResponse from '../../src/components/mission-types/RapidResponse';
+import {
+  MilledSurface,
+  Display,
+  Headline,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+  Chip,
+  MetaItem,
+} from '../../src/components/forge';
 import {
   Colors,
   Fonts,
@@ -27,7 +38,6 @@ import {
   Spacing,
   Radius,
   LetterSpacing,
-  TacticalColors,
 } from '../../src/constants/tokens';
 import type {
   ReflectWriteContent,
@@ -80,9 +90,9 @@ export default function MissionDetailScreen() {
     return (
       <View style={styles.centerContainer}>
         <ActivityIndicator size="large" color={Colors.primary} />
-        <Text style={styles.loadingText} maxFontSizeMultiplier={1}>
+        <Body tone="secondary" maxFontSizeMultiplier={1}>
           Loading mission…
-        </Text>
+        </Body>
       </View>
     );
   }
@@ -91,23 +101,23 @@ export default function MissionDetailScreen() {
   if (error && !mission) {
     return (
       <View style={[styles.centerContainer, { paddingTop: insets.top + Spacing.xl }]}>
-        <ScreenMeta id="ERROR" label="Mission Load Failed" />
+        <LabelCaps tone="error" maxFontSizeMultiplier={1}>MISSION LOAD FAILED</LabelCaps>
         <View style={styles.errorBox}>
-          <Text style={styles.errorIcon}>⚠</Text>
-          <Text style={styles.errorText} maxFontSizeMultiplier={1}>
+          <MaterialIcons name="error-outline" size={48} color={Colors.error} />
+          <Body tone="secondary" style={styles.errorText} maxFontSizeMultiplier={1}>
             {error}
-          </Text>
+          </Body>
         </View>
         <View style={styles.errorActions}>
-          <TacticalButton
+          <ForgeButton
             label="Retry"
             onPress={retry}
-            variant="ghost"
+            variant="secondary"
           />
-          <TacticalButton
+          <ForgeButton
             label="Back to Home"
             onPress={() => router.replace('/(tabs)')}
-            variant="ghost"
+            variant="secondary"
           />
         </View>
       </View>
@@ -136,25 +146,17 @@ export default function MissionDetailScreen() {
 
   return (
     <View style={styles.container}>
-      {/* Header with glass effect */}
+      {/* Header */}
       <View style={[styles.header, { paddingTop: insets.top + Spacing.md }]}>
         <View style={styles.headerContent}>
-          <TouchableOpacity
-            style={styles.abortButton}
+          <ForgeButton
+            label="← ABORT"
             onPress={() => router.back()}
-            activeOpacity={0.7}
-          >
-            <Text style={styles.abortButtonText} maxFontSizeMultiplier={1}>
-              ← ABORT
-            </Text>
-          </TouchableOpacity>
+            variant="ghost"
+            style={styles.abortButton}
+          />
           <View style={styles.phaseIndicator}>
-            <Text style={styles.phaseLabel} maxFontSizeMultiplier={1}>
-              CURRENT PHASE
-            </Text>
-            <Text style={styles.phaseText} maxFontSizeMultiplier={1}>
-              BRIEFING // EXECUTE
-            </Text>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>MISSION BRIEFING</LabelCaps>
           </View>
         </View>
       </View>
@@ -168,68 +170,62 @@ export default function MissionDetailScreen() {
         showsVerticalScrollIndicator={false}
       >
         {/* Mission briefing card */}
-        <View style={styles.briefingCard}>
-          <CornerMarkers position="all" />
-          
-          {/* Mission ID tag (top-right) */}
-          <View style={styles.missionIdTag}>
-            <Text style={styles.missionIdText} maxFontSizeMultiplier={1}>
-              ID: {mission.id}
-            </Text>
-          </View>
+        <MilledSurface brackets style={styles.briefingCard}>
 
+          {/* Mission header with metadata */}
           <View style={styles.briefingHeader}>
             <View style={styles.headerTopRow}>
               <View style={styles.metaBadgeGroup}>
-                <View style={[styles.categoryChip, { backgroundColor: categoryColor + '22' }]}>
-                  <Text
-                    style={[styles.categoryText, { color: categoryColor }]}
+                <View
+                  style={[
+                    styles.categoryChip,
+                    { backgroundColor: (categoryColor ?? Colors.textTertiary) + '22' },
+                  ]}
+                >
+                  <Mono
+                    style={[
+                      styles.categoryText,
+                      { color: categoryColor ?? Colors.textTertiary },
+                    ]}
                     maxFontSizeMultiplier={1}
                   >
                     {mission.category.toUpperCase()}
-                  </Text>
-                </View>
-                <View style={styles.typeChip}>
-                  <Text style={styles.typeText} maxFontSizeMultiplier={1}>
-                    {mission.mission_type.toUpperCase()}
-                  </Text>
+                  </Mono>
                 </View>
               </View>
-              <View style={styles.xpBadge}>
-                <View style={styles.xpDot} />
-                <Text style={styles.xpText} maxFontSizeMultiplier={1}>
-                  +{mission.xp_reward} XP
-                </Text>
+              <View style={styles.metaItems}>
+                {mission.time_limit_seconds && (
+                  <MetaItem
+                    label={`${Math.round(mission.time_limit_seconds / 60)} MIN`}
+                    icon={<MaterialIcons name="schedule" size={14} color={Colors.textSecondary} />}
+                  />
+                )}
+                <MetaItem
+                  label={`+${mission.xp_reward} XP`}
+                  icon={<MaterialIcons name="star" size={14} color={Colors.primary} />}
+                />
               </View>
             </View>
           </View>
 
           <View style={styles.briefingContent}>
-            <Text style={styles.briefingLabel} maxFontSizeMultiplier={1}>
-              MISSION OBJECTIVE
-            </Text>
-            <Text style={styles.missionTitle} maxFontSizeMultiplier={1}>
+            <Headline maxFontSizeMultiplier={1}>
               {mission.title}
-            </Text>
-            
-            <View style={styles.briefingFooter}>
-              <View style={styles.importanceIndicator}>
-                <View style={styles.importanceDot} />
-                <Text style={styles.importanceText} maxFontSizeMultiplier={1}>
-                  Officer-level response required
-                </Text>
-              </View>
-            </View>
+            </Headline>
+            <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+              {mission.mission_type}
+            </Mono>
           </View>
-        </View>
+        </MilledSurface>
 
         {/* Error banner (submission error) */}
         {error && (
-          <View style={styles.submitErrorBox}>
-            <Text style={styles.submitErrorText} maxFontSizeMultiplier={1}>
+          <MilledSurface style={styles.submitErrorBox}>
+            <LabelCaps tone="error" maxFontSizeMultiplier={1}>SUBMISSION ERROR</LabelCaps>
+            <Body tone="secondary" maxFontSizeMultiplier={1}>
               {error}
-            </Text>
-          </View>
+            </Body>
+          </MilledSurface>
         )}
 
         {/* Type-specific component */}
@@ -273,231 +269,87 @@ export default function MissionDetailScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex:            1,
+    flex: 1,
     backgroundColor: Colors.bgBase,
   },
   header: {
     paddingHorizontal: Spacing.gutter,
-    paddingBottom:     Spacing.md,
-    backgroundColor:   TacticalColors.glassBackground,
+    paddingBottom: Spacing.md,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: Colors.outlineVar + '30',
   },
   headerContent: {
-    flexDirection:  'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:     'center',
+    alignItems: 'center',
   },
-  abortButton: {
-    paddingVertical:   Spacing.xs,
-    paddingHorizontal: Spacing.sm,
-  },
-  abortButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.error,
-    letterSpacing: LetterSpacing.widest,
-  },
+  abortButton: {},
   phaseIndicator: {
     alignItems: 'flex-end',
-  },
-  phaseLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.widest,
-    marginBottom:  2,
-  },
-  phaseText: {
-    fontFamily:    Fonts.heading,
-    fontSize:      FontSizes.headingSm,
-    color:         Colors.primary,
-    letterSpacing: -0.5,
   },
   scroll: {
     flex: 1,
   },
   content: {
     paddingHorizontal: Spacing.gutter,
-    paddingTop:        Spacing.lg,
+    paddingTop: Spacing.lg,
   },
-  
+
   // ── Mission Briefing Card ─────────────────────────────────────
   briefingCard: {
-    backgroundColor: TacticalColors.surfaceCard,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     TacticalColors.borderTactical,
-    overflow:        'hidden',
-    marginBottom:    Spacing.xl,
-    position:        'relative',
-  },
-  missionIdTag: {
-    position: 'absolute',
-    top:      Spacing.md,
-    right:    Spacing.md,
-    zIndex:   10,
-    backgroundColor: 'rgba(16, 20, 21, 0.9)',
-    borderRadius:    Radius.xs,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-    borderWidth:       1,
-    borderColor:       Colors.primary + '44',
-  },
-  missionIdText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.primary,
-    letterSpacing: 0.5,
+    padding: Spacing.lg,
+    marginBottom: Spacing.xl,
+    gap: Spacing.md,
   },
   briefingHeader: {
-    backgroundColor:   Colors.primary + '11',
-    paddingVertical:   Spacing.md,
-    paddingHorizontal: Spacing.lg,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.primary + '22',
+    gap: Spacing.md,
   },
   headerTopRow: {
-    flexDirection:  'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:     'center',
+    alignItems: 'flex-start',
   },
   metaBadgeGroup: {
     flexDirection: 'row',
-    gap:           Spacing.sm,
-    flex:          1,
+    gap: Spacing.sm,
+    flex: 1,
   },
   categoryChip: {
     paddingHorizontal: Spacing.sm,
-    paddingVertical:   Spacing.xs,
-    borderRadius:      Radius.sm,
+    paddingVertical: Spacing.xs,
+    borderRadius: Radius.sm,
   },
-  categoryText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    letterSpacing: LetterSpacing.wider,
-  },
-  typeChip: {
-    paddingHorizontal: Spacing.sm,
-    paddingVertical:   Spacing.xs,
-    borderRadius:      Radius.sm,
-    backgroundColor:   Colors.bgBase,
-  },
-  typeText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  xpBadge: {
-    backgroundColor:   Colors.primary + '22',
-    borderRadius:      Radius.sm,
-    borderWidth:       1,
-    borderColor:       Colors.primary,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical:   Spacing.xs - 1,
-    flexDirection:     'row',
-    alignItems:        'center',
-    gap:               Spacing.xs - 2,
-  },
-  xpDot: {
-    width:           4,
-    height:          4,
-    borderRadius:    2,
-    backgroundColor: Colors.primary,
-  },
-  xpText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.label,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wide,
+  categoryText: {},
+  metaItems: {
+    gap: Spacing.sm,
   },
   briefingContent: {
-    padding: Spacing.lg,
-    gap:     Spacing.md,
+    gap: Spacing.sm,
   },
-  briefingLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  missionTitle: {
-    fontFamily:   Fonts.heading,
-    fontSize:     FontSizes.headingSm + 2,
-    color:        Colors.textPrimary,
-    lineHeight:   30,
-  },
-  briefingFooter: {
-    marginTop: Spacing.xs,
-  },
-  importanceIndicator: {
-    flexDirection:   'row',
-    alignItems:      'center',
-    gap:             Spacing.sm,
-    backgroundColor: Colors.bgHighest,
-    borderRadius:    Radius.sm,
-    paddingVertical: Spacing.xs + 2,
-    paddingHorizontal: Spacing.sm,
-  },
-  importanceDot: {
-    width:           6,
-    height:          6,
-    borderRadius:    3,
-    backgroundColor: Colors.primary,
-  },
-  importanceText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textSecondary,
-    letterSpacing: 0.5,
-  },
-  
+
   // ── Error & Loading States ────────────────────────────────────
   submitErrorBox: {
-    backgroundColor: Colors.errorBg,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.error + '55',
-    padding:         Spacing.md,
-    marginBottom:    Spacing.lg,
-  },
-  submitErrorText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.error,
-    lineHeight: 20,
+    padding: Spacing.md,
+    marginBottom: Spacing.lg,
+    gap: Spacing.sm,
   },
   centerContainer: {
-    flex:              1,
-    backgroundColor:   Colors.bgBase,
-    alignItems:        'center',
-    justifyContent:    'center',
+    flex: 1,
+    backgroundColor: Colors.bgBase,
+    alignItems: 'center',
+    justifyContent: 'center',
     paddingHorizontal: Spacing.gutter,
-    gap:               Spacing.lg,
-  },
-  loadingText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textTertiary,
-    letterSpacing: 0.5,
+    gap: Spacing.lg,
   },
   errorBox: {
     alignItems: 'center',
-    gap:        Spacing.md,
-  },
-  errorIcon: {
-    fontSize: 48,
+    gap: Spacing.md,
   },
   errorText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodyMd,
-    color:      Colors.error,
-    textAlign:  'center',
-    lineHeight: 24,
+    textAlign: 'center',
   },
   errorActions: {
     width: '100%',
-    gap:   Spacing.md,
+    gap: Spacing.md,
   },
 });

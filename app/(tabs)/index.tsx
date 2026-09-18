@@ -13,6 +13,7 @@ import {
   RefreshControl,
   ScrollView,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../../src/hooks/useAuth';
@@ -221,7 +222,7 @@ export default function HomeScreen() {
                 {currentRank.toUpperCase()}, {totalXP.toLocaleString()} XP
               </Mono>
             </View>
-            <Text style={styles.rankIcon}>🎖</Text>
+            <MaterialIcons name="military-tech" size={18} color={Colors.primary} />
           </View>
         </View>
 
@@ -252,12 +253,12 @@ export default function HomeScreen() {
 
         <MetaRow>
           <MetaItem
-            icon={<Text style={styles.metaEmoji}>⚡</Text>}
+            icon={<MaterialIcons name="bolt" size={16} color={Colors.primary} />}
             label={`DAILY XP +${todayXP}`}
             highlight
           />
           <MetaItem
-            icon={<Text style={styles.metaEmoji}>🔥</Text>}
+            icon={<MaterialIcons name="local-fire-department" size={16} color={Colors.accent} />}
             label={`STREAK ${pad2(currentStreak)}`}
           />
         </MetaRow>
@@ -280,7 +281,7 @@ export default function HomeScreen() {
                 activeOpacity={0.7}
               >
                 <View style={styles.stackRowLeft}>
-                  <Text style={styles.stackIconDone}>✓</Text>
+                  <MaterialIcons name="check-circle" size={18} color={Colors.success} />
                   <Body tone="secondary" style={styles.stackRowTitle} numberOfLines={1} maxFontSizeMultiplier={1}>
                     SESSION {pad2(item.num)}: {item.title}
                   </Body>
@@ -305,14 +306,24 @@ export default function HomeScreen() {
                   SESSION {pad2(item.num)}: {item.title.toUpperCase()}
                 </Headline>
                 <MetaRow>
-                  <MetaItem label={item.exercises} />
-                  <MetaItem label={item.style} />
-                  <MetaItem label="+ XP AVAILABLE" highlight />
+                  <MetaItem
+                    icon={<MaterialIcons name="layers" size={16} color={Colors.textSecondary} />}
+                    label={item.exercises}
+                  />
+                  <MetaItem
+                    icon={<MaterialIcons name="psychology" size={16} color={Colors.textSecondary} />}
+                    label={item.style}
+                  />
+                  <MetaItem
+                    icon={<MaterialIcons name="add-circle" size={16} color={Colors.primary} />}
+                    label="+ XP AVAILABLE"
+                    highlight
+                  />
                 </MetaRow>
                 <ForgeButton
                   label="CONTINUE TRAINING"
                   onPress={() => router.push(item.route)}
-                  iconRight={<Text style={styles.primaryArrow}>→</Text>}
+                  iconRight={<MaterialIcons name="arrow-forward" size={18} color={Colors.onPrimary} />}
                 />
               </MilledSurface>
             );
@@ -321,7 +332,7 @@ export default function HomeScreen() {
           return (
             <View key={item.num} style={[styles.stackRow, styles.stackRowLocked]}>
               <View style={styles.stackRowLeft}>
-                <Text style={styles.stackIconLocked}>🔒</Text>
+                <MaterialIcons name="lock" size={18} color={Colors.textTertiary} />
                 <View style={styles.stackRowTextCol}>
                   <Body tone="tertiary" style={styles.stackRowTitle} numberOfLines={1} maxFontSizeMultiplier={1}>
                     SESSION {pad2(item.num)}: {item.title}
@@ -347,7 +358,7 @@ export default function HomeScreen() {
 
       {/* Streak Module */}
       <RecessedTrack style={styles.streakModule}>
-        <Text style={styles.streakModuleIcon}>🔥</Text>
+        <MaterialIcons name="local-fire-department" size={24} color={Colors.accent} />
         <View style={styles.streakModuleText}>
           <LabelCaps style={styles.streakModuleTitle} maxFontSizeMultiplier={1}>
             {pad2(currentStreak)} DAY STREAK
@@ -379,7 +390,7 @@ export default function HomeScreen() {
           </View>
         ) : !mission ? (
           <View style={styles.noMissionBox}>
-            <Text style={styles.noMissionIcon}>✓</Text>
+            <MaterialIcons name="check-circle" size={40} color={Colors.textTertiary} />
             <Body tone="secondary" style={styles.noMissionText} maxFontSizeMultiplier={1}>
               No mission available for today. Check back tomorrow.
             </Body>
@@ -387,7 +398,7 @@ export default function HomeScreen() {
         ) : isCompleted ? (
           <MilledSurface brackets style={styles.completedMissionCard}>
             <View style={styles.completedMissionHeader}>
-              <Text style={styles.completedIcon}>✓</Text>
+              <MaterialIcons name="check-circle" size={18} color={Colors.success} />
               <LabelCaps tone="success" maxFontSizeMultiplier={1}>MISSION COMPLETE</LabelCaps>
             </View>
             <Headline style={styles.completedMissionTitle} maxFontSizeMultiplier={1}>{mission.title}</Headline>
@@ -428,7 +439,7 @@ export default function HomeScreen() {
             <ForgeButton
               variant="ghost"
               label="BEGIN MISSION"
-              iconRight={<Text style={styles.ghostArrow}>→</Text>}
+              iconRight={<MaterialIcons name="arrow-right-alt" size={18} color={Colors.primary} />}
               onPress={handleCommence}
             />
           </MilledSurface>
@@ -440,7 +451,7 @@ export default function HomeScreen() {
         <Mono tone="tertiary" style={styles.footerText} maxFontSizeMultiplier={1}>
           TODAY: Training XP {todayXP} | Mission XP {missionXP} | Total XP {totalXP.toLocaleString()}
         </Mono>
-        <Text style={styles.footerIcon}>ⓘ</Text>
+        <MaterialIcons name="info" size={16} color={Colors.textTertiary} />
       </View>
     </ScrollView>
   );
@@ -505,9 +516,6 @@ const styles = StyleSheet.create({
     borderWidth:       1,
     borderColor:       Colors.primary + '33',
   },
-  rankIcon: {
-    fontSize: 16,
-  },
   rankProgressRow: {
     flexDirection: 'row',
     alignItems:    'center',
@@ -546,9 +554,6 @@ const styles = StyleSheet.create({
   segments: {
     width: 72,
   },
-  metaEmoji: {
-    fontSize: 14,
-  },
 
   // ── Session Stack ─────────────────────────────────────────────
   sessionStack: {
@@ -586,21 +591,9 @@ const styles = StyleSheet.create({
     alignItems:    'center',
     gap:           Spacing.sm,
   },
-  stackIconDone: {
-    fontSize: 16,
-    color:    Colors.success,
-  },
-  stackIconLocked: {
-    fontSize: 16,
-  },
   activeSessionCard: {
     padding: Spacing.lg,
     gap:     Spacing.md,
-  },
-  primaryArrow: {
-    fontFamily: Fonts.monoMedium,
-    fontSize:   FontSizes.bodyLg,
-    color:      Colors.onPrimary,
   },
   allDoneCard: {
     padding: Spacing.lg,
@@ -615,9 +608,6 @@ const styles = StyleSheet.create({
     alignItems:    'center',
     gap:           Spacing.md,
     padding:       Spacing.md,
-  },
-  streakModuleIcon: {
-    fontSize: 24,
   },
   streakModuleText: {
     flex: 1,
@@ -648,10 +638,6 @@ const styles = StyleSheet.create({
     alignItems:      'center',
     gap:             Spacing.sm,
     paddingVertical: Spacing.xl,
-  },
-  noMissionIcon: {
-    fontSize: 40,
-    color:    Colors.textTertiary,
   },
   noMissionText: {
     textAlign: 'center',
@@ -693,11 +679,6 @@ const styles = StyleSheet.create({
   missionDescription: {
     fontStyle: 'italic',
   },
-  ghostArrow: {
-    fontFamily: Fonts.monoMedium,
-    fontSize:   FontSizes.bodyLg,
-    color:      Colors.primary,
-  },
 
   // ── Daily Summary ─────────────────────────────────────────────
   footer: {
@@ -711,9 +692,5 @@ const styles = StyleSheet.create({
   },
   footerText: {
     flex: 1,
-  },
-  footerIcon: {
-    fontSize: 14,
-    color:    Colors.textTertiary,
   },
 });

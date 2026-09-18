@@ -5,23 +5,22 @@
 import React from 'react';
 import { Tabs } from 'expo-router';
 import { View, Text, StyleSheet, Platform } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { Colors, Fonts, FontSizes } from '../../src/constants/tokens';
 
 function TabIcon({
-  glyph,
+  icon,
   label,
   focused,
 }: {
-  glyph:   string;
+  icon:    React.ComponentProps<typeof MaterialIcons>['name'];
   label:   string;
   focused: boolean;
 }) {
   const color = focused ? Colors.primary : Colors.textTertiary;
   return (
     <View style={styles.iconWrap}>
-      <Text style={[styles.glyph, { color }]} maxFontSizeMultiplier={1}>
-        {glyph}
-      </Text>
+      <MaterialIcons name={icon} size={22} color={color} />
       <Text
         style={[styles.iconLabel, { color }]}
         maxFontSizeMultiplier={1}
@@ -52,7 +51,7 @@ export default function TabLayout() {
         options={{
           title: 'Home',
           tabBarIcon: ({ focused }) => (
-            <TabIcon glyph="⌂" label="HOME" focused={focused} />
+            <TabIcon icon="home" label="HOME" focused={focused} />
           ),
         }}
       />
@@ -61,7 +60,7 @@ export default function TabLayout() {
         options={{
           title: 'Training',
           tabBarIcon: ({ focused }) => (
-            <TabIcon glyph="◉" label="TRAINING" focused={focused} />
+            <TabIcon icon="fitness-center" label="TRAINING" focused={focused} />
           ),
         }}
       />
@@ -70,7 +69,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ focused }) => (
-            <TabIcon glyph="▣" label="DOSSIER" focused={focused} />
+            <TabIcon icon="assignment-ind" label="DOSSIER" focused={focused} />
           ),
         }}
       />
@@ -97,10 +96,6 @@ const styles = StyleSheet.create({
     // Give the label room so it never clips. 76dp fits within a single tab
     // slot even on a 320dp-wide device (≈106dp per tab across 3 tabs).
     width:          76,
-  },
-  glyph: {
-    fontSize:   18,
-    lineHeight: 22,
   },
   iconLabel: {
     fontFamily:    Fonts.mono,

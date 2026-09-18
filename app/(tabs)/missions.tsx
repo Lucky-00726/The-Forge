@@ -14,11 +14,13 @@ import {
   ScrollView,
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import * as SecureStore from 'expo-secure-store';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useAuth } from '../../src/hooks/useAuth';
 import { useAuthStore } from '../../src/store/auth.store';
 import * as missionService from '../../src/services/mission.service';
+import { trackEvent } from '../../src/services/analytics.service';
 import {
   currentWeekNumber,
   currentDayOfWeek,
@@ -77,6 +79,7 @@ export default function MissionsScreen() {
   const [refreshing, setRefreshing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [userProgrammeDay, setUserProgrammeDay] = useState<number>(1);
+  const [vocabInterestRegistered, setVocabInterestRegistered] = useState(false);
 
   const loadMissions = useCallback(async () => {
     if (!profile || !userId) return;
@@ -127,7 +130,30 @@ export default function MissionsScreen() {
 
   useEffect(() => {
     void loadMissions();
+    void loadVocabInterestState();
   }, [loadMissions]);
+
+  const loadVocabInterestState = async () => {
+    try {
+      const stored = await SecureStore.getItemAsync(`vocab_interest_${userId}`);
+      if (stored === 'true') {
+        setVocabInterestRegistered(true);
+      }
+    } catch (err) {
+      console.error('Failed to load vocab interest state:', err);
+    }
+  };
+
+  const handleVocabNotifyPress = async () => {
+    if (!userId) return;
+    try {
+      trackEvent(userId, 'vocab_interest_registered');
+      await SecureStore.setItemAsync(`vocab_interest_${userId}`, 'true');
+      setVocabInterestRegistered(true);
+    } catch (err) {
+      console.error('Failed to register vocab interest:', err);
+    }
+  };
 
   const handleRefresh = async () => {
     setRefreshing(true);
@@ -316,6 +342,28 @@ export default function MissionsScreen() {
           })}
         </View>
       )}
+
+      {/* Vocab Placeholder Card */}
+      <MilledSurface style={[styles.vocabCard, { opacity: 0.7 }]}>
+        <View style={styles.vocabHeader}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>VOCABULARY DRILL</LabelCaps>
+          <Chip label="COMING SOON" tone="neutral" />
+        </View>
+
+        <Body tone="secondary" style={styles.vocabDescription} maxFontSizeMultiplier={1}>
+          Sixty seconds a day. NDA and CDS vocabulary, in context, with the words you get wrong coming back until they stick.
+        </Body>
+
+        {vocabInterestRegistered ? (
+          <LabelCaps tone="success" maxFontSizeMultiplier={1}>WE'LL LET YOU KNOW</LabelCaps>
+        ) : (
+          <ForgeButton
+            label="NOTIFY ME"
+            onPress={handleVocabNotifyPress}
+            variant="secondary"
+          />
+        )}
+      </MilledSurface>
     </ScrollView>
   );
 }
@@ -428,6 +476,20 @@ const styles = StyleSheet.create({
   xpExplanationBold: {
     fontFamily: Fonts.bodyMedium,
     color: Colors.textPrimary,
+  },
+
+  // ── Vocab Placeholder Card ────────────────────────────────────
+  vocabCard: {
+    padding: Spacing.lg,
+    gap: Spacing.md,
+  },
+  vocabHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  vocabDescription: {
+    lineHeight: 20,
   },
 
 });

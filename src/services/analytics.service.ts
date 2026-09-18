@@ -17,7 +17,8 @@ export type AnalyticsEvent =
   | 'ai_evaluation_completed'
   | 'ai_evaluation_failed'
   | 'xp_awarded'
-  | 'rank_advanced';
+  | 'rank_advanced'
+  | 'vocab_interest_registered';
 
 export interface SessionAnalytics {
   userId: string;

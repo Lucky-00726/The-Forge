@@ -12,12 +12,9 @@ import {
   ActivityIndicator,
   RefreshControl,
   ScrollView,
-  ImageBackground,
 } from 'react-native';
-import { useRouter } from 'expo-router';
-import { useFocusEffect } from 'expo-router';
+import { useRouter, useFocusEffect } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenMeta, CornerMarkers } from '../../src/components/ui';
 import { useAuth } from '../../src/hooks/useAuth';
 import { useAuthStore } from '../../src/store/auth.store';
 import * as missionService from '../../src/services/mission.service';
@@ -33,12 +30,25 @@ import {
   Spacing,
   Radius,
   LetterSpacing,
-  TacticalColors,
-  TacticalShadows,
 } from '../../src/constants/tokens';
 import { computeRankProgress } from '../../src/constants/progression';
 import { getTodayStatus, type TodayStatus } from '../../src/services/daily-session.service';
 import type { DbMission } from '../../src/types';
+import {
+  MilledSurface,
+  RecessedTrack,
+  Display,
+  Headline,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+  SegmentedProgress,
+  Chip,
+  MetaItem,
+  MetaRow,
+  SectionLabel,
+} from '../../src/components/forge';
 
 // ── Category color mapping ───────────────────────────────────
 const CATEGORY_COLORS: Record<string, string> = {
@@ -48,6 +58,31 @@ const CATEGORY_COLORS: Record<string, string> = {
   'Awareness':        Colors.awareness,
   'Officer Thinking': Colors.officerThinking,
 };
+
+// ── Fixed daily session stack ────────────────────────────────
+// Session 1/2/3 content is fixed by the training program, not
+// per-user data — this mirrors what index.tsx already hardcoded
+// (question counts, format) before the redesign.
+const SESSION_STACK = [
+  { num: 1 as const, title: 'Knowledge & Awareness',          exercises: '12 exercises', style: 'MCQ',                   route: '/day0-prototype' as const },
+  { num: 2 as const, title: 'Defence & General Awareness',    exercises: '12 exercises', style: 'MCQ',                   route: '/session2' as const },
+  { num: 3 as const, title: 'Psychology & Response',          exercises: '10 exercises', style: 'SRT · WAT · Interview', route: '/session3' as const },
+];
+
+// `new Date()` here is deliberate, not an oversight: the greeting should
+// follow the user's local clock, not IST. This is NOT a date-boundary
+// decision (it never decides what "today" is for sessions/streaks), so
+// it does not violate the todayIST()-only rule in daily-session.service.ts.
+function getGreeting(): string {
+  const hour = new Date().getHours();
+  if (hour < 12) return 'GOOD MORNING';
+  if (hour < 17) return 'GOOD AFTERNOON';
+  return 'GOOD EVENING';
+}
+
+function pad2(n: number): string {
+  return n < 10 ? `0${n}` : `${n}`;
+}
 
 export default function HomeScreen() {
   const insets = useSafeAreaInsets();
@@ -65,7 +100,6 @@ export default function HomeScreen() {
 
   // Calculate rank progress
   const { pct: progressPct, next: nextRankObj, xpToNext } = computeRankProgress(totalXP);
-  const nextThreshold = nextRankObj ? nextRankObj.minXP : totalXP;
 
   const loadTodayMission = useCallback(async () => {
     if (!profile || !userId) {
@@ -144,6 +178,14 @@ export default function HomeScreen() {
     }
   };
 
+  // ── Derived display values ───────────────────────────────────
+  const greeting = getGreeting();
+  const statuses = [sessionStatus?.session1, sessionStatus?.session2, sessionStatus?.session3];
+  const completedCount = statuses.filter((s) => s?.completed).length;
+  const todayXP = statuses.reduce((sum, s) => sum + (s?.xpEarned ?? 0), 0);
+  const missionMinutes = mission?.time_limit_seconds ? Math.round(mission.time_limit_seconds / 60) : null;
+  const missionXP = isCompleted ? mission?.xp_reward ?? 0 : 0;
+
   return (
     <ScrollView
       style={styles.container}
@@ -160,320 +202,246 @@ export default function HomeScreen() {
         />
       }
     >
-      {/* Header: MISSION COMMAND + Profile */}
-      <View style={styles.header}>
-        <Text style={styles.headerTitle} maxFontSizeMultiplier={1}>
-          MISSION COMMAND
-        </Text>
-        
-        <View style={styles.profileSection}>
-          <View style={styles.profileAvatar}>
-            <Text style={styles.profileAvatarText} maxFontSizeMultiplier={1}>
-              {displayName ? displayName.charAt(0).toUpperCase() : 'O'}
-            </Text>
-          </View>
-          <View style={styles.profileMeta}>
-            <Text style={styles.profileRank} maxFontSizeMultiplier={1}>
-              {currentRank.toUpperCase()}
-            </Text>
-            <View style={styles.profileXPBar}>
-              <View style={styles.profileXPTrack}>
-                <View style={[styles.profileXPFill, { width: `${progressPct}%` }]} />
-              </View>
-              <Text style={styles.profileXPText} maxFontSizeMultiplier={1}>
-                {totalXP.toLocaleString()} / {nextThreshold.toLocaleString()}
+      {/* Header + rank progress */}
+      <View style={styles.headerBlock}>
+        <View style={styles.header}>
+          <View style={styles.headerLeft}>
+            <View style={styles.avatar}>
+              <Text style={styles.avatarText} maxFontSizeMultiplier={1}>
+                {displayName ? displayName.charAt(0).toUpperCase() : 'O'}
               </Text>
             </View>
+            <LabelCaps tone="secondary" numberOfLines={1} maxFontSizeMultiplier={1}>
+              {greeting}, {(displayName ?? 'OFFICER').toUpperCase()}
+            </LabelCaps>
           </View>
+          <View style={styles.headerRight}>
+            <View style={styles.xpChip}>
+              <Mono tone="gold" maxFontSizeMultiplier={1}>
+                {currentRank.toUpperCase()}, {totalXP.toLocaleString()} XP
+              </Mono>
+            </View>
+            <Text style={styles.rankIcon}>🎖</Text>
+          </View>
+        </View>
+
+        <View style={styles.rankProgressRow}>
+          <View style={styles.rankProgressTrack}>
+            <View style={[styles.rankProgressFill, { width: `${progressPct}%` }]} />
+          </View>
+          <Mono tone="tertiary" numberOfLines={1} maxFontSizeMultiplier={1}>
+            {nextRankObj ? `${xpToNext} XP → ${nextRankObj.name.toUpperCase()}` : 'MAX RANK'}
+          </Mono>
         </View>
       </View>
 
-      <ScreenMeta id="OPS-01" label="Command Centre" />
-
-      {/* Streak Section */}
-      <View style={[
-        styles.streakCard,
-        currentStreak > 0 && styles.streakCardActive,
-        TacticalShadows.glow
-      ]}>
-        <CornerMarkers position="all" color={currentStreak > 0 ? Colors.success : Colors.primary} />
-        
-        <View style={styles.streakWatermark} />
-
-        <View style={styles.streakHeader}>
-          <Text style={styles.streakIcon}>🔥</Text>
-          <Text style={styles.streakLabel} maxFontSizeMultiplier={1}>
-            ACTIVE ENGAGEMENT
-          </Text>
+      {/* Training Day Hero */}
+      <View style={styles.trainingHero}>
+        <View style={styles.trainingHeroTop}>
+          <View>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TODAY'S TRAINING</LabelCaps>
+            <Display style={styles.trainingDay} maxFontSizeMultiplier={1}>
+              DAY {pad2(profile?.current_training_day ?? 1)}
+            </Display>
+          </View>
+          <View style={styles.trainingHeroRight}>
+            <SegmentedProgress total={3} current={completedCount} style={styles.segments} />
+            <Mono tone="tertiary" maxFontSizeMultiplier={1}>{completedCount} / 3 SESSIONS</Mono>
+          </View>
         </View>
-        
-        <Text style={[
-          styles.streakValue,
-          currentStreak > 0 && { color: Colors.success }
-        ]} maxFontSizeMultiplier={1}>
-          {currentStreak === 1 ? '01' : currentStreak < 10 ? `0${currentStreak}` : currentStreak} DAY STREAK
-        </Text>
-        
-        <Text style={styles.streakStatus} maxFontSizeMultiplier={1}>
-          {currentStreak === 0
-            ? 'Awaiting mission completion'
-            : 'Operational Consistency: Optimal'}
-        </Text>
+
+        <MetaRow>
+          <MetaItem
+            icon={<Text style={styles.metaEmoji}>⚡</Text>}
+            label={`DAILY XP +${todayXP}`}
+            highlight
+          />
+          <MetaItem
+            icon={<Text style={styles.metaEmoji}>🔥</Text>}
+            label={`STREAK ${pad2(currentStreak)}`}
+          />
+        </MetaRow>
       </View>
 
-      {/* Day 1 Training Entry */}
-      <View style={styles.day0Card}>
-        <CornerMarkers position="all" color={sessionStatus?.session1.completed ? Colors.success : Colors.primary} />
-        
-        <View style={styles.day0Header}>
-          <Text style={styles.day0Icon}>{sessionStatus?.session1.completed ? '✓' : '🎯'}</Text>
-          <View style={styles.day0HeaderText}>
-            <Text style={styles.day0Title} maxFontSizeMultiplier={1}>
-              DAY {profile?.current_training_day ?? 1} • SESSION 1
-            </Text>
-            <Text style={styles.day0Subtitle} maxFontSizeMultiplier={1}>
-              {sessionStatus?.session1.completed
-                ? `Completed · ${sessionStatus.session1.score ?? 0}/${sessionStatus.session1.total ?? 12} · +${sessionStatus.session1.xpEarned} XP`
-                : '12 questions • SSB knowledge & awareness'}
-            </Text>
-          </View>
-        </View>
-        
-        <TouchableOpacity
-          style={[styles.day0Button, sessionStatus?.session1.completed && styles.sessionButtonCompleted]}
-          onPress={() => router.push('/day0-prototype')}
-          activeOpacity={0.85}
-        >
-          <Text style={styles.day0ButtonText} maxFontSizeMultiplier={1}>
-            {sessionStatus?.session1.completed ? 'REVIEW SESSION 1' : 'START SESSION 1'}
-          </Text>
-          <Text style={styles.day0ButtonArrow} maxFontSizeMultiplier={1}>→</Text>
-        </TouchableOpacity>
+      {/* Session Stack */}
+      <View style={styles.sessionStack}>
+        {SESSION_STACK.map((item, i) => {
+          const status = statuses[i];
+          const unlocked = i === 0 || !!statuses[i - 1]?.completed;
+          const completed = !!status?.completed;
+          const isActive = unlocked && !completed;
+
+          if (completed) {
+            return (
+              <TouchableOpacity
+                key={item.num}
+                style={styles.stackRow}
+                onPress={() => router.push(item.route)}
+                activeOpacity={0.7}
+              >
+                <View style={styles.stackRowLeft}>
+                  <Text style={styles.stackIconDone}>✓</Text>
+                  <Body tone="secondary" style={styles.stackRowTitle} numberOfLines={1} maxFontSizeMultiplier={1}>
+                    SESSION {pad2(item.num)}: {item.title}
+                  </Body>
+                </View>
+                <View style={styles.stackRowRight}>
+                  {item.num !== 3 && (
+                    <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+                      {status?.score ?? 0}/{status?.total ?? 12}
+                    </Mono>
+                  )}
+                  <Mono tone="tertiary" maxFontSizeMultiplier={1}>+{status?.xpEarned ?? 0} XP</Mono>
+                </View>
+              </TouchableOpacity>
+            );
+          }
+
+          if (isActive) {
+            return (
+              <MilledSurface key={item.num} brackets active style={styles.activeSessionCard}>
+                <Chip label="IN PROGRESS" tone="gold" />
+                <Headline maxFontSizeMultiplier={1}>
+                  SESSION {pad2(item.num)}: {item.title.toUpperCase()}
+                </Headline>
+                <MetaRow>
+                  <MetaItem label={item.exercises} />
+                  <MetaItem label={item.style} />
+                  <MetaItem label="+ XP AVAILABLE" highlight />
+                </MetaRow>
+                <ForgeButton
+                  label="CONTINUE TRAINING"
+                  onPress={() => router.push(item.route)}
+                  iconRight={<Text style={styles.primaryArrow}>→</Text>}
+                />
+              </MilledSurface>
+            );
+          }
+
+          return (
+            <View key={item.num} style={[styles.stackRow, styles.stackRowLocked]}>
+              <View style={styles.stackRowLeft}>
+                <Text style={styles.stackIconLocked}>🔒</Text>
+                <View style={styles.stackRowTextCol}>
+                  <Body tone="tertiary" style={styles.stackRowTitle} numberOfLines={1} maxFontSizeMultiplier={1}>
+                    SESSION {pad2(item.num)}: {item.title}
+                  </Body>
+                  <Body tone="tertiary" numberOfLines={1} maxFontSizeMultiplier={1}>
+                    Complete Session {item.num - 1} to unlock
+                  </Body>
+                </View>
+              </View>
+            </View>
+          );
+        })}
+
+        {completedCount === 3 && (
+          <MilledSurface brackets style={styles.allDoneCard}>
+            <Headline tone="success" maxFontSizeMultiplier={1}>ALL SESSIONS COMPLETE</Headline>
+            <Body tone="secondary" style={styles.allDoneBody} maxFontSizeMultiplier={1}>
+              Training cycle resumes tomorrow at 0600 hours.
+            </Body>
+          </MilledSurface>
+        )}
       </View>
 
-      {/* Session 2 Entry */}
-      {(() => {
-        const s1Done = sessionStatus?.session1.completed ?? false;
-        const s2Done = sessionStatus?.session2.completed ?? false;
-        return (
-          <View style={[styles.sessionCard, !s1Done && styles.sessionCardLocked]}>
-            <CornerMarkers position="all" color={s2Done ? Colors.success : s1Done ? Colors.confidence : Colors.textTertiary} />
-            
-            <View style={styles.sessionHeader}>
-              <Text style={styles.sessionIcon}>{s2Done ? '✓' : s1Done ? '⚡' : '🔒'}</Text>
-              <View style={styles.sessionHeaderText}>
-                <Text style={[styles.sessionTitle, !s1Done && { color: Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                  DAY {profile?.current_training_day ?? 1} • SESSION 2
-                </Text>
-                <Text style={styles.sessionSubtitle} maxFontSizeMultiplier={1}>
-                  {s2Done
-                    ? `Completed · ${sessionStatus?.session2.score ?? 0}/${sessionStatus?.session2.total ?? 12} · +${sessionStatus?.session2.xpEarned} XP`
-                    : s1Done
-                    ? '12 questions • SSB, defence & general awareness'
-                    : 'Complete Session 1 to unlock'}
-                </Text>
-              </View>
-            </View>
-            
-            <TouchableOpacity
-              style={[
-                styles.sessionButton,
-                s2Done && styles.sessionButtonCompleted,
-                !s1Done && styles.sessionButtonLocked,
-              ]}
-              onPress={() => s1Done && router.push('/session2')}
-              activeOpacity={s1Done ? 0.85 : 1}
-              disabled={!s1Done}
-            >
-              <Text style={[styles.sessionButtonText, !s1Done && { color: Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                {s2Done ? 'REVIEW SESSION 2' : s1Done ? 'START SESSION 2' : 'LOCKED'}
-              </Text>
-              {s1Done && <Text style={styles.sessionButtonArrow} maxFontSizeMultiplier={1}>→</Text>}
-            </TouchableOpacity>
-          </View>
-        );
-      })()}
+      {/* Streak Module */}
+      <RecessedTrack style={styles.streakModule}>
+        <Text style={styles.streakModuleIcon}>🔥</Text>
+        <View style={styles.streakModuleText}>
+          <LabelCaps style={styles.streakModuleTitle} maxFontSizeMultiplier={1}>
+            {pad2(currentStreak)} DAY STREAK
+          </LabelCaps>
+          <Body tone="secondary" maxFontSizeMultiplier={1}>
+            {currentStreak === 0 ? 'Awaiting mission completion' : "Keep today's run alive."}
+          </Body>
+        </View>
+      </RecessedTrack>
 
-      {/* Session 3 Entry */}
-      {(() => {
-        const s2Done = sessionStatus?.session2.completed ?? false;
-        const s3Done = sessionStatus?.session3.completed ?? false;
-        return (
-          <View style={[styles.sessionCard, styles.sessionCard3, !s2Done && styles.sessionCardLocked]}>
-            <CornerMarkers position="all" color={s3Done ? Colors.success : s2Done ? Colors.leadership : Colors.textTertiary} />
-            
-            <View style={styles.sessionHeader}>
-              <Text style={styles.sessionIcon}>{s3Done ? '✓' : s2Done ? '📝' : '🔒'}</Text>
-              <View style={styles.sessionHeaderText}>
-                <Text style={[styles.sessionTitle, { color: s2Done ? Colors.leadership : Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                  DAY {profile?.current_training_day ?? 1} • SESSION 3
-                </Text>
-                <Text style={styles.sessionSubtitle} maxFontSizeMultiplier={1}>
-                  {s3Done
-                    ? `Completed · +${sessionStatus?.session3.xpEarned} XP`
-                    : s2Done
-                    ? '10 questions • SRT, WAT, Interview style • AI Evaluation'
-                    : 'Complete Session 2 to unlock'}
-                </Text>
-              </View>
-            </View>
-            
-            <TouchableOpacity
-              style={[
-                styles.sessionButton,
-                styles.sessionButton3,
-                s3Done && styles.sessionButtonCompleted,
-                !s2Done && styles.sessionButtonLocked,
-              ]}
-              onPress={() => s2Done && router.push('/session3')}
-              activeOpacity={s2Done ? 0.85 : 1}
-              disabled={!s2Done}
-            >
-              <Text style={[styles.sessionButtonText, !s2Done && { color: Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-                {s3Done ? 'REVIEW SESSION 3' : s2Done ? 'START SESSION 3' : 'LOCKED'}
-              </Text>
-              {s2Done && <Text style={styles.sessionButtonArrow} maxFontSizeMultiplier={1}>→</Text>}
-            </TouchableOpacity>
-          </View>
-        );
-      })()}
+      {/* Featured Mission */}
+      <View style={styles.section}>
+        <SectionLabel>FEATURED MISSION</SectionLabel>
 
-      {/* Mission Hero Card */}
-      {loading ? (
-        <View style={styles.loadingBox}>
-          <ActivityIndicator size="small" color={Colors.primary} />
-          <Text style={styles.loadingText} maxFontSizeMultiplier={1}>
-            Loading today's mission…
-          </Text>
-        </View>
-      ) : error ? (
-        <View style={styles.errorBox}>
-          <Text style={styles.errorTitle} maxFontSizeMultiplier={1}>
-            MISSION ASSIGNMENT ERROR
-          </Text>
-          <Text style={styles.errorText} maxFontSizeMultiplier={1}>
-            {error}
-          </Text>
-          <TouchableOpacity
-            style={styles.retryButton}
-            onPress={handleRefresh}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.retryButtonText} maxFontSizeMultiplier={1}>
-              ↻ RETRY MISSION LOAD
-            </Text>
-          </TouchableOpacity>
-        </View>
-      ) : !mission ? (
-        <View style={styles.noMissionBox}>
-          <Text style={styles.noMissionIcon}>✓</Text>
-          <Text style={styles.noMissionText} maxFontSizeMultiplier={1}>
-            No mission available for today. Check back tomorrow.
-          </Text>
-        </View>
-      ) : isCompleted ? (
-        <View style={styles.completedCard}>
-          <CornerMarkers position="all" color={Colors.success} />
-          
-          <View style={styles.completedHeader}>
-            <Text style={styles.completedIcon}>✓</Text>
-            <Text style={styles.completedTitle} maxFontSizeMultiplier={1}>
-              MISSION COMPLETE
-            </Text>
+        {loading ? (
+          <View style={styles.loadingBox}>
+            <ActivityIndicator size="small" color={Colors.primary} />
+            <Body tone="tertiary" maxFontSizeMultiplier={1}>Loading today's mission…</Body>
           </View>
-          
-          <View style={styles.completedContent}>
-            <Text style={styles.completedLabel} maxFontSizeMultiplier={1}>
-              TODAY'S OBJECTIVE
-            </Text>
-            <Text style={styles.completedSubtitle} maxFontSizeMultiplier={1}>
-              {mission.title}
-            </Text>
-            <View style={styles.completedDivider} />
-            <Text style={styles.completedMessage} maxFontSizeMultiplier={1}>
+        ) : error ? (
+          <View style={styles.errorBox}>
+            <LabelCaps tone="error" maxFontSizeMultiplier={1}>MISSION ASSIGNMENT ERROR</LabelCaps>
+            <Body tone="error" maxFontSizeMultiplier={1}>{error}</Body>
+            <ForgeButton
+              variant="secondary"
+              label="↻ RETRY MISSION LOAD"
+              onPress={handleRefresh}
+            />
+          </View>
+        ) : !mission ? (
+          <View style={styles.noMissionBox}>
+            <Text style={styles.noMissionIcon}>✓</Text>
+            <Body tone="secondary" style={styles.noMissionText} maxFontSizeMultiplier={1}>
+              No mission available for today. Check back tomorrow.
+            </Body>
+          </View>
+        ) : isCompleted ? (
+          <MilledSurface brackets style={styles.completedMissionCard}>
+            <View style={styles.completedMissionHeader}>
+              <Text style={styles.completedIcon}>✓</Text>
+              <LabelCaps tone="success" maxFontSizeMultiplier={1}>MISSION COMPLETE</LabelCaps>
+            </View>
+            <Headline style={styles.completedMissionTitle} maxFontSizeMultiplier={1}>{mission.title}</Headline>
+            <Body tone="secondary" maxFontSizeMultiplier={1}>
               Mission objectives achieved. Training cycle resumes tomorrow at 0600 hours.
-            </Text>
-          </View>
-        </View>
-      ) : (
-        <View style={styles.missionHero}>
-          <CornerMarkers position="all" />
-          
-          {/* Mission ID tag (top-right) */}
-          <View style={styles.missionIdTag}>
-            <Text style={styles.missionIdText} maxFontSizeMultiplier={1}>
-              ID: {mission.id}
-            </Text>
-          </View>
-
-          {/* Hero section with gradient overlay */}
-          <View style={styles.heroImageSection}>
-            <View style={styles.heroImagePlaceholder} />
-            <View style={styles.heroGradient} />
-            
-            {/* Priority badge */}
-            <View style={styles.priorityBadge}>
-              <View style={styles.priorityDot} />
-              <Text style={styles.priorityText} maxFontSizeMultiplier={1}>
-                PRIORITY: ALPHA
-              </Text>
-            </View>
-            
-            {/* Mission title on image */}
-            <Text style={styles.heroTitle} maxFontSizeMultiplier={1}>
-              {mission.title}
-            </Text>
-          </View>
-
-          {/* Mission content section */}
-          <View style={styles.heroContent}>
-            <View style={styles.heroMeta}>
+            </Body>
+          </MilledSurface>
+        ) : (
+          <MilledSurface brackets style={styles.missionCard}>
+            <View style={styles.missionMetaRow}>
               <View
                 style={[
-                  styles.categoryChip,
-                  {
-                    backgroundColor:
-                      (CATEGORY_COLORS[mission.category] ?? Colors.textTertiary) + '22',
-                  },
+                  styles.categoryBadge,
+                  { backgroundColor: (CATEGORY_COLORS[mission.category] ?? Colors.textTertiary) + '22' },
                 ]}
               >
-                <Text
+                <Mono
                   style={[
-                    styles.categoryText,
-                    {
-                      color: CATEGORY_COLORS[mission.category] ?? Colors.textTertiary,
-                    },
+                    styles.categoryBadgeText,
+                    { color: CATEGORY_COLORS[mission.category] ?? Colors.textTertiary },
                   ]}
                   maxFontSizeMultiplier={1}
                 >
                   {mission.category.toUpperCase()}
-                </Text>
+                </Mono>
               </View>
-              <Text style={styles.missionType} maxFontSizeMultiplier={1}>
-                {mission.mission_type}
-              </Text>
+              {missionMinutes !== null && <Chip label={`${missionMinutes} MIN`} tone="neutral" />}
             </View>
-            
-            <Text style={styles.heroDescription} maxFontSizeMultiplier={1}>
-              "Mastering the {mission.category.toLowerCase()} skills critical for officer selection." — 
-              This mission develops your tactical readiness.
-            </Text>
 
-            <TouchableOpacity
-              style={styles.commenceButton}
+            <Headline maxFontSizeMultiplier={1}>{mission.title}</Headline>
+
+            <MetaItem label={mission.mission_type} />
+
+            <Body tone="secondary" style={styles.missionDescription} maxFontSizeMultiplier={1}>
+              "Mastering the {mission.category.toLowerCase()} skills critical for officer selection." — This mission develops your tactical readiness.
+            </Body>
+
+            <ForgeButton
+              variant="ghost"
+              label="BEGIN MISSION"
+              iconRight={<Text style={styles.ghostArrow}>→</Text>}
               onPress={handleCommence}
-              activeOpacity={0.85}
-            >
-              <Text style={styles.commenceButtonText} maxFontSizeMultiplier={1}>
-                COMMENCE MISSION
-              </Text>
-              <Text style={styles.commenceButtonArrow} maxFontSizeMultiplier={1}>
-                →
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
+            />
+          </MilledSurface>
+        )}
+      </View>
+
+      {/* Daily Summary */}
+      <View style={styles.footer}>
+        <Mono tone="tertiary" style={styles.footerText} maxFontSizeMultiplier={1}>
+          TODAY: Training XP {todayXP} | Mission XP {missionXP} | Total XP {totalXP.toLocaleString()}
+        </Mono>
+        <Text style={styles.footerIcon}>ⓘ</Text>
+      </View>
     </ScrollView>
   );
 }
@@ -486,522 +454,261 @@ const styles = StyleSheet.create({
   content: {
     paddingHorizontal: Spacing.gutter,
     paddingBottom:     Spacing.xxl,
+    gap:               Spacing.lg,
   },
-  
+
   // ── Header ────────────────────────────────────────────────────
+  headerBlock: {
+    gap: Spacing.sm,
+  },
   header: {
     flexDirection:  'row',
     justifyContent: 'space-between',
     alignItems:     'center',
-    marginBottom:   Spacing.md,
   },
-  headerTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.label,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  profileSection: {
+  headerLeft: {
     flexDirection: 'row',
     alignItems:    'center',
-    gap:           Spacing.sm + 2,
+    gap:           Spacing.sm,
+    flexShrink:    1,
   },
-  profileAvatar: {
-    width:           40,
-    height:          40,
-    borderRadius:    Radius.md,
+  headerRight: {
+    flexDirection: 'row',
+    alignItems:    'center',
+    gap:           Spacing.xs,
+  },
+  avatar: {
+    width:           32,
+    height:          32,
+    borderRadius:    Radius.full,
     backgroundColor: Colors.bgSurface,
     borderWidth:     1,
     borderColor:     Colors.outlineVar + '80',
     alignItems:      'center',
     justifyContent:  'center',
-    overflow:        'hidden',
   },
-  profileAvatarText: {
-    fontFamily:    Fonts.heading,
-    fontSize:      FontSizes.headingSm,
-    color:         Colors.primary,
-    letterSpacing: -0.5,
+  avatarText: {
+    fontFamily: Fonts.heading,
+    fontSize:   FontSizes.bodySm,
+    color:      Colors.primary,
   },
-  profileMeta: {
-    gap:        Spacing.xs - 2,
-    flexShrink: 1,
+  xpChip: {
+    paddingHorizontal: Spacing.sm,
+    paddingVertical:   2,
+    borderRadius:      Radius.xs,
+    backgroundColor:   Colors.primary + '1A',
+    borderWidth:       1,
+    borderColor:       Colors.primary + '33',
   },
-  profileRank: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.widest,
+  rankIcon: {
+    fontSize: 16,
   },
-  profileXPBar: {
+  rankProgressRow: {
     flexDirection: 'row',
     alignItems:    'center',
-    gap:           Spacing.xs + 2,
-    flex:          1,
+    gap:           Spacing.sm,
   },
-  profileXPTrack: {
+  rankProgressTrack: {
     flex:            1,
     height:          4,
     backgroundColor: Colors.bgHighest,
     borderRadius:    Radius.xs,
     overflow:        'hidden',
   },
-  profileXPFill: {
+  rankProgressFill: {
     height:          4,
     backgroundColor: Colors.primary,
     borderRadius:    Radius.xs,
   },
-  profileXPText: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.micro - 2,
-    color:      Colors.textTertiary,
+
+  // ── Training Day Hero ────────────────────────────────────────
+  trainingHero: {
+    gap: Spacing.sm,
   },
-  
-  // ── Streak Card ───────────────────────────────────────────────
-  streakCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.lg,
-    marginBottom:    Spacing.xl,
-    position:        'relative',
-    overflow:        'hidden',
+  trainingHeroTop: {
+    flexDirection:  'row',
+    justifyContent: 'space-between',
+    alignItems:     'flex-end',
   },
-  streakCardActive: {
-    backgroundColor: Colors.success + '11',
-    borderColor:     Colors.success + '44',
+  trainingDay: {
+    marginTop: 2,
   },
-  streakWatermark: {
-    position: 'absolute',
-    top:      0,
-    right:    0,
-    padding:  Spacing.md,
-    opacity:  0.05,
+  trainingHeroRight: {
+    alignItems: 'flex-end',
+    gap:        4,
+    minWidth:   120,
   },
-  streakHeader: {
+  segments: {
+    width: 72,
+  },
+  metaEmoji: {
+    fontSize: 14,
+  },
+
+  // ── Session Stack ─────────────────────────────────────────────
+  sessionStack: {
+    gap: Spacing.sm,
+  },
+  stackRow: {
+    flexDirection:     'row',
+    alignItems:        'center',
+    justifyContent:    'space-between',
+    paddingVertical:   Spacing.sm + 4,
+    paddingHorizontal: Spacing.md,
+    borderRadius:      Radius.sm,
+    backgroundColor:   Colors.bgLow,
+    borderWidth:       1,
+    borderColor:       Colors.outlineFaint,
+  },
+  stackRowLocked: {
+    opacity: 0.55,
+  },
+  stackRowLeft: {
     flexDirection: 'row',
     alignItems:    'center',
     gap:           Spacing.sm,
-    marginBottom:  Spacing.md,
+    flexShrink:    1,
   },
-  streakIcon: {
-    fontSize: 24,
+  stackRowTitle: {
+    flexShrink: 1,
   },
-  streakLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.label,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wider,
+  stackRowTextCol: {
+    flexShrink: 1,
+    gap:        2,
   },
-  streakValue: {
-    fontFamily:    Fonts.display,
-    fontSize:      FontSizes.display,
-    color:         Colors.primary,
-    letterSpacing: -2,
-    lineHeight:    48,
-    marginBottom:  Spacing.xs,
+  stackRowRight: {
+    flexDirection: 'row',
+    alignItems:    'center',
+    gap:           Spacing.sm,
   },
-  streakStatus: {
-    fontFamily:    Fonts.body,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.textSecondary,
-    textTransform: 'uppercase',
-    letterSpacing: 0.5,
+  stackIconDone: {
+    fontSize: 16,
+    color:    Colors.success,
   },
-  
-  // ── Mission Hero Card ─────────────────────────────────────────
-  missionHero: {
-    backgroundColor: TacticalColors.surfaceCard,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     TacticalColors.borderTactical,
-    overflow:        'hidden',
-    position:        'relative',
+  stackIconLocked: {
+    fontSize: 16,
   },
-  missionIdTag: {
-    position: 'absolute',
-    top:      Spacing.md,
-    right:    Spacing.md,
-    zIndex:   10,
-    backgroundColor: 'rgba(16, 20, 21, 0.8)',
-    borderRadius:    Radius.xs,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-  },
-  missionIdText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.primary,
-    letterSpacing: 0.5,
-  },
-  heroImageSection: {
-    height:   192,
-    position: 'relative',
-  },
-  heroImagePlaceholder: {
-    position:        'absolute',
-    top:             0,
-    left:            0,
-    right:           0,
-    bottom:          0,
-    backgroundColor: Colors.bgHighest,
-  },
-  heroGradient: {
-    position: 'absolute',
-    bottom:   0,
-    left:     0,
-    right:    0,
-    height:   120,
-    backgroundColor: 'transparent',
-    borderBottomWidth: 60,
-    borderBottomColor: TacticalColors.surfaceCard,
-    opacity: 0.95,
-  },
-  priorityBadge: {
-    position:        'absolute',
-    bottom:          Spacing.xl + Spacing.lg,
-    left:            Spacing.lg,
-    backgroundColor: Colors.primary,
-    borderRadius:    Radius.sm,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-    flexDirection:   'row',
-    alignItems:      'center',
-    gap:             Spacing.xs - 2,
-  },
-  priorityDot: {
-    width:           4,
-    height:          4,
-    borderRadius:    2,
-    backgroundColor: Colors.onPrimary,
-  },
-  priorityText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.onPrimary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  heroTitle: {
-    position:      'absolute',
-    bottom:        Spacing.lg,
-    left:          Spacing.lg,
-    right:         Spacing.lg,
-    fontFamily:    Fonts.heading,
-    fontSize:      FontSizes.headingLg,
-    color:         Colors.textPrimary,
-    letterSpacing: -0.5,
-    lineHeight:    36,
-  },
-  heroContent: {
+  activeSessionCard: {
     padding: Spacing.lg,
     gap:     Spacing.md,
   },
-  heroMeta: {
-    flexDirection: 'row',
-    gap:           Spacing.sm,
-    alignItems:    'center',
-  },
-  categoryChip: {
-    paddingHorizontal: Spacing.sm,
-    paddingVertical:   Spacing.xs,
-    borderRadius:      Radius.sm,
-  },
-  categoryText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    letterSpacing: LetterSpacing.wider,
-  },
-  missionType: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  heroDescription: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodyMd,
-    color:      Colors.textSecondary,
-    fontStyle:  'italic',
-    lineHeight: 24,
-  },
-  commenceButton: {
-    backgroundColor:   Colors.primary,
-    paddingVertical:   Spacing.md + 4,
-    borderRadius:      Radius.md,
-    flexDirection:     'row',
-    alignItems:        'center',
-    justifyContent:    'center',
-    gap:               Spacing.sm,
-    marginTop:         Spacing.xs,
-  },
-  commenceButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.onPrimary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  commenceButtonArrow: {
+  primaryArrow: {
     fontFamily: Fonts.monoMedium,
     fontSize:   FontSizes.bodyLg,
     color:      Colors.onPrimary,
   },
-  
-  // ── Loading & Error States ────────────────────────────────────
-  loadingBox: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.xl,
-    alignItems:      'center',
-    gap:             Spacing.md,
+  allDoneCard: {
+    padding: Spacing.lg,
   },
-  loadingText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textTertiary,
-    letterSpacing: 0.5,
+  allDoneBody: {
+    marginTop: Spacing.xs,
+  },
+
+  // ── Streak Module ─────────────────────────────────────────────
+  streakModule: {
+    flexDirection: 'row',
+    alignItems:    'center',
+    gap:           Spacing.md,
+    padding:       Spacing.md,
+  },
+  streakModuleIcon: {
+    fontSize: 24,
+  },
+  streakModuleText: {
+    flex: 1,
+    gap:  2,
+  },
+  streakModuleTitle: {
+    marginBottom: 0,
+  },
+
+  // ── Featured Mission ──────────────────────────────────────────
+  section: {
+    gap: Spacing.sm,
+  },
+  loadingBox: {
+    alignItems:      'center',
+    gap:             Spacing.sm,
+    paddingVertical: Spacing.xl,
   },
   errorBox: {
     backgroundColor: Colors.errorBg,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
+    borderRadius:    Radius.md,
+    borderWidth:     1,
     borderColor:     Colors.error + '55',
     padding:         Spacing.lg,
-    gap:             Spacing.md,
-  },
-  errorTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.error,
-    letterSpacing: LetterSpacing.widest,
-  },
-  errorText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.error,
-    lineHeight: 20,
-  },
-  retryButton: {
-    backgroundColor: 'transparent',
-    borderWidth:     1,
-    borderColor:     Colors.error,
-    paddingVertical: Spacing.md,
-    borderRadius:    Radius.md,
-    alignItems:      'center',
-    marginTop:       Spacing.xs,
-  },
-  retryButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.error,
-    letterSpacing: LetterSpacing.widest,
+    gap:             Spacing.sm,
   },
   noMissionBox: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.xl,
     alignItems:      'center',
-    gap:             Spacing.md,
+    gap:             Spacing.sm,
+    paddingVertical: Spacing.xl,
   },
   noMissionIcon: {
-    fontSize: 48,
+    fontSize: 40,
     color:    Colors.textTertiary,
   },
   noMissionText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    textAlign:  'center',
-    lineHeight: 20,
+    textAlign: 'center',
   },
-  
-  // ── Completed Mission Card ────────────────────────────────────
-  completedCard: {
-    backgroundColor: Colors.success + '11',
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.success,
-    overflow:        'hidden',
-    position:        'relative',
+  completedMissionCard: {
+    padding:     Spacing.lg,
+    gap:         Spacing.sm,
+    borderColor: Colors.success,
   },
-  completedHeader: {
-    backgroundColor:   Colors.success + '22',
-    paddingVertical:   Spacing.md,
-    paddingHorizontal: Spacing.lg,
-    flexDirection:     'row',
-    alignItems:        'center',
-    gap:               Spacing.sm,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.success + '33',
+  completedMissionHeader: {
+    flexDirection: 'row',
+    alignItems:    'center',
+    gap:           Spacing.sm,
+  },
+  completedMissionTitle: {
+    marginTop: 0,
   },
   completedIcon: {
-    fontSize: 24,
+    fontSize: 20,
     color:    Colors.success,
   },
-  completedTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.success,
-    letterSpacing: LetterSpacing.widest,
-  },
-  completedContent: {
+  missionCard: {
     padding: Spacing.lg,
-    gap:     Spacing.md,
+    gap:     Spacing.sm,
   },
-  completedLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
+  missionMetaRow: {
+    flexDirection:  'row',
+    justifyContent: 'space-between',
+    alignItems:     'center',
+  },
+  categoryBadge: {
+    paddingHorizontal: Spacing.sm,
+    paddingVertical:   2,
+    borderRadius:      Radius.xs,
+  },
+  categoryBadgeText: {
     letterSpacing: LetterSpacing.wider,
   },
-  completedSubtitle: {
-    fontFamily: Fonts.heading,
-    fontSize:   FontSizes.headingSm,
-    color:      Colors.textPrimary,
-    lineHeight: 28,
+  missionDescription: {
+    fontStyle: 'italic',
   },
-  completedDivider: {
-    height:          1,
-    backgroundColor: Colors.outlineVar,
-    marginVertical:  Spacing.xs,
-  },
-  completedMessage: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
-  },
-  
-  // ── Day 1 Training Card ───────────────────────────────────────
-  day0Card: {
-    backgroundColor: Colors.primary + '11',
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.primary + '44',
-    padding:         Spacing.lg,
-    marginBottom:    Spacing.xl,
-    position:        'relative',
-  },
-  day0Header: {
-    flexDirection:  'row',
-    alignItems:     'center',
-    gap:            Spacing.md,
-    marginBottom:   Spacing.md,
-  },
-  day0Icon: {
-    fontSize: 32,
-  },
-  day0HeaderText: {
-    flex: 1,
-    gap:  Spacing.xs - 2,
-  },
-  day0Title: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  day0Subtitle: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
-  },
-  day0Button: {
-    backgroundColor:   Colors.primary,
-    paddingVertical:   Spacing.md,
-    borderRadius:      Radius.md,
-    flexDirection:     'row',
-    alignItems:        'center',
-    justifyContent:    'center',
-    gap:               Spacing.sm,
-  },
-  day0ButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.onPrimary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  day0ButtonArrow: {
+  ghostArrow: {
     fontFamily: Fonts.monoMedium,
     fontSize:   FontSizes.bodyLg,
-    color:      Colors.onPrimary,
+    color:      Colors.primary,
   },
-  
-  // ── Session Cards ─────────────────────────────────────────────
-  sessionCard: {
-    backgroundColor: Colors.confidence + '11',
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.confidence + '44',
-    padding:         Spacing.lg,
-    marginBottom:    Spacing.lg,
-    position:        'relative',
-  },
-  sessionCard3: {
-    backgroundColor: Colors.leadership + '11',
-    borderColor:     Colors.leadership + '44',
-  },
-  sessionHeader: {
-    flexDirection:  'row',
-    alignItems:     'center',
-    gap:            Spacing.md,
-    marginBottom:   Spacing.md,
-  },
-  sessionIcon: {
-    fontSize: 32,
-  },
-  sessionHeaderText: {
-    flex: 1,
-    gap:  Spacing.xs - 2,
-  },
-  sessionTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.confidence,
-    letterSpacing: LetterSpacing.widest,
-  },
-  sessionSubtitle: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
-  },
-  sessionButton: {
-    backgroundColor:   Colors.confidence,
-    paddingVertical:   Spacing.md,
-    borderRadius:      Radius.md,
+
+  // ── Daily Summary ─────────────────────────────────────────────
+  footer: {
     flexDirection:     'row',
+    justifyContent:    'space-between',
     alignItems:        'center',
-    justifyContent:    'center',
-    gap:               Spacing.sm,
+    paddingTop:        Spacing.lg,
+    borderTopWidth:    StyleSheet.hairlineWidth,
+    borderTopColor:    Colors.outlineVar,
+    opacity:           0.7,
   },
-  sessionButton3: {
-    backgroundColor: Colors.leadership,
+  footerText: {
+    flex: 1,
   },
-  sessionButtonCompleted: {
-    backgroundColor: Colors.success + 'CC',
-  },
-  sessionButtonLocked: {
-    backgroundColor: Colors.bgHighest,
-  },
-  sessionCardLocked: {
-    opacity: 0.65,
-    borderColor: Colors.outlineVar,
-  },
-  sessionButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.onPrimary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  sessionButtonArrow: {
-    fontFamily: Fonts.monoMedium,
-    fontSize:   FontSizes.bodyLg,
-    color:      Colors.onPrimary,
+  footerIcon: {
+    fontSize: 14,
+    color:    Colors.textTertiary,
   },
 });

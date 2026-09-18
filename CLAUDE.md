@@ -203,3 +203,6 @@ Commands: `npx tsc --noEmit` · `npx expo-doctor` · `npx expo start`
 Commit after each discrete change, never one giant rewrite. If a phase breaks something,
 revert that phase rather than rebuilding. Tag before risky work:
 `git tag pre-ui-migration`.
+When redesigning a screen, use Edit on the existing file. Never Write a
+full replacement: it reconstructs hooks and handlers from reading rather
+than preserving them, and a typecheck will not catch what drifts.

@@ -16,6 +16,7 @@ import {
   ActivityIndicator,
   Alert,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { getPinnedSession3Questions } from '../src/services/content.service';
@@ -27,7 +28,6 @@ import {
   Radius,
   LetterSpacing,
 } from '../src/constants/tokens';
-import { CornerMarkers } from '../src/components/ui';
 import { useAuthStore } from '../src/store/auth.store';
 import { trackEvent } from '../src/services/analytics.service';
 import {
@@ -36,6 +36,18 @@ import {
   type AIEvaluationResult,
 } from '../src/services/ai-evaluation.service';
 import { computeSession3XP } from '../src/constants/progression';
+import {
+  MilledSurface,
+  RecessedTrack,
+  Display,
+  Headline,
+  BodyLg,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+  SegmentedProgress,
+} from '../src/components/forge';
 
 type SubjectiveResponse = {
   questionId: string;
@@ -103,6 +115,10 @@ export default function Session3Screen() {
             maxWords?: number;
             evaluationCriteria?: string[];
           };
+          if (q.time_limit == null) {
+            console.warn(`[Session 3] Question ${q.id} has no time_limit — falling back to a default. This should come from content, not a fallback.`);
+          }
+
           return {
             id: q.id,
             type,
@@ -335,9 +351,9 @@ export default function Session3Screen() {
       keyboardVerticalOffset={insets.top}
     >
       <View style={[styles.innerContainer, { paddingTop: insets.top }]}>
-        {/* Header */}
+        {/* Header — identical shell for all three question types */}
         <View style={styles.header}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: Spacing.sm }}>
+          <View style={styles.headerTopRow}>
             <TouchableOpacity
               onPress={() => {
                 Alert.alert(
@@ -353,7 +369,7 @@ export default function Session3Screen() {
                   ]
                 );
               }}
-              style={{ paddingVertical: 4 }}
+              style={styles.abortButton}
               activeOpacity={0.7}
             >
               <Text style={styles.backButtonText} maxFontSizeMultiplier={1}>
@@ -392,189 +408,191 @@ export default function Session3Screen() {
                     ]
                   );
                 }}
-                style={{
-                  backgroundColor: Colors.error + '22',
-                  borderColor: Colors.error,
-                  borderWidth: 1,
-                  paddingHorizontal: 8,
-                  paddingVertical: 4,
-                  borderRadius: Radius.xs,
-                }}
+                style={styles.devButton}
                 activeOpacity={0.7}
               >
-                <Text style={{ fontFamily: Fonts.monoMedium, fontSize: FontSizes.micro - 2, color: Colors.error, letterSpacing: LetterSpacing.wider }}>
+                <Text style={styles.devButtonText} maxFontSizeMultiplier={1}>
                   REGENERATE [DEV]
                 </Text>
               </TouchableOpacity>
             )}
           </View>
 
-          <View style={styles.sessionBadge}>
-            <Text style={styles.sessionBadgeText} maxFontSizeMultiplier={1}>
-              SESSION 3 • SUBJECTIVE
-            </Text>
+          <View style={styles.sessionRow}>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>SESSION 03</LabelCaps>
+            <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+              QUESTION {currentIndex + 1} / {totalQuestions}
+            </Mono>
           </View>
-
-          <View style={styles.progressContainer}>
-            <Text style={styles.progressText} maxFontSizeMultiplier={1}>
-              QUESTION {currentIndex + 1}/{totalQuestions}
-            </Text>
-            <View style={styles.progressBar}>
-              <View style={[styles.progressFill, { width: `${progress}%` }]} />
-            </View>
-          </View>
+          <SegmentedProgress total={totalQuestions} current={currentIndex} />
         </View>
 
         <ScrollView
           style={styles.scrollView}
-          contentContainerStyle={[
-            styles.scrollContent,
-            { paddingBottom: insets.bottom + Spacing.xl },
-          ]}
+          contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
           keyboardShouldPersistTaps="handled"
         >
-          {/* Question Card */}
-          <View style={styles.questionCard}>
-            <CornerMarkers position="all" color={Colors.primary} />
+          {/* Test Parameter card — same shell for all three types.
+              The controller owns timeRemaining; this only displays it. */}
+          <MilledSurface style={styles.paramCard}>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TEST PARAMETER</LabelCaps>
 
-            <View style={styles.questionHeader}>
-              <Text style={styles.questionId} maxFontSizeMultiplier={1}>
-                {currentQuestion.id}
-              </Text>
-              
-              {/* Timer UI countdown */}
-              {timeRemaining !== null && (
-                <View style={[styles.timer, timeRemaining <= 5 && styles.timerUrgent]}>
-                  <Text style={[styles.timerText, timeRemaining <= 5 && styles.timerTextUrgent]}>
-                    ⏱ {timeRemaining}s
-                  </Text>
-                </View>
-              )}
-              <View
-                style={[
-                  styles.typeChip,
-                  currentQuestion.type === 'Interview' && styles.typeChipInterview,
-                ]}
-              >
-                <Text
-                  style={[
-                    styles.typeChipText,
-                    currentQuestion.type === 'Interview' && styles.typeChipTextInterview,
-                  ]}
-                  maxFontSizeMultiplier={1}
-                >
-                  {currentQuestion.type === 'SRT' && 'SRT STYLE'}
-                  {currentQuestion.type === 'WAT' && 'WAT STYLE'}
-                  {currentQuestion.type === 'Interview' && 'INTERVIEW'}
-                </Text>
-              </View>
+            <View style={styles.paramTypeRow}>
+              <Headline maxFontSizeMultiplier={1}>{currentQuestion.type}</Headline>
+              <View style={styles.paramDivider} />
+              <Body tone="secondary" maxFontSizeMultiplier={1}>
+                {currentQuestion.type === 'SRT' ? 'Situation Reaction Test'
+                  : currentQuestion.type === 'WAT' ? 'Word Association Test'
+                  : 'Personal Interview'}
+              </Body>
             </View>
 
-            <Text style={styles.questionText} maxFontSizeMultiplier={1}>
-              {currentQuestion.question}
-            </Text>
-
-            {currentQuestion.prompt && (
-              <Text style={styles.promptText} maxFontSizeMultiplier={1}>
-                {currentQuestion.prompt}
-              </Text>
+            {timeRemaining !== null && (
+              <>
+                <View style={styles.paramTimerRow}>
+                  <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>REMAINING TIME</LabelCaps>
+                  <Mono
+                    tone={timeRemaining <= 5 ? 'error' : 'gold'}
+                    maxFontSizeMultiplier={1}
+                  >
+                    {String(Math.floor(timeRemaining / 60)).padStart(2, '0')}:{String(timeRemaining % 60).padStart(2, '0')}
+                  </Mono>
+                </View>
+                <SegmentedProgress
+                  total={10}
+                  current={Math.min(10, Math.round(((currentQuestion.timeLimit - timeRemaining) / currentQuestion.timeLimit) * 10))}
+                />
+                <Mono tone="tertiary" style={styles.paramTimerCaption} maxFontSizeMultiplier={1}>
+                  Auto-submits when time expires
+                </Mono>
+              </>
             )}
-          </View>
+          </MilledSurface>
 
-          {/* Answer Input */}
-          <View style={styles.answerContainer}>
+          {/* Prompt — SRT */}
+          {currentQuestion.type === 'SRT' && (
+            <MilledSurface style={[styles.promptCard, styles.promptAccent]}>
+              <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>SCENARIO ANALYSIS</LabelCaps>
+              <BodyLg style={styles.promptText} maxFontSizeMultiplier={1}>
+                {currentQuestion.question}
+              </BodyLg>
+              {!!currentQuestion.prompt && (
+                <Body tone="secondary" style={styles.promptSubtext} maxFontSizeMultiplier={1}>
+                  {currentQuestion.prompt}
+                </Body>
+              )}
+            </MilledSurface>
+          )}
+
+          {/* Prompt — WAT: the one place a centred treatment is correct,
+              because the content is a single word. The card is centred;
+              the page is not. */}
+          {currentQuestion.type === 'WAT' && (
+            <MilledSurface style={styles.watCard}>
+              <Display style={styles.watWord} maxFontSizeMultiplier={1}>
+                {currentQuestion.question}
+              </Display>
+              {!!currentQuestion.prompt && (
+                <Body tone="secondary" style={styles.promptSubtext} maxFontSizeMultiplier={1}>
+                  {currentQuestion.prompt}
+                </Body>
+              )}
+            </MilledSurface>
+          )}
+
+          {/* Prompt — Personal Interview */}
+          {currentQuestion.type === 'Interview' && (
+            <MilledSurface style={[styles.promptCard, styles.promptAccent]}>
+              <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>INTERVIEW QUESTION</LabelCaps>
+              <BodyLg style={styles.promptText} maxFontSizeMultiplier={1}>
+                {currentQuestion.question}
+              </BodyLg>
+              {!!currentQuestion.prompt && (
+                <Body tone="secondary" style={styles.promptSubtext} maxFontSizeMultiplier={1}>
+                  {currentQuestion.prompt}
+                </Body>
+              )}
+            </MilledSurface>
+          )}
+
+          {/* Answer — shared shell for all three types */}
+          <View style={styles.answerSection}>
             <View style={styles.answerHeader}>
-              <Text style={styles.answerLabel} maxFontSizeMultiplier={1}>
-                YOUR RESPONSE
-              </Text>
-              <View style={styles.wordCountContainer}>
-                <Text
-                  style={[
-                    styles.wordCountText,
-                    (!meetsMinimum || !withinMaximum) && styles.wordCountWarning,
-                  ]}
+              <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>YOUR RESPONSE</LabelCaps>
+              <View style={styles.wordCountRow}>
+                <Mono
+                  tone={(!meetsMinimum || !withinMaximum) ? 'error' : 'tertiary'}
                   maxFontSizeMultiplier={1}
                 >
                   {maxWords ? `${wordCount}/${minWords} (max ${maxWords})` : `${wordCount}/${minWords}`} words
-                </Text>
+                </Mono>
                 {meetsMinimum && withinMaximum && (
-                  <Text style={styles.wordCountCheck} maxFontSizeMultiplier={1}>
-                    ✓
-                  </Text>
+                  <MaterialIcons name="check-circle" size={14} color={Colors.success} />
                 )}
               </View>
             </View>
 
-            <TextInput
-              style={[
-                styles.answerInput,
-                currentQuestion.type === 'WAT' && styles.answerInputShort,
-                currentQuestion.type === 'Interview' && styles.answerInputLong,
-              ]}
-              value={answer}
-              onChangeText={setAnswer}
-              placeholder={getPlaceholder()}
-              placeholderTextColor={Colors.textTertiary}
-              multiline
-              textAlignVertical="top"
-              maxFontSizeMultiplier={1}
-            />
+            <RecessedTrack style={styles.answerTrack}>
+              <TextInput
+                style={[
+                  styles.answerInput,
+                  currentQuestion.type === 'WAT' && styles.answerInputShort,
+                  currentQuestion.type === 'Interview' && styles.answerInputLong,
+                ]}
+                value={answer}
+                onChangeText={setAnswer}
+                placeholder={currentQuestion.type === 'Interview' ? 'Write your response honestly...' : getPlaceholder()}
+                placeholderTextColor={Colors.textTertiary}
+                multiline
+                textAlignVertical="top"
+                maxFontSizeMultiplier={1}
+              />
+            </RecessedTrack>
+
+            {currentQuestion.type === 'SRT' && (
+              <Body tone="secondary" style={styles.srtGuidance} maxFontSizeMultiplier={1}>
+                Respond naturally and decisively.
+              </Body>
+            )}
 
             {!meetsMinimum && wordCount > 0 && (
-              <Text style={styles.warningText} maxFontSizeMultiplier={1}>
+              <Body tone="error" style={styles.warningText} maxFontSizeMultiplier={1}>
                 Write at least {minWords} words for a complete response
-              </Text>
+              </Body>
             )}
             {!withinMaximum && (
-              <Text style={styles.warningText} maxFontSizeMultiplier={1}>
+              <Body tone="error" style={styles.warningText} maxFontSizeMultiplier={1}>
                 Response exceeds maximum allowed limit of {maxWords} words
-              </Text>
+              </Body>
             )}
           </View>
 
           {/* Evaluation Criteria Info */}
-          <View style={styles.criteriaCard}>
-            <Text style={styles.criteriaTitle} maxFontSizeMultiplier={1}>
-              Evaluation Focus Areas
-            </Text>
+          <MilledSurface style={styles.criteriaCard}>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>EVALUATION FOCUS AREAS</LabelCaps>
             <View style={styles.criteriaList}>
               {currentQuestion.evaluationCriteria.map((criterion, idx) => (
                 <View key={idx} style={styles.criteriaItem}>
-                  <Text style={styles.criteriaBullet} maxFontSizeMultiplier={1}>
-                    •
-                  </Text>
-                  <Text style={styles.criteriaText} maxFontSizeMultiplier={1}>
+                  <Mono tone="gold" maxFontSizeMultiplier={1}>•</Mono>
+                  <Body tone="secondary" style={styles.criteriaText} maxFontSizeMultiplier={1}>
                     {criterion}
-                  </Text>
+                  </Body>
                 </View>
               ))}
             </View>
-          </View>
-
-          {/* Action Button */}
-          <View style={styles.actionContainer}>
-            <TouchableOpacity
-              style={[styles.submitButton, (isSubmitDisabled || evaluating) && styles.submitButtonDisabled]}
-              onPress={() => handleSubmit()}
-              activeOpacity={0.85}
-              disabled={isSubmitDisabled || evaluating}
-            >
-              {evaluating ? (
-                <View style={styles.evaluatingContainer}>
-                  <ActivityIndicator size="small" color={Colors.onPrimary} />
-                  <Text style={styles.submitButtonText} maxFontSizeMultiplier={1}>
-                    EVALUATING RESPONSES...
-                  </Text>
-                </View>
-              ) : (
-                <Text style={styles.submitButtonText} maxFontSizeMultiplier={1}>
-                  {isLastQuestion ? 'COMPLETE SESSION' : 'SUBMIT & CONTINUE'}
-                </Text>
-              )}
-            </TouchableOpacity>
-          </View>
+          </MilledSurface>
         </ScrollView>
+
+        {/* Footer — submit button pinned below the scrollable content */}
+        <View style={[styles.footer, { paddingBottom: insets.bottom + Spacing.md }]}>
+          <ForgeButton
+            label={evaluating ? 'EVALUATING RESPONSES...' : isLastQuestion ? 'COMPLETE SESSION' : 'SUBMIT & CONTINUE'}
+            icon={evaluating ? <ActivityIndicator size="small" color={Colors.onPrimary} /> : undefined}
+            onPress={() => handleSubmit()}
+            disabled={isSubmitDisabled || evaluating}
+          />
+        </View>
       </View>
     </KeyboardAvoidingView>
   );
@@ -593,10 +611,15 @@ const styles = StyleSheet.create({
     paddingVertical: Spacing.md,
     borderBottomWidth: 1,
     borderBottomColor: Colors.outlineVar,
+    gap: Spacing.sm,
   },
-  backButton: {
-    alignSelf: 'flex-start',
-    marginBottom: Spacing.sm,
+  headerTopRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  abortButton: {
+    paddingVertical: 4,
   },
   backButtonText: {
     fontFamily: Fonts.monoMedium,
@@ -604,38 +627,24 @@ const styles = StyleSheet.create({
     color: Colors.textTertiary,
     letterSpacing: LetterSpacing.wider,
   },
-  sessionBadge: {
-    alignSelf: 'flex-start',
-    backgroundColor: Colors.primary + '22',
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs,
-    borderRadius: Radius.sm,
-    marginBottom: Spacing.md,
-  },
-  sessionBadgeText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  progressContainer: {
-    gap: Spacing.xs,
-  },
-  progressText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.label,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  progressBar: {
-    height: 4,
-    backgroundColor: Colors.bgHighest,
+  devButton: {
+    backgroundColor: Colors.error + '22',
+    borderColor: Colors.error,
+    borderWidth: 1,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
     borderRadius: Radius.xs,
-    overflow: 'hidden',
   },
-  progressFill: {
-    height: '100%',
-    backgroundColor: Colors.primary,
+  devButtonText: {
+    fontFamily: Fonts.monoMedium,
+    fontSize: FontSizes.micro - 2,
+    color: Colors.error,
+    letterSpacing: LetterSpacing.wider,
+  },
+  sessionRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   scrollView: {
     flex: 1,
@@ -643,99 +652,76 @@ const styles = StyleSheet.create({
   scrollContent: {
     paddingHorizontal: Spacing.gutter,
     paddingTop: Spacing.xl,
+    paddingBottom: Spacing.xl,
+    gap: Spacing.xl,
   },
-  questionCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.lg,
-    borderWidth: 2,
-    borderColor: Colors.outlineVar,
+  paramCard: {
     padding: Spacing.lg,
-    marginBottom: Spacing.xl,
-    position: 'relative',
+    gap: Spacing.sm,
   },
-  questionHeader: {
+  paramTypeRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+  },
+  paramDivider: {
+    width: 1,
+    height: 20,
+    backgroundColor: Colors.outlineVar,
+  },
+  paramTimerRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: Spacing.md,
+    marginTop: Spacing.xs,
   },
-  questionId: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.wider,
+  paramTimerCaption: {
+    alignSelf: 'center',
   },
-  typeChip: {
-    backgroundColor: Colors.bgHighest,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs - 2,
-    borderRadius: Radius.xs,
+  promptCard: {
+    padding: Spacing.lg,
+    gap: Spacing.sm,
   },
-  typeChipInterview: {
-    backgroundColor: Colors.primary + '22',
-  },
-  typeChipText: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.micro - 1,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  typeChipTextInterview: {
-    color: Colors.primary,
-  },
-  questionText: {
-    fontFamily: Fonts.heading,
-    fontSize: FontSizes.headingSm,
-    color: Colors.textPrimary,
-    lineHeight: 28,
-    marginBottom: Spacing.sm,
+  promptAccent: {
+    borderLeftWidth: 4,
+    borderLeftColor: Colors.primary,
   },
   promptText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textSecondary,
+    lineHeight: 24,
+  },
+  promptSubtext: {
     fontStyle: 'italic',
     lineHeight: 20,
   },
-  answerContainer: {
-    marginBottom: Spacing.xl,
+  watCard: {
+    alignSelf: 'center',
+    minWidth: 200,
+    maxWidth: '80%',
+    paddingVertical: Spacing.xl,
+    paddingHorizontal: Spacing.xl,
+    alignItems: 'center',
+    gap: Spacing.sm,
+  },
+  watWord: {
+    textAlign: 'center',
+  },
+  answerSection: {
+    gap: Spacing.sm,
   },
   answerHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: Spacing.sm,
   },
-  answerLabel: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  wordCountContainer: {
+  wordCountRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.xs,
   },
-  wordCountText: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.micro,
-    color: Colors.textTertiary,
-  },
-  wordCountWarning: {
-    color: Colors.error,
-  },
-  wordCountCheck: {
-    fontSize: 14,
-    color: Colors.success,
+  answerTrack: {
+    padding: Spacing.md,
   },
   answerInput: {
-    backgroundColor: Colors.bgSurface,
-    borderWidth: 2,
-    borderColor: Colors.outlineVar,
-    borderRadius: Radius.md,
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.md,
     fontFamily: Fonts.body,
     fontSize: FontSizes.bodyMd,
     color: Colors.textPrimary,
@@ -748,26 +734,15 @@ const styles = StyleSheet.create({
   answerInputLong: {
     minHeight: 160,
   },
+  srtGuidance: {
+    fontStyle: 'italic',
+  },
   warningText: {
-    fontFamily: Fonts.body,
     fontSize: FontSizes.micro,
-    color: Colors.error,
-    marginTop: Spacing.xs,
   },
   criteriaCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.outlineVar,
     padding: Spacing.md,
-    marginBottom: Spacing.xl,
-  },
-  criteriaTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom: Spacing.sm,
+    gap: Spacing.sm,
   },
   criteriaList: {
     gap: Spacing.xs,
@@ -777,40 +752,16 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: Spacing.sm,
   },
-  criteriaBullet: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.bodySm,
-    color: Colors.primary,
-  },
   criteriaText: {
     flex: 1,
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textSecondary,
     lineHeight: 20,
   },
-  actionContainer: {
-    gap: Spacing.md,
-  },
-  submitButton: {
-    backgroundColor: Colors.primary,
-    paddingVertical: Spacing.md + 4,
-    borderRadius: Radius.md,
-    alignItems: 'center',
-  },
-  submitButtonDisabled: {
-    opacity: 0.45,
-  },
-  evaluatingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.sm,
-  },
-  submitButtonText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.onPrimary,
-    letterSpacing: LetterSpacing.widest,
+  footer: {
+    paddingHorizontal: Spacing.gutter,
+    paddingTop: Spacing.md,
+    borderTopWidth: 1,
+    borderTopColor: Colors.outlineVar,
+    backgroundColor: Colors.bgBase,
   },
   centerContent: {
     justifyContent: 'center',
@@ -848,25 +799,5 @@ const styles = StyleSheet.create({
     fontSize: FontSizes.bodyMd,
     color: Colors.onPrimary,
     letterSpacing: LetterSpacing.widest,
-  },
-  timer: {
-    backgroundColor: Colors.bgHighest,
-    paddingHorizontal: Spacing.sm,
-    paddingVertical: Spacing.xs - 2,
-    borderRadius: Radius.xs,
-    borderWidth: 1,
-    borderColor: Colors.outlineVar,
-  },
-  timerUrgent: {
-    borderColor: Colors.error,
-    backgroundColor: Colors.error + '11',
-  },
-  timerText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.textSecondary,
-  },
-  timerTextUrgent: {
-    color: Colors.error,
   },
 });

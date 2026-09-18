@@ -14,6 +14,14 @@ import { Slot, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as SecureStore from 'expo-secure-store';
+import { useFonts } from 'expo-font';
+import {
+  HankenGrotesk_400Regular,
+  HankenGrotesk_500Medium,
+  HankenGrotesk_600SemiBold,
+  HankenGrotesk_700Bold,
+} from '@expo-google-fonts/hanken-grotesk';
+import { Geist_400Regular, Geist_600SemiBold } from '@expo-google-fonts/geist';
 
 import { useAuthInitializer } from '../src/hooks/useAuthInitializer';
 import { useAuthStore } from '../src/store/auth.store';
@@ -127,6 +135,21 @@ export default function RootLayout() {
 
   // Initialize auth session listener — runs once for app lifetime
   useAuthInitializer();
+
+  // Load the Industrial Precision type stack.
+  // Deliberately NOT gating the splash screen on this — see FONT-SETUP.md.
+  const [, fontError] = useFonts({
+    'HankenGrotesk-Regular':  HankenGrotesk_400Regular,
+    'HankenGrotesk-Medium':   HankenGrotesk_500Medium,
+    'HankenGrotesk-SemiBold': HankenGrotesk_600SemiBold,
+    'HankenGrotesk-Bold':     HankenGrotesk_700Bold,
+    'Geist-Regular':          Geist_400Regular,
+    'Geist-SemiBold':         Geist_600SemiBold,
+  });
+
+  useEffect(() => {
+    if (fontError) console.error('[STARTUP] Font load failed:', fontError);
+  }, [fontError]);
 
   const onLayoutRootView = useCallback(async () => {
     console.log('[STARTUP] RootLayout onLayoutRootView called');

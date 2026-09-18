@@ -53,6 +53,10 @@ duration is a defect regardless of how it looks.
 Pipeline: Sheet → `scripts/deploy-beta.js` → `import_staging_questions` →
 `replace_question_bank` RPC → `questions` → app.
 
+**When redesigning a screen, use Edit on the existing file. Never Write a full replacement:**
+it reconstructs hooks and handlers from reading rather than preserving them, and a
+typecheck will not catch what drifts.
+
 ---
 
 ## Architecture map
@@ -74,11 +78,12 @@ Google Sheet (published CSV)
 Session 1 = 12 MCQ (one per category). Session 2 = 12 mixed (3 MCQ, 3 SingleWord,
 2 TrueFalse, 2 RapidResponse, 2 Numeric). Session 3 = 10 (4 SRT, 3 WAT, 3 Interview).
 
-**Screens.** Note the misleading legacy names:
-- `app/day0-prototype.tsx` — **production Session 1 screen**, not a prototype
-- `app/day0-complete.tsx` — **production Session 1 completion screen**
-- `app/session2.tsx`, `app/session3.tsx`, `app/session-complete.tsx` (S2 + S3 share this)
-- `app/(tabs)/index.tsx` — Home and Training
+**Screens:**
+- `app/session1.tsx`, `app/session2.tsx`, `app/session3.tsx` — the three daily sessions
+- `app/session-complete.tsx` — shared completion screen for all three sessions
+- `app/(tabs)/index.tsx` — Home and Training (missions)
+- Session completion sequence (XP award, day/program transition) is centralized in
+  `src/hooks/useSessionCompletion.ts`
 
 ---
 
@@ -178,6 +183,12 @@ Work top-down. Each item has its evidence. Commit after each.
     22 Medium / 5 Hard from Day 3 on. Reweighting means changing `day` values, which is
     **not** safe once testers have pinned sessions.
 
+### Dead code
+
+- `src/data/day0-mock.ts` — mock data, unreferenced by any screen
+- `src/services/ai/` — an alternate AI provider tree alongside `ai-evaluation.service.ts`;
+  nothing in `app/` imports it. Consider removing both and keeping only the one in use.
+
 ---
 
 ## Verification standard
@@ -203,6 +214,3 @@ Commands: `npx tsc --noEmit` · `npx expo-doctor` · `npx expo start`
 Commit after each discrete change, never one giant rewrite. If a phase breaks something,
 revert that phase rather than rebuilding. Tag before risky work:
 `git tag pre-ui-migration`.
-When redesigning a screen, use Edit on the existing file. Never Write a
-full replacement: it reconstructs hooks and handlers from reading rather
-than preserving them, and a typecheck will not catch what drifts.

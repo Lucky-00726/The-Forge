@@ -13,9 +13,9 @@ import {
   RefreshControl,
   ScrollView,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenMeta, CornerMarkers } from '../../src/components/ui';
 import { useAuth } from '../../src/hooks/useAuth';
 import { useAuthStore } from '../../src/store/auth.store';
 import * as missionService from '../../src/services/mission.service';
@@ -31,9 +31,19 @@ import {
   Spacing,
   Radius,
   LetterSpacing,
-  TacticalColors,
 } from '../../src/constants/tokens';
 import type { DbMission } from '../../src/types';
+import {
+  MilledSurface,
+  Display,
+  Headline,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+  Chip,
+  MetaItem,
+} from '../../src/components/forge';
 
 // ── Category color mapping ───────────────────────────────────
 const CATEGORY_COLORS: Record<string, string> = {
@@ -151,201 +161,156 @@ export default function MissionsScreen() {
     >
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle} maxFontSizeMultiplier={1}>
-          MISSION LIBRARY
-        </Text>
-        <Text style={styles.headerSubtitle} maxFontSizeMultiplier={1}>
-          {missions.length} AVAILABLE TODAY
-        </Text>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>MISSION LIBRARY</LabelCaps>
+        <Display maxFontSizeMultiplier={1}>TRAINING</Display>
       </View>
 
-      <ScreenMeta id="OPS-02" label="Training Library" />
-
-      {/* Info Banner */}
-      <View style={styles.infoBanner}>
-        <Text style={styles.infoIcon}>ℹ️</Text>
-        <View style={styles.infoContent}>
-          <Text style={styles.infoText} maxFontSizeMultiplier={1}>
-            <Text style={styles.infoTextBold}>Featured Mission</Text> awards full XP.{'\n'}
-            <Text style={styles.infoTextBold}>Training Missions</Text> award 50% XP.
-          </Text>
+      {/* Stat Row */}
+      <MilledSurface style={styles.statRow}>
+        <View style={styles.statColumn}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>AVAILABLE TODAY</LabelCaps>
+          <Mono tone="gold" maxFontSizeMultiplier={1}>{missions.length}</Mono>
         </View>
-      </View>
+        <View style={styles.statDivider} />
+        <View style={styles.statColumn}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>COMPLETED</LabelCaps>
+          <Mono tone="success" maxFontSizeMultiplier={1}>{completedIds.length}</Mono>
+        </View>
+      </MilledSurface>
+
+      {/* XP Rule Explanation */}
+      <Body tone="tertiary" maxFontSizeMultiplier={1} style={styles.xpExplanation}>
+        <Text style={styles.xpExplanationBold}>Featured Mission</Text> awards full XP. <Text style={styles.xpExplanationBold}>Training Missions</Text> award 50% XP.
+      </Body>
 
       {/* Mission Cards */}
       {loading ? (
         <View style={styles.loadingBox}>
           <ActivityIndicator size="small" color={Colors.primary} />
-          <Text style={styles.loadingText} maxFontSizeMultiplier={1}>
+          <Body tone="secondary" maxFontSizeMultiplier={1}>
             Loading mission library…
-          </Text>
+          </Body>
         </View>
       ) : error ? (
-        <View style={styles.errorBox}>
-          <Text style={styles.errorTitle} maxFontSizeMultiplier={1}>
-            MISSION LIBRARY ERROR
-          </Text>
-          <Text style={styles.errorText} maxFontSizeMultiplier={1}>
+        <MilledSurface style={styles.errorBox}>
+          <LabelCaps tone="error" maxFontSizeMultiplier={1}>MISSION LIBRARY ERROR</LabelCaps>
+          <Body tone="secondary" maxFontSizeMultiplier={1}>
             {error}
-          </Text>
-          <TouchableOpacity
-            style={styles.retryButton}
+          </Body>
+          <ForgeButton
+            label="↻ RETRY LOAD"
             onPress={handleRefresh}
-            activeOpacity={0.85}
-          >
-            <Text style={styles.retryButtonText} maxFontSizeMultiplier={1}>
-              ↻ RETRY LOAD
-            </Text>
-          </TouchableOpacity>
-        </View>
+            style={styles.retryButton}
+          />
+        </MilledSurface>
       ) : missions.length === 0 ? (
-        <View style={styles.noMissionsBox}>
-          <Text style={styles.noMissionsIcon}>📋</Text>
-          <Text style={styles.noMissionsText} maxFontSizeMultiplier={1}>
+        <MilledSurface style={styles.emptyBox}>
+          <MaterialIcons name="assignment" size={40} color={Colors.textTertiary} />
+          <Body tone="secondary" style={styles.emptyText} maxFontSizeMultiplier={1}>
             No missions available today. Check back tomorrow.
-          </Text>
-        </View>
+          </Body>
+        </MilledSurface>
       ) : (
         <View style={styles.missionList}>
           {missions.map((mission) => {
             const isFeatured = mission.id === featuredId;
             const isCompleted = completedIds.includes(mission.id);
             const isLocked = mission.unlock_day > userProgrammeDay;
-            const xpAwarded = isFeatured 
-              ? mission.xp_reward 
+            const xpAwarded = isFeatured
+              ? mission.xp_reward
               : Math.floor(mission.xp_reward * 0.5);
 
             return (
               <TouchableOpacity
                 key={mission.id}
-                style={[
-                  styles.missionCard,
-                  isFeatured && styles.missionCardFeatured,
-                  isCompleted && styles.missionCardCompleted,
-                  isLocked && styles.missionCardLocked,
-                ]}
-                onPress={() => handleMissionPress(mission)}
-                activeOpacity={0.85}
+                activeOpacity={isCompleted || isLocked ? 1 : 0.7}
                 disabled={isCompleted || isLocked}
+                onPress={() => handleMissionPress(mission)}
               >
-                <CornerMarkers
-                  position="all"
-                  color={
-                    isLocked ? Colors.textTertiary :
-                    isCompleted ? Colors.success :
-                    isFeatured ? Colors.primary :
-                    Colors.textTertiary
-                  }
-                />
-
-                {/* Badge: Featured / Training / Completed / Locked */}
-                <View style={styles.missionBadgeRow}>
-                  {isLocked && (
-                    <View style={styles.lockedBadge}>
-                      <Text style={styles.lockedText} maxFontSizeMultiplier={1}>
-                        🔒 UNLOCKS DAY {mission.unlock_day}
-                      </Text>
-                    </View>
-                  )}
-                  {!isLocked && isFeatured && (
-                    <View style={styles.featuredBadge}>
-                      <View style={styles.featuredDot} />
-                      <Text style={styles.featuredText} maxFontSizeMultiplier={1}>
-                        FEATURED
-                      </Text>
-                    </View>
-                  )}
-                  {!isLocked && !isFeatured && !isCompleted && (
-                    <View style={styles.trainingBadge}>
-                      <Text style={styles.trainingText} maxFontSizeMultiplier={1}>
-                        TRAINING
-                      </Text>
-                    </View>
-                  )}
-                  {isCompleted && !isLocked && (
-                    <View style={styles.completedBadge}>
-                      <Text style={styles.completedText} maxFontSizeMultiplier={1}>
-                        ✓ COMPLETE
-                      </Text>
-                    </View>
-                  )}
-                </View>
-
-                {/* Mission ID tag */}
-                <View style={styles.missionIdTag}>
-                  <Text style={styles.missionIdText} maxFontSizeMultiplier={1}>
-                    {mission.id}
-                  </Text>
-                </View>
-
-                {/* Mission title */}
-                <Text style={styles.missionTitle} maxFontSizeMultiplier={1}>
-                  {mission.title}
-                </Text>
-
-                {/* Category & Type */}
-                <View style={styles.missionMeta}>
-                  <View
-                    style={[
-                      styles.categoryChip,
-                      {
-                        backgroundColor:
-                          (CATEGORY_COLORS[mission.category] ?? Colors.textTertiary) + '22',
-                      },
-                    ]}
-                  >
-                    <Text
+                <MilledSurface
+                  brackets
+                  style={[
+                    styles.missionCard,
+                    isCompleted && styles.missionCardCompleted,
+                    isLocked && styles.missionCardLocked,
+                  ]}
+                >
+                  {/* Badge and category row */}
+                  <View style={styles.missionHeaderRow}>
+                    <View
                       style={[
-                        styles.categoryText,
-                        {
-                          color: CATEGORY_COLORS[mission.category] ?? Colors.textTertiary,
-                        },
+                        styles.categoryBadge,
+                        { backgroundColor: (CATEGORY_COLORS[mission.category] ?? Colors.textTertiary) + '22' },
                       ]}
+                    >
+                      <Mono
+                        style={[
+                          styles.categoryBadgeText,
+                          { color: CATEGORY_COLORS[mission.category] ?? Colors.textTertiary },
+                        ]}
+                        maxFontSizeMultiplier={1}
+                      >
+                        {mission.category.toUpperCase()}
+                      </Mono>
+                    </View>
+                    {isLocked && (
+                      <Chip label={`UNLOCKS DAY ${mission.unlock_day}`} tone="neutral" />
+                    )}
+                    {!isLocked && isFeatured && (
+                      <Chip label="FEATURED" tone="gold" />
+                    )}
+                    {!isLocked && !isFeatured && !isCompleted && (
+                      <Chip label="TRAINING" tone="neutral" />
+                    )}
+                    {isCompleted && (
+                      <Chip label="✓ COMPLETE" tone="success" />
+                    )}
+                  </View>
+
+                  {/* Mission ID */}
+                  <Mono tone="tertiary" style={styles.missionId} maxFontSizeMultiplier={1}>
+                    {mission.id}
+                  </Mono>
+
+                  {/* Mission title */}
+                  <Headline maxFontSizeMultiplier={1}>
+                    {mission.title}
+                  </Headline>
+
+                  {/* Mission type */}
+                  <MetaItem label={mission.mission_type} />
+
+                  {/* XP indicator */}
+                  <View style={styles.xpRow}>
+                    <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>
+                      XP REWARD
+                    </LabelCaps>
+                    <Mono
+                      tone={isFeatured ? 'gold' : 'secondary'}
                       maxFontSizeMultiplier={1}
                     >
-                      {mission.category.toUpperCase()}
-                    </Text>
+                      +{xpAwarded}
+                      {!isFeatured && !isCompleted && (
+                        <Mono tone="tertiary" maxFontSizeMultiplier={1}> (50%)</Mono>
+                      )}
+                    </Mono>
                   </View>
-                  <Text style={styles.missionType} maxFontSizeMultiplier={1}>
-                    {mission.mission_type}
-                  </Text>
-                </View>
 
-                {/* XP indicator */}
-                <View style={styles.xpRow}>
-                  <Text style={styles.xpLabel} maxFontSizeMultiplier={1}>
-                    XP REWARD
-                  </Text>
-                  <Text
-                    style={[
-                      styles.xpValue,
-                      isFeatured && styles.xpValueFeatured,
-                    ]}
-                    maxFontSizeMultiplier={1}
-                  >
-                    +{xpAwarded}
-                    {!isFeatured && !isCompleted && (
-                      <Text style={styles.xpPercent}> (50%)</Text>
-                    )}
-                  </Text>
-                </View>
+                  {/* Call to action */}
+                  {!isCompleted && !isLocked && (
+                    <ForgeButton
+                      variant="ghost"
+                      label="BEGIN MISSION"
+                      iconRight={<MaterialIcons name="arrow-right-alt" size={18} color={Colors.primary} />}
+                    />
+                  )}
 
-                {/* Call to action */}
-                {!isCompleted && !isLocked && (
-                  <View style={styles.actionRow}>
-                    <Text style={styles.actionText} maxFontSizeMultiplier={1}>
-                      TAP TO BEGIN →
-                    </Text>
-                  </View>
-                )}
-                
-                {isLocked && (
-                  <View style={styles.lockedMessage}>
-                    <Text style={styles.lockedMessageText} maxFontSizeMultiplier={1}>
+                  {isLocked && (
+                    <Body tone="tertiary" style={styles.lockedMessage} maxFontSizeMultiplier={1}>
                       Complete Day {mission.unlock_day - 1} missions to unlock
-                    </Text>
-                  </View>
-                )}
+                    </Body>
+                  )}
+                </MilledSurface>
               </TouchableOpacity>
             );
           })}
@@ -357,326 +322,112 @@ export default function MissionsScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex:            1,
+    flex: 1,
     backgroundColor: Colors.bgBase,
   },
   content: {
     paddingHorizontal: Spacing.gutter,
-    paddingBottom:     Spacing.xxl,
+    paddingBottom: Spacing.xxl,
+    gap: Spacing.xl,
   },
-  
+
   // ── Header ────────────────────────────────────────────────────
   header: {
-    marginBottom: Spacing.md,
-    gap:          Spacing.xs,
+    gap: Spacing.xs,
   },
-  headerTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.label,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.widest,
+
+  // ── Stat Row ──────────────────────────────────────────────────
+  statRow: {
+    padding: Spacing.lg,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.lg,
   },
-  headerSubtitle: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  
-  // ── Info Banner ───────────────────────────────────────────────
-  infoBanner: {
-    backgroundColor:  Colors.bgSurface,
-    borderRadius:     Radius.md,
-    borderWidth:      1,
-    borderColor:      Colors.outlineVar,
-    padding:          Spacing.md,
-    flexDirection:    'row',
-    gap:              Spacing.sm,
-    marginBottom:     Spacing.lg,
-  },
-  infoIcon: {
-    fontSize: 20,
-  },
-  infoContent: {
+  statColumn: {
     flex: 1,
+    gap: Spacing.xs,
   },
-  infoText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
+  statDivider: {
+    width: 1,
+    height: 32,
+    backgroundColor: Colors.outlineVar,
   },
-  infoTextBold: {
-    fontFamily: Fonts.bodyMedium,
-    color:      Colors.textPrimary,
-  },
-  
+
   // ── Mission List ──────────────────────────────────────────────
   missionList: {
     gap: Spacing.md,
   },
-  
+
   // ── Mission Card ──────────────────────────────────────────────
   missionCard: {
-    backgroundColor: TacticalColors.surfaceCard,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     TacticalColors.borderTactical,
-    padding:         Spacing.lg,
-    position:        'relative',
-    gap:             Spacing.sm,
-  },
-  missionCardFeatured: {
-    backgroundColor: Colors.primary + '11',
-    borderColor:     Colors.primary + '55',
+    padding: Spacing.lg,
+    gap: Spacing.sm,
   },
   missionCardCompleted: {
-    backgroundColor: Colors.success + '11',
-    borderColor:     Colors.success + '44',
-    opacity:         0.65,
+    opacity: 0.65,
   },
   missionCardLocked: {
-    backgroundColor: Colors.bgLow,
-    borderColor:     Colors.outlineVar + '44',
-    opacity:         0.5,
+    opacity: 0.5,
   },
-  
-  // ── Badges ────────────────────────────────────────────────────
-  missionBadgeRow: {
+
+  // ── Card content ──────────────────────────────────────────────
+  missionHeaderRow: {
     flexDirection: 'row',
-    alignItems:    'center',
-    gap:           Spacing.xs,
+    alignItems: 'center',
+    gap: Spacing.sm,
   },
-  featuredBadge: {
-    backgroundColor:  Colors.primary,
-    borderRadius:     Radius.sm,
+  categoryBadge: {
+    borderRadius: Radius.sm,
     paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-    flexDirection:    'row',
-    alignItems:       'center',
-    gap:              Spacing.xs - 2,
+    paddingVertical: Spacing.xs - 2,
   },
-  featuredDot: {
-    width:           4,
-    height:          4,
-    borderRadius:    2,
-    backgroundColor: Colors.onPrimary,
+  categoryBadgeText: {
+    fontSize: FontSizes.micro,
   },
-  featuredText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.onPrimary,
-    letterSpacing: LetterSpacing.wider,
+  missionId: {
+    fontSize: FontSizes.micro,
   },
-  trainingBadge: {
-    backgroundColor:   'transparent',
-    borderWidth:       1,
-    borderColor:       Colors.textTertiary,
-    borderRadius:      Radius.sm,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-  },
-  trainingText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  completedBadge: {
-    backgroundColor:   Colors.success + '33',
-    borderRadius:      Radius.sm,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-  },
-  completedText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.success,
-    letterSpacing: LetterSpacing.wider,
-  },
-  lockedBadge: {
-    backgroundColor:   Colors.bgHighest,
-    borderRadius:      Radius.sm,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-  },
-  lockedText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  
-  // ── Mission ID Tag ────────────────────────────────────────────
-  missionIdTag: {
-    position:          'absolute',
-    top:               Spacing.md,
-    right:             Spacing.md,
-    backgroundColor:   'rgba(16, 20, 21, 0.8)',
-    borderRadius:      Radius.xs,
-    paddingHorizontal: Spacing.xs + 2,
-    paddingVertical:   Spacing.xs - 2,
-  },
-  missionIdText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: 0.5,
-  },
-  
-  // ── Mission Content ───────────────────────────────────────────
-  missionTitle: {
-    fontFamily:    Fonts.heading,
-    fontSize:      FontSizes.headingSm,
-    color:         Colors.textPrimary,
-    letterSpacing: -0.5,
-    lineHeight:    28,
-    marginTop:     Spacing.xs,
-  },
-  missionMeta: {
-    flexDirection: 'row',
-    gap:           Spacing.sm,
-    alignItems:    'center',
-  },
-  categoryChip: {
-    paddingHorizontal: Spacing.sm,
-    paddingVertical:   Spacing.xs,
-    borderRadius:      Radius.sm,
-  },
-  categoryText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro - 1,
-    letterSpacing: LetterSpacing.wider,
-  },
-  missionType: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro - 1,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  
-  // ── XP Row ────────────────────────────────────────────────────
   xpRow: {
-    flexDirection:  'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:     'center',
-    marginTop:      Spacing.xs,
-    paddingTop:     Spacing.sm,
-    borderTopWidth: 1,
-    borderTopColor: Colors.outlineVar,
+    alignItems: 'center',
   },
-  xpLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  xpValue: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodyMd,
-    color:         Colors.textPrimary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  xpValueFeatured: {
-    color: Colors.primary,
-  },
-  xpPercent: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textTertiary,
-  },
-  
-  // ── Action Row ────────────────────────────────────────────────
-  actionRow: {
-    marginTop: Spacing.xs,
-  },
-  actionText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.primary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  
-  // ── Locked Message ────────────────────────────────────────────
   lockedMessage: {
     marginTop: Spacing.xs,
   },
-  lockedMessageText: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.micro,
-    color:      Colors.textTertiary,
-    textAlign:  'center',
-  },
-  
+
   // ── Loading & Error States ────────────────────────────────────
   loadingBox: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.xl,
-    alignItems:      'center',
-    gap:             Spacing.md,
-  },
-  loadingText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textTertiary,
-    letterSpacing: 0.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: Spacing.xl,
+    gap: Spacing.md,
   },
   errorBox: {
-    backgroundColor: Colors.errorBg,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.error + '55',
-    padding:         Spacing.lg,
-    gap:             Spacing.md,
-  },
-  errorTitle: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.error,
-    letterSpacing: LetterSpacing.widest,
-  },
-  errorText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.error,
-    lineHeight: 20,
+    padding: Spacing.lg,
+    gap: Spacing.md,
   },
   retryButton: {
-    backgroundColor: 'transparent',
-    borderWidth:     1,
-    borderColor:     Colors.error,
-    paddingVertical: Spacing.md,
-    borderRadius:    Radius.md,
-    alignItems:      'center',
-    marginTop:       Spacing.xs,
+    alignSelf: 'flex-start',
   },
-  retryButtonText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.error,
-    letterSpacing: LetterSpacing.widest,
+  emptyBox: {
+    padding: Spacing.xl,
+    alignItems: 'center',
+    gap: Spacing.md,
   },
-  noMissionsBox: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.xl,
-    alignItems:      'center',
-    gap:             Spacing.md,
+  emptyIcon: {
+    fontSize: 40,
   },
-  noMissionsIcon: {
-    fontSize: 48,
-    color:    Colors.textTertiary,
+  emptyText: {
+    textAlign: 'center',
   },
-  noMissionsText: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    textAlign:  'center',
+  xpExplanation: {
+    textAlign: 'center',
     lineHeight: 20,
   },
+  xpExplanationBold: {
+    fontFamily: Fonts.bodyMedium,
+    color: Colors.textPrimary,
+  },
+
 });

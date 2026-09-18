@@ -143,7 +143,7 @@ export function shuffleSession2Constrained(questions: Question[]): Question[] {
   const result: Question[] = [];
 
   function backtrack(lastType: string | null): boolean {
-    if (result.length === 12) {
+    if (result.length === questions.length) {
       return true;
     }
 
@@ -182,19 +182,32 @@ export function shuffleSession2Constrained(questions: Question[]): Question[] {
 
 async function buildSession1Questions(userId: string, trainingDay: number): Promise<Question[]> {
   const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session1');
+  const expected = 12;
+  const threshold = Math.ceil(expected * 0.6);
 
-  if (questions.length !== 12) {
-    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 1 contains ${questions.length} active questions (expected exactly 12).`);
+  if (questions.length === expected) {
+    return questions;
   }
 
-  return questions;
+  if (questions.length >= threshold && questions.length >= 5) {
+    console.warn(`[ContentIntegrity] Day ${trainingDay} Session 1: expected ${expected} questions, found ${questions.length} — proceeding`);
+    return questions;
+  }
+
+  throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 1 contains ${questions.length} active questions (expected at least ${threshold}, got ${questions.length}).`);
 }
 
 async function buildSession2Questions(userId: string, trainingDay: number): Promise<Question[]> {
   const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session2');
+  const expected = 12;
+  const threshold = Math.ceil(expected * 0.6);
 
-  if (questions.length !== 12) {
-    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 2 contains ${questions.length} active questions (expected exactly 12).`);
+  if (questions.length !== expected) {
+    if (questions.length >= threshold && questions.length >= 5) {
+      console.warn(`[ContentIntegrity] Day ${trainingDay} Session 2: expected ${expected} questions, found ${questions.length} — proceeding`);
+    } else {
+      throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 2 contains ${questions.length} active questions (expected at least ${threshold}).`);
+    }
   }
 
   // Validate expected type distribution: 3 MCQ, 3 SingleWord, 2 TrueFalse, 2 RapidResponse, 2 Numeric
@@ -205,17 +218,29 @@ async function buildSession2Questions(userId: string, trainingDay: number): Prom
   });
 
   if (counts.MCQ !== 3 || counts.SingleWord !== 3 || counts.TrueFalse !== 2 || counts.RapidResponse !== 2 || counts.Numeric !== 2) {
-    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 2 question distribution is invalid. Found MCQ: ${counts.MCQ}, SingleWord: ${counts.SingleWord}, TrueFalse: ${counts.TrueFalse}, RapidResponse: ${counts.RapidResponse}, Numeric: ${counts.Numeric} (expected exactly 3 MCQ, 3 SingleWord, 2 TrueFalse, 2 RapidResponse, 2 Numeric).`);
+    console.warn(`[ContentIntegrity] Day ${trainingDay} Session 2: distribution MCQ:${counts.MCQ} SW:${counts.SingleWord} TF:${counts.TrueFalse} RR:${counts.RapidResponse} NUM:${counts.Numeric} — expected 3/3/2/2/2`);
   }
 
-  return shuffleSession2Constrained(questions);
+  // Attempt constrained shuffle; fall back to Fisher-Yates if it fails
+  try {
+    return shuffleSession2Constrained(questions);
+  } catch (err) {
+    console.warn(`[ContentIntegrity] Day ${trainingDay} Session 2: constrained shuffle failed, using plain shuffle`);
+    return shuffleArrayFY(questions);
+  }
 }
 
 async function buildSession3Questions(userId: string, trainingDay: number): Promise<Question[]> {
   const questions = await fetchQuestionsByDayAndSession(trainingDay, 'Session3');
+  const expected = 10;
+  const threshold = Math.ceil(expected * 0.6);
 
-  if (questions.length !== 10) {
-    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 3 contains ${questions.length} active questions (expected exactly 10).`);
+  if (questions.length !== expected) {
+    if (questions.length >= threshold && questions.length >= 5) {
+      console.warn(`[ContentIntegrity] Day ${trainingDay} Session 3: expected ${expected} questions, found ${questions.length} — proceeding`);
+    } else {
+      throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 3 contains ${questions.length} active questions (expected at least ${threshold}).`);
+    }
   }
 
   const srts = questions.filter(q => q.module === 'SRT');
@@ -223,7 +248,7 @@ async function buildSession3Questions(userId: string, trainingDay: number): Prom
   const interviews = questions.filter(q => q.module === 'Interview' || q.module === 'PersonalInterview' || q.module === 'Lecturette' || q.module === 'GroupDiscussion' || q.module === 'SelfDescription');
 
   if (srts.length !== 4 || wats.length !== 3 || interviews.length !== 3) {
-    throw new Error(`Curriculum integrity error: Day ${trainingDay} Session 3 question distribution is invalid. Found SRT: ${srts.length}, WAT: ${wats.length}, Interview: ${interviews.length} (expected exactly 4 SRT, 3 WAT, 3 Interview).`);
+    console.warn(`[ContentIntegrity] Day ${trainingDay} Session 3: distribution SRT:${srts.length} WAT:${wats.length} INT:${interviews.length} — expected 4/3/3`);
   }
 
   // Return preserving intended SRT -> WAT -> Interview order

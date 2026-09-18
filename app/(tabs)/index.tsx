@@ -211,7 +211,7 @@ export default function HomeScreen() {
                 {displayName ? displayName.charAt(0).toUpperCase() : 'O'}
               </Text>
             </View>
-            <LabelCaps tone="secondary" numberOfLines={1} maxFontSizeMultiplier={1}>
+            <LabelCaps tone="secondary" style={styles.greeting} numberOfLines={1} ellipsizeMode="tail" maxFontSizeMultiplier={1}>
               {greeting}, {(displayName ?? 'OFFICER').toUpperCase()}
             </LabelCaps>
           </View>
@@ -470,12 +470,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems:    'center',
     gap:           Spacing.sm,
-    flexShrink:    1,
+    flex:          1,
+    minWidth:      0,
   },
   headerRight: {
     flexDirection: 'row',
     alignItems:    'center',
     gap:           Spacing.xs,
+    flexShrink:    0,
+  },
+  greeting: {
+    flexShrink: 1,
   },
   avatar: {
     width:           32,

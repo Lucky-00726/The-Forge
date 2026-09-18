@@ -2,7 +2,7 @@
 // THE FORGE — Session Completion Screen
 // Unified completion for all session types
 // ─────────────────────────────────────────────────────────────
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
   View,
   Text,
@@ -14,20 +14,21 @@ import {
 } from 'react-native';
 import { useRouter, useLocalSearchParams } from 'expo-router';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import {
-  Colors,
-  Fonts,
-  FontSizes,
-  Spacing,
-  Radius,
-  LetterSpacing,
-  TacticalShadows,
-} from '../src/constants/tokens';
-import { CornerMarkers } from '../src/components/ui';
+import { MaterialIcons } from '@expo/vector-icons';
+import { Colors, Fonts, FontSizes, Spacing, Radius } from '../src/constants/tokens';
 import { useAuthStore } from '../src/store/auth.store';
-import { trackEvent } from '../src/services/analytics.service';
-import { awardSessionXP } from '../src/services/progression.service';
-import { isSessionCompleted, markSessionCompleted } from '../src/services/daily-session.service';
+import { useSessionCompletion } from '../src/hooks/useSessionCompletion';
+import {
+  MilledSurface,
+  RecessedTrack,
+  Display,
+  Headline,
+  BodyLg,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+} from '../src/components/forge';
 
 export default function SessionCompleteScreen() {
   const insets = useSafeAreaInsets();
@@ -44,22 +45,18 @@ export default function SessionCompleteScreen() {
   }>();
 
   const userId = useAuthStore((s) => s.user?.id ?? null);
-  const [saving, setSaving] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  // isReview is true when this session was already completed today.
-  // In review mode: no XP is awarded, no DB writes occur.
-  const [isReview, setIsReview] = useState(false);
 
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.8)).current;
 
   const sessionNumber = params.sessionNumber || '0';
   const sessionNum = parseInt(sessionNumber, 10);
-  // Guard: session-complete only handles sessions 2 and 3.
+  // Guard: session-complete handles sessions 1, 2 and 3.
   // If sessionNumber is missing or invalid, treat as session 2 to avoid
   // a DB constraint violation (CHECK session_number IN (1, 2, 3)).
-  const validSessionNum = (sessionNum === 2 || sessionNum === 3 ? sessionNum : 2) as 2 | 3;
+  const validSessionNum = (
+    sessionNum === 1 || sessionNum === 2 || sessionNum === 3 ? sessionNum : 2
+  ) as 1 | 2 | 3;
   const score = parseInt(params.score || '0', 10);
   const total = parseInt(params.total || '10', 10);
   const xpEarned = parseInt(params.xp || '0', 10);
@@ -103,6 +100,26 @@ export default function SessionCompleteScreen() {
     completionTime: `${completionMinutes}:${completionSeconds.toString().padStart(2, '0')}`,
   } : null;
 
+  const {
+    saving,
+    saved,
+    error,
+    isReview,
+    dayAdvanced,
+    newTrainingDay,
+    programCompleted,
+    status: completionStatus,
+    retry,
+  } = useSessionCompletion({
+    userId,
+    sessionNumber: validSessionNum,
+    xpEarned,
+    score: isSubjective ? null : score,
+    total,
+    completionTimeSeconds,
+    difficulty: isSubjective ? 'Subjective' : percentage >= 70 ? 'Hard' : percentage >= 50 ? 'Mixed' : 'Easy',
+  });
+
   useEffect(() => {
     Animated.parallel([
       Animated.timing(fadeAnim, {
@@ -117,79 +134,51 @@ export default function SessionCompleteScreen() {
         useNativeDriver: true,
       }),
     ]).start();
-
-    void saveXP();
   }, []);
-
-  const saveXP = async () => {
-    if (!userId) {
-      setSaved(true);
-      return;
-    }
-
-    setSaving(true);
-    setError(null);
-
-    try {
-      // ── Mode gate: check whether this session is already completed ──
-      // BUG-001 / BUG-002 fix: never award XP twice.
-      const alreadyDone = await isSessionCompleted(userId, validSessionNum);
-
-      if (alreadyDone) {
-        // Mode B: Review mode — read-only, no DB writes, no XP
-        console.log(`[SessionComplete] Review mode: S${validSessionNum} already completed today, skipping XP`);
-        setIsReview(true);
-        setSaved(true);
-        return;
-      }
-
-      // Mode A: First completion today ──────────────────────────────
-      const source = sessionNumber === '2' ? 'session2' : 'session3';
-      const result = await awardSessionXP(userId, xpEarned, source as 'session2' | 'session3');
-
-      if (!result.success) {
-        console.error('[SessionComplete] awardSessionXP failed:', result.error);
-        setError(result.error ?? 'Failed to save progress. Please try again.');
-        return;
-      }
-
-      // Track session completion
-      const completionEvent = `session${sessionNumber}_completed` as
-        | 'session2_completed'
-        | 'session3_completed';
-      trackEvent(userId, completionEvent);
-
-      // Record completion with review data
-      await markSessionCompleted(
-        userId,
-        validSessionNum,
-        xpEarned,
-        isSubjective ? null : score,
-        total,
-        completionTimeSeconds,
-        isSubjective ? 'Subjective' : percentage >= 70 ? 'Hard' : percentage >= 50 ? 'Mixed' : 'Easy',
-      );
-
-      setSaved(true);
-    } catch (err) {
-      console.error('[SessionComplete] Unexpected error:', err);
-      setError('Failed to save progress. Please try again.');
-    } finally {
-      setSaving(false);
-    }
-  };
 
   const handleReturnToDashboard = () => {
     router.replace('/(tabs)');
   };
 
   const handleContinueNext = () => {
-    if (sessionNumber === '2') {
+    if (sessionNumber === '1') {
+      router.replace('/session2');
+    } else if (sessionNumber === '2') {
       router.replace('/session3');
     } else {
       router.replace('/(tabs)');
     }
   };
+
+  // A day transition, a finished program, or a stale screen all mean
+  // there is no "next session" to continue into — send the user home
+  // regardless of which session number this screen was showing.
+  const forcedHome =
+    completionStatus === 'day_mismatch' ||
+    completionStatus === 'program_completed' ||
+    programCompleted ||
+    dayAdvanced;
+
+  const handlePrimaryAction = () => {
+    if (forcedHome) {
+      handleReturnToDashboard();
+    } else {
+      handleContinueNext();
+    }
+  };
+
+  const nextSessionLabel =
+    sessionNumber === '1' ? 'CONTINUE TO SESSION 2' :
+    sessionNumber === '2' ? 'CONTINUE TO SESSION 3' :
+    null;
+
+  // Which of today's 3 sessions are done, for the training-day cell row.
+  // The app enforces Session 1 → 2 → 3 order, so a lower session number
+  // is already complete by the time this screen can render for a higher
+  // one — this reads that ordering rather than fetching per-day status.
+  const sessionCells = [1, 2, 3].map(
+    (n) => n < validSessionNum || (n === validSessionNum && (saved || isReview) && !error)
+  );
 
   const getPerformanceMessage = () => {
     if (isSubjective) {
@@ -229,125 +218,214 @@ export default function SessionCompleteScreen() {
         >
         {/* Header */}
         <View style={styles.header}>
-          <Text style={styles.headerIcon} maxFontSizeMultiplier={1}>
-            {isSubjective ? '✎' : percentage >= 70 ? '★' : percentage >= 50 ? '✓' : '—'}
-          </Text>
-          <Text style={styles.headerTitle} maxFontSizeMultiplier={1}>
-            SESSION {sessionNumber} COMPLETE
-          </Text>
+          <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+            SESSION {String(sessionNum).padStart(2, '0')}
+          </Mono>
+          <Display maxFontSizeMultiplier={1}>COMPLETE</Display>
+          <View style={styles.headerRule} />
         </View>
 
-        {/* Results Card */}
-        {!isSubjective && (
-          <View style={[styles.resultsCard, TacticalShadows.glow]}>
-            <CornerMarkers position="all" color={getPerformanceColor()} />
+        {/* Score circle — the one place a centred layout is right:
+            this is a terminal screen, not a step in a flow. For a
+            subjective session it shows responses completed, not a
+            score — same isSubjective branch as before, new skin. */}
+        <View style={styles.scoreCircleWrap}>
+          <View style={[styles.scoreCircle, { borderColor: getPerformanceColor() }]}>
+            <Display
+              style={{ color: getPerformanceColor() }}
+              maxFontSizeMultiplier={1}
+              numberOfLines={1}
+              adjustsFontSizeToFit
+            >
+              {isSubjective
+                ? `${objectiveMetrics?.responsesSubmitted ?? 0}/${objectiveMetrics?.totalQuestions ?? total}`
+                : `${score}/${total}`}
+            </Display>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>
+              {isSubjective ? 'RESPONSES' : `${percentage}% ACCURACY`}
+            </LabelCaps>
+          </View>
+        </View>
 
-            <View style={styles.scoreSection}>
-              <Text style={styles.scoreLabel} maxFontSizeMultiplier={1}>
-                ACCURACY
-              </Text>
-              <Text
-                style={[styles.scoreValue, { color: getPerformanceColor() }]}
-                maxFontSizeMultiplier={1}
-                numberOfLines={1}
-                adjustsFontSizeToFit
-              >
-                {score}/{total}
-              </Text>
-              <Text style={styles.percentageText} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
-                {percentage}%
-              </Text>
+        <BodyLg style={styles.performanceMessage} maxFontSizeMultiplier={1}>
+          {getPerformanceMessage()}
+        </BodyLg>
+
+        {/* Day / program transition — driven by the complete_daily_session
+            RPC result, not by isSubjective. */}
+        {completionStatus === 'day_mismatch' && (
+          <MilledSurface style={styles.transitionCard}>
+            <LabelCaps tone="error" maxFontSizeMultiplier={1}>SESSION OUT OF DATE</LabelCaps>
+            <Body tone="secondary" maxFontSizeMultiplier={1}>
+              This session no longer matches your current training day, so nothing was recorded here.
+              Return to the dashboard to continue.
+            </Body>
+          </MilledSurface>
+        )}
+
+        {completionStatus !== 'day_mismatch' && (completionStatus === 'program_completed' || programCompleted) && (
+          <MilledSurface brackets style={styles.transitionCard}>
+            <Headline tone="gold" maxFontSizeMultiplier={1}>PROGRAM COMPLETE</Headline>
+            <Body tone="secondary" maxFontSizeMultiplier={1}>
+              You've completed all 30 training days. Outstanding work.
+            </Body>
+          </MilledSurface>
+        )}
+
+        {completionStatus === 'completed' && dayAdvanced && !programCompleted && newTrainingDay !== null && (
+          <View style={styles.dayTransitionRow}>
+            <View>
+              <Headline tone="success" maxFontSizeMultiplier={1}>
+                DAY {String(newTrainingDay - 1).padStart(2, '0')} COMPLETE
+              </Headline>
+              <Mono tone="gold" maxFontSizeMultiplier={1}>
+                NEXT: DAY {String(newTrainingDay).padStart(2, '0')}
+              </Mono>
             </View>
-
-            <View style={styles.divider} />
-
-            <Text style={styles.performanceMessage} maxFontSizeMultiplier={1}>
-              {getPerformanceMessage()}
-            </Text>
+            <Mono tone="gold" maxFontSizeMultiplier={1}>→</Mono>
           </View>
         )}
 
+        {/* XP Award card — Mode A (first completion) or Mode B (review) */}
+        <MilledSurface brackets bracketTone={isReview ? 'muted' : 'primary'} style={styles.xpCard}>
+          <LabelCaps tone={isReview ? 'tertiary' : 'secondary'} maxFontSizeMultiplier={1}>
+            {isReview ? 'SESSION ALREADY COMPLETE' : 'XP EARNED'}
+          </LabelCaps>
+
+          {isReview ? (
+            // Mode B: Review — read-only, no XP awarded
+            <View style={styles.reviewContainer}>
+              <Body tone="secondary" maxFontSizeMultiplier={1}>
+                You completed this session earlier today.
+              </Body>
+              <Body tone="tertiary" maxFontSizeMultiplier={1}>
+                XP has already been awarded. No additional XP is earned on review.
+              </Body>
+            </View>
+          ) : (
+            // Mode A: First completion — show XP earned and save state
+            <>
+              <View style={styles.xpValueRow}>
+                <MaterialIcons name="bolt" size={22} color={Colors.success} />
+                <Headline tone="success" maxFontSizeMultiplier={1}>
+                  +{xpEarned} XP
+                </Headline>
+              </View>
+
+              {saving && (
+                <View style={styles.savingRow}>
+                  <ActivityIndicator size="small" color={Colors.primary} />
+                  <Mono tone="tertiary" maxFontSizeMultiplier={1}>Saving progress...</Mono>
+                </View>
+              )}
+
+              {saved && !saving && (
+                <View style={styles.savedRow}>
+                  <MaterialIcons name="check-circle" size={16} color={Colors.success} />
+                  <Mono tone="success" maxFontSizeMultiplier={1}>Progress saved</Mono>
+                </View>
+              )}
+
+              {error && (
+                <View style={styles.errorBox}>
+                  <Body tone="error" maxFontSizeMultiplier={1}>{error}</Body>
+                  <TouchableOpacity onPress={retry} activeOpacity={0.7}>
+                    <Mono tone="error" style={styles.retryText} maxFontSizeMultiplier={1}>RETRY</Mono>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </>
+          )}
+        </MilledSurface>
+
+        {/* Training day — which of today's 3 sessions are done. Derived
+            from validSessionNum + this screen's own save outcome above,
+            not a new data fetch (see the sessionCells comment). */}
+        <View style={styles.trainingDayHeader}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TRAINING DAY</LabelCaps>
+          <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+            {sessionCells.filter(Boolean).length} / 3 SESSIONS
+          </Mono>
+        </View>
+        <View style={styles.sessionCellsRow}>
+          {[1, 2, 3].map((n) => (
+            <View key={n} style={[styles.sessionCell, sessionCells[n - 1] && styles.sessionCellDone]}>
+              {sessionCells[n - 1] ? (
+                <MaterialIcons name="check" size={16} color={Colors.success} />
+              ) : (
+                <Mono tone="tertiary" maxFontSizeMultiplier={1}>{n}</Mono>
+              )}
+            </View>
+          ))}
+        </View>
+
         {/* Subjective Session Metrics */}
         {isSubjective && objectiveMetrics && (
-          <View style={[styles.subjectiveCard, TacticalShadows.glow]}>
-            <CornerMarkers position="all" color={Colors.primary} />
+          <MilledSurface brackets style={styles.subjectiveCard}>
+            <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>SESSION SUMMARY</LabelCaps>
 
-            <View style={styles.subjectiveHeader}>
-              <Text style={[styles.subjectiveTitle]} maxFontSizeMultiplier={1}>
-                SESSION SUMMARY
-              </Text>
-            </View>
-
-            <Text style={styles.subjectiveText} maxFontSizeMultiplier={1}>
+            <Body tone="secondary" style={styles.subjectiveText} maxFontSizeMultiplier={1}>
               Session {sessionNumber} completed. Here are your submission metrics:
-            </Text>
+            </Body>
 
             <View style={styles.metricsGrid}>
-              <View style={styles.metricCard}>
-                <Text style={styles.metricValue} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+              <RecessedTrack style={styles.metricCard}>
+                <Headline tone="gold" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   {objectiveMetrics.responsesSubmitted}/{objectiveMetrics.totalQuestions}
-                </Text>
-                <Text style={styles.metricLabel} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+                </Headline>
+                <LabelCaps tone="tertiary" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   RESPONSES
-                </Text>
-              </View>
+                </LabelCaps>
+              </RecessedTrack>
 
-              <View style={styles.metricCard}>
-                <Text style={styles.metricValue} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+              <RecessedTrack style={styles.metricCard}>
+                <Headline tone="gold" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   {objectiveMetrics.averageWordCount}
-                </Text>
-                <Text style={styles.metricLabel} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+                </Headline>
+                <LabelCaps tone="tertiary" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   AVG WORDS
-                </Text>
-              </View>
+                </LabelCaps>
+              </RecessedTrack>
 
-              <View style={styles.metricCard}>
-                <Text style={styles.metricValue} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+              <RecessedTrack style={styles.metricCard}>
+                <Headline tone="gold" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   {objectiveMetrics.completionTime}
-                </Text>
-                <Text style={styles.metricLabel} maxFontSizeMultiplier={1} numberOfLines={1} adjustsFontSizeToFit>
+                </Headline>
+                <LabelCaps tone="tertiary" numberOfLines={1} adjustsFontSizeToFit maxFontSizeMultiplier={1}>
                   TIME
-                </Text>
-              </View>
+                </LabelCaps>
+              </RecessedTrack>
             </View>
 
             {/* AI Evaluation Section */}
             {aiEvaluation && (
               <View style={styles.aiEvaluationSection}>
-                <View style={styles.aiEvaluationHeader}>
-                  <Text style={styles.aiEvaluationTitle} maxFontSizeMultiplier={1}>
-                    AI EVALUATION
-                  </Text>
-                </View>
+                <LabelCaps tone="secondary" style={styles.aiEvaluationHeader} maxFontSizeMultiplier={1}>
+                  AI EVALUATION
+                </LabelCaps>
 
                 {/* Overall Score */}
                 <View style={styles.aiScoreContainer}>
-                  <Text style={styles.aiScoreLabel} maxFontSizeMultiplier={1}>
-                    Overall Score
-                  </Text>
-                  <View style={styles.aiScoreBar}>
+                  <LabelCaps tone="tertiary" maxFontSizeMultiplier={1}>Overall Score</LabelCaps>
+                  <RecessedTrack style={styles.aiScoreBar}>
                     <View style={[styles.aiScoreBarFill, { width: `${aiEvaluation.overallScore}%` }]} />
-                  </View>
-                  <Text style={styles.aiScoreValue} maxFontSizeMultiplier={1}>
+                  </RecessedTrack>
+                  <Headline tone="gold" maxFontSizeMultiplier={1}>
                     {aiEvaluation.overallScore}/100
-                  </Text>
+                  </Headline>
                 </View>
 
                 {/* Strengths */}
                 {aiEvaluation.strengths && aiEvaluation.strengths.length > 0 && (
                   <View style={styles.aiFeedbackSection}>
-                    <Text style={styles.aiFeedbackTitle} maxFontSizeMultiplier={1}>
-                      STRENGTHS
-                    </Text>
+                    <LabelCaps tone="primary" maxFontSizeMultiplier={1}>STRENGTHS</LabelCaps>
                     <View style={styles.aiFeedbackList}>
                       {aiEvaluation.strengths.map((strength: string, idx: number) => (
                         <View key={idx} style={styles.aiFeedbackItem}>
-                          <Text style={styles.aiFeedbackBullet} maxFontSizeMultiplier={1}>
-                            ✓
-                          </Text>
-                          <Text style={styles.aiFeedbackText} maxFontSizeMultiplier={1}>
+                          <Mono tone="success" maxFontSizeMultiplier={1}>✓</Mono>
+                          <Body tone="secondary" style={styles.aiFeedbackText} maxFontSizeMultiplier={1}>
                             {strength}
-                          </Text>
+                          </Body>
                         </View>
                       ))}
                     </View>
@@ -357,18 +435,14 @@ export default function SessionCompleteScreen() {
                 {/* Improvements */}
                 {aiEvaluation.improvements && aiEvaluation.improvements.length > 0 && (
                   <View style={styles.aiFeedbackSection}>
-                    <Text style={styles.aiFeedbackTitle} maxFontSizeMultiplier={1}>
-                      AREAS FOR GROWTH
-                    </Text>
+                    <LabelCaps tone="primary" maxFontSizeMultiplier={1}>AREAS FOR GROWTH</LabelCaps>
                     <View style={styles.aiFeedbackList}>
                       {aiEvaluation.improvements.map((improvement: string, idx: number) => (
                         <View key={idx} style={styles.aiFeedbackItem}>
-                          <Text style={styles.aiFeedbackBullet} maxFontSizeMultiplier={1}>
-                            •
-                          </Text>
-                          <Text style={styles.aiFeedbackText} maxFontSizeMultiplier={1}>
+                          <Mono tone="gold" maxFontSizeMultiplier={1}>•</Mono>
+                          <Body tone="secondary" style={styles.aiFeedbackText} maxFontSizeMultiplier={1}>
                             {improvement}
-                          </Text>
+                          </Body>
                         </View>
                       ))}
                     </View>
@@ -377,117 +451,29 @@ export default function SessionCompleteScreen() {
 
                 {/* Summary */}
                 {aiEvaluation.summary && (
-                  <View style={styles.aiSummaryContainer}>
-                    <Text style={styles.aiSummaryText} maxFontSizeMultiplier={1}>
+                  <RecessedTrack style={styles.aiSummaryContainer}>
+                    <Body tone="primary" style={styles.aiSummaryText} maxFontSizeMultiplier={1}>
                       {aiEvaluation.summary}
-                    </Text>
-                  </View>
+                    </Body>
+                  </RecessedTrack>
                 )}
               </View>
             )}
 
-            <View style={styles.aiNote}>
-              {!aiEvaluation && (
-                <Text style={styles.aiNoteText} maxFontSizeMultiplier={1}>
+            {!aiEvaluation && (
+              <View style={styles.aiNote}>
+                <Body tone="secondary" style={styles.aiNoteText} maxFontSizeMultiplier={1}>
                   💡 AI evaluation provides developmental feedback on your responses. Enable it in settings or check your API configuration.
-                </Text>
-              )}
-            </View>
-          </View>
+                </Body>
+              </View>
+            )}
+          </MilledSurface>
         )}
-
-        {isSubjective && !aiEvaluation && (
-          <View style={[styles.subjectiveCard, TacticalShadows.glow]}>
-            <CornerMarkers position="all" color={Colors.success} />
-
-            <View style={styles.subjectiveHeader}>
-              <Text style={styles.subjectiveIcon} maxFontSizeMultiplier={1}>
-                ✓
-              </Text>
-              <Text style={[styles.subjectiveTitle, { color: Colors.success }]} maxFontSizeMultiplier={1}>
-                DAY COMPLETE
-              </Text>
-            </View>
-
-            <Text style={styles.subjectiveText} maxFontSizeMultiplier={1}>
-              You've completed all 3 sessions for today. Great work on your subjective responses!
-            </Text>
-
-            <Text style={styles.subjectiveNote} maxFontSizeMultiplier={1}>
-              Return tomorrow for new training sessions.
-            </Text>
-          </View>
-        )}
-
-        {/* XP Award Card — Mode A (first completion) or Mode B (review) */}
-        <View style={[styles.xpCard, isReview && styles.xpCardReview]}>
-          <CornerMarkers position="all" color={isReview ? Colors.textTertiary : Colors.primary} />
-
-          <View style={styles.xpHeader}>
-            <Text style={[styles.xpLabel, isReview && { color: Colors.textTertiary }]} maxFontSizeMultiplier={1}>
-              {isReview ? 'SESSION ALREADY COMPLETED' : 'EXPERIENCE POINTS'}
-            </Text>
-          </View>
-
-          {isReview ? (
-            // Mode B: Review — read-only, no XP awarded
-            <View style={styles.reviewContainer}>
-              <Text style={styles.reviewText} maxFontSizeMultiplier={1}>
-                You completed this session earlier today.
-              </Text>
-              <Text style={styles.reviewSubtext} maxFontSizeMultiplier={1}>
-                XP has already been awarded. No additional XP is earned on review.
-              </Text>
-            </View>
-          ) : (
-            // Mode A: First completion — show XP earned and save state
-            <>
-              <Text style={styles.xpValue} maxFontSizeMultiplier={1}>
-                +{xpEarned} XP
-              </Text>
-
-              {saving && (
-                <View style={styles.savingContainer}>
-                  <ActivityIndicator size="small" color={Colors.primary} />
-                  <Text style={styles.savingText} maxFontSizeMultiplier={1}>
-                    Saving progress...
-                  </Text>
-                </View>
-              )}
-
-              {saved && !saving && (
-                <View style={styles.savedContainer}>
-                  <Text style={styles.savedIcon} maxFontSizeMultiplier={1}>
-                    ✓
-                  </Text>
-                  <Text style={styles.savedText} maxFontSizeMultiplier={1}>
-                    Progress saved
-                  </Text>
-                </View>
-              )}
-
-              {error && (
-                <View style={styles.errorContainer}>
-                  <Text style={styles.errorText} maxFontSizeMultiplier={1}>
-                    {error}
-                  </Text>
-                  <TouchableOpacity style={styles.retryButton} onPress={saveXP} activeOpacity={0.7}>
-                    <Text style={styles.retryButtonText} maxFontSizeMultiplier={1}>
-                      RETRY
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              )}
-            </>
-          )}
-        </View>
 
         {/* Insights */}
-        <View style={styles.insightsCard}>
-          <Text style={styles.insightsTitle} maxFontSizeMultiplier={1}>
-            Training Insights
-          </Text>
-          <Text style={styles.insightsText} maxFontSizeMultiplier={1}>
+        <MilledSurface style={styles.insightsCard}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TRAINING INSIGHTS</LabelCaps>
+          <Body tone="secondary" style={styles.insightsText} maxFontSizeMultiplier={1}>
             {isSubjective
               ? 'Your subjective responses demonstrate your thought process and approach to real-world scenarios. AI evaluation will provide personalized developmental feedback.'
               : percentage >= 70
@@ -495,29 +481,34 @@ export default function SessionCompleteScreen() {
               : percentage >= 50
               ? `Good progress in Session ${sessionNumber}. Review the explanations for incorrect answers to strengthen your knowledge base.`
               : `Session ${sessionNumber} shows areas for improvement. Focus on understanding the reasoning behind each answer to build stronger fundamentals.`}
-          </Text>
-        </View>
+          </Body>
+        </MilledSurface>
 
         {/* Action Button */}
-        <TouchableOpacity
+        <ForgeButton
+          label={!forcedHome && nextSessionLabel ? nextSessionLabel : 'RETURN TO COMMAND'}
+          iconRight={!forcedHome && nextSessionLabel ? <Text style={styles.returnButtonArrow}>→</Text> : undefined}
+          onPress={handlePrimaryAction}
           style={styles.returnButton}
-          onPress={sessionNumber === '3' ? handleReturnToDashboard : handleContinueNext}
-          activeOpacity={0.85}
-        >
-          <Text style={styles.returnButtonText} maxFontSizeMultiplier={1}>
-            {sessionNumber === '2' ? 'CONTINUE TO SESSION 3' : sessionNumber === '3' ? 'RETURN TO COMMAND' : 'RETURN TO COMMAND'}
-          </Text>
-          {sessionNumber === '2' && (
-            <Text style={styles.returnButtonArrow} maxFontSizeMultiplier={1}>
-              →
-            </Text>
-          )}
-        </TouchableOpacity>
+        />
+
+        {/* Secondary escape hatch — only meaningful when the primary
+            button continues into another session; when it already
+            goes home (forcedHome), a second "return to command" would
+            be redundant. */}
+        {!forcedHome && nextSessionLabel && (
+          <ForgeButton
+            label="RETURN TO COMMAND"
+            variant="ghost"
+            onPress={handleReturnToDashboard}
+            style={styles.secondaryButton}
+          />
+        )}
 
         {/* Footer Note */}
-        <Text style={styles.footerNote} maxFontSizeMultiplier={1}>
+        <Mono tone="tertiary" style={styles.footerNote} maxFontSizeMultiplier={1}>
           Session {sessionNumber} Complete • Continue training daily to master all competencies
-        </Text>
+        </Mono>
       </Animated.View>
     </ScrollView>
   </View>
@@ -537,153 +528,117 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingBottom: Spacing.xl,
+    gap: Spacing.lg,
   },
   header: {
     alignItems: 'center',
-    marginBottom: Spacing.xl,
   },
-  headerIcon: {
-    fontSize: 48,
-    marginBottom: Spacing.md,
+  headerRule: {
+    width: 40,
+    height: 3,
+    borderRadius: 2,
+    backgroundColor: Colors.primary,
+    marginTop: Spacing.sm,
   },
-  headerTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.widest,
+  scoreCircleWrap: {
+    alignItems: 'center',
+    marginTop: Spacing.sm,
   },
-  resultsCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.lg,
+  scoreCircle: {
+    width: 176,
+    height: 176,
+    borderRadius: 88,
     borderWidth: 2,
-    borderColor: Colors.outlineVar,
-    padding: Spacing.xl,
-    marginBottom: Spacing.xl,
     alignItems: 'center',
-    position: 'relative',
-  },
-  scoreSection: {
-    alignItems: 'center',
-    marginBottom: Spacing.lg,
-  },
-  scoreLabel: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.label,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom: Spacing.sm,
-  },
-  scoreValue: {
-    fontFamily: Fonts.display,
-    fontSize: 64,
-    letterSpacing: -2,
-    lineHeight: 72,
-  },
-  percentageText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.headingMd,
-    color: Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  divider: {
-    width: '100%',
-    height: 1,
-    backgroundColor: Colors.outlineVar,
-    marginBottom: Spacing.lg,
+    justifyContent: 'center',
+    gap: Spacing.xs,
+    backgroundColor: Colors.bgSurface,
   },
   performanceMessage: {
-    fontFamily: Fonts.heading,
-    fontSize: FontSizes.headingSm,
-    color: Colors.textPrimary,
     textAlign: 'center',
   },
-  subjectiveCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.lg,
-    borderWidth: 2,
-    borderColor: Colors.primary + '44',
+  transitionCard: {
     padding: Spacing.lg,
-    marginBottom: Spacing.xl,
-    position: 'relative',
+    gap: Spacing.sm,
   },
-  subjectiveHeader: {
+  dayTransitionRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: Spacing.sm,
+  },
+  xpCard: {
+    padding: Spacing.lg,
+    gap: Spacing.sm,
+  },
+  xpValueRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: Spacing.sm,
-    marginBottom: Spacing.md,
   },
-  subjectiveIcon: {
-    fontSize: 24,
-  },
-  subjectiveTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.widest,
-  },
-  subjectiveText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.textSecondary,
-    lineHeight: 24,
-    marginBottom: Spacing.md,
-  },
-  criteriaList: {
-    gap: Spacing.xs,
-    marginBottom: Spacing.md,
-  },
-  criteriaItem: {
+  savingRow: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     gap: Spacing.sm,
   },
-  criteriaBullet: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.bodySm,
-    color: Colors.primary,
+  savedRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.xs,
   },
-  criteriaText: {
+  errorBox: {
+    backgroundColor: Colors.errorBg,
+    padding: Spacing.md,
+    borderRadius: Radius.sm,
+    gap: Spacing.sm,
+  },
+  retryText: {
+    alignSelf: 'flex-start',
+  },
+  reviewContainer: {
+    gap: Spacing.sm,
+  },
+  trainingDayHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  sessionCellsRow: {
+    flexDirection: 'row',
+    gap: Spacing.sm,
+  },
+  sessionCell: {
     flex: 1,
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textSecondary,
-    lineHeight: 20,
+    height: 44,
+    borderRadius: Radius.sm,
+    borderWidth: 1,
+    borderColor: Colors.outlineVar,
+    backgroundColor: Colors.bgSurface,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  subjectiveNote: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textTertiary,
-    fontStyle: 'italic',
-    lineHeight: 20,
+  sessionCellDone: {
+    borderColor: Colors.successDim,
+    backgroundColor: Colors.successBg,
+  },
+  subjectiveCard: {
+    padding: Spacing.lg,
+    gap: Spacing.sm,
+  },
+  subjectiveText: {
+    marginBottom: Spacing.xs,
   },
   metricsGrid: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     gap: Spacing.sm,
-    marginBottom: Spacing.md,
   },
   metricCard: {
     flex: 1,
-    backgroundColor: Colors.bgBase,
-    borderRadius: Radius.md,
     paddingHorizontal: Spacing.xs,
     paddingVertical: Spacing.sm,
     alignItems: 'center',
+    gap: Spacing.xs,
     minWidth: 70,
-  },
-  metricValue: {
-    fontFamily: Fonts.display,
-    fontSize: FontSizes.headingMd,
-    color: Colors.primary,
-    letterSpacing: -0.5,
-    marginBottom: Spacing.xs,
-  },
-  metricLabel: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.micro - 1,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-    textAlign: 'center',
   },
   aiNote: {
     backgroundColor: Colors.primary + '11',
@@ -691,68 +646,31 @@ const styles = StyleSheet.create({
     padding: Spacing.md,
   },
   aiNoteText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textSecondary,
     lineHeight: 20,
   },
   aiEvaluationSection: {
-    marginTop: Spacing.lg,
+    marginTop: Spacing.sm,
     paddingTop: Spacing.lg,
     borderTopWidth: 1,
     borderTopColor: Colors.outlineVar,
+    gap: Spacing.md,
   },
   aiEvaluationHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  aiEvaluationIcon: {
-    fontSize: 20,
-  },
-  aiEvaluationTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.widest,
+    marginBottom: Spacing.xs,
   },
   aiScoreContainer: {
-    marginBottom: Spacing.lg,
-  },
-  aiScoreLabel: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.micro,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom: Spacing.xs,
+    gap: Spacing.xs,
   },
   aiScoreBar: {
     height: 8,
-    backgroundColor: Colors.bgHighest,
-    borderRadius: Radius.xs,
     overflow: 'hidden',
-    marginBottom: Spacing.xs,
   },
   aiScoreBarFill: {
     height: '100%',
     backgroundColor: Colors.primary,
   },
-  aiScoreValue: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.headingMd,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.wide,
-  },
   aiFeedbackSection: {
-    marginBottom: Spacing.md,
-  },
-  aiFeedbackTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textPrimary,
-    letterSpacing: LetterSpacing.wide,
-    marginBottom: Spacing.sm,
+    gap: Spacing.sm,
   },
   aiFeedbackList: {
     gap: Spacing.sm,
@@ -762,168 +680,28 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     gap: Spacing.sm,
   },
-  aiFeedbackBullet: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.primary,
-    width: 16,
-  },
   aiFeedbackText: {
     flex: 1,
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.textSecondary,
     lineHeight: 22,
   },
   aiSummaryContainer: {
-    backgroundColor: Colors.bgBase,
-    borderRadius: Radius.sm,
     padding: Spacing.md,
-    marginTop: Spacing.sm,
   },
   aiSummaryText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.textPrimary,
-    lineHeight: 22,
     fontStyle: 'italic',
   },
-  xpCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.lg,
-    borderWidth: 2,
-    borderColor: Colors.primary + '44',
-    padding: Spacing.lg,
-    marginBottom: Spacing.xl,
-    position: 'relative',
-  },
-  xpCardReview: {
-    borderColor: Colors.outlineVar,
-  },
-  xpHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.sm,
-    marginBottom: Spacing.md,
-  },
-  xpIcon: {
-    fontSize: 24,
-  },
-  xpLabel: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.label,
-    color: Colors.primary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  xpValue: {
-    fontFamily: Fonts.display,
-    fontSize: FontSizes.display,
-    color: Colors.primary,
-    letterSpacing: -2,
-    marginBottom: Spacing.md,
-  },
-  savingContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.sm,
-  },
-  savingText: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textTertiary,
-  },
-  savedContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: Spacing.xs,
-    backgroundColor: Colors.successBg,
-    paddingHorizontal: Spacing.md,
-    paddingVertical: Spacing.sm,
-    borderRadius: Radius.sm,
-    alignSelf: 'flex-start',
-  },
-  savedIcon: {
-    fontSize: 16,
-    color: Colors.success,
-  },
-  savedText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.success,
-    letterSpacing: LetterSpacing.wide,
-  },
-  reviewContainer: {
-    gap: Spacing.sm,
-  },
-  reviewText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  reviewSubtext: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.textTertiary,
-    lineHeight: 20,
-  },
-  errorContainer: {
-    backgroundColor: Colors.errorBg,
-    padding: Spacing.md,
-    borderRadius: Radius.sm,
-    gap: Spacing.sm,
-  },
-  errorText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodySm,
-    color: Colors.error,
-    lineHeight: 20,
-  },
-  retryButton: {
-    alignSelf: 'flex-start',
-  },
-  retryButtonText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.micro,
-    color: Colors.error,
-    letterSpacing: LetterSpacing.wider,
-  },
   insightsCard: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius: Radius.md,
-    borderWidth: 1,
-    borderColor: Colors.outlineVar,
     padding: Spacing.lg,
-    marginBottom: Spacing.xl,
-  },
-  insightsTitle: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.label,
-    color: Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-    marginBottom: Spacing.sm,
+    gap: Spacing.sm,
   },
   insightsText: {
-    fontFamily: Fonts.body,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.textSecondary,
     lineHeight: 24,
   },
   returnButton: {
-    backgroundColor: Colors.primary,
-    paddingVertical: Spacing.md + 4,
-    borderRadius: Radius.md,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    gap: Spacing.sm,
-    marginBottom: Spacing.lg,
+    marginTop: Spacing.xs,
   },
-  returnButtonText: {
-    fontFamily: Fonts.monoMedium,
-    fontSize: FontSizes.bodyMd,
-    color: Colors.onPrimary,
-    letterSpacing: LetterSpacing.widest,
+  secondaryButton: {
+    alignSelf: 'center',
   },
   returnButtonArrow: {
     fontFamily: Fonts.monoMedium,
@@ -931,9 +709,6 @@ const styles = StyleSheet.create({
     color: Colors.onPrimary,
   },
   footerNote: {
-    fontFamily: Fonts.mono,
-    fontSize: FontSizes.micro,
-    color: Colors.textTertiary,
     textAlign: 'center',
     lineHeight: 16,
   },

@@ -311,8 +311,11 @@ export default function Session3Screen() {
       // Track Day 1 completion (all 3 sessions done)
       trackEvent(userId, 'day1_completed');
 
-      // Navigate to completion screen with AI evaluation
-      router.push({
+      // Navigate to completion screen with AI evaluation.
+      // replace, not push: the finished session screen must not stay
+      // in the stack under session-complete, or Android back / iOS
+      // swipe-back would re-enter an already-submitted session.
+      router.replace({
         pathname: '/session-complete',
         params: {
           sessionNumber: '3',

@@ -288,7 +288,10 @@ export default function Session2Screen() {
         xpEarned: totalXP,
       });
 
-      router.push({
+      // replace, not push: the finished session screen must not stay
+      // in the stack under session-complete, or Android back / iOS
+      // swipe-back would re-enter an already-submitted session.
+      router.replace({
         pathname: '/session-complete',
         params: {
           sessionNumber: '2',

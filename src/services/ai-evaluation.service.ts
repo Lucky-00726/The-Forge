@@ -5,7 +5,7 @@
 // ─────────────────────────────────────────────────────────────
 
 const OPENROUTER_ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions';
-const DEFAULT_MODEL = 'openai/gpt-oss-20b:free';
+const DEFAULT_MODEL = 'nvidia/nemotron-3-ultra-550b-a55b:free';
 const REQUEST_TIMEOUT = 45000; // 45 seconds
 // A full Session 3 batch (up to 10 responses) produces sizeable JSON
 // (score + 3-4 strengths + 3-4 improvements + summary). 500 tokens could

@@ -244,7 +244,7 @@ export async function markSessionCompleted(
   totalQuestions:         number,
   completionTimeSeconds:  number,
   difficulty:             string,
-): Promise<{ success: boolean; status: string; dayAdvanced: boolean; newTrainingDay: number } | null> {
+): Promise<{ success: boolean; status: string; dayAdvanced: boolean; newTrainingDay: number; programCompleted: boolean } | null> {
   try {
     const { data: userProfile } = await supabase
       .from('users')
@@ -280,10 +280,11 @@ export async function markSessionCompleted(
     console.log('[DailySession] RPC complete_daily_session result:', result);
 
     return {
-      success:         result.completed_session,
-      status:          result.status,
-      dayAdvanced:     result.day_advanced,
-      newTrainingDay:  result.new_training_day
+      success:          result.completed_session,
+      status:           result.status,
+      dayAdvanced:      result.day_advanced,
+      newTrainingDay:   result.new_training_day,
+      programCompleted: result.program_completed,
     };
   } catch (err) {
     console.error('[DailySession] RPC complete_daily_session unexpected error:', err);

@@ -29,15 +29,12 @@ import {
   Alert,
   Platform,
 } from 'react-native';
+import { MaterialIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useRouter } from 'expo-router';
 import { useAuth }      from '../../src/hooks/useAuth';
 import { useAuthStore } from '../../src/store/auth.store';
 import { supabase }     from '../../src/services/supabase';
-import {
-  TacticalButton,
-  ScreenMeta,
-} from '../../src/components/ui';
 import {
   Colors,
   Fonts,
@@ -48,6 +45,17 @@ import {
   RankColors,
 } from '../../src/constants/tokens';
 import { computeRankProgress } from '../../src/constants/progression';
+import {
+  MilledSurface,
+  RecessedTrack,
+  Display,
+  Headline,
+  Body,
+  LabelCaps,
+  Mono,
+  ForgeButton,
+  MetaItem,
+} from '../../src/components/forge';
 
 // ── Main screen ───────────────────────────────────────────────
 export default function ProfileScreen() {
@@ -133,146 +141,126 @@ export default function ProfileScreen() {
     >
       {/* ── Header ── */}
       <View style={styles.header}>
-        <ScreenMeta id="DOSSIER" label="Officer Profile" />
-        <Text style={styles.name} maxFontSizeMultiplier={1} numberOfLines={1}>
+        <Display maxFontSizeMultiplier={1} numberOfLines={1}>
           {displayName ? displayName.toUpperCase() : 'OFFICER'}
-        </Text>
+        </Display>
         <View style={styles.rankBadge}>
-          <Text style={[styles.rankBadgeText, { color: rankColor }]} maxFontSizeMultiplier={1}>
+          <Mono style={[styles.rankBadgeText, { color: rankColor }]} maxFontSizeMultiplier={1}>
             {currentRank.toUpperCase()}
-          </Text>
+          </Mono>
         </View>
       </View>
 
       {/* ── Rank Progression Card ── */}
-      <View style={styles.card}>
-        <Text style={styles.cardLabel} maxFontSizeMultiplier={1}>
-          RANK PROGRESSION
-        </Text>
+      <MilledSurface style={styles.rankCard}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>RANK PROGRESSION</LabelCaps>
 
         <View style={styles.rankStatusRow}>
           <View style={styles.rankCurrent}>
-            <Text
+            <Mono
               style={[styles.rankCurrentText, { color: rankColor }]}
               maxFontSizeMultiplier={1}
             >
               {rankData.current.name.toUpperCase()}
-            </Text>
+            </Mono>
           </View>
           {rankData.next && (
             <>
-              <View style={styles.rankArrow}>
-                <Text style={styles.rankArrowText} maxFontSizeMultiplier={1}>→</Text>
-              </View>
+              <Mono style={styles.rankArrow} maxFontSizeMultiplier={1}>→</Mono>
               <View style={styles.rankNext}>
-                <Text style={styles.rankNextText} maxFontSizeMultiplier={1}>
+                <Mono style={styles.rankNextText} maxFontSizeMultiplier={1}>
                   {rankData.next.name.toUpperCase()}
-                </Text>
+                </Mono>
               </View>
             </>
           )}
         </View>
 
-        <View style={styles.rankBarTrack}>
+        <RecessedTrack style={styles.rankBarTrack}>
           <View
             style={[
               styles.rankBarFill,
               { width: `${rankData.pct}%`, backgroundColor: rankColor },
             ]}
           />
-        </View>
+        </RecessedTrack>
 
         <View style={styles.rankProgress}>
-          <Text style={styles.rankProgressLabel} maxFontSizeMultiplier={1}>
+          <Mono tone="gold" maxFontSizeMultiplier={1}>
             {totalXP.toLocaleString()} XP
-          </Text>
+          </Mono>
           {rankData.xpToNext > 0 && (
-            <Text style={styles.rankProgressNext} maxFontSizeMultiplier={1}>
+            <Mono tone="secondary" style={styles.rankProgressNext} maxFontSizeMultiplier={1}>
               {rankData.xpToNext.toLocaleString()} to next rank
-            </Text>
+            </Mono>
           )}
         </View>
-      </View>
+      </MilledSurface>
 
       {/* ── Performance Stats ── */}
       <View style={styles.statsGrid}>
-        <View style={styles.statCard}>
-          <View style={styles.statIconBox}>
-            <Text style={styles.statEmoji}>⭐</Text>
-          </View>
-          <Text style={styles.statValue} maxFontSizeMultiplier={1}>
+        <RecessedTrack style={styles.statCard}>
+          <MaterialIcons name="star" size={20} color={Colors.primary} />
+          <Headline tone="gold" maxFontSizeMultiplier={1}>
             {totalXP.toLocaleString()}
-          </Text>
-          <Text style={styles.statLabel} maxFontSizeMultiplier={1}>
-            TOTAL XP
-          </Text>
-        </View>
+          </Headline>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TOTAL XP</LabelCaps>
+        </RecessedTrack>
 
-        <View style={[
-          styles.statCard,
-          currentStreak > 0 && styles.statCardActive
-        ]}>
-          <View style={styles.statIconBox}>
-            <Text style={styles.statEmoji}>🔥</Text>
-          </View>
-          <Text style={[
-            styles.statValue,
-            currentStreak > 0 && { color: Colors.success }
-          ]} maxFontSizeMultiplier={1}>
+        <RecessedTrack style={styles.statCard}>
+          <MaterialIcons name="local-fire-department" size={20} color={currentStreak > 0 ? Colors.success : Colors.textTertiary} />
+          <Headline tone={currentStreak > 0 ? 'success' : 'secondary'} maxFontSizeMultiplier={1}>
             {currentStreak}
-          </Text>
-          <Text style={styles.statLabel} maxFontSizeMultiplier={1}>
-            DAY STREAK
-          </Text>
-        </View>
+          </Headline>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>DAY STREAK</LabelCaps>
+        </RecessedTrack>
       </View>
 
 
 
       {/* ── Service Record ── */}
-      <View style={styles.card}>
-        <Text style={styles.cardLabel} maxFontSizeMultiplier={1}>
-          SERVICE RECORD
-        </Text>
-        
+      <MilledSurface style={styles.recordCard}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>SERVICE RECORD</LabelCaps>
+
         <View style={styles.recordRow}>
-          <Text style={styles.recordLabel} maxFontSizeMultiplier={1}>
-            RANK
-          </Text>
-          <Text style={[styles.recordValue, { color: rankColor }]} maxFontSizeMultiplier={1}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>RANK</LabelCaps>
+          <Mono style={[styles.recordValue, { color: rankColor }]} maxFontSizeMultiplier={1}>
             {currentRank}
-          </Text>
+          </Mono>
         </View>
-        
+
         <View style={styles.recordDivider} />
-        
+
         <View style={styles.recordRow}>
-          <Text style={styles.recordLabel} maxFontSizeMultiplier={1}>
-            TOTAL EXPERIENCE
-          </Text>
-          <Text style={styles.recordValue} maxFontSizeMultiplier={1}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TOTAL EXPERIENCE</LabelCaps>
+          <Mono tone="gold" maxFontSizeMultiplier={1}>
             {totalXP.toLocaleString()} XP
-          </Text>
+          </Mono>
         </View>
-        
+
         <View style={styles.recordDivider} />
-        
+
         <View style={styles.recordRow}>
-          <Text style={styles.recordLabel} maxFontSizeMultiplier={1}>
-            ACTIVE STREAK
-          </Text>
-          <Text style={styles.recordValue} maxFontSizeMultiplier={1}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>ACTIVE STREAK</LabelCaps>
+          <Mono tone="secondary" maxFontSizeMultiplier={1}>
             {currentStreak} {currentStreak === 1 ? 'day' : 'days'}
-          </Text>
+          </Mono>
         </View>
-        
+
         <View style={styles.recordDivider} />
-        
+
         <View style={styles.recordRow}>
-          <Text style={styles.recordLabel} maxFontSizeMultiplier={1}>
-            ENROLLMENT DATE
-          </Text>
-          <Text style={styles.recordValue} maxFontSizeMultiplier={1}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>TRAINING DAY</LabelCaps>
+          <Mono tone="secondary" maxFontSizeMultiplier={1}>
+            {profile?.current_training_day ?? '—'}
+          </Mono>
+        </View>
+
+        <View style={styles.recordDivider} />
+
+        <View style={styles.recordRow}>
+          <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>ENROLLMENT DATE</LabelCaps>
+          <Mono tone="secondary" maxFontSizeMultiplier={1}>
             {profile?.created_at
               ? new Date(profile.created_at).toLocaleDateString('en-IN', {
                   day:   'numeric',
@@ -280,60 +268,59 @@ export default function ProfileScreen() {
                   year:  'numeric',
                 })
               : '—'}
-          </Text>
+          </Mono>
         </View>
-      </View>
+      </MilledSurface>
 
       {/* ── Feedback ── */}
-      <View style={styles.card}>
-        <Text style={styles.cardLabel} maxFontSizeMultiplier={1}>
-          SEND FEEDBACK
-        </Text>
-        <Text style={styles.feedbackHint} maxFontSizeMultiplier={1}>
+      <MilledSurface style={styles.feedbackCard}>
+        <LabelCaps tone="secondary" maxFontSizeMultiplier={1}>SEND FEEDBACK</LabelCaps>
+        <Body tone="secondary" maxFontSizeMultiplier={1}>
           What's working? What isn't? Your input builds the next version.
-        </Text>
+        </Body>
 
         {feedbackSent ? (
           <View style={styles.feedbackSentBadge}>
-            <Text style={styles.feedbackSentText} maxFontSizeMultiplier={1}>
-              ✓ FEEDBACK RECEIVED. THANK YOU, OFFICER.
-            </Text>
+            <MaterialIcons name="check-circle" size={16} color={Colors.success} />
+            <Mono tone="success" maxFontSizeMultiplier={1}>FEEDBACK RECEIVED. THANK YOU.</Mono>
           </View>
         ) : (
           <>
-            <TextInput
-              value={feedbackText}
-              onChangeText={setFeedbackText}
-              placeholder="Type your feedback here…"
-              placeholderTextColor={Colors.textTertiary}
-              multiline
-              numberOfLines={4}
-              style={styles.feedbackInput}
-              textAlignVertical="top"
-              maxLength={500}
-              maxFontSizeMultiplier={1}
-            />
-            <Text style={styles.feedbackCount} maxFontSizeMultiplier={1}>
-              {feedbackText.length}/500
-            </Text>
-            <TacticalButton
+            <RecessedTrack style={styles.feedbackInputWrap}>
+              <TextInput
+                value={feedbackText}
+                onChangeText={setFeedbackText}
+                placeholder="Type your feedback here…"
+                placeholderTextColor={Colors.textTertiary}
+                multiline
+                numberOfLines={4}
+                style={styles.feedbackInput}
+                textAlignVertical="top"
+                maxLength={500}
+                maxFontSizeMultiplier={1}
+              />
+            </RecessedTrack>
+            <View style={styles.feedbackMeta}>
+              <Mono tone="tertiary" maxFontSizeMultiplier={1}>
+                {feedbackText.length}/500
+              </Mono>
+            </View>
+            <ForgeButton
               label="Submit Feedback"
               onPress={handleFeedback}
-              loading={sendingFeedback}
               disabled={!feedbackText.trim()}
-              variant="ghost"
+              style={styles.feedbackButton}
             />
           </>
         )}
-      </View>
+      </MilledSurface>
 
       {/* ── Sign out ── */}
       <View style={styles.signOutWrap}>
-        <TacticalButton
+        <ForgeButton
           label="Sign Out"
           onPress={handleLogout}
-          loading={loggingOut}
-          variant="danger"
+          style={styles.signOutButton}
         />
       </View>
     </ScrollView>
@@ -353,231 +340,108 @@ const styles = StyleSheet.create({
   
   // ── Header ────────────────────────────────────────────────────
   header: {
-    marginBottom: Spacing.xl,
-  },
-  name: {
-    fontFamily:    Fonts.display,
-    fontSize:      FontSizes.headingLg,
-    color:         Colors.textPrimary,
-    letterSpacing: -0.5,
-    marginBottom:  Spacing.md,
-    lineHeight:    36,
-  },
-  rankBadge: {
-    alignSelf:          'flex-start',
-    backgroundColor:    Colors.bgSurface,
-    borderWidth:        2,
-    borderColor:        Colors.outlineVar,
-    borderRadius:       Radius.md,
-    paddingHorizontal:  Spacing.md,
-    paddingVertical:    Spacing.xs + 1,
-  },
-  rankBadgeText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    letterSpacing: LetterSpacing.widest,
-  },
-  
-  // ── Cards ─────────────────────────────────────────────────────
-  card: {
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.lg,
-    marginBottom:    Spacing.md,
-    gap:             Spacing.md,
-  },
-  cardLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wider,
-  },
-  cardDescription: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
+    gap: Spacing.md,
   },
   
   // ── Rank Progression ──────────────────────────────────────────
+  rankCard: {
+    gap: Spacing.md,
+  },
   rankStatusRow: {
-    flexDirection:  'row',
-    alignItems:     'center',
-    gap:            Spacing.sm,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
   },
   rankCurrent: {
-    backgroundColor:   Colors.bgHighest,
-    borderRadius:      Radius.sm,
     paddingHorizontal: Spacing.md,
-    paddingVertical:   Spacing.xs + 2,
+    paddingVertical: Spacing.xs + 2,
   },
-  rankCurrentText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    letterSpacing: LetterSpacing.wide,
-  },
+  rankCurrentText: {},
   rankArrow: {
     paddingHorizontal: Spacing.xs,
   },
-  rankArrowText: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.bodyMd,
-    color:      Colors.textTertiary,
-  },
   rankNext: {
-    backgroundColor:   Colors.bgLow,
-    borderRadius:      Radius.sm,
     paddingHorizontal: Spacing.md,
-    paddingVertical:   Spacing.xs + 2,
+    paddingVertical: Spacing.xs + 2,
   },
-  rankNextText: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textSecondary,
-    letterSpacing: LetterSpacing.wide,
-  },
+  rankNextText: {},
   rankBarTrack: {
-    height:          10,
-    backgroundColor: Colors.bgHighest,
-    borderRadius:    Radius.sm,
-    overflow:        'hidden',
+    height: 10,
+    borderRadius: Radius.sm,
+    overflow: 'hidden',
   },
   rankBarFill: {
-    height:       10,
+    height: 10,
     borderRadius: Radius.sm,
   },
   rankProgress: {
-    flexDirection:  'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:     'center',
+    alignItems: 'center',
   },
-  rankProgressLabel: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textPrimary,
-    letterSpacing: 0.5,
+  rankProgressNext: {},
+  rankBadge: {
+    alignSelf: 'flex-start',
   },
-  rankProgressNext: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.micro,
-    color:      Colors.textTertiary,
-  },
+  rankBadgeText: {},
   
   // ── Stats Grid ────────────────────────────────────────────────
   statsGrid: {
     flexDirection: 'row',
-    gap:           Spacing.md,
-    marginBottom:  Spacing.md,
+    gap: Spacing.md,
   },
   statCard: {
-    flex:            1,
-    backgroundColor: Colors.bgSurface,
-    borderRadius:    Radius.lg,
-    borderWidth:     2,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.lg,
-    alignItems:      'center',
-    gap:             Spacing.sm,
-    minHeight:       140,
+    flex: 1,
+    padding: Spacing.lg,
+    alignItems: 'center',
+    gap: Spacing.sm,
+    minHeight: 140,
   },
-  statCardActive: {
-    backgroundColor: Colors.success + '11',
-    borderColor:     Colors.success + '44',
-  },
-  statIconBox: {
-    width:           48,
-    height:          48,
-    borderRadius:    24,
-    backgroundColor: Colors.bgHighest,
-    alignItems:      'center',
-    justifyContent:  'center',
-    marginBottom:    Spacing.xs,
-  },
-  statEmoji: {
-    fontSize: 24,
-  },
-  statValue: {
-    fontFamily:    Fonts.heading,
-    fontSize:      FontSizes.headingMd,
-    color:         Colors.textPrimary,
-    letterSpacing: 0,
-  },
-  statLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  
+
   // ── Service Record ────────────────────────────────────────────
+  recordCard: {
+    gap: Spacing.md,
+  },
   recordRow: {
-    flexDirection:  'row',
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems:     'center',
+    alignItems: 'center',
   },
-  recordLabel: {
-    fontFamily:    Fonts.mono,
-    fontSize:      FontSizes.micro,
-    color:         Colors.textTertiary,
-    letterSpacing: LetterSpacing.wide,
-  },
-  recordValue: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.bodySm,
-    color:         Colors.textPrimary,
-    letterSpacing: 0.5,
-  },
+  recordValue: {},
   recordDivider: {
-    height:          1,
+    height: 1,
     backgroundColor: Colors.outlineVar,
-    marginVertical:  Spacing.xs - 2,
+    marginVertical: Spacing.xs - 2,
   },
-  
+
   // ── Feedback Section ──────────────────────────────────────────
-  feedbackHint: {
-    fontFamily: Fonts.body,
-    fontSize:   FontSizes.bodySm,
-    color:      Colors.textSecondary,
-    lineHeight: 20,
+  feedbackCard: {
+    gap: Spacing.md,
+  },
+  feedbackInputWrap: {
+    padding: Spacing.md,
   },
   feedbackInput: {
-    backgroundColor: Colors.bgLow,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.outlineVar,
-    padding:         Spacing.md,
-    fontFamily:      Fonts.body,
-    fontSize:        FontSizes.bodyMd,
-    color:           Colors.textPrimary,
-    minHeight:       100,
-    lineHeight:      22,
+    minHeight: 100,
+    lineHeight: 22,
+    color: Colors.textPrimary,
   },
-  feedbackCount: {
-    fontFamily: Fonts.mono,
-    fontSize:   FontSizes.micro,
-    color:      Colors.textTertiary,
-    textAlign:  'right',
-    marginTop:  -Spacing.sm,
+  feedbackMeta: {
+    alignItems: 'flex-end',
+  },
+  feedbackButton: {
+    marginTop: Spacing.xs,
   },
   feedbackSentBadge: {
-    backgroundColor: Colors.successBg,
-    borderRadius:    Radius.md,
-    borderWidth:     1,
-    borderColor:     Colors.success + '44',
-    padding:         Spacing.md,
-    alignItems:      'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.sm,
+    padding: Spacing.md,
   },
-  feedbackSentText: {
-    fontFamily:    Fonts.monoMedium,
-    fontSize:      FontSizes.micro,
-    color:         Colors.success,
-    letterSpacing: LetterSpacing.wide,
-  },
-  
+
   // ── Sign Out ──────────────────────────────────────────────────
   signOutWrap: {
     marginTop: Spacing.lg,
   },
+  signOutButton: {},
 });
